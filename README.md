@@ -1,10 +1,6 @@
 # DOM Standard
 
-This is the repository in which the W3C snapshot version of the DOM Standard is maintained.
-
-If you wish to file issues or provide pull requests against the standard rather than the snapshots
-or the tools that produce them, we recommend you do so against the
-[upstream repository](https://github.com/whatwg/dom).
+[DOM4](http://www.w3.org/TR/2015/REC-dom-20151119/) was published as a W3C Recommendation on 19 November 2015.
 
 ## How this works
 
@@ -12,5 +8,4 @@ The `master` branch tracks the upstream repository, no local changes are made to
 branch contains merges from `master`, tools to produce the snapshot, and the snapshot itself as
 `index.html`.
 
-Where needed, feature branches are used in order to make pull requests against the upstream 
-repository.
+Where needed, feature branches are used in order to make pull requests against the upstream repository.
