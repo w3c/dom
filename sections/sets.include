@@ -1,0 +1,254 @@
+<section>
+<h2 id="sets">Sets</h2>
+
+  <p class="note">Note: Yes, the names <code><a href="#domtokenlist">DOMTokenList</a></code> and
+<code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code> are unfortunate legacy mishaps.
+
+
+<h3 id="sets-interface-domtokenlist">Interface <code><a href="#domtokenlist">DOMTokenList</a></code></h3>
+
+  <pre class="idl">interface <dfn id="domtokenlist">DOMTokenList</dfn> {
+  readonly attribute unsigned long <a href="#dom-domtokenlist-length" title="dom-DOMTokenList-length">length</a>;
+  getter DOMString? <a href="#dom-domtokenlist-item" title="dom-DOMTokenList-item">item</a>(unsigned long <var>index</var>);
+  boolean <a href="#dom-domtokenlist-contains" title="dom-DOMTokenList-contains">contains</a>(DOMString <var>token</var>);
+  void <a href="#dom-domtokenlist-add" title="dom-DOMTokenList-add">add</a>(DOMString... <var>tokens</var>);
+  void <a href="#dom-domtokenlist-remove" title="dom-DOMTokenList-remove">remove</a>(DOMString... <var>tokens</var>);
+  boolean <a href="#dom-domtokenlist-toggle" title="dom-DOMTokenList-toggle">toggle</a>(DOMString <var>token</var>, optional boolean <var>force</var>);
+  <a href="#dom-domtokenlist-stringifier" title="dom-DOMTokenList-stringifier">stringifier</a>;
+  iterable&lt;DOMString&gt;;
+};</pre>
+
+<p>A <code><a href="#domtokenlist">DOMTokenList</a></code> object has an associated ordered set of
+<dfn id="concept-dtl-tokens" title="concept-DTL-tokens">tokens</dfn>, which is initially empty.
+
+<p>A <code><a href="#domtokenlist">DOMTokenList</a></code> object also has an associated
+<a href="#concept-element" title="concept-element">element</a> and an
+<a href="#concept-attribute" title="concept-attribute">attribute</a>'s
+<a href="#concept-attribute-local-name" title="concept-attribute-local-name">local name</a>.
+
+<p>A <code><a href="#domtokenlist">DOMTokenList</a></code> object's
+<dfn id="concept-dtl-update" title="concept-DTL-update">update steps</dfn> are:
+
+<ol>
+ <li><p>If there is no associated
+ <a href="#concept-attribute" title="concept-attribute">attribute</a> (when the object is a
+ <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code>), terminate these steps.
+
+ <li><p><a href="#concept-element-attributes-set" title="concept-element-attributes-set">Set an attribute</a>
+ for the associated <a href="#concept-element" title="concept-element">element</a> using
+ associated <a href="#concept-attribute" title="concept-attribute">attribute</a>'s
+ <a href="#concept-attribute-local-name" title="concept-attribute-local-name">local name</a> and the result
+ of running the <a href="#concept-ordered-set-serializer" title="concept-ordered-set-serializer">ordered set serializer</a>
+ for <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+</ol>
+
+<dl class="domintro">
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-length" title="dom-DOMTokenList-length">length</a></code>
+ <dd><p>Returns the number of tokens.
+
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-item" title="dom-DOMTokenList-item">item</a>(<var>index</var>)</code>
+ <dt><code><var>tokenlist</var>[<var>index</var>]</code>
+ <dd><p>Returns the token with index <var>index</var>.
+
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-contains" title="dom-DOMTokenList-contains">contains</a>(<var>token</var>)</code>
+ <dd>
+  <p>Returns true if <var>token</var> is present, and false otherwise.
+  <p>Throws a "<code><a href="#syntaxerror">SyntaxError</a></code>" exception if <var>token</var>
+  is the empty string.
+  <p>Throws an "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception if
+  <var>token</var> contains any
+  <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
+
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-add" title="dom-DOMTokenList-add">add</a>(<var>tokens</var>…)</code>
+ <dd>
+  <p>Adds all arguments passed, except those already present.
+  <p>Throws a "<code><a href="#syntaxerror">SyntaxError</a></code>" exception if one if the arguments
+  is the empty string.
+  <p>Throws an "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception if one of the
+  arguments contains any
+  <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
+
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-remove" title="dom-DOMTokenList-remove">remove</a>(<var>tokens</var>…)</code>
+ <dd>
+  <p>Removes arguments passed, if they are present.
+  <p>Throws a "<code><a href="#syntaxerror">SyntaxError</a></code>" exception if one if the arguments
+  is the empty string.
+  <p>Throws an "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception if one of the
+  arguments contains any
+  <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
+
+ <dt><code><var>tokenlist</var> . <a href="#dom-domtokenlist-toggle" title="dom-DOMTokenList-toggle">toggle</a>(<var>token</var> [, <var>force</var>])</code>
+ <dd>
+  <p>If <var>force</var> is not given, "toggles"
+  <var>token</var>, removing it if it's present and adding it if it's
+  not. If <var>force</var> is true, adds <var>token</var> (same
+  as <code title="dom-DOMTokenList-add"><a href="#dom-domtokenlist-add">add()</a></code>).  If
+  <var>force</var> is false, removes <var>token</var> (same as
+  <code title="dom-DOMTokenList-remove"><a href="#dom-domtokenlist-remove">remove()</a></code>).
+  <p>Returns true if <var>token</var> is now present, and false
+  otherwise.
+  <p>Throws a "<code><a href="#syntaxerror">SyntaxError</a></code>" exception if <var>token</var> is empty.
+  <p>Throws an "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception if <var>token</var> contains any spaces.
+</dl>
+
+<div class="impl">
+
+<p>The <code>length</code>
+attribute must return the number of tokens in the
+<a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+
+<p>The object's
+<a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-supported-property-indices">supported property indices</a> are the
+numbers in the range zero to the number of tokens in
+<a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a> minus one, unless
+<a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a> is  empty, in which case there are no
+<a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-supported-property-indices">supported property indices</a>.
+
+<p>The
+<dfn id="dom-domtokenlist-item" title="dom-DOMTokenList-item"><code>item(<var>index</var>)</code></dfn>
+method must run these steps:
+
+<ol>
+ <li><p>If <var>index</var> is equal to or greater than the number of
+ tokens in <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, return null.
+
+ <li><p>Return the <var>index</var>th token in
+ <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+</ol>
+
+<p>The
+<dfn id="dom-domtokenlist-contains" title="dom-DOMTokenList-contains"><code>contains(<var>token</var>)</code></dfn>
+method must run these steps:
+
+<ol>
+ <li><p>If <var>token</var> is the empty string, then
+ <a href="#dfn-throw" title="concept-throw">throw</a> a "<code><a href="#syntaxerror">SyntaxError</a></code>"
+ exception.
+
+ <li><p>If <var>token</var> contains any
+ <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>, then
+ <a href="#dfn-throw" title="concept-throw">throw</a>
+ an "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception.
+
+ <li><p>Return true if <var>token</var> is in
+ <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, and false otherwise.
+</ol>
+
+<p>The
+<dfn id="dom-domtokenlist-add" title="dom-DOMTokenList-add"><code>add(<var>tokens</var>…)</code></dfn>
+method must run these steps:
+
+<ol>
+ <li><p>If one of <var>tokens</var> is the empty string,
+ <a href="#dfn-throw" title="concept-throw">throw</a> a "<code><a href="#syntaxerror">SyntaxError</a></code>"
+ exception.
+
+ <li><p>If one of <var>tokens</var> contains any
+ <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>, then
+ <a href="#dfn-throw" title="concept-throw">throw</a> an
+ "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception.
+
+ <li><p>For each <var>token</var> in <var>tokens</var>, in given
+ order, that is not in <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, append
+ <var>token</var> to <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+
+ <li><p>Run the <a href="#concept-dtl-update" title="concept-DTL-update">update steps</a>.
+</ol>
+
+<p>The
+<dfn id="dom-domtokenlist-remove" title="dom-DOMTokenList-remove"><code>remove(<var>tokens</var>…)</code></dfn>
+method must run these steps:
+
+<ol>
+ <li><p>If one of <var>tokens</var> is the empty string,
+ <a href="#dfn-throw" title="concept-throw">throw</a> a "<code><a href="#syntaxerror">SyntaxError</a></code>"
+ exception.
+
+ <li><p>If one of <var>tokens</var> contains any
+ <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>, then
+ <a href="#dfn-throw" title="concept-throw">throw</a> an
+ "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception.
+
+ <li><p>For each <var>token</var> in <var>tokens</var>, remove
+ <var>token</var> from <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+
+ <li><p>Run the <a href="#concept-dtl-update" title="concept-DTL-update">update steps</a>.
+</ol>
+
+<p>The
+<dfn id="dom-domtokenlist-toggle" title="dom-DOMTokenList-toggle"><code>toggle(<var>token</var>, <var>force</var>)</code></dfn>
+method must run these steps:
+
+<ol>
+ <li><p>If <var>token</var> is the empty string,
+ <a href="#dfn-throw" title="concept-throw">throw</a> a "<code><a href="#syntaxerror">SyntaxError</a></code>"
+ exception.
+
+ <li><p>If <var>token</var> contains any
+ <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>,
+ <a href="#dfn-throw" title="concept-throw">throw</a> an
+ "<code><a href="#invalidcharactererror">InvalidCharacterError</a></code>" exception.
+
+ <li>
+  <p>If <var>token</var> is in <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, run
+  these substeps:
+
+  <ol>
+   <li><p>If <var>force</var> is either not passed or is false, then remove
+   <var>token</var> from <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, run the
+   <a href="#concept-dtl-update" title="concept-DTL-update">update steps</a>, and return false.
+
+   <li><p>Otherwise, return true.
+  </ol>
+
+ <li>
+  <p>Otherwise, run these substeps:
+
+  <ol>
+   <li><p>If <var>force</var> is passed and is false, return false.
+
+   <li><p>Otherwise, append <var>token</var> to
+   <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>, run the
+   <a href="#concept-dtl-update" title="concept-DTL-update">update steps</a>, and return true.
+  </ol>
+</ol>
+
+<p>The <dfn id="dom-domtokenlist-stringifier" title="dom-DOMTokenList-stringifier">stringifier</dfn> must
+return the result of the
+<a href="#concept-ordered-set-serializer" title="concept-ordered-set-serializer">ordered set serializer</a> for
+<a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+
+</div>
+
+
+<h3 id="interface-domsettabletokenlist"><span class="secno">7.2 </span>Interface <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code></h3>
+
+<pre class="idl">interface <dfn id="domsettabletokenlist">DOMSettableTokenList</dfn> : <a href="#domtokenlist">DOMTokenList</a> {
+            attribute DOMString <a href="#dom-domsettabletokenlist-value" title="dom-DOMSettableTokenList-value">value</a>;
+};</pre>
+
+<p>A <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code> object is equivalent to a
+<code><a href="#domtokenlist">DOMTokenList</a></code> object without an associated
+<a href="#concept-attribute" title="concept-attribute">attribute</a>.
+
+<dl class="domintro">
+ <dt><code><var>tokenlist</var> . <a href="#dom-domsettabletokenlist-value" title="dom-DOMSettableTokenList-value">value</a></code>
+ <dd>
+  <p>Returns the associated set as string.
+  <p>Can be set, to change the associated set via a string.
+</dl>
+
+<div class="impl">
+
+<p>The <dfn id="dom-domsettabletokenlist-value" title="dom-DOMSettableTokenList-value"><code>value</code></dfn>
+attribute must return the result of the
+<a href="#concept-ordered-set-serializer" title="concept-ordered-set-serializer">ordered set serializer</a> for
+<a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a>.
+
+<p>Setting the <code title="dom-DOMSettableTokenList-value"><a href="#dom-domsettabletokenlist-value">value</a></code>
+attribute must run the <a href="#concept-ordered-set-parser" title="concept-ordered-set-parser">ordered set parser</a>
+for the given value and set <a href="#concept-dtl-tokens" title="concept-DTL-tokens">tokens</a> to the result.
+
+</div>
+
+</section>

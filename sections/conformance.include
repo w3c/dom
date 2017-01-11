@@ -1,0 +1,54 @@
+<section>
+<h2 id="conformance">Conformance</h2>
+
+  All diagrams, examples, and notes in this specification are non-normative, as are all sections explicitly marked non-normative. Everything else in this specification is normative.
+
+  The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in RFC 2119.
+For readability, these words do not appear in all uppercase letters in this
+specification. [[!RFC2119]]
+
+  Requirements phrased in the imperative as part of algorithms
+(such as "strip any leading space characters" or "return false and
+terminate these steps") are to be interpreted with the meaning of the
+key word ("must", "should", "may", etc.) used in introducing the
+algorithm.
+
+  Conformance requirements phrased as algorithms or specific steps
+may be implemented in any manner, so long as the end result is
+equivalent. (In particular, the algorithms defined in this
+specification are intended to be easy to follow, and not intended to
+be performant.)
+
+  <p id="hardwareLimitations">User agents may impose
+implementation-specific limits on otherwise unconstrained inputs,
+e.g. to prevent denial of service attacks, to guard against running
+out of memory, or to work around platform-specific limitations.
+
+  When a method or an attribute is said to call another method or attribute, the user agent must invoke its internal API for that attribute or method so that e.g. the author can't change the behavior by overriding attributes or methods with custom properties or functions in JavaScript.
+
+  Unless otherwise stated, string comparisons are done in a <a href="#case-sensitive">case-sensitive</a> manner.
+
+  <h3 id="conformance-dependencies">Dependencies</h3>
+
+  The IDL fragments in this specification must be interpreted as
+required for conforming IDL fragments, as described in the Web IDL
+specification. [[WEBIDL]]
+
+  Some of the terms used in this specification are defined in
+<a>Encoding</a>, <a>Selectors</a>, <a>Web IDL</a>, <a>XML</a>, and
+<a>Namespaces in XML</a>.[[ENCODING]][[SELECTORS-API]][[WEBIDL]][[XML]][[XML-NAMES]]
+
+<h3 id="conformance-extensibility">Extensibility</h3>
+
+Vendor-specific proprietary extensions to this specification are
+strongly discouraged. Authors must not use such extensions, as
+doing so reduces interoperability and fragments the user base,
+allowing only users of specific user agents to access the content in
+question.
+
+When extensions are needed, the DOM Standard can be updated accordingly, or a new standard
+can be written that hooks into the provided extensibility hooks for <dfn id="other-applicable-specifications">applicable specifications</dfn>.
+
+</section>
