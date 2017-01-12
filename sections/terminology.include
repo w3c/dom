@@ -104,36 +104,27 @@ of <a href="#concept-tree-preceding" title="concept-tree-preceding">preceding</a
 other.
 
 <h3 id="terminology-ordered-sets">Ordered sets</h3>
-<p>The <dfn id="concept-ordered-set-parser" title="concept-ordered-set-parser">ordered set parser</dfn> takes a string
-<var>input</var> and then runs these steps:
-
+<p>The <dfn>ordered set parser</dfn> takes a string <var>input</var> and then runs these steps:</p>
 <ol>
-  1. Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start of the string.
+  <li>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start of the string.</li>
 
-  2. Let <var>tokens</var> be an ordered set of tokens, initially empty.
+  <li>Let <var>tokens</var> be an ordered set of tokens, initially empty.</li>
 
-  3. <a href="#skip-ascii-whitespace">Skip ASCII whitespace</a>.
+  <li><a>Skip ASCII whitespace</a>.</li>
 
-  4. While <var>position</var> is not past the end of <var>input</var>: <ol>
-    1. <a href="#collect-a-code-point-sequence">Collect a code point sequence</a> of code points that are not <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
+  <li><p>While <var>position</var> is not past the end of <var>input</var>:</p><ol><li><a>Collect a code point sequence</a> of code points that are not <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.</li><li>If the collected string is not in <var>tokens</var>, append the collected string to <var>tokens</var>.</li><li><a>Skip ASCII whitespace</a>. </li></ol></li><li>Return <var>tokens</var>.</li>
+</ol>
 
-    2. If the collected string is not in <var>tokens</var>, append the collected string to <var>tokens</var>.
-
-    3. <a href="#skip-ascii-whitespace">Skip ASCII whitespace</a>. </ol>
-
-  5. Return <var>tokens</var>.
-
-<p>To <dfn id="collect-a-code-point-sequence">collect a code point sequence</dfn> of
-<var>code points</var>, run these steps:
-
+<p>To <dfn id="collect-a-code-point-sequence">collect a code point sequence</dfn> of <var>code points</var>, run these steps:</p>
 <ol>
-  1. Let <var>input</var> and <var>position</var> be the same variables as those of the same name in the algorithm that invoked these steps.
+  <li>Let <var>input</var> and <var>position</var> be the same variables as those of the same name in the algorithm that invoked these steps.</li>
 
-  2. Let <var>result</var> be the empty string.
+  <li>Let <var>result</var> be the empty string.</li>
 
-  3. While <var>position</var> does not point past the end of <var>input</var> and the code point at <var>position</var> is one of <var>code points</var>, append that code point to the end of <var>result</var> and advance <var>position</var> to the next code point in <var>input</var>.
+  <li>While <var>position</var> does not point past the end of <var>input</var> and the code point at <var>position</var> is one of <var>code points</var>, append that code point to the end of <var>result</var> and advance <var>position</var> to the next code point in <var>input</var>.</li>
 
-  4. Return <var>result</var>.
+  <li>Return <var>result</var>.</li>
+</ol>
 
 <p>To <dfn id="skip-ascii-whitespace">skip ASCII whitespace</dfn> means to
 <a href="#collect-a-code-point-sequence">collect a code point sequence</a> of

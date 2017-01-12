@@ -7,16 +7,18 @@
 
 <h3 id="sets-interface-domtokenlist">Interface <code><a href="#domtokenlist">DOMTokenList</a></code></h3>
 
-  <pre class="idl">interface <dfn id="domtokenlist">DOMTokenList</dfn> {
-  readonly attribute unsigned long <a href="#dom-domtokenlist-length" title="dom-DOMTokenList-length">length</a>;
-  getter DOMString? <a href="#dom-domtokenlist-item" title="dom-DOMTokenList-item">item</a>(unsigned long <var>index</var>);
-  boolean <a href="#dom-domtokenlist-contains" title="dom-DOMTokenList-contains">contains</a>(DOMString <var>token</var>);
-  void <a href="#dom-domtokenlist-add" title="dom-DOMTokenList-add">add</a>(DOMString... <var>tokens</var>);
-  void <a href="#dom-domtokenlist-remove" title="dom-DOMTokenList-remove">remove</a>(DOMString... <var>tokens</var>);
-  boolean <a href="#dom-domtokenlist-toggle" title="dom-DOMTokenList-toggle">toggle</a>(DOMString <var>token</var>, optional boolean <var>force</var>);
-  <a href="#dom-domtokenlist-stringifier" title="dom-DOMTokenList-stringifier">stringifier</a>;
-  iterable&lt;DOMString&gt;;
-};</pre>
+<pre class='idl'>
+interface DOMTokenList {
+  readonly attribute unsigned long length;
+  getter DOMString? item(unsigned long index);
+  boolean contains(DOMString token);
+  void add(DOMString... tokens);
+  void remove(DOMString... tokens);
+  boolean toggle(DOMString token, optional boolean force);
+  stringifier;
+  iterable<DOMString>;
+};
+</pre>
 
 <p>A <code><a href="#domtokenlist">DOMTokenList</a></code> object has an associated ordered set of
 <dfn id="concept-dtl-tokens" title="concept-DTL-tokens">tokens</dfn>, which is initially empty.
@@ -223,9 +225,11 @@ return the result of the
 
 <h3 id="interface-domsettabletokenlist"><span class="secno">7.2 </span>Interface <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code></h3>
 
-<pre class="idl">interface <dfn id="domsettabletokenlist">DOMSettableTokenList</dfn> : <a href="#domtokenlist">DOMTokenList</a> {
-            attribute DOMString <a href="#dom-domsettabletokenlist-value" title="dom-DOMSettableTokenList-value">value</a>;
-};</pre>
+<pre class='idl'>
+interface DOMSettableTokenList : DOMTokenList {
+            attribute DOMString value;
+};
+</pre>
 
 <p>A <code><a href="#domsettabletokenlist">DOMSettableTokenList</a></code> object is equivalent to a
 <code><a href="#domtokenlist">DOMTokenList</a></code> object without an associated

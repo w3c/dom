@@ -128,37 +128,39 @@ the <code>span</code> <a href="#concept-element" title="concept-element">element
 would have been <code title="dom-Event-AT_TARGET"><a href="#dom-event-at_target">AT_TARGET</a></code>.
 
 <h3 id="events-interface-event">Interface <code><a href="#event">Event</a></code></h3>
-<pre class="idl">[<a href="#concept-event-constructor" title="concept-event-constructor">Constructor</a>(DOMString <var>type</var>, optional <a href="#eventinit">EventInit</a> <var>eventInitDict</var>),
+<pre class='idl'>
+[Constructor(DOMString type, optional EventInit eventInitDict),
  Exposed=(Window,Worker)]
-interface <dfn id="event">Event</dfn> {
-  readonly attribute DOMString <a href="#dom-event-type" title="dom-Event-type">type</a>;
-  readonly attribute <a href="#eventtarget">EventTarget</a>? <a href="#dom-event-target" title="dom-Event-target">target</a>;
-  readonly attribute <a href="#eventtarget">EventTarget</a>? <a href="#dom-event-currenttarget" title="dom-Event-currentTarget">currentTarget</a>;
+interface Event {
+  readonly attribute DOMString type;
+  readonly attribute EventTarget? target;
+  readonly attribute EventTarget? currentTarget;
 
-  const unsigned short <a href="#dom-event-none" title="dom-Event-NONE">NONE</a> = 0;
-  const unsigned short <a href="#dom-event-capturing_phase" title="dom-Event-CAPTURING_PHASE">CAPTURING_PHASE</a> = 1;
-  const unsigned short <a href="#dom-event-at_target" title="dom-Event-AT_TARGET">AT_TARGET</a> = 2;
-  const unsigned short <a href="#dom-event-bubbling_phase" title="dom-Event-BUBBLING_PHASE">BUBBLING_PHASE</a> = 3;
-  readonly attribute unsigned short <a href="#dom-event-eventphase" title="dom-Event-eventPhase">eventPhase</a>;
+  const unsigned short NONE = 0;
+  const unsigned short CAPTURING_PHASE = 1;
+  const unsigned short AT_TARGET = 2;
+  const unsigned short BUBBLING_PHASE = 3;
+  readonly attribute unsigned short eventPhase;
 
-  void <a href="#dom-event-stoppropagation" title="dom-Event-stopPropagation">stopPropagation</a>();
-  void <a href="#dom-event-stopimmediatepropagation" title="dom-Event-stopImmediatePropagation">stopImmediatePropagation</a>();
+  void stopPropagation();
+  void stopImmediatePropagation();
 
-  readonly attribute boolean <a href="#dom-event-bubbles" title="dom-Event-bubbles">bubbles</a>;
-  readonly attribute boolean <a href="#dom-event-cancelable" title="dom-Event-cancelable">cancelable</a>;
-  void <a href="#dom-event-preventdefault" title="dom-Event-preventDefault">preventDefault</a>();
-  readonly attribute boolean <a href="#dom-event-defaultprevented" title="dom-Event-defaultPrevented">defaultPrevented</a>;
+  readonly attribute boolean bubbles;
+  readonly attribute boolean cancelable;
+  void preventDefault();
+  readonly attribute boolean defaultPrevented;
 
-  [Unforgeable] readonly attribute boolean <a href="#dom-event-istrusted" title="dom-Event-isTrusted">isTrusted</a>;
-  readonly attribute DOMTimeStamp <a href="#dom-event-timestamp" title="dom-Event-timeStamp">timeStamp</a>;
+  [Unforgeable] readonly attribute boolean isTrusted;
+  readonly attribute DOMTimeStamp timeStamp;
 
-  void <a href="#dom-event-initevent" title="dom-Event-initEvent">initEvent</a>(DOMString <var>type</var>, boolean <var>bubbles</var>, boolean <var>cancelable</var>);
+  void initEvent(DOMString type, boolean bubbles, boolean cancelable);
 };
 
-dictionary <dfn id="eventinit">EventInit</dfn> {
-  boolean <span title="dom-EventInit-bubbles">bubbles</span> = false;
-  boolean <span title="dom-EventInit-cancelable">cancelable</span> = false;
-};</pre>
+dictionary EventInit {
+  boolean bubbles = false;
+  boolean cancelable = false;
+};
+</pre>
 
 <p>An <dfn id="concept-event" title="concept-event">event</dfn> allows for signaling that
 something has occurred. E.g. that an image has completed downloading. It is
@@ -322,17 +324,19 @@ it has to be supported for legacy content.
 
 <h3 id="events-interface-customevent">Interface <code><a href="#customevent">CustomEvent</a></code></h3>
 
-<pre class="idl">[<a href="#concept-event-constructor" title="concept-event-constructor">Constructor</a>(DOMString <var>type</var>, optional <a href="#customeventinit">CustomEventInit</a> <var>eventInitDict</var>),
+<pre class="idl">
+[Constructor(DOMString type, optional CustomEventInit eventInitDict),
  Exposed=(Window,Worker)]
-interface <dfn id="customevent">CustomEvent</dfn> : <a href="#event">Event</a> {
-  readonly attribute any <a href="#dom-customevent-detail" title="dom-CustomEvent-detail">detail</a>;
+interface CustomEvent : Event {
+  readonly attribute any detail;
 
-  void <a href="#dom-customevent-initcustomevent" title="dom-CustomEvent-initCustomEvent">initCustomEvent</a>(DOMString <var>type</var>, boolean <var>bubbles</var>, boolean <var>cancelable</var>, any <var>detail</var>);
+  void initCustomEvent(DOMString type, boolean bubbles, boolean cancelable, any detail);
 };
 
-dictionary <dfn id="customeventinit">CustomEventInit</dfn> : <a href="#eventinit">EventInit</a> {
-  any <span title="dom-CustomEventInit-detail">detail</span> = null;
-};</pre>
+dictionary CustomEventInit : EventInit {
+  any detail = null;
+};
+</pre>
 
 <p><a href="#concept-event" title="concept-event">Events</a> using the
 <code><a href="#customevent">CustomEvent</a></code> interface can be used to carry custom data.</p>
@@ -400,16 +404,18 @@ for historical reasons.
 
 <h3 id="events-interface-eventtarget">Interface <code><a href="#eventtarget">EventTarget</a></code></h3>
 
-<pre class="idl">[Exposed=(Window,Worker)]
-interface <dfn id="eventtarget">EventTarget</dfn> {
-  void <a href="#dom-eventtarget-addeventlistener" title="dom-EventTarget-addEventListener">addEventListener</a>(DOMString <var>type</var>, <a href="#eventlistener">EventListener</a>? <var>callback</var>, optional boolean <var>capture</var> = false);
-  void <a href="#dom-eventtarget-removeeventlistener" title="dom-EventTarget-removeEventListener">removeEventListener</a>(DOMString <var>type</var>, <a href="#eventlistener">EventListener</a>? <var>callback</var>, optional boolean <var>capture</var> = false);
-  boolean <a href="#dom-eventtarget-dispatchevent" title="dom-EventTarget-dispatchEvent">dispatchEvent</a>(<a href="#event">Event</a> <var>event</var>);
+<pre class="idl">
+[Exposed=(Window,Worker)]
+interface EventTarget {
+  void addEventListener(DOMString type, EventListener? callback, optional boolean capture = false);
+  void removeEventListener(DOMString type, EventListener? callback, optional boolean capture = false);
+  boolean dispatchEvent(Event event);
 };
 
 callback interface EventListener {
-  void <span title="dom-EventListener-handleEvent">handleEvent</span>(<a href="#event">Event</a> <var>event</var>);
-};</pre>
+  void handleEvent(Event event);
+};
+</pre>
 
 <p><code><a href="#eventtarget">EventTarget</a></code> is an object to which an
 <a href="#concept-event" title="concept-event">event</a> is

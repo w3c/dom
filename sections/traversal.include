@@ -24,20 +24,21 @@ these steps:
 
 <h3 id="traversal-interface-nodeiterator">Interface <code><a href="#nodeiterator">NodeIterator</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="nodeiterator">NodeIterator</dfn> {
-  [SameObject] readonly attribute <a href="#node">Node</a> <a href="#dom-nodeiterator-root" title="dom-NodeIterator-root">root</a>;
-  readonly attribute <a href="#node">Node</a> <a href="#dom-nodeiterator-referencenode" title="dom-NodeIterator-referenceNode">referenceNode</a>;
-  readonly attribute boolean <a href="#dom-nodeiterator-pointerbeforereferencenode" title="dom-NodeIterator-pointerBeforeReferenceNode">pointerBeforeReferenceNode</a>;
-  readonly attribute unsigned long <a href="#dom-nodeiterator-whattoshow" title="dom-NodeIterator-whatToShow">whatToShow</a>;
-  readonly attribute <a href="#nodefilter">NodeFilter</a>? <a href="#dom-nodeiterator-filter" title="dom-NodeIterator-filter">filter</a>;<!--
-  readonly attribute boolean <span title=dom-NodeIterator-expandEntityReferences>expandEntityReferences</span>;-->
+<pre class='idl'>
+[Exposed=Window]
+interface NodeIterator {
+  [SameObject] readonly attribute Node root;
+  readonly attribute Node referenceNode;
+  readonly attribute boolean pointerBeforeReferenceNode;
+  readonly attribute unsigned long whatToShow;
+  readonly attribute NodeFilter? filter;
 
-  <a href="#node">Node</a>? <a href="#dom-nodeiterator-nextnode" title="dom-NodeIterator-nextNode">nextNode</a>();
-  <a href="#node">Node</a>? <a href="#dom-nodeiterator-previousnode" title="dom-NodeIterator-previousNode">previousNode</a>();
+  Node? nextNode();
+  Node? previousNode();
 
-  void <a href="#dom-nodeiterator-detach" title="dom-NodeIterator-detach">detach</a>();
-};</pre>
+  void detach();
+};
+</pre>
 
 <p class="note">Note: <code><a href="#nodeiterator">NodeIterator</a></code> objects can be created using the
 <code title="dom-Document-createNodeIterator"><a href="#dom-document-createnodeiterator">createNodeIterator()</a></code>
@@ -187,22 +188,23 @@ for compatibility.</span>
 
 <h3 id="traversal-interface-treewalker">Interface <code><a href="#treewalker">TreeWalker</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="treewalker">TreeWalker</dfn> {
-  [SameObject] readonly attribute <a href="#node">Node</a> <a href="#dom-treewalker-root" title="dom-TreeWalker-root">root</a>;
-  readonly attribute unsigned long <a href="#dom-treewalker-whattoshow" title="dom-TreeWalker-whatToShow">whatToShow</a>;
-  readonly attribute <a href="#nodefilter">NodeFilter</a>? <a href="#dom-treewalker-filter" title="dom-TreeWalker-filter">filter</a>;<!--
-  readonly attribute boolean <span title=dom-TreeWalker-expandEntityReferences>expandEntityReferences</span>;-->
+<pre class='idl'>
+[Exposed=Window]
+interface TreeWalker {
+  [SameObject] readonly attribute Node root;
+  readonly attribute unsigned long whatToShow;
+  readonly attribute NodeFilter? filter;
            attribute Node currentNode;
 
-  <a href="#node">Node</a>? <a href="#dom-treewalker-parentnode" title="dom-TreeWalker-parentNode">parentNode</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-firstchild" title="dom-TreeWalker-firstChild">firstChild</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-lastchild" title="dom-TreeWalker-lastChild">lastChild</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-previoussibling" title="dom-TreeWalker-previousSibling">previousSibling</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-nextsibling" title="dom-TreeWalker-nextSibling">nextSibling</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-previousnode" title="dom-TreeWalker-previousNode">previousNode</a>();
-  <a href="#node">Node</a>? <a href="#dom-treewalker-nextnode" title="dom-TreeWalker-nextNode">nextNode</a>();
-};</pre>
+  Node? parentNode();
+  Node? firstChild();
+  Node? lastChild();
+  Node? previousSibling();
+  Node? nextSibling();
+  Node? previousNode();
+  Node? nextNode();
+};
+</pre>
 
 <p class="note">Note: <code><a href="#treewalker">TreeWalker</a></code> objects can be created using the
 <code title="dom-Document-createTreeWalker"><a href="#dom-document-createtreewalker">createTreeWalker()</a></code> method.
@@ -535,30 +537,32 @@ method must run these steps:
 
 <h3 id="traversal-interface-nodefilter">Interface <code><a href="#nodefilter">NodeFilter</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-callback interface <dfn id="nodefilter">NodeFilter</dfn> {
-  // Constants for <span title="dom-NodeFilter-acceptNode">acceptNode()</span>
-  const unsigned short <a href="#dom-nodefilter-filter_accept" title="dom-NodeFilter-FILTER_ACCEPT">FILTER_ACCEPT</a> = 1;
-  const unsigned short <a href="#dom-nodefilter-filter_reject" title="dom-NodeFilter-FILTER_REJECT">FILTER_REJECT</a> = 2;
-  const unsigned short <a href="#dom-nodefilter-filter_skip" title="dom-NodeFilter-FILTER_SKIP">FILTER_SKIP</a> = 3;
+<pre class='idl'>
+[Exposed=Window]
+callback interface NodeFilter {
+  // Constants for acceptNode()
+  const unsigned short FILTER_ACCEPT = 1;
+  const unsigned short FILTER_REJECT = 2;
+  const unsigned short FILTER_SKIP = 3;
 
-  // Constants for <a href="#concept-traversal-whattoshow" title="concept-traversal-whatToShow">whatToShow</a>
-  const unsigned long <a href="#dom-nodefilter-show_all" title="dom-NodeFilter-SHOW_ALL">SHOW_ALL</a> = 0xFFFFFFFF;
-  const unsigned long <a href="#dom-nodefilter-show_element" title="dom-NodeFilter-SHOW_ELEMENT">SHOW_ELEMENT</a> = 0x1;
-  const unsigned long <span title="dom-NodeFilter-SHOW_ATTRIBUTE">SHOW_ATTRIBUTE</span> = 0x2; // historical
-  const unsigned long <a href="#dom-nodefilter-show_text" title="dom-NodeFilter-SHOW_TEXT">SHOW_TEXT</a> = 0x4;
-  const unsigned long <span title="dom-NodeFilter-SHOW_CDATA_SECTION">SHOW_CDATA_SECTION</span> = 0x8; // historical
-  const unsigned long <span title="dom-NodeFilter-SHOW_ENTITY_REFERENCE">SHOW_ENTITY_REFERENCE</span> = 0x10; // historical
-  const unsigned long <span title="dom-NodeFilter-SHOW_ENTITY">SHOW_ENTITY</span> = 0x20; // historical
-  const unsigned long <a href="#dom-nodefilter-show_processing_instruction" title="dom-NodeFilter-SHOW_PROCESSING_INSTRUCTION">SHOW_PROCESSING_INSTRUCTION</a> = 0x40;
-  const unsigned long <a href="#dom-nodefilter-show_comment" title="dom-NodeFilter-SHOW_COMMENT">SHOW_COMMENT</a> = 0x80;
-  const unsigned long <a href="#dom-nodefilter-show_document" title="dom-NodeFilter-SHOW_DOCUMENT">SHOW_DOCUMENT</a> = 0x100;
-  const unsigned long <a href="#dom-nodefilter-show_document_type" title="dom-NodeFilter-SHOW_DOCUMENT_TYPE">SHOW_DOCUMENT_TYPE</a> = 0x200;
-  const unsigned long <a href="#dom-nodefilter-show_document_fragment" title="dom-NodeFilter-SHOW_DOCUMENT_FRAGMENT">SHOW_DOCUMENT_FRAGMENT</a> = 0x400;
-  const unsigned long <span title="dom-NodeFilter-SHOW_NOTATION">SHOW_NOTATION</span> = 0x800; // historical
+  // Constants for whatToShow
+  const unsigned long SHOW_ALL = 0xFFFFFFFF;
+  const unsigned long SHOW_ELEMENT = 0x1;
+  const unsigned long SHOW_ATTRIBUTE = 0x2; // historical
+  const unsigned long SHOW_TEXT = 0x4;
+  const unsigned long SHOW_CDATA_SECTION = 0x8; // historical
+  const unsigned long SHOW_ENTITY_REFERENCE = 0x10; // historical
+  const unsigned long SHOW_ENTITY = 0x20; // historical
+  const unsigned long SHOW_PROCESSING_INSTRUCTION = 0x40;
+  const unsigned long SHOW_COMMENT = 0x80;
+  const unsigned long SHOW_DOCUMENT = 0x100;
+  const unsigned long SHOW_DOCUMENT_TYPE = 0x200;
+  const unsigned long SHOW_DOCUMENT_FRAGMENT = 0x400;
+  const unsigned long SHOW_NOTATION = 0x800; // historical
 
-  unsigned short <span title="dom-NodeFilter-acceptNode">acceptNode</span>(<a href="#node">Node</a> <var>node</var>);
-};</pre>
+  unsigned short acceptNode(Node node);
+};
+</pre>
 
 <p><code><a href="#nodefilter">NodeFilter</a></code> objects can be used as
 <a href="#concept-traversal-filter" title="concept-traversal-filter">filter</a> callback and provide

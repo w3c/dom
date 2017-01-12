@@ -572,13 +572,15 @@ on <a href="#concept-element" title="concept-element">elements</a> for compatibi
 jQuery. If a time comes where that version of jQuery has disappeared, we might be able to
 support it.
 
-<pre class="idl">[NoInterfaceObject,
+<pre class='idl'>
+[NoInterfaceObject,
  Exposed=Window]
-interface <dfn id="nonelementparentnode">NonElementParentNode</dfn> {
-  <a href="#element">Element</a>? <a href="#dom-nonelementparentnode-getelementbyid" title="dom-NonElementParentNode-getElementById">getElementById</a>(DOMString <var>elementId</var>);
+interface NonElementParentNode {
+  Element? getElementById(DOMString elementId);
 };
-<a href="#document">Document</a> implements <a href="#nonelementparentnode">NonElementParentNode</a>;
-<a href="#documentfragment">DocumentFragment</a> implements <a href="#nonelementparentnode">NonElementParentNode</a>;</pre>
+Document implements NonElementParentNode;
+DocumentFragment implements NonElementParentNode;
+</pre>
 
 <dl class="domintro">
  <dt><code><var>node</var> . <a href="#dom-nonelementparentnode-getelementbyid" title="dom-NonElementParentNode-getElementById">getElementById</a>(<var>elementId</var>)</code>
@@ -618,20 +620,22 @@ such <a href="#concept-element" title="concept-element">element</a> otherwise.
   <a href="#concept-node" title="concept-node">node</a> <var>nodes</var> contains.
 </ol>
 
-<pre class="idl">[NoInterfaceObject,
+<pre class='idl'>
+[NoInterfaceObject,
  Exposed=Window]
-interface <dfn id="parentnode">ParentNode</dfn> {
-  [SameObject] readonly attribute <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-parentnode-children" title="dom-ParentNode-children">children</a>;
-  readonly attribute <a href="#element">Element</a>? <a href="#dom-parentnode-firstelementchild" title="dom-ParentNode-firstElementChild">firstElementChild</a>;
-  readonly attribute <a href="#element">Element</a>? <a href="#dom-parentnode-lastelementchild" title="dom-ParentNode-lastElementChild">lastElementChild</a>;
-  readonly attribute unsigned long <a href="#dom-parentnode-childelementcount" title="dom-ParentNode-childElementCount">childElementCount</a>;
+interface ParentNode {
+  [SameObject] readonly attribute HTMLCollection children;
+  readonly attribute Element? firstElementChild;
+  readonly attribute Element? lastElementChild;
+  readonly attribute unsigned long childElementCount;
 
-  <a href="#element">Element</a>? <a href="#dom-parentnode-queryselector" title="dom-ParentNode-querySelector">querySelector</a>(DOMString <var>selectors</var>);
-  [NewObject] <a href="#nodelist">NodeList</a> <a href="#dom-parentnode-queryselectorall" title="dom-ParentNode-querySelectorAll">querySelectorAll</a>(DOMString <var>selectors</var>);
+  Element? querySelector(DOMString selectors);
+  [NewObject] NodeList querySelectorAll(DOMString selectors);
 };
-<a href="#document">Document</a> implements <a href="#parentnode">ParentNode</a>;
-<a href="#documentfragment">DocumentFragment</a> implements <a href="#parentnode">ParentNode</a>;
-<a href="#element">Element</a> implements <a href="#parentnode">ParentNode</a>;</pre>
+Document implements ParentNode;
+DocumentFragment implements ParentNode;
+Element implements ParentNode;
+</pre>
 
 <dl class="domintro">
  <dt><code><var>collection</var> = <var>node</var> . <a href="#dom-parentnode-children" title="dom-ParentNode-children">children</a></code>
@@ -742,14 +746,16 @@ attributes have been removed from <code><a href="#documenttype">DocumentType</a>
 reasons. If these additions are deemed compatible enough in the future, they could be
 reinstated.
 
-<pre class="idl">[NoInterfaceObject,
+<pre class='idl'>
+[NoInterfaceObject,
  Exposed=Window]
-interface <dfn id="nondocumenttypechildnode">NonDocumentTypeChildNode</dfn> {
-  readonly attribute <a href="#element">Element</a>? <a href="#dom-nondocumenttypechildnode-previouselementsibling" title="dom-NonDocumentTypeChildNode-previousElementSibling">previousElementSibling</a>;
-  readonly attribute <a href="#element">Element</a>? <a href="#dom-nondocumenttypechildnode-nextelementsibling" title="dom-NonDocumentTypeChildNode-nextElementSibling">nextElementSibling</a>;
+interface NonDocumentTypeChildNode {
+  readonly attribute Element? previousElementSibling;
+  readonly attribute Element? nextElementSibling;
 };
-<a href="#element">Element</a> implements <a href="#nondocumenttypechildnode">NonDocumentTypeChildNode</a>;
-<a href="#characterdata">CharacterData</a> implements <a href="#nondocumenttypechildnode">NonDocumentTypeChildNode</a>;</pre>
+Element implements NonDocumentTypeChildNode;
+CharacterData implements NonDocumentTypeChildNode;
+</pre>
 
 <dl class="domintro">
  <dt><code><var>element</var> = <var>node</var> . <a href="#dom-nondocumenttypechildnode-previouselementsibling" title="dom-NonDocumentTypeChildNode-previousElementSibling">previousElementSibling</a></code>
@@ -780,14 +786,16 @@ attribute must return the first
 <a href="#concept-element" title="concept-element">element</a>, and null otherwise.
 
 <h4 id="interface-childnode">Interface <code><a href="#childnode">ChildNode</a></code></h4>
-<pre class="idl">[NoInterfaceObject,
+<pre class='idl'>
+[NoInterfaceObject,
  Exposed=Window]
-interface <dfn id="childnode">ChildNode</dfn> {
-  void <a href="#dom-childnode-remove" title="dom-ChildNode-remove">remove</a>();
+interface ChildNode {
+  void remove();
 };
-<a href="#documenttype">DocumentType</a> implements <a href="#childnode">ChildNode</a>;
-<a href="#element">Element</a> implements <a href="#childnode">ChildNode</a>;
-<a href="#characterdata">CharacterData</a> implements <a href="#childnode">ChildNode</a>;</pre>
+DocumentType implements ChildNode;
+Element implements ChildNode;
+CharacterData implements ChildNode;
+</pre>
 
 <dl class="domintro">
  <dt><code><var>node</var> . <a href="#dom-childnode-remove" title="dom-ChildNode-remove">remove</a>()</code>
@@ -839,12 +847,14 @@ the <a href="#concept-collection" title="concept-collection">collection</a> must
 <a href="#concept-collection" title="concept-collection">collection</a> of
 <a href="#concept-node" title="concept-node">nodes</a>.
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="nodelist">NodeList</dfn> {
-  getter <a href="#node">Node</a>? <a href="#dom-nodelist-item" title="dom-NodeList-item">item</a>(unsigned long <var>index</var>);
-  readonly attribute unsigned long <a href="#dom-nodelist-length" title="dom-NodeList-length">length</a>;
-  iterable&lt;<a href="#node">Node</a>&gt;;
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface NodeList {
+  getter Node? item(unsigned long index);
+  readonly attribute unsigned long length;
+  iterable<Node>;
+};
+</pre>
 
 <dl class="domintro">
  <dt><var>collection</var> . <code title="dom-NodeList-length"><a href="#dom-nodelist-length">length</a></code>
@@ -882,12 +892,14 @@ node in the <a href="#concept-collection" title="concept-collection">collection<
 
 <h5 id="interface-htmlcollection">Interface <code><a href="#htmlcollection">HTMLCollection</a></code></h5>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="htmlcollection">HTMLCollection</dfn> {
-  readonly attribute unsigned long <a href="#dom-htmlcollection-length" title="dom-HTMLCollection-length">length</a>;
-  getter <a href="#element">Element</a>? <a href="#dom-htmlcollection-item" title="dom-HTMLCollection-item">item</a>(unsigned long <var>index</var>);
-  getter <a href="#element">Element</a>? <a href="#dom-htmlcollection-nameditem" title="dom-HTMLCollection-namedItem">namedItem</a>(DOMString <var>name</var>);
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface HTMLCollection {
+  readonly attribute unsigned long length;
+  getter Element? item(unsigned long index);
+  getter Element? namedItem(DOMString name);
+};
+</pre>
 
 <p>An <code><a href="#htmlcollection">HTMLCollection</a></code> object is a
 <a href="#concept-collection" title="concept-collection">collection</a> of
@@ -1054,24 +1066,26 @@ method must run these steps:
 
 <h4 id="interface-mutationobserver">Interface <code><a href="#mutationobserver">MutationObserver</a></code></h4>
 
-<pre class="idl">[<a href="#dom-mutationobserver" title="dom-MutationObserver">Constructor</a>(<a href="#mutationcallback">MutationCallback</a> <var>callback</var>)]
-interface <dfn id="mutationobserver">MutationObserver</dfn> {
-  void <a href="#dom-mutationobserver-observe" title="dom-MutationObserver-observe">observe</a>(<a href="#node">Node</a> <var>target</var>, <a href="#mutationobserverinit">MutationObserverInit</a> <var>options</var>);
-  void <a href="#dom-mutationobserver-disconnect" title="dom-MutationObserver-disconnect">disconnect</a>();
-  sequence&lt;<a href="#mutationrecord">MutationRecord</a>&gt; <a href="#dom-mutationobserver-takerecords" title="dom-MutationObserver-takeRecords">takeRecords</a>();
+<pre class='idl'>
+[Constructor(MutationCallback callback)]
+interface MutationObserver {
+  void observe(Node target, MutationObserverInit options);
+  void disconnect();
+  sequence<MutationRecord> takeRecords();
 };
 
-callback <dfn id="mutationcallback">MutationCallback</dfn> = void (sequence&lt;<a href="#mutationrecord">MutationRecord</a>&gt; <var>mutations</var>, <a href="#mutationobserver">MutationObserver</a> <var>observer</var>);
+callback MutationCallback = void (sequence<MutationRecord> mutations, MutationObserver observer);
 
-dictionary <dfn id="mutationobserverinit">MutationObserverInit</dfn> {
-  boolean <span title="dom-MutationObserverInit-childList">childList</span> = false;
-  boolean <span title="dom-MutationObserverInit-attributes">attributes</span>;
-  boolean <span title="dom-MutationObserverInit-characterData">characterData</span>;
-  boolean <span title="dom-MutationObserverInit-subtree">subtree</span> = false;
-  boolean <span title="dom-MutationObserverInit-attributeOldValue">attributeOldValue</span>;
-  boolean <span title="dom-MutationObserverInit-characterDataOldValue">characterDataOldValue</span>;
-  sequence&lt;DOMString&gt; <span title="dom-MutationObserverInit-attributeFilter">attributeFilter</span>;
-};</pre>
+dictionary MutationObserverInit {
+  boolean childList = false;
+  boolean attributes;
+  boolean characterData;
+  boolean subtree = false;
+  boolean attributeOldValue;
+  boolean characterDataOldValue;
+  sequence<DOMString> attributeFilter;
+};
+</pre>
 
 <p>A <code><a href="#mutationobserver">MutationObserver</a></code> object can be used to observe mutations
 to the <a href="#concept-tree" title="concept-tree">tree</a> of
@@ -1360,18 +1374,20 @@ previousSibling <var>previousSibling</var>, and nextSibling
 
 <h4 id="interface-mutationrecord">Interface <code><a href="#mutationrecord">MutationRecord</a></code></h4>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="mutationrecord">MutationRecord</dfn> {
-  readonly attribute DOMString <a href="#dom-mutationrecord-type" title="dom-MutationRecord-type">type</a>;
-  readonly attribute <a href="#node">Node</a> <a href="#dom-mutationrecord-target" title="dom-MutationRecord-target">target</a>;
-  [SameObject] readonly attribute <a href="#nodelist">NodeList</a> <a href="#dom-mutationrecord-addednodes" title="dom-MutationRecord-addedNodes">addedNodes</a>;
-  [SameObject] readonly attribute <a href="#nodelist">NodeList</a> <a href="#dom-mutationrecord-removednodes" title="dom-MutationRecord-removedNodes">removedNodes</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-mutationrecord-previoussibling" title="dom-MutationRecord-previousSibling">previousSibling</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-mutationrecord-nextsibling" title="dom-MutationRecord-nextSibling">nextSibling</a>;
-  readonly attribute DOMString? <a href="#dom-mutationrecord-attributename" title="dom-MutationRecord-attributeName">attributeName</a>;
-  readonly attribute DOMString? <a href="#dom-mutationrecord-attributenamespace" title="dom-MutationRecord-attributeNamespace">attributeNamespace</a>;
-  readonly attribute DOMString? <a href="#dom-mutationrecord-oldvalue" title="dom-MutationRecord-oldValue">oldValue</a>;
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface MutationRecord {
+  readonly attribute DOMString type;
+  readonly attribute Node target;
+  [SameObject] readonly attribute NodeList addedNodes;
+  [SameObject] readonly attribute NodeList removedNodes;
+  readonly attribute Node? previousSibling;
+  readonly attribute Node? nextSibling;
+  readonly attribute DOMString? attributeName;
+  readonly attribute DOMString? attributeNamespace;
+  readonly attribute DOMString? oldValue;
+};
+</pre>
 
 <dl class="domintro">
  <dt><code><var>record</var> . <a href="#dom-mutationrecord-type" title="dom-MutationRecord-type">type</a></code>
@@ -1461,68 +1477,62 @@ reference to the <a href="#concept-node" title="concept-node">node</a>.
 
 <h3 id="nodes-interface-node">Interface <code><a href="#node">Node</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="node">Node</dfn> : <a href="#eventtarget">EventTarget</a> {
-  const unsigned short <a href="#dom-node-element_node" title="dom-Node-ELEMENT_NODE">ELEMENT_NODE</a> = 1;
-  const unsigned short <span title="dom-Node-ATTRIBUTE_NODE">ATTRIBUTE_NODE</span> = 2; // historical
-  const unsigned short <a href="#dom-node-text_node" title="dom-Node-TEXT_NODE">TEXT_NODE</a> = 3;
-  const unsigned short <span title="dom-Node-CDATA_SECTION_NODE">CDATA_SECTION_NODE</span> = 4; // historical
-  const unsigned short <span title="dom-Node-ENTITY_REFERENCE_NODE">ENTITY_REFERENCE_NODE</span> = 5; // historical
-  const unsigned short <span title="dom-Node-ENTITY_NODE">ENTITY_NODE</span> = 6; // historical
-  const unsigned short <a href="#dom-node-processing_instruction_node" title="dom-Node-PROCESSING_INSTRUCTION_NODE">PROCESSING_INSTRUCTION_NODE</a> = 7;
-  const unsigned short <a href="#dom-node-comment_node" title="dom-Node-COMMENT_NODE">COMMENT_NODE</a> = 8;
-  const unsigned short <a href="#dom-node-document_node" title="dom-Node-DOCUMENT_NODE">DOCUMENT_NODE</a> = 9;
-  const unsigned short <a href="#dom-node-document_type_node" title="dom-Node-DOCUMENT_TYPE_NODE">DOCUMENT_TYPE_NODE</a> = 10;
-  const unsigned short <a href="#dom-node-document_fragment_node" title="dom-Node-DOCUMENT_FRAGMENT_NODE">DOCUMENT_FRAGMENT_NODE</a> = 11;
-  const unsigned short <span title="dom-Node-NOTATION_NODE">NOTATION_NODE</span> = 12; // historical
-  readonly attribute unsigned short <a href="#dom-node-nodetype" title="dom-Node-nodeType">nodeType</a>;<!-- NodeExodus
-
-  readonly attribute DOMString <span title=dom-Node-namespaceURI>namespaceURI</span>;
-  readonly attribute DOMString <span title=dom-Node-prefix>prefix</span>;
-  readonly attribute DOMString <span title=dom-Node-localName>localName</span>;-->
+<pre class='idl'>
+[Exposed=Window]
+interface Node : EventTarget {
+  const unsigned short ELEMENT_NODE = 1;
+  const unsigned short ATTRIBUTE_NODE = 2; // historical
+  const unsigned short TEXT_NODE = 3;
+  const unsigned short CDATA_SECTION_NODE = 4; // historical
+  const unsigned short ENTITY_REFERENCE_NODE = 5; // historical
+  const unsigned short ENTITY_NODE = 6; // historical
+  const unsigned short PROCESSING_INSTRUCTION_NODE = 7;
+  const unsigned short COMMENT_NODE = 8;
+  const unsigned short DOCUMENT_NODE = 9;
+  const unsigned short DOCUMENT_TYPE_NODE = 10;
+  const unsigned short DOCUMENT_FRAGMENT_NODE = 11;
+  const unsigned short NOTATION_NODE = 12; // historical
+  readonly attribute unsigned short nodeType;
   readonly attribute DOMString nodeName;
 
   readonly attribute DOMString? baseURI;
 
-  <!--AttrExodus
-  boolean <span title=dom-Node-hasAttributes>hasAttributes</span>();
-  readonly attribute <span>NamedNodeMap</span> <span title=dom-Node-attributes>attributes</span>;
-
-  -->readonly attribute Document? ownerDocument;
+  readonly attribute Document? ownerDocument;
   readonly attribute Node? parentNode;
   readonly attribute Element? parentElement;
-  boolean <a href="#dom-node-haschildnodes" title="dom-Node-hasChildNodes">hasChildNodes</a>();
-  [SameObject] readonly attribute <a href="#nodelist">NodeList</a> <a href="#dom-node-childnodes" title="dom-Node-childNodes">childNodes</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-node-firstchild" title="dom-Node-firstChild">firstChild</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-node-lastchild" title="dom-Node-lastChild">lastChild</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-node-previoussibling" title="dom-Node-previousSibling">previousSibling</a>;
-  readonly attribute <a href="#node">Node</a>? <a href="#dom-node-nextsibling" title="dom-Node-nextSibling">nextSibling</a>;
+  boolean hasChildNodes();
+  [SameObject] readonly attribute NodeList childNodes;
+  readonly attribute Node? firstChild;
+  readonly attribute Node? lastChild;
+  readonly attribute Node? previousSibling;
+  readonly attribute Node? nextSibling;
 
-           attribute DOMString? <a href="#dom-node-nodevalue" title="dom-Node-nodeValue">nodeValue</a>;
-           attribute DOMString? <a href="#dom-node-textcontent" title="dom-Node-textContent">textContent</a>;
-  void <a href="#dom-node-normalize" title="dom-Node-normalize">normalize</a>();
+           attribute DOMString? nodeValue;
+           attribute DOMString? textContent;
+  void normalize();
 
-  [NewObject] <a href="#node">Node</a> <a href="#dom-node-clonenode" title="dom-Node-cloneNode">cloneNode</a>(optional boolean <var>deep</var> = false);
-  boolean <a href="#dom-node-isequalnode" title="dom-Node-isEqualNode">isEqualNode</a>(<a href="#node">Node</a>? <var>node</var>);
+  [NewObject] Node cloneNode(optional boolean deep = false);
+  boolean isEqualNode(Node? node);
 
-  const unsigned short <a href="#dom-node-document_position_disconnected" title="dom-Node-DOCUMENT_POSITION_DISCONNECTED">DOCUMENT_POSITION_DISCONNECTED</a> = 0x01;
-  const unsigned short <a href="#dom-node-document_position_preceding" title="dom-Node-DOCUMENT_POSITION_PRECEDING">DOCUMENT_POSITION_PRECEDING</a> = 0x02;
-  const unsigned short <a href="#dom-node-document_position_following" title="dom-Node-DOCUMENT_POSITION_FOLLOWING">DOCUMENT_POSITION_FOLLOWING</a> = 0x04;
-  const unsigned short <a href="#dom-node-document_position_contains" title="dom-Node-DOCUMENT_POSITION_CONTAINS">DOCUMENT_POSITION_CONTAINS</a> = 0x08;
-  const unsigned short <a href="#dom-node-document_position_contained_by" title="dom-Node-DOCUMENT_POSITION_CONTAINED_BY">DOCUMENT_POSITION_CONTAINED_BY</a> = 0x10;
-  const unsigned short <a href="#dom-node-document_position_implementation_specific" title="dom-Node-DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC">DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC</a> = 0x20;
-  unsigned short <a href="#dom-node-comparedocumentposition" title="dom-Node-compareDocumentPosition">compareDocumentPosition</a>(<a href="#node">Node</a> <var>other</var>);
-  boolean <a href="#dom-node-contains" title="dom-Node-contains">contains</a>(<a href="#node">Node</a>? <var>other</var>);
+  const unsigned short DOCUMENT_POSITION_DISCONNECTED = 0x01;
+  const unsigned short DOCUMENT_POSITION_PRECEDING = 0x02;
+  const unsigned short DOCUMENT_POSITION_FOLLOWING = 0x04;
+  const unsigned short DOCUMENT_POSITION_CONTAINS = 0x08;
+  const unsigned short DOCUMENT_POSITION_CONTAINED_BY = 0x10;
+  const unsigned short DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC = 0x20;
+  unsigned short compareDocumentPosition(Node other);
+  boolean contains(Node? other);
 
-  DOMString? <a href="#dom-node-lookupprefix" title="dom-Node-lookupPrefix">lookupPrefix</a>(DOMString? <var>namespace</var>);
-  DOMString? <a href="#dom-node-lookupnamespaceuri" title="dom-Node-lookupNamespaceURI">lookupNamespaceURI</a>(DOMString? <var>prefix</var>);
-  boolean <a href="#dom-node-isdefaultnamespace" title="dom-Node-isDefaultNamespace">isDefaultNamespace</a>(DOMString? <var>namespace</var>);
+  DOMString? lookupPrefix(DOMString? namespace);
+  DOMString? lookupNamespaceURI(DOMString? prefix);
+  boolean isDefaultNamespace(DOMString? namespace);
 
-  <a href="#node">Node</a> <a href="#dom-node-insertbefore" title="dom-Node-insertBefore">insertBefore</a>(<a href="#node">Node</a> <var>node</var>, <a href="#node">Node</a>? <var>child</var>);
-  <a href="#node">Node</a> <a href="#dom-node-appendchild" title="dom-Node-appendChild">appendChild</a>(<a href="#node">Node</a> <var>node</var>);
-  <a href="#node">Node</a> <a href="#dom-node-replacechild" title="dom-Node-replaceChild">replaceChild</a>(<a href="#node">Node</a> <var>node</var>, <a href="#node">Node</a> <var>child</var>);
-  <a href="#node">Node</a> <a href="#dom-node-removechild" title="dom-Node-removeChild">removeChild</a>(<a href="#node">Node</a> <var>child</var>);
-};</pre>
+  Node insertBefore(Node node, Node? child);
+  Node appendChild(Node node);
+  Node replaceChild(Node node, Node child);
+  Node removeChild(Node child);
+};
+</pre>
 
 <p class="note">Note: <code><a href="#node">Node</a></code> is an abstract interface and does not exist
 as <a href="#concept-node" title="concept-node">node</a>. It is used by all
@@ -2609,50 +2619,45 @@ object may be returned as returned by an earlier call.
 
 <h3 id="nodes-interface-document">Interface <code><a href="#document">Document</a></code></h3>
 
-<pre class="idl">[<a href="#dom-document" title="dom-Document">Constructor</a>,
+<pre class='idl'>
+[Constructor,
  Exposed=Window]
-interface <dfn id="document">Document</dfn> : <a href="#node">Node</a> {
-  [SameObject] readonly attribute <a href="#domimplementation">DOMImplementation</a> <a href="#dom-document-implementation" title="dom-Document-implementation">implementation</a>;
-  readonly attribute DOMString <a href="#dom-document-url" title="dom-Document-URL">URL</a>;
-  readonly attribute DOMString <a href="#dom-document-documenturi" title="dom-Document-documentURI">documentURI</a>;
-  readonly attribute DOMString <a href="#dom-document-origin" title="dom-Document-origin">origin</a>;
-  readonly attribute DOMString <a href="#dom-document-compatmode" title="dom-Document-compatMode">compatMode</a>;
-  readonly attribute DOMString <a href="#dom-document-characterset" title="dom-Document-characterSet">characterSet</a>;
-  readonly attribute DOMString <a href="#dom-document-contenttype" title="dom-Document-contentType">contentType</a>;
+interface Document : Node {
+  [SameObject] readonly attribute DOMImplementation implementation;
+  readonly attribute DOMString URL;
+  readonly attribute DOMString documentURI;
+  readonly attribute DOMString origin;
+  readonly attribute DOMString compatMode;
+  readonly attribute DOMString characterSet;
+  readonly attribute DOMString contentType;
 
-  readonly attribute <a href="#documenttype">DocumentType</a>? <a href="#dom-document-doctype" title="dom-Document-doctype">doctype</a>;
-  readonly attribute <a href="#element">Element</a>? <a href="#dom-document-documentelement" title="dom-Document-documentElement">documentElement</a>;
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-document-getelementsbytagname" title="dom-Document-getElementsByTagName">getElementsByTagName</a>(DOMString <var>localName</var>);
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-document-getelementsbytagnamens" title="dom-Document-getElementsByTagNameNS">getElementsByTagNameNS</a>(DOMString? <var>namespace</var>, DOMString <var>localName</var>);
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-document-getelementsbyclassname" title="dom-Document-getElementsByClassName">getElementsByClassName</a>(DOMString <var>classNames</var>);
+  readonly attribute DocumentType? doctype;
+  readonly attribute Element? documentElement;
+  HTMLCollection getElementsByTagName(DOMString localName);
+  HTMLCollection getElementsByTagNameNS(DOMString? namespace, DOMString localName);
+  HTMLCollection getElementsByClassName(DOMString classNames);
 
-  [NewObject] <a href="#element">Element</a> <a href="#dom-document-createelement" title="dom-Document-createElement">createElement</a>(DOMString <var>localName</var>);
-  [NewObject] <a href="#element">Element</a> <a href="#dom-document-createelementns" title="dom-Document-createElementNS">createElementNS</a>(DOMString? <var>namespace</var>, DOMString <var>qualifiedName</var>);
-  [NewObject] <a href="#documentfragment">DocumentFragment</a> <a href="#dom-document-createdocumentfragment" title="dom-Document-createDocumentFragment">createDocumentFragment</a>();
-  [NewObject] <a href="#text">Text</a> <a href="#dom-document-createtextnode" title="dom-Document-createTextNode">createTextNode</a>(DOMString <var>data</var>);
-  [NewObject] <a href="#comment">Comment</a> <a href="#dom-document-createcomment" title="dom-Document-createComment">createComment</a>(DOMString <var>data</var>);
-  [NewObject] <a href="#processinginstruction">ProcessingInstruction</a> <a href="#dom-document-createprocessinginstruction" title="dom-Document-createProcessingInstruction">createProcessingInstruction</a>(DOMString <var>target</var>, DOMString <var>data</var>);<!--
-  CDATASection createCDATASection(DOMString data);
-  EntityReference createEntityReference(DOMString name);
-  <span>Attr</span> <span title=dom-Document-createAttribute>createAttribute</span>(DOMString name);
-  <span>Attr</span> <span title=dom-Document-createAttributeNS>createAttributeNS</span>(DOMString namespace, DOMString qualifiedName);
-    If adding this, search for [createAttribute]-->
+  [NewObject] Element createElement(DOMString localName);
+  [NewObject] Element createElementNS(DOMString? namespace, DOMString qualifiedName);
+  [NewObject] DocumentFragment createDocumentFragment();
+  [NewObject] Text createTextNode(DOMString data);
+  [NewObject] Comment createComment(DOMString data);
+  [NewObject] ProcessingInstruction createProcessingInstruction(DOMString target, DOMString data);
 
-  [NewObject] <a href="#node">Node</a> <a href="#dom-document-importnode" title="dom-Document-importNode">importNode</a>(<a href="#node">Node</a> <var>node</var>, optional boolean <var>deep</var> = false);
-  <a href="#node">Node</a> <a href="#dom-document-adoptnode" title="dom-Document-adoptNode">adoptNode</a>(<a href="#node">Node</a> <var>node</var>);
+  [NewObject] Node importNode(Node node, optional boolean deep = false);
+  Node adoptNode(Node node);
 
-  [NewObject] <a href="#event">Event</a> <a href="#dom-document-createevent" title="dom-Document-createEvent">createEvent</a>(DOMString <var>interface</var>);
+  [NewObject] Event createEvent(DOMString interface);
 
-  [NewObject] <a href="#range">Range</a> <a href="#dom-document-createrange" title="dom-Document-createRange">createRange</a>();
+  [NewObject] Range createRange();
 
-  // <a href="#nodefilter">NodeFilter</a>.<a href="#dom-nodefilter-show_all" title="dom-NodeFilter-SHOW_ALL">SHOW_ALL</a> = 0xFFFFFFFF
-  [NewObject] NodeIterator createNodeIterator(Node <var>root</var>, optional unsigned long whatToShow = 0xFFFFFFFF, optional NodeFilter? filter = null);
-  [NewObject] TreeWalker createTreeWalker(Node <var>root</var>, optional unsigned long whatToShow = 0xFFFFFFFF, optional NodeFilter? filter = null);
+  // NodeFilter.SHOW_ALL = 0xFFFFFFFF
+  [NewObject] NodeIterator createNodeIterator(Node root, optional unsigned long whatToShow = 0xFFFFFFFF, optional NodeFilter? filter = null);
+  [NewObject] TreeWalker createTreeWalker(Node root, optional unsigned long whatToShow = 0xFFFFFFFF, optional NodeFilter? filter = null);
 };
 
 [Exposed=Window]
-interface <dfn id="xmldocument">XMLDocument</dfn> : <a href="#document">Document</a> {};
-
+interface XMLDocument : Document {};
 </pre>
 
 <p><code><a href="#document">Document</a></code> <a href="#concept-node" title="concept-node">nodes</a> are simply
@@ -3438,14 +3443,16 @@ method must run these steps:
 a <a href="#concept-document" title="concept-document">document</a> is created and associate it
 with that <a href="#concept-document" title="concept-document">document</a>.
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="domimplementation">DOMImplementation</dfn> {
-  [NewObject] <a href="#documenttype">DocumentType</a> <a href="#dom-domimplementation-createdocumenttype" title="dom-DOMImplementation-createDocumentType">createDocumentType</a>(DOMString qualifiedName, DOMString publicId, DOMString systemId);
-  [NewObject] <a href="#xmldocument">XMLDocument</a> <a href="#dom-domimplementation-createdocument" title="dom-DOMImplementation-createDocument">createDocument</a>(DOMString? <var>namespace</var>, [TreatNullAs=EmptyString] DOMString <var>qualifiedName</var>, optional <a href="#documenttype">DocumentType</a>? <var>doctype</var> = null);
-  [NewObject] <a href="#document">Document</a> <a href="#dom-domimplementation-createhtmldocument" title="dom-DOMImplementation-createHTMLDocument">createHTMLDocument</a>(optional DOMString <var>title</var>);
+<pre class='idl'>
+[Exposed=Window]
+interface DOMImplementation {
+  [NewObject] DocumentType createDocumentType(DOMString qualifiedName, DOMString publicId, DOMString systemId);
+  [NewObject] XMLDocument createDocument(DOMString? namespace, [TreatNullAs=EmptyString] DOMString qualifiedName, optional DocumentType? doctype = null);
+  [NewObject] Document createHTMLDocument(optional DOMString title);
 
-  boolean <a href="#dom-domimplementation-hasfeature" title="dom-DOMImplementation-hasFeature">hasFeature</a>(); // useless; always returns true
-};</pre>
+  boolean hasFeature(); // useless; always returns true
+};
+</pre>
 
 <dl class="domintro">
  <dt><code><var>doctype</var> = <var>document</var> . <a href="#dom-document-implementation" title="dom-Document-implementation">implementation</a> . <a href="#dom-domimplementation-createdocumenttype" title="dom-DOMImplementation-createDocumentType">createDocumentType</a>(<var>qualifiedName</var>, <var>publicId</var>, <var>systemId</var>)</code>
@@ -3649,10 +3656,12 @@ returns true) so that old pages don't stop working.
 
 <h3 id="nodes-interface-documentfragment">Interface <code><a href="#documentfragment">DocumentFragment</a></code></h3>
 
-<pre class="idl">[<a href="#dom-documentfragment" title="dom-DocumentFragment">Constructor</a>,
+<pre class='idl'>
+[Constructor,
  Exposed=Window]
-interface <dfn id="documentfragment">DocumentFragment</dfn> : <a href="#node">Node</a> {
-};</pre>
+interface DocumentFragment : Node {
+};
+</pre>
 
 <p>A <code><a href="#documentfragment">DocumentFragment</a></code> <a href="#concept-node" title="concept-node">node</a> can have an
 associated <a href="#concept-element" title="concept-element">element</a> named
@@ -3690,13 +3699,14 @@ must return a new <code><a href="#documentfragment">DocumentFragment</a></code> 
 
 <h3 id="nodes-interface-documenttype">Interface <code><a href="#documenttype">DocumentType</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="documenttype">DocumentType</dfn> : <a href="#node">Node</a> {
-  readonly attribute DOMString <a href="#dom-documenttype-name" title="dom-DocumentType-name">name</a>;
-  readonly attribute DOMString <a href="#dom-documenttype-publicid" title="dom-DocumentType-publicId">publicId</a>;
-  readonly attribute DOMString <a href="#dom-documenttype-systemid" title="dom-DocumentType-systemId">systemId</a>;<!--
-  readonly attribute DOMString internalSubset;-->
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface DocumentType : Node {
+  readonly attribute DOMString name;
+  readonly attribute DOMString publicId;
+  readonly attribute DOMString systemId;
+};
+</pre>
 
 <p><code><a href="#documenttype">DocumentType</a></code> <a href="#concept-node" title="concept-node">nodes</a> are
 simply known as <dfn id="concept-doctype" title="concept-doctype">doctypes</dfn>.
@@ -3724,37 +3734,34 @@ attribute must return the
 <a href="#concept-doctype-systemid" title="concept-doctype-systemid">system ID</a>.
 
 <h3 id="nodes-interface-element">Interface <code><a href="#element">Element</a></code></h3>
-<pre class="idl">[Exposed=Window]
-interface <dfn id="element">Element</dfn> : <a href="#node">Node</a> {
-  readonly attribute DOMString? <a href="#dom-element-namespaceuri" title="dom-Element-namespaceURI">namespaceURI</a>;
-  readonly attribute DOMString? <a href="#dom-element-prefix" title="dom-Element-prefix">prefix</a>;
-  readonly attribute DOMString <a href="#dom-element-localname" title="dom-Element-localName">localName</a>;
-  readonly attribute DOMString <a href="#dom-element-tagname" title="dom-Element-tagName">tagName</a>;
+<pre class='idl'>
+[Exposed=Window]
+interface Element : Node {
+  readonly attribute DOMString? namespaceURI;
+  readonly attribute DOMString? prefix;
+  readonly attribute DOMString localName;
+  readonly attribute DOMString tagName;
 
-           attribute DOMString <a href="#dom-element-id" title="dom-Element-id">id</a>;
-           attribute DOMString <a href="#dom-element-classname" title="dom-Element-className">className</a>;
-  [SameObject] readonly attribute <a href="#domtokenlist">DOMTokenList</a> <a href="#dom-element-classlist" title="dom-Element-classList">classList</a>;
+           attribute DOMString id;
+           attribute DOMString className;
+  [SameObject] readonly attribute DOMTokenList classList;
 
-  [SameObject] readonly attribute <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1780488922">NamedNodeMap</a> <a href="#dom-element-attributes" title="dom-Element-attributes">attributes</a>;
-  DOMString? <a href="#dom-element-getattribute" title="dom-Element-getAttribute">getAttribute</a>(DOMString <var>name</var>);
-  DOMString? <a href="#dom-element-getattributens" title="dom-Element-getAttributeNS">getAttributeNS</a>(DOMString? <var>namespace</var>, DOMString <var>localName</var>);
-  void <a href="#dom-element-setattribute" title="dom-Element-setAttribute">setAttribute</a>(DOMString <var>name</var>, DOMString <var>value</var>);
-  void <a href="#dom-element-setattributens" title="dom-Element-setAttributeNS">setAttributeNS</a>(DOMString? <var>namespace</var>, DOMString <var>name</var>, DOMString <var>value</var>);
-  void <a href="#dom-element-removeattribute" title="dom-Element-removeAttribute">removeAttribute</a>(DOMString <var>name</var>);
-  void <a href="#dom-element-removeattributens" title="dom-Element-removeAttributeNS">removeAttributeNS</a>(DOMString? <var>namespace</var>, DOMString <var>localName</var>);
-  boolean <a href="#dom-element-hasattribute" title="dom-Element-hasAttribute">hasAttribute</a>(DOMString <var>name</var>);
-  boolean <a href="#dom-element-hasattributens" title="dom-Element-hasAttributeNS">hasAttributeNS</a>(DOMString? <var>namespace</var>, DOMString <var>localName</var>);
-<!--
-  <span>Attr</span> <span title=dom-Element-getAttributeNode>getAttributeNode</span>(DOMString name);
-  <span>Attr</span> <span title=dom-Element-getAttributeNodeNS>getAttributeNodeNS</span>(DOMString namespace, DOMString localName);
-  <span>Attr</span> <span title=dom-Element-setAttributeNode>setAttributeNode</span>(Attr newAttr);
-  <span>Attr</span> <span title=dom-Element-removeAttributeNode>removeAttributeNode</span>(Attr oldAttr);
--->
+  [SameObject] readonly attribute NamedNodeMap attributes;
+  DOMString? getAttribute(DOMString name);
+  DOMString? getAttributeNS(DOMString? namespace, DOMString localName);
+  void setAttribute(DOMString name, DOMString value);
+  void setAttributeNS(DOMString? namespace, DOMString name, DOMString value);
+  void removeAttribute(DOMString name);
+  void removeAttributeNS(DOMString? namespace, DOMString localName);
+  boolean hasAttribute(DOMString name);
+  boolean hasAttributeNS(DOMString? namespace, DOMString localName);
 
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-element-getelementsbytagname" title="dom-Element-getElementsByTagName">getElementsByTagName</a>(DOMString <var>localName</var>);
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-element-getelementsbytagnamens" title="dom-Element-getElementsByTagNameNS">getElementsByTagNameNS</a>(DOMString? <var>namespace</var>, DOMString <var>localName</var>);
-  <a href="#htmlcollection">HTMLCollection</a> <a href="#dom-element-getelementsbyclassname" title="dom-Element-getElementsByClassName">getElementsByClassName</a>(DOMString <var>classNames</var>);
-};</pre>
+
+  HTMLCollection getElementsByTagName(DOMString localName);
+  HTMLCollection getElementsByTagNameNS(DOMString? namespace, DOMString localName);
+  HTMLCollection getElementsByClassName(DOMString classNames);
+};
+</pre>
 
 <p><code><a href="#element">Element</a></code> <a href="#concept-node" title="concept-node">nodes</a> are simply
 known as <dfn id="concept-element" title="concept-element">elements</dfn>.</p>
@@ -4303,16 +4310,18 @@ method must return the
 for the <a href="#context-object">context object</a>.
 
 <h4 id="interface-attr">Interface <code><a href="#attr">Attr</a></code></h4>
-<pre class="idl">[Exposed=Window]
-interface <dfn id="attr">Attr</dfn> {
-  readonly attribute DOMString? <a href="#dom-attr-namespaceuri" title="dom-Attr-namespaceURI">namespaceURI</a>;
-  readonly attribute DOMString? <a href="#dom-attr-prefix" title="dom-Attr-prefix">prefix</a>;
-  readonly attribute DOMString <a href="#dom-attr-localname" title="dom-Attr-localName">localName</a>;
-  readonly attribute DOMString <a href="#dom-attr-name" title="dom-Attr-name">name</a>;
-           attribute DOMString <a href="#dom-attr-value" title="dom-Attr-value">value</a>;
+<pre class='idl'>
+[Exposed=Window]
+interface Attr {
+  readonly attribute DOMString? namespaceURI;
+  readonly attribute DOMString? prefix;
+  readonly attribute DOMString localName;
+  readonly attribute DOMString name;
+           attribute DOMString value;
 
-  readonly attribute boolean <a href="#dom-attr-specified" title="dom-Attr-specified">specified</a>; // useless; always returns true
-};</pre>
+  readonly attribute boolean specified; // useless; always returns true
+};
+</pre>
 
 <p><code><a href="#attr">Attr</a></code> objects are simply known as
 <dfn id="concept-attribute" title="concept-attribute">attributes</dfn>. They are sometimes referred
@@ -4389,16 +4398,18 @@ true.
 
 <h3 id="nodes-interface-characterdata">Interface <code><a href="#characterdata">CharacterData</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="characterdata">CharacterData</dfn> : <a href="#node">Node</a> {
-  [TreatNullAs=EmptyString] attribute DOMString <a href="#dom-characterdata-data" title="dom-CharacterData-data">data</a>;
-  readonly attribute unsigned long <a href="#dom-characterdata-length" title="dom-CharacterData-length">length</a>;
-  DOMString <a href="#dom-characterdata-substringdata" title="dom-CharacterData-substringData">substringData</a>(unsigned long <var>offset</var>, unsigned long <var>count</var>);
-  void <a href="#dom-characterdata-appenddata" title="dom-CharacterData-appendData">appendData</a>(DOMString <var>data</var>);
-  void <a href="#dom-characterdata-insertdata" title="dom-CharacterData-insertData">insertData</a>(unsigned long <var>offset</var>, DOMString <var>data</var>);
-  void <a href="#dom-characterdata-deletedata" title="dom-CharacterData-deleteData">deleteData</a>(unsigned long <var>offset</var>, unsigned long <var>count</var>);
-  void <a href="#dom-characterdata-replacedata" title="dom-CharacterData-replaceData">replaceData</a>(unsigned long <var>offset</var>, unsigned long <var>count</var>, DOMString <var>data</var>);
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface CharacterData : Node {
+  [TreatNullAs=EmptyString] attribute DOMString data;
+  readonly attribute unsigned long length;
+  DOMString substringData(unsigned long offset, unsigned long count);
+  void appendData(DOMString data);
+  void insertData(unsigned long offset, DOMString data);
+  void deleteData(unsigned long offset, unsigned long count);
+  void replaceData(unsigned long offset, unsigned long count, DOMString data);
+};
+</pre>
 
 <p class="note">Note: <code><a href="#characterdata">CharacterData</a></code> is an abstract interface and does
 not exist as <a href="#concept-node" title="concept-node">node</a>. It is used by
@@ -4556,12 +4567,14 @@ method must <a href="#concept-cd-replace" title="concept-CD-replace">replace dat
 
 <h3 id="nodes-interface-text">Interface <code><a href="#text">Text</a></code></h3>
 
-<pre class="idl">[<a href="#dom-text" title="dom-Text">Constructor</a>(optional DOMString <var>data</var> = ""),
+<pre class='idl'>
+[Constructor(optional DOMString data = ""),
  Exposed=Window]
-interface <dfn id="text">Text</dfn> : <a href="#characterdata">CharacterData</a> {
-  [NewObject] <a href="#text">Text</a> <a href="#dom-text-splittext" title="dom-Text-splitText">splitText</a>(unsigned long <var>offset</var>);
-  readonly attribute DOMString <a href="#dom-text-wholetext" title="dom-Text-wholeText">wholeText</a>;
-};</pre>
+interface Text : CharacterData {
+  [NewObject] Text splitText(unsigned long offset);
+  readonly attribute DOMString wholeText;
+};
+</pre>
 
 <dl class="domintro">
  <dt><code><var>text</var> = new <a href="#dom-documentfragment" title="dom-DocumentFragment">Text</a>([<var>data</var> = ""])</code>
@@ -4717,10 +4730,12 @@ attribute must return a concatenation of the
 
 <h3 id="nodes-interface-processinginstruction">Interface <code><a href="#processinginstruction">ProcessingInstruction</a></code></h3>
 
-<pre class="idl">[Exposed=Window]
-interface <dfn id="processinginstruction">ProcessingInstruction</dfn> : <a href="#characterdata">CharacterData</a> {
-  readonly attribute DOMString <a href="#dom-processinginstruction-target" title="dom-ProcessingInstruction-target">target</a>;
-};</pre>
+<pre class='idl'>
+[Exposed=Window]
+interface ProcessingInstruction : CharacterData {
+  readonly attribute DOMString target;
+};
+</pre>
 
 <p><code><a href="#processinginstruction">ProcessingInstruction</a></code> <a href="#concept-node" title="concept-node">nodes</a>
 have an associated <dfn id="concept-pi-target" title="concept-PI-target">target</dfn>.
@@ -4730,10 +4745,12 @@ attribute must return the <a href="#concept-pi-target" title="concept-PI-target"
 
 <h3 id="nodes-interface-comment">Interface <code><a href="#comment">Comment</a></code></h3>
 
-<pre class="idl">[<a href="#dom-comment" title="dom-Comment">Constructor</a>(optional DOMString <var>data</var> = ""),
+<pre class='idl'>
+[Constructor(optional DOMString data = ""),
  Exposed=Window]
-interface <dfn id="comment">Comment</dfn> : <a href="#characterdata">CharacterData</a> {
-};</pre>
+interface Comment : CharacterData {
+};
+</pre>
 
 <dl class="domintro">
  <dt><code><var>comment</var> = new <a href="#dom-comment" title="dom-Comment">Comment</a>([<var>data</var> = ""])</code>

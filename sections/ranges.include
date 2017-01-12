@@ -60,48 +60,50 @@ details.
 
 <h3 id="ranges-interface-range">Interface <code><a href="#range">Range</a></code></h3>
 
-<pre class="idl">[<a href="#dom-range" title="dom-Range">Constructor</a>,
+<pre class='idl'>
+[Constructor,
  Exposed=Window]
-interface <dfn id="range">Range</dfn> {
-  readonly attribute <a href="#node">Node</a> <a href="#dom-range-startcontainer" title="dom-Range-startContainer">startContainer</a>;
-  readonly attribute unsigned long <a href="#dom-range-startoffset" title="dom-Range-startOffset">startOffset</a>;
-  readonly attribute <a href="#node">Node</a> <a href="#dom-range-endcontainer" title="dom-Range-endContainer">endContainer</a>;
-  readonly attribute unsigned long <a href="#dom-range-endoffset" title="dom-Range-endOffset">endOffset</a>;
-  readonly attribute boolean <a href="#dom-range-collapsed" title="dom-Range-collapsed">collapsed</a>;
-  readonly attribute <a href="#node">Node</a> <a href="#dom-range-commonancestorcontainer" title="dom-Range-commonAncestorContainer">commonAncestorContainer</a>;
+interface Range {
+  readonly attribute Node startContainer;
+  readonly attribute unsigned long startOffset;
+  readonly attribute Node endContainer;
+  readonly attribute unsigned long endOffset;
+  readonly attribute boolean collapsed;
+  readonly attribute Node commonAncestorContainer;
 
-  void <a href="#dom-range-setstart" title="dom-Range-setStart">setStart</a>(<a href="#node">Node</a> <var>node</var>, unsigned long <var>offset</var>);
-  void <a href="#dom-range-setend" title="dom-Range-setEnd">setEnd</a>(<a href="#node">Node</a> <var>node</var>, unsigned long <var>offset</var>);
-  void <a href="#dom-range-setstartbefore" title="dom-Range-setStartBefore">setStartBefore</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-setstartafter" title="dom-Range-setStartAfter">setStartAfter</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-setendbefore" title="dom-Range-setEndBefore">setEndBefore</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-setendafter" title="dom-Range-setEndAfter">setEndAfter</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-collapse" title="dom-Range-collapse">collapse</a>(optional boolean <var>toStart</var> = false);
-  void <a href="#dom-range-selectnode" title="dom-Range-selectNode">selectNode</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-selectnodecontents" title="dom-Range-selectNodeContents">selectNodeContents</a>(<a href="#node">Node</a> <var>node</var>);
+  void setStart(Node node, unsigned long offset);
+  void setEnd(Node node, unsigned long offset);
+  void setStartBefore(Node node);
+  void setStartAfter(Node node);
+  void setEndBefore(Node node);
+  void setEndAfter(Node node);
+  void collapse(optional boolean toStart = false);
+  void selectNode(Node node);
+  void selectNodeContents(Node node);
 
-  const unsigned short <dfn id="dom-comparehow-start_to_start" title="dom-CompareHow-START_TO_START">START_TO_START</dfn> = 0;
-  const unsigned short <dfn id="dom-comparehow-start_to_end" title="dom-CompareHow-START_TO_END">START_TO_END</dfn> = 1;
-  const unsigned short <dfn id="dom-comparehow-end_to_end" title="dom-CompareHow-END_TO_END">END_TO_END</dfn> = 2;
-  const unsigned short <dfn id="dom-comparehow-end_to_start" title="dom-CompareHow-END_TO_START">END_TO_START</dfn> = 3;
-  short <a href="#dom-range-compareboundarypoints" title="dom-Range-compareBoundaryPoints">compareBoundaryPoints</a>(unsigned short <var>how</var>, <a href="#range">Range</a> <var>sourceRange</var>);
+  const unsigned short START_TO_START = 0;
+  const unsigned short START_TO_END = 1;
+  const unsigned short END_TO_END = 2;
+  const unsigned short END_TO_START = 3;
+  short compareBoundaryPoints(unsigned short how, Range sourceRange);
 
-  void <a href="#dom-range-deletecontents" title="dom-Range-deleteContents">deleteContents</a>();
-  [NewObject] <a href="#documentfragment">DocumentFragment</a> <a href="#dom-range-extractcontents" title="dom-Range-extractContents">extractContents</a>();
-  [NewObject] <a href="#documentfragment">DocumentFragment</a> <a href="#dom-range-clonecontents" title="dom-Range-cloneContents">cloneContents</a>();
-  void <a href="#dom-range-insertnode" title="dom-Range-insertNode">insertNode</a>(<a href="#node">Node</a> <var>node</var>);
-  void <a href="#dom-range-surroundcontents" title="dom-Range-surroundContents">surroundContents</a>(<a href="#node">Node</a> <var>newParent</var>);
+  void deleteContents();
+  [NewObject] DocumentFragment extractContents();
+  [NewObject] DocumentFragment cloneContents();
+  void insertNode(Node node);
+  void surroundContents(Node newParent);
 
-  [NewObject] <a href="#range">Range</a> <a href="#dom-range-clonerange" title="dom-Range-cloneRange">cloneRange</a>();
-  void <a href="#dom-range-detach" title="dom-Range-detach">detach</a>();
+  [NewObject] Range cloneRange();
+  void detach();
 
-  boolean <a href="#dom-range-ispointinrange" title="dom-Range-isPointInRange">isPointInRange</a>(<a href="#node">Node</a> <var>node</var>, unsigned long <var>offset</var>);
-  short <a href="#dom-range-comparepoint" title="dom-Range-comparePoint">comparePoint</a>(<a href="#node">Node</a> <var>node</var>, unsigned long <var>offset</var>);
+  boolean isPointInRange(Node node, unsigned long offset);
+  short comparePoint(Node node, unsigned long offset);
 
-  boolean <a href="#dom-range-intersectsnode" title="dom-Range-intersectsNode">intersectsNode</a>(<a href="#node">Node</a> <var>node</var>);
+  boolean intersectsNode(Node node);
 
-  <a href="#dom-range-stringifier" title="dom-Range-stringifier">stringifier</a>;
-};</pre>
+  stringifier;
+};
+</pre>
 
 <p><code><a href="#range">Range</a></code> objects are simply known as
 <dfn id="concept-range" title="concept-range">ranges</dfn>.
