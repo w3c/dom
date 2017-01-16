@@ -3,49 +3,39 @@
 
 <h3 id="ranges-introduction-to-dom-ranges">Introduction to "DOM Ranges"</h3>
 
-  A <code><a href="#range">Range</a></code> object (<a href="#concept-range" title="concept-range">range</a>) represents a sequence of content within a <a href="#concept-node-tree" title="concept-node-tree">node tree</a>. Each <a href="#concept-range" title="concept-range">range</a> has a <a href="#concept-range-start" title="concept-range-start">start</a> and an <a href="#concept-range-end" title="concept-range-end">end</a> which are <a href="#concept-range-bp" title="concept-range-bp">boundary points</a>. A <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> is a tuple consisting of a <a href="#concept-node" title="concept-node">node</a> and a non-negative numeric <a href="#concept-range-bp-offset" title="concept-range-bp-offset">offset</a>. So in other words, a <a href="#concept-range" title="concept-range">range</a> represents a piece of content within a <a href="#concept-node-tree" title="concept-node-tree">node tree</a> between two <a href="#concept-range-bp" title="concept-range-bp">boundary points</a>.
+  A <code><a>Range</a></code> object (<a>range</a>) represents a sequence of content within a <a>node tree</a>. Each <a>range</a> has a <a>start</a> and an <a>end</a> which are <a>boundary points</a>. A <a>boundary point</a> is a tuple consisting of a <a>node</a> and a non-negative numeric <a>offset</a>. So in other words, a <a>range</a> represents a piece of content within a <a>node tree</a> between two <a>boundary points</a>.
 
-  <a href="#concept-range" title="concept-range">Ranges</a> are frequently used in editing for selecting and copying content.
+  <a>Ranges</a> are frequently used in editing for selecting and copying content.
 
 <ul class="domTree">
- <li class="t1"><a href="#concept-element" title="concept-element">Element</a>: <code>p</code>
+ <li class="t1"><a>Element</a>: <code>p</code>
   <ul>
-   <li class="t1"><a href="#concept-element" title="concept-element">Element</a>: <code>img</code> <span class="t2"><code class="attribute name">src</code>="<code class="attribute value">insanity-wolf</code>"</span> <span class="t2"><code class="attribute name">alt</code>="<code class="attribute value">Little-endian BOM; decode as big-endian!</code>"</span>
-   <li class="t3"><code><a href="#text">Text</a></code>: <span> CSS 2.1 syndata is </span>
-   <li class="t1"><a href="#concept-element" title="concept-element">Element</a>: <code>em</code>
+   <li class="t1"><a>Element</a>: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span>
+   <li class="t3"><code><a>Text</a></code>: <span> CSS 2.1 syndata is </span>
+   <li class="t1"><a>Element</a>: <code>em</code>
     <ul>
-     <li class="t3"><code><a href="#text">Text</a></code>: <span>awesome</span>
+     <li class="t3"><code><a>Text</a></code>: <span>awesome</span>
     </ul>
-   <li class="t3"><code><a href="#text">Text</a></code>: <span>!</span>
+   <li class="t3"><code><a>Text</a></code>: <span>!</span>
   </ul>
 </ul>
 <!-- http://w3cmemes.tumblr.com/post/35332222321/css-2-1-syndata-is-awesome -->
 
-<p>In the <a href="#concept-node-tree" title="concept-node-tree">node tree</a> above, a
-<a href="#concept-range" title="concept-range">range</a> can be used to represent the sequence
-“syndata is awes”. Assuming <var>p</var> is assigned to the
-<code>p</code> <a href="#concept-element" title="concept-element">element</a>, and
-<var>em</var> to the <code>em</code>
-<a href="#concept-element" title="concept-element">element</a>, this would be done as follows:
+<p>In the <a>node tree</a> above, a <a>range</a> can be used to represent the sequence “syndata is awes”. Assuming <var>p</var> is assigned to the <code>p</code> <a>element</a>, and <var>em</var> to the <code>em</code> <a>element</a>, this would be done as follows:
 
-<pre><code>var range = new Range(),
+<pre class='example'><code>var range = new Range(),
     firstText = p.childNodes[1],
     secondText = em.firstChild
 range.setStart(firstText, 9) // do not forget the leading space
 range.setEnd(secondText, 4)
 // range now stringifies to the aforementioned quote</code></pre>
 
-<p class="note">Note: <a href="#concept-attribute" title="concept-attribute">Attributes</a> such as
-<code>src</code> and <code>alt</code> in the
-<a href="#concept-node-tree" title="concept-node-tree">node tree</a> above cannot be represented
-by a <a href="#concept-range" title="concept-range">range</a>. The
-<a href="#concept-range" title="concept-range">ranges</a> concept is only useful for
-<a href="#concept-node" title="concept-node">nodes</a>.
+<p class="note">Note: <a>Attributes</a> such as <code>src</code> and <code>alt</code> in the <a>node tree</a> above cannot be represented by a <a>range</a>. The <a>ranges</a> concept is only useful for <a>nodes</a>.
 
-<p><a href="#concept-range" title="concept-range">Ranges</a> are affected by mutations to the
-<a href="#concept-node-tree" title="concept-node-tree">node tree</a>. Such mutations will not
-invalidate a <a href="#concept-range" title="concept-range">range</a> and will try to ensure
-that the <a href="#concept-range" title="concept-range">range</a> still represents the same
+<p><a>Ranges</a> are affected by mutations to the
+<a>node tree</a>. Such mutations will not
+invalidate a <a>range</a> and will try to ensure
+that the <a>range</a> still represents the same
 piece of content. Necessarily, a <a href="#concept-range" title="concept-range">range</a>
 might itself be modified as part of the mutation to the
 <a href="#concept-node-tree" title="concept-node-tree">node tree</a> when e.g. part of the content

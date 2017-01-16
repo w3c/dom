@@ -16,7 +16,7 @@
 
     3. By defining a replacement for the "Mutation Events" and "Mutation Name Event Types" chapters of <a>UI Events Specification (formerly DOM Level 3 Events)</a> [[UIEVENTS]] as the old model was problematic.
 
-  <p class="note">Note: The old model is expected to be removed from implementations
+  <p class='note'>Note: The old model is expected to be removed from implementations
   in due course.
 
     4. By defining new features that simplify common DOM operations.

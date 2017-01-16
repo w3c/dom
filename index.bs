@@ -55,6 +55,14 @@ urlPrefix: https://www.w3.org/TR/WebIDL-1/; type: dfn;
     text: NotAllowedError
 url: https://www.w3.org/TR/xml/#sec-white-space; type: dfn; spec: XML;
     text: xml:space
+url: http://www.w3.org/TR/encoding/#ascii-whitespace; type: dfn; spec: encoding;
+    text: ASCII whitespace
+url: http://www.w3.org/TR/html51/webappapis.html#report-the-exception; type: dfn; spec: HTML51;
+    text: report the exception
+urlPrefix: http://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1
+    text: dictionary member; url: dfn-dictionary-member; type: dfn
+    text: identifier; url: dfn-identifier; type: dfn
+    text: callback this value; url: #dfn-callback-this-value; type: dfn
 </pre>
 
 <pre class="biblio">

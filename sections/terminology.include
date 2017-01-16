@@ -1,103 +1,89 @@
 <section>
 <h2 id="terminology">Terminology</h2>
 
-  The term <dfn id="context-object">context object</dfn> means the object on which the algorithm, attribute getter, attribute setter, or method being discussed was called. When the <a href="#context-object">context object</a> is unambiguous, the term can be omitted.
+  The term <dfn lt="context object|context objects">context object</dfn> means the object on which the algorithm, attribute getter, attribute setter, or method being discussed was called. When the <a>context object</a> is unambiguous, the term can be omitted.
 
 <h3 id="terminology-trees">Trees</h3>
-<p>A <dfn id="concept-tree" title="concept-tree">tree</dfn> is a finite hierarchical tree structure. In
-<dfn id="concept-tree-order" title="concept-tree-order">tree order</dfn> is preorder, depth-first
-traversal of a <a href="#concept-tree" title="concept-tree">tree</a>.
+<p>A <dfn>tree</dfn> is a finite hierarchical tree structure. In
+<dfn>tree order</dfn> is preorder, depth-first
+traversal of a <a>tree</a>.
 <!-- http://en.wikipedia.org/wiki/Tree_traversal#Depth-first_Traversal -->
 
-<p>An object that <dfn id="concept-tree-participate" title="concept-tree-participate">participates</dfn> in
-a <a href="#concept-tree" title="concept-tree">tree</a> has a
-<dfn id="concept-tree-parent" title="concept-tree-parent">parent</dfn>, which is either another object
+<p>An object that <dfn lt="tree participate|tree participates|participate">participates</dfn> in
+a <a>tree</a> has a
+<dfn lt="tree parent|tree parents|parent|parents">parent</dfn>, which is either another object
 or null, and an ordered list of zero or more
-<dfn id="concept-tree-child" title="concept-tree-child">child</dfn> objects. An object <var>A</var> whose
-<a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is object <var>B</var> is a
-<a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>B</var>.
+<dfn lt="tree child|tree children|child|children>child</dfn> objects. An object <var>A</var> whose
+<a>parent</a> is object <var>B</var> is a
+<a>child</a> of <var>B</var>.
 
-<p>The <dfn id="concept-tree-root" title="concept-tree-root">root</dfn> of an object is itself, if its
-<a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is null, or else it is the
-<a href="#concept-tree-root" title="concept-tree-root">root</a> of its
-<a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+<p>The <dfn lt="tree root|tree roots|root|roots">root</dfn> of an object is itself, if its
+<a>parent</a> is null, or else it is the
+<a>root</a> of its
+<a>parent</a>.
 
 <p>An object <var>A</var> is called a
-<dfn id="concept-tree-descendant" title="concept-tree-descendant">descendant</dfn> of an object
+<dfn lt="tree descendant|tree descendants|descendant|descendants">descendant</dfn> of an object
 <var>B</var>, if either <var>A</var> is a
-<a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>B</var> or
-<var>A</var> is a <a href="#concept-tree-child" title="concept-tree-child">child</a> of an
+<a>child</a> of <var>B</var> or
+<var>A</var> is a <a>child</a> of an
 object <var>C</var> that is a
-<a href="#concept-tree-descendant" title="concept-tree-descendant">descendant</a> of <var>B</var>.
+<a>descendant</a> of <var>B</var>.
 
 <p>An
-<dfn id="concept-tree-inclusive-descendant" title="concept-tree-inclusive-descendant">inclusive descendant</dfn> is
+<dfn lt="tree inclusive descendant|tree inclusive descendants|inclusive descendant|inclusive descendants">inclusive descendant</dfn> is
 an object or one of its
-<a href="#concept-tree-descendant" title="concept-tree-descendant">descendants</a>.
+<a>descendants</a>.
 
 <p>An object <var>A</var> is called an
-<dfn id="concept-tree-ancestor" title="concept-tree-ancestor">ancestor</dfn> of an object
-<var>B</var> if and only if <var>B</var> is a
-<a href="#concept-tree-descendant" title="concept-tree-descendant">descendant</a> of
+<dfn lt="tree ancestor|tree ancestors|ancestor|ancestors">ancestor</dfn> of an object <var>B</var> if and only if <var>B</var> is a
+<a>descendant</a> of
 <var>A</var>.
 
-<p>An <dfn id="concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</dfn> is
-an object or one of its <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestors</a>.
+<p>An <dfn lt="tree inclusive ancestor|tree inclusive ancestors|inclusive ancestor|inclusive ancestors">inclusive ancestor</dfn> is
+an object or one of its <a>ancestors</a>.
 
 <p>An object <var>A</var> is called a
-<dfn id="concept-tree-sibling" title="concept-tree-sibling">sibling</dfn> of an object
+<dfn lt="tree sibling|tree siblings|sibling|siblings">sibling</dfn> of an object
 <var>B</var>, if and only if <var>B</var> and <var>A</var>
-share the same non-null <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+share the same non-null <a>parent</a>.
 
 <p>An object <var>A</var> is
-<dfn id="concept-tree-preceding" title="concept-tree-preceding">preceding</dfn> an object
+<dfn>preceding</dfn> an object
 <var>B</var> if <var>A</var> and <var>B</var> are in the
-same <a href="#concept-tree" title="concept-tree">tree</a> and <var>A</var> comes
+same <a>tree</a> and <var>A</var> comes
 before <var>B</var> in
-<a href="#concept-tree-order" title="concept-tree-order">tree order</a>.
+<a>tree order</a>.
 
 <p>An object <var>A</var> is
-<dfn id="concept-tree-following" title="concept-tree-following">following</dfn> an object
+<dfn>following</dfn> an object
 <var>B</var> if <var>A</var> and <var>B</var> are in the
-same <a href="#concept-tree" title="concept-tree">tree</a> and <var>A</var> comes
+same <a>tree</a> and <var>A</var> comes
 after <var>B</var> in
-<a href="#concept-tree-order" title="concept-tree-order">tree order</a>.
+<a>tree order</a>.
 
-<p>The <dfn id="concept-tree-first-child" title="concept-tree-first-child">first child</dfn> of an object is
-its first <a href="#concept-tree-child" title="concept-tree-child">child</a> or null if it has no
-<a href="#concept-tree-child" title="concept-tree-child">children</a>.
+<p>The <dfn lt="tree first child|first child">first child</dfn> of an object is its first <a>child</a> or null if it has no <a>children</a>.
 
-<p>The <dfn id="concept-tree-last-child" title="concept-tree-last-child">last child</dfn> of an object is
-its last <a href="#concept-tree-child" title="concept-tree-child">child</a> or null if it has no
-<a href="#concept-tree-child" title="concept-tree-child">children</a>.
+<p>The <dfn lt="tree last child|last child">last child</dfn> of an object is
+its last <a>child</a> or null if it has no <a>children</a>.
 
-<p>The <dfn id="concept-tree-previous-sibling" title="concept-tree-previous-sibling">previous sibling</dfn> of an
-object is its first <a href="#concept-tree-preceding" title="concept-tree-preceding">preceding</a>
-<a href="#concept-tree-sibling" title="concept-tree-sibling">sibling</a> or null if it has no
-<a href="#concept-tree-preceding" title="concept-tree-preceding">preceding</a>
-<a href="#concept-tree-sibling" title="concept-tree-sibling">sibling</a>.
+<p>The <dfn lt="tree previous sibling|previous sibling">previous sibling</dfn> of an object is its first <a>preceding</a> <a>sibling</a> or null if it has no <a>preceding</a> <a>sibling</a>.
 
-<p>The <dfn id="concept-tree-next-sibling" title="concept-tree-next-sibling">next sibling</dfn> of an
-object is its first <a href="#concept-tree-following" title="concept-tree-following">following</a>
-<a href="#concept-tree-sibling" title="concept-tree-sibling">sibling</a> or null if it has no
-<a href="#concept-tree-following" title="concept-tree-following">following</a>
-<a href="#concept-tree-sibling" title="concept-tree-sibling">sibling</a>.
+<p>The <dfn lt="tree next sibling|next sibling">next sibling</dfn> of an object is its first <a>following</a> <a>sibling</a> or null if it has no <a>following</a> <a>sibling</a>.
 
-<p>The <dfn id="concept-tree-index" title="concept-tree-index">index</dfn> of an object is its number
-of <a href="#concept-tree-preceding" title="concept-tree-preceding">preceding</a>
-<a href="#concept-tree-sibling" title="concept-tree-sibling">siblings</a>.
+<p>The <dfn lt="tree index|index">index</dfn> of an object is its number of <a>preceding</a> <a>siblings</a>.
 
 <h3 id="terminology-strings">Strings</h3>
 
-<p>Comparing two strings in a <dfn id="case-sensitive">case-sensitive</dfn> manner means comparing them exactly, code point for code point.
+<p>Comparing two strings in a <dfn>case-sensitive</dfn> manner means comparing them exactly, code point for code point.
 
-<p>Comparing two strings in a <dfn id="ascii-case-insensitive">ASCII case-insensitive</dfn> manner means comparing them exactly, code point for code point, except that the characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z), inclusive, and the corresponding characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z), inclusive, are considered to also match.
+<p>Comparing two strings in a <dfn>ASCII case-insensitive</dfn> manner means comparing them exactly, code point for code point, except that the characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z), inclusive, and the corresponding characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z), inclusive, are considered to also match.
 
-<p><dfn id="converted-to-ascii-uppercase" title="converted to ascii uppercase">Converting a string to ASCII uppercase</dfn> means replacing all characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z), inclusive, with the corresponding characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z).
+<p><dfn lt="converted to ascii uppercase|converting a string to ASCII uppercase">Converting a string to ASCII uppercase</dfn> means replacing all characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z), inclusive, with the corresponding characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z).
 
-<p><dfn id="converted-to-ascii-lowercase" title="converted to ascii lowercase">Converting a string to ASCII lowercase</dfn> means replacing all characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z), inclusive, with the corresponding characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z).
+<p><dfn lt="converted to ascii lowercase|converting a string to ASCII lowercase">Converting a string to ASCII lowercase</dfn> means replacing all characters in the range U+0041 to U+005A (i.e. LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z), inclusive, with the corresponding characters in the range U+0061 to U+007A (i.e. LATIN SMALL LETTER A to LATIN SMALL LETTER Z).
 
-<p>A string <var>pattern</var> is a <dfn id="prefix-match">prefix match</dfn> for a string
+<p>A string <var>pattern</var> is a <dfn>prefix match</dfn> for a string
 <var>s</var> when <var>pattern</var> is not longer than
 <var>s</var> and truncating <var>s</var> to
 <var>pattern</var>'s length leaves the two strings as matches of each
@@ -112,10 +98,10 @@ other.
 
   <li><a>Skip ASCII whitespace</a>.</li>
 
-  <li><p>While <var>position</var> is not past the end of <var>input</var>:</p><ol><li><a>Collect a code point sequence</a> of code points that are not <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.</li><li>If the collected string is not in <var>tokens</var>, append the collected string to <var>tokens</var>.</li><li><a>Skip ASCII whitespace</a>. </li></ol></li><li>Return <var>tokens</var>.</li>
+  <li><p>While <var>position</var> is not past the end of <var>input</var>:</p><ol><li><a>Collect a code point sequence</a> of code points that are not <a>ASCII whitespace</a>.</li><li>If the collected string is not in <var>tokens</var>, append the collected string to <var>tokens</var>.</li><li><a>Skip ASCII whitespace</a>. </li></ol></li><li>Return <var>tokens</var>.</li>
 </ol>
 
-<p>To <dfn id="collect-a-code-point-sequence">collect a code point sequence</dfn> of <var>code points</var>, run these steps:</p>
+<p>To <dfn>collect a code point sequence</dfn> of <var>code points</var>, run these steps:</p>
 <ol>
   <li>Let <var>input</var> and <var>position</var> be the same variables as those of the same name in the algorithm that invoked these steps.</li>
 
@@ -126,23 +112,23 @@ other.
   <li>Return <var>result</var>.</li>
 </ol>
 
-<p>To <dfn id="skip-ascii-whitespace">skip ASCII whitespace</dfn> means to
-<a href="#collect-a-code-point-sequence">collect a code point sequence</a> of
-<a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> and discard the
+<p>To <dfn>skip ASCII whitespace</dfn> means to
+<a>collect a code point sequence</a> of
+<a>ASCII whitespace</a> and discard the
 return value.
 
-<p>The <dfn id="concept-ordered-set-serializer" title="concept-ordered-set-serializer">ordered set serializer</dfn> takes a
+<p>The <dfn>ordered set serializer</dfn> takes a
 <var>set</var> and returns the concatenation of the strings in
 <var>set</var>, separated from each other by U+0020.
 
 <h3 id="terminology-namespaces">Namespaces</h3>
 
-The <dfn id="html-namespace">HTML namespace</dfn> is
+The <dfn>HTML namespace</dfn> is
 <code>http://www.w3.org/1999/xhtml</code>.
 
-The <dfn id="xml-namespace">XML namespace</dfn> is
+The <dfn>XML namespace</dfn> is
 <code>http://www.w3.org/XML/1998/namespace</code>.
 
-The <dfn id="xmlns-namespace">XMLNS namespace</dfn> is
+The <dfn>XMLNS namespace</dfn> is
 <code>http://www.w3.org/2000/xmlns/</code>.
 </section>
