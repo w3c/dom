@@ -528,7 +528,7 @@ interface HTMLCollection {
 
 <p>The <dfn id="htmlcollection-item-func" for="HTMLCollection"><code>item(<var>index</var>)</code></dfn> method must return the <var>index</var>th <a>element</a> in the <a>collection</a>. If there is no <var>index</var>th <a>element</a> in the <a>collection</a>, then the method must return null.
 
-<p>The <a>supported property names</a>, all <a>unenumerable</a>, are the values from the list returned by these steps:
+<p>The <a>supported property names</a> are the values from the list returned by these steps:
 
 <ol>
  <li><p>Let <var>result</var> be an empty list.
