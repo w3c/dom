@@ -99,7 +99,7 @@ something has occurred. E.g. that an image has completed downloading. It is
 represented by the <code><a>Event</a></code> interface or an interface that
 inherits from the <code><a>Event</a></code> interface.</p>
 
-<dl class="domintro">
+<dl>
   : <code><var>event</var> = new <a>Event</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
   :: <p>Returns a new <var>event</var> whose <code><a>type</a></code> attribute value is set to <var>type</var>. The optional <var>eventInitDict</var> argument allows for setting the <code><a>bubbles</a></code> and <code><a>cancelable</a></code> attributes via object members of the same name.
 
@@ -139,7 +139,6 @@ inherits from the <code><a>Event</a></code> interface.</p>
   : <code><var>event</var> . <a>timeStamp</a></code>
   :: <p>Returns the creation time of <var>event</var> as the number of milliseconds that passed since 00:00:00 UTC on 1 January 1970.
 
- <!-- initEvent is dead -->
 </dl>
 
 <p>The <dfn lt="dom event type|event type|type"><code>type</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the empty string.
@@ -183,7 +182,7 @@ method must set the <a>stop propagation flag</a>.
 <p>The
 <dfn><code>stopImmediatePropagation()</code></dfn> method must set both the <a>stop propagation flag</a> and <a>stop immediate propagation flag</a>.
 
-<p>The <dfn lt="dom event bubble|event bubble|bubble|dom event bubbles|event bubbles|bubbles"><code>bubbles</code></dfn> and <dfn lt="dom event cancelable|event cancelable|cancelable><code>cancelable</code></dfn> attributes must return the values they were initialized to.
+<p>The <dfn lt="dom event bubble|event bubble|bubble|dom event bubbles|event bubbles|bubbles"><code>bubbles</code></dfn> and <dfn lt="dom event cancelable|event cancelable|cancelable"><code>cancelable</code></dfn> attributes must return the values they were initialized to.
 
 <p>The <dfn><code>preventDefault()</code></dfn> method must set the <a>canceled flag</a> if the <code><a>cancelable</a></code> attribute value is true.
 
@@ -214,7 +213,7 @@ initialized to false.
 </ol>
 
 <p>The
-<dfn"><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>
+<dfn><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -251,7 +250,6 @@ dictionary CustomEventInit : EventInit {
   : <code><var>event</var> . <a>detail</a></code>
   :: <p>Returns any custom data <var>event</var> was created with. Typically used for synthetic events.
 
- <!-- initCustomEvent is dead -->
 </dl>
 
 <p>The <dfn lt="dom event customevent detail|event customevent detail|customevent detail|detail"><code>detail</code></dfn> attribute
@@ -262,11 +260,11 @@ must return the value it was initialized to.
 method must, when invoked, run these steps:
 
 <ol>
-  1. If <a>context object</a>'s <a>dispatch flag</a> is set, terminate these steps.
+  <li>If <a>context object</a>'s <a>dispatch flag</a> is set, terminate these steps.
 
-  2. <a>Initialize</a> the <a>context object</a> with <var>type</var>, <var>bubbles</var>, and <var>cancelable</var>.
+  <li><a>Initialize</a> the <a>context object</a> with <var>type</var>, <var>bubbles</var>, and <var>cancelable</var>.
 
-  3. Set <a>context object</a>'s <code><a>detail</a></code> attribute to <var>detail</var>.
+  <li>Set <a>context object</a>'s <code><a>detail</a></code> attribute to <var>detail</var>.
 
 </ol>
 
@@ -283,7 +281,7 @@ method must, when invoked, run these steps:
 
   4. If there is an <var>eventInitDict</var> argument then for each <a>dictionary member</a> defined therein find the attribute on <a>event</a> whose <a>identifier</a> matches the key of the <a>dictionary member</a> and then set the attribute to the value of that <a>dictionary member</a>.
 
-  5.Return the <a>event</a>.
+  5. Return the <a>event</a>.
 
 </ol>
 
@@ -316,19 +314,19 @@ callback interface EventListener {
 
 <p class="note">Note: The <b>callback</b> is named <code><dfn>EventListener</dfn></code> for historical reasons. As can be seen from the definition above, an <a>event listener</a> is a more broad concept.
 
-<dl class="domintro">
-  : <code><var>target</var> . <a>addEventListener</a>(<var>type</var>, <var>callback</var> [, <var>capture</var> = false])</code>
-  :: Appends an <a>event listener</a> for <a>events</a> whose <code><a>type</a></code> attribute value is <var>type</var>. The <var>callback</var> argument sets the <b>callback</b> that will be invoked when the <a>event</a> is <a>dispatched</a>. When set to true, the <var>capture</var> argument prevents <b>callback</b> from being invoked if the <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>BUBBLING_PHASE</a></code>. When false, <b>callback</b> will not be invoked when <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>CAPTURING_PHASE</a></code>. Either way, <b>callback</b> will be invoked when <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>AT_TARGET</a></code>.
+<dl>
+  <dt><code><var>target</var> . <a>addEventListener</a>(<var>type</var>, <var>callback</var> [, <var>capture</var> = false])</code>
+  <dd>
+  <p>Appends an <a>event listener</a> for <a>events</a> whose <code><a>type</a></code> attribute value is <var>type</var>. The <var>callback</var> argument sets the <b>callback</b> that will be invoked when the <a>event</a> is <a>dispatched</a>. When set to true, the <var>capture</var> argument prevents <b>callback</b> from being invoked if the <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>BUBBLING_PHASE</a></code>. When false, <b>callback</b> will not be invoked when <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>CAPTURING_PHASE</a></code>. Either way, <b>callback</b> will be invoked when <a>event</a>'s <code><a>eventPhase</a></code> attribute value is <code><a>AT_TARGET</a></code>.
 
-  The <a>event listener</a> is appended to <var>target</var>'s list of
+  <p>The <a>event listener</a> is appended to <var>target</var>'s list of
   <a>event listeners</a> and is not appended if it is a duplicate, i.e. having the same <b>type</b>, <b>callback</b>, and <b>capture</b> values.
 
-  : <var>target</var> . <a>removeEventListener</a>(<var>type</var>, <var>callback</var> [, <var>capture</var> = false])</code>
-  :: Remove the <a>event listener</a> in <var>target</var>'s list of <a>event listeners</a> with the same <var>type</var>, <var>callback</var>, and <var>capture</var>.
+  <dt><var>target</var> . <a>removeEventListener</a>(<var>type</var>, <var>callback</var> [, <var>capture</var> = false])</code>
+  <dd>Remove the <a>event listener</a> in <var>target</var>'s list of <a>event listeners</a> with the same <var>type</var>, <var>callback</var>, and <var>capture</var>.
 
-  : <code><var>target</var> . <a>dispatchEvent</a>(<var>event</var>)</code>
-  :: <a>Dispatches</a> a synthetic event <var>event</var> to <var>target</var> and returns true if either <var>event</var>'s <code><a>cancelable</a></code> attribute value is false or its <code><a>preventDefault()</a></code> method was not invoked, and false otherwise.
-
+  <dt><code><var>target</var> . <a>dispatchEvent</a>(<var>event</var>)</code>
+  <dd><a>Dispatches</a> a synthetic event <var>event</var> to <var>target</var> and returns true if either <var>event</var>'s <code><a>cancelable</a></code> attribute value is false or its <code><a>preventDefault()</a></code> method was not invoked, and false otherwise.
 </dl>
 
 <p>The
@@ -365,23 +363,23 @@ method must run these steps:
 <var>target override</var>, run these steps:
 
 <ol>
-  1. Let <var>event</var> be the <a>event</a> that is dispatched.
+  <li>Let <var>event</var> be the <a>event</a> that is dispatched.
 
-  2. Set <var>event</var>'s <a>dispatch flag</a>.
+  <li>Set <var>event</var>'s <a>dispatch flag</a>.
 
-  3. Initialize <var>event</var>'s <code><a>target</a></code> attribute to <var>target override</var>, if it is given, and the object to which <var>event</var> is dispatched otherwise.
+  <li>Initialize <var>event</var>'s <code><a>target</a></code> attribute to <var>target override</var>, if it is given, and the object to which <var>event</var> is dispatched otherwise.
 
-  4. If <var>event</var>'s <code><a>target</a></code> attribute value is <a>participating</a> in a <a>tree</a>, let <var>event path</var> be a static ordered list of all its <a>ancestors</a> in <a>tree order</a>, and let <var>event path</var> be the empty list otherwise.
+  <li>If <var>event</var>'s <code><a>target</a></code> attribute value is <a>participating</a> in a <a>tree</a>, let <var>event path</var> be a static ordered list of all its <a>ancestors</a> in <a>tree order</a>, and let <var>event path</var> be the empty list otherwise.
 
-  5. Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>CAPTURING_PHASE</a></code>.
+  <li>Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>CAPTURING_PHASE</a></code>.
 
-  6. For each object in <var>event path</var>, <a>invoke</a> its <a>event listeners</a> with event <var>event</var>, as long as <var>event</var>'s <a>stop propagation flag</a> is unset.
+  <li>For each object in <var>event path</var>, <a>invoke</a> its <a>event listeners</a> with event <var>event</var>, as long as <var>event</var>'s <a>stop propagation flag</a> is unset.
 
-  7. Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>AT_TARGET</a></code>.
+  <li>Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>AT_TARGET</a></code>.
 
-  8. <a>Invoke</a> the <a>event listeners</a> of <var>event</var>'s <code><a>target</a></code> attribute value with <var>event</var>, if <var>event</var>'s <a>stop propagation flag</a> is unset.
+  <li><a>Invoke</a> the <a>event listeners</a> of <var>event</var>'s <code><a>target</a></code> attribute value with <var>event</var>, if <var>event</var>'s <a>stop propagation flag</a> is unset.
 
-  9. If <var>event</var>'s <code><a>bubbles</a></code> attribute value is true, run these substeps:
+  <li>If <var>event</var>'s <code><a>bubbles</a></code> attribute value is true, run these substeps:
 
   <ol>
     1. Reverse the order of <var>event path</var>.
@@ -392,13 +390,13 @@ method must run these steps:
 
   </ol>
 
-  10. Unset <var>event</var>'s <a>dispatch flag</a>.
+  <li>Unset <var>event</var>'s <a>dispatch flag</a>.
 
-  11. Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>NONE</a></code>.
+  <li>Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>NONE</a></code>.
 
-  12. Initialize <var>event</var>'s <code><a>currentTarget</a></code> attribute to null.
+  <li>Initialize <var>event</var>'s <code><a>currentTarget</a></code> attribute to null.
 
-  13. Return false if <var>event</var>'s <a>canceled flag</a> is set, and true otherwise.
+  <li>Return false if <var>event</var>'s <a>canceled flag</a> is set, and true otherwise.
 
 </ol>
 
@@ -406,10 +404,10 @@ method must run these steps:
 <p>To <dfn lt="listener invoke|event listener invoke|invoke|invokes|invoked">invoke</dfn> the <a>event listeners</a> for an object with an
 event run these steps:</p>
 <ol>
-  1. Let <var>event</var> be the <a>event</a> for which the <a>event listeners</a> are invoked.
-  2. Let <var>listeners</var> be a copy of the <a>event listeners</a> associated with the object for which these steps are run.
-  3. Initialize <var>event</var>'s <code><a>currentTarget</a></code> attribute to the object for which these steps are run.
-  4. Then run these substeps for each <a>event listener</a> in <var>listeners</var>:
+  <li>Let <var>event</var> be the <a>event</a> for which the <a>event listeners</a> are invoked.
+  <li>Let <var>listeners</var> be a copy of the <a>event listeners</a> associated with the object for which these steps are run.
+  <li>Initialize <var>event</var>'s <code><a>currentTarget</a></code> attribute to the object for which these steps are run.
+  <li>Then run these substeps for each <a>event listener</a> in <var>listeners</var>:
 
   <ol>
     1. If <var>event</var>'s <a>stop immediate propagation flag</a> is set, terminate the <a>invoke</a> algorithm.

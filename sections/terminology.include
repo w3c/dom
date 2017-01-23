@@ -13,13 +13,13 @@ traversal of a <a>tree</a>.
 a <a>tree</a> has a
 <dfn lt="tree parent|tree parents|parent|parents">parent</dfn>, which is either another object
 or null, and an ordered list of zero or more
-<dfn lt="tree child|tree children|child|children>child</dfn> objects. An object <var>A</var> whose
+<dfn lt="tree child|tree children|child|children">child</dfn> objects. An object <var>A</var> whose
 <a>parent</a> is object <var>B</var> is a
 <a>child</a> of <var>B</var>.
 
-<p>The <dfn lt="tree root|tree roots|root|roots">root</dfn> of an object is itself, if its
+<p>The <dfn id="tree-root" for="tree">root</dfn> of an object is itself, if its
 <a>parent</a> is null, or else it is the
-<a>root</a> of its
+<a href="#tree-root">root</a> of its
 <a>parent</a>.
 
 <p>An object <var>A</var> is called a
@@ -67,9 +67,9 @@ after <var>B</var> in
 <p>The <dfn lt="tree last child|last child">last child</dfn> of an object is
 its last <a>child</a> or null if it has no <a>children</a>.
 
-<p>The <dfn lt="tree previous sibling|previous sibling">previous sibling</dfn> of an object is its first <a>preceding</a> <a>sibling</a> or null if it has no <a>preceding</a> <a>sibling</a>.
+<p>The <dfn id="tree-previous-sibling" lt="tree previous sibling|previous sibling" for="tree">previous sibling</dfn> of an object is its first <a>preceding</a> <a>sibling</a> or null if it has no <a>preceding</a> <a>sibling</a>.
 
-<p>The <dfn lt="tree next sibling|next sibling">next sibling</dfn> of an object is its first <a>following</a> <a>sibling</a> or null if it has no <a>following</a> <a>sibling</a>.
+<p>The <dfn id="tree-next-sibling" lt="tree next sibling|next sibling" for="tree">next sibling</dfn> of an object is its first <a>following</a> <a>sibling</a> or null if it has no <a>following</a> <a>sibling</a>.
 
 <p>The <dfn lt="tree index|index">index</dfn> of an object is its number of <a>preceding</a> <a>siblings</a>.
 

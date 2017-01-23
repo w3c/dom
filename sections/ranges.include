@@ -10,7 +10,7 @@
 <ul class="domTree">
  <li class="t1"><a>Element</a>: <code>p</code>
   <ul>
-   <li class="t1"><a>Element</a>: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span>
+   <li class="t1"><a>Element</a>: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span> 
    <li class="t3"><code><a>Text</a></code>: <span> CSS 2.1 syndata is </span>
    <li class="t1"><a>Element</a>: <code>em</code>
     <ul>
@@ -32,23 +32,11 @@ range.setEnd(secondText, 4)
 
 <p class="note">Note: <a>Attributes</a> such as <code>src</code> and <code>alt</code> in the <a>node tree</a> above cannot be represented by a <a>range</a>. The <a>ranges</a> concept is only useful for <a>nodes</a>.
 
-<p><a>Ranges</a> are affected by mutations to the
-<a>node tree</a>. Such mutations will not
-invalidate a <a>range</a> and will try to ensure
-that the <a>range</a> still represents the same
-piece of content. Necessarily, a <a href="#concept-range" title="concept-range">range</a>
-might itself be modified as part of the mutation to the
-<a href="#concept-node-tree" title="concept-node-tree">node tree</a> when e.g. part of the content
-it represents is mutated.
+<p><a>Ranges</a> are affected by mutations to the <a>node tree</a>. Such mutations will not invalidate a <a>range</a> and will try to ensure that the <a>range</a> still represents the same piece of content. Necessarily, a <a>range</a> might itself be modified as part of the mutation to the <a>node tree</a> when e.g. part of the content it represents is mutated.
 
-<p class="note">Note: See the <a href="#concept-node-insert" title="concept-node-insert">insert</a> and
-<a href="#concept-node-remove" title="concept-node-remove">remove</a> algorithms, the
-<code title="dom-Node-normalize"><a href="#dom-node-normalize">normalize()</a></code> method, and the
-<a href="#concept-cd-replace" title="concept-CD-replace">replace data</a> and
-<a href="#concept-text-split" title="concept-Text-split">split</a> algorithms for the hairy
-details.
+<p class="note">Note: See the <a>insert</a> and <a>remove</a> algorithms, the <code><a>normalize()</a></code> method, and the <a>replace data</a> and <a>split</a> algorithms for the hairy details.
 
-<h3 id="ranges-interface-range">Interface <code><a href="#range">Range</a></code></h3>
+<h3 id="ranges-interface-range">Interface <code><a>Range</a></code></h3>
 
 <pre class='idl'>
 [Constructor,
@@ -95,248 +83,120 @@ interface Range {
 };
 </pre>
 
-<p><code><a href="#range">Range</a></code> objects are simply known as
-<dfn id="concept-range" title="concept-range">ranges</dfn>.
+<p><code><a>Range</a></code> objects are simply known as <dfn lt="range|ranges">ranges</dfn>.
 
-<p>A <dfn id="concept-range-bp" title="concept-range-bp">boundary point</dfn> is a
-(<a href="#concept-node" title="concept-node">node</a>,
-<dfn id="concept-range-bp-offset" title="concept-range-bp-offset">offset</dfn>) tuple, where
-<a href="#concept-range-bp-offset" title="concept-range-bp-offset">offset</a> is a non-negative
-integer.
+<p>A <dfn>boundary point</dfn> is a (<a>node</a>, <dfn lt="range boundary point offset|boundary point offset|offset">offset</dfn>) tuple, where <a>offset</a> is a non-negative integer.
 
-<p class="note">Note: Generally speaking, a
-<a href="#concept-range-bp" title="concept-range-bp">boundary point</a>'s
-<a href="#concept-range-bp-offset" title="concept-range-bp-offset">offset</a> will be between zero and
-the <a href="#concept-range-bp" title="concept-range-bp">boundary point</a>'s
-<a href="#concept-node" title="concept-node">node</a>
-<a href="#concept-node-length" title="concept-node-length">length</a>, inclusive. Algorithms that
-modify a <a href="#concept-tree" title="concept-tree">tree</a> (in particular the
-<a href="#concept-node-insert" title="concept-node-insert">insert</a>,
-<a href="#concept-node-remove" title="concept-node-remove">remove</a>,
-<a href="#concept-cd-replace" title="concept-CD-replace">replace data</a>, and
-<a href="#concept-text-split" title="concept-Text-split">split</a> algorithms) also modify
-<a href="#concept-range" title="concept-range">ranges</a> associated with that
-<a href="#concept-tree" title="concept-tree">tree</a>.
+<p class="note">Note: Generally speaking, a <a>boundary point</a>'s <a>offset</a> will be between zero and the <a>boundary point</a>'s <a>node</a> <a>length</a>, inclusive. Algorithms that modify a <a>tree</a> (in particular the <a>insert</a>, <a>remove</a>, <a>replace data</a>, and <a>split</a> algorithms) also modify <a>ranges</a> associated with that <a>tree</a>.
 
-<p>If the two <a href="#concept-node" title="concept-node">nodes</a> of
-<a href="#concept-range-bp" title="concept-range-bp">boundary points</a>
-(<var>node A</var>, <var>offset A</var>) and
-(<var>node B</var>, <var>offset B</var>) have the same
-<a href="#concept-tree-root" title="concept-tree-root">root</a>, the
-<dfn id="concept-range-bp-position" title="concept-range-bp-position">position</dfn> of the first relative to
-the second is either <dfn id="concept-range-bp-before" title="concept-range-bp-before">before</dfn>,
-<dfn id="concept-range-bp-equal" title="concept-range-bp-equal">equal</dfn>, or
-<dfn id="concept-range-bp-after" title="concept-range-bp-after">after</dfn>,
-as returned by the following algorithm:
+<p>If the two <a>nodes</a> of <a>boundary points</a> (<var>node A</var>, <var>offset A</var>) and (<var>node B</var>, <var>offset B</var>) have the same <a href="#tree-root">root</a>, the <dfn lt="range boundary point position|boundary point position|position">position</dfn> of the first relative to the second is either <dfn lt="range boundary point before|boundary point before|before">before</dfn>, <dfn lt="range boundary point equal|boundary point equal|equal">equal</dfn>, or <dfn lt="range boundary point after|boundary point after|after">after</dfn>, as returned by the following algorithm:
 
 <ol>
-  1. If <var>node A</var> is the same as <var>node B</var>, ge-bp-equal">equal</a> if <var>offset A</var> is the same as <var>offset B</var>, <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a> if <var>offset A</var> is less than <var>offset B</var>, and <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a> if <var>offset A</var> is greater than <var>offset B</var>.
+  <li>If <var>node A</var> is the same as <var>node B</var>, return <a>equal</a> if <var>offset A</var> is the same as <var>offset B</var>, <a>before</a> if <var>offset A</var> is less than <var>offset B</var>, and <a>after</a> if <var>offset A</var> is greater than <var>offset B</var>.
 
-  2. If <var>node A</var> is <a href="#concept-tree-following" title="concept-tree-following">following</a> <var>node B</var>, compute the <a href="#concept-range-bp-position" title="concept-range-bp-position">position</a> of (<var>node B</var>, <var>offset B</var>) relative to (<var>node A</var>, <var>offset A</var>). If it is <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>, return <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>. If it is <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>, return <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>.
+  <li>If <var>node A</var> is <a>following</a> <var>node B</var>, compute the <a>position</a> of (<var>node B</var>, <var>offset B</var>) relative to (<var>node A</var>, <var>offset A</var>). If it is <a>before</a>, return <a>after</a>. If it is <a>after</a>, return <a>before</a>.
 
-  3. If <var>node A</var> is an <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a> of <var>node B</var>:
+  <li>If <var>node A</var> is an <a>ancestor</a> of <var>node B</var>:
 
   <ol>
     1. Let <var>child</var> equal <var>node B</var>.
 
-    2. While <var>child</var> is not a <a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>node A</var>, set <var>child</var> to its <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+    2. While <var>child</var> is not a <a>child</a> of <var>node A</var>, set <var>child</var> to its <a>parent</a>.
 
-    3. If the <a href="#concept-tree-index" title="concept-tree-index">index</a> of <var>child</var> is less than <var>offset A</var>, return <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>.
+    3. If the <a>index</a> of <var>child</var> is less than <var>offset A</var>, return <a>after</a>.
 
   </ol>
 
-  4. Return <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>.
+  <li>Return <a>before</a>.
 
 </ol>
 
-<p>Each <a href="#concept-range" title="concept-range">range</a> has two associated
-<a href="#concept-range-bp" title="concept-range-bp">boundary points</a> — a
-<dfn id="concept-range-start" title="concept-range-start">start</dfn> and
-<dfn id="concept-range-end" title="concept-range-end">end</dfn>.
+<p>Each <a>range</a> has two associated <a>boundary points</a> — a <dfn lt="range start|start">start</dfn> and <dfn lt="range end|end">end</dfn>.
 
-<p>For convenience, <dfn id="concept-range-start-node" title="concept-range-start-node">start node</dfn> is
-<a href="#concept-range-start" title="concept-range-start">start</a>'s
-<a href="#concept-node" title="concept-node">node</a>,
-<dfn id="concept-range-start-offset" title="concept-range-start-offset">start offset</dfn> is
-<a href="#concept-range-start" title="concept-range-start">start</a>'s
-<a href="#concept-range-bp-offset" title="concept-range-bp-offset">offset</a>,
-<dfn id="concept-range-end-node" title="concept-range-end-node">end node</dfn> is
-<a href="#concept-range-end" title="concept-range-end">end</a>'s
-<a href="#concept-node" title="concept-node">node</a>,  and
-<dfn id="concept-range-end-offset" title="concept-range-end-offset">end offset</dfn> is
-<a href="#concept-range-end" title="concept-range-end">end</a>'s
-<a href="#concept-range-bp-offset" title="concept-range-bp-offset">offset</a>.
+<p>For convenience, <dfn lt="range start node|start node">start node</dfn> is <a>start</a>'s <a>node</a>, <dfn>start offset</dfn> is <a>start</a>'s <a>offset</a>, <dfn lt="range end node|end node">end node</dfn> is <a>end</a>'s <a>node</a>, and <dfn>end offset</dfn> is <a>end</a>'s <a>offset</a>.
 
-<p>The <dfn id="concept-range-root" title="concept-range-root">root of a range</dfn> is the
-<a href="#concept-tree-root" title="concept-tree-root">root</a> of its
-<a href="#concept-range-start-node" title="concept-range-start-node">start node</a>.
+<p>The <dfn id="range-root" for="range">root of a range</dfn> is the <a href="#tree-root">root</a> of its <a>start node</a>.
 <!-- start and end have an identical root -->
 
-<p>A <a href="#concept-node" title="concept-node">node</a> <var>node</var> is
-<dfn id="contained">contained</dfn> in a <a href="#concept-range" title="concept-range">range</a>
-<var>range</var> if <var>node</var>'s
-<a href="#concept-tree-root" title="concept-tree-root">root</a> is
-the same as <var>range</var>'s
-<a href="#concept-range-root" title="concept-range-root">root</a>, and (<var>node</var>, 0)
-is <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a> <var>range</var>'s
-<a href="#concept-range-start" title="concept-range-start">start</a>, and (<var>node</var>,
-<a href="#concept-node-length" title="concept-node-length">length</a> of <var>node</var>) is
-<a href="#concept-range-bp-before" title="concept-range-bp-before">before</a> <var>range</var>'s
-<a href="#concept-range-end" title="concept-range-end">end</a>.
+<p>A <a>node</a> <var>node</var> is <dfn>contained</dfn> in a <a>range</a> <var>range</var> if <var>node</var>'s <a href="#tree-root">root</a> is the same as <var>range</var>'s <a href="#range-root">root</a>, and (<var>node</var>, 0) is <a>after</a> <var>range</var>'s <a>start</a>, and (<var>node</var>, <a>length</a> of <var>node</var>) is <a>before</a> <var>range</var>'s <a>end</a>.
 
-<p>A <a href="#concept-node" title="concept-node">node</a> is <dfn id="partially-contained">partially contained</dfn>
-in a <a href="#concept-range" title="concept-range">range</a> if it is an
-<a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of the
-<a href="#concept-range" title="concept-range">range</a>'s
-<a href="#concept-range-start-node" title="concept-range-start-node">start node</a> but not its
-<a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, or vice versa.
+<p>A <a>node</a> is <dfn>partially contained</dfn> in a <a>range</a> if it is an <a>inclusive ancestor</a> of the <a>range</a>'s <a>start node</a> but not its <a>end node</a>, or vice versa.
 
 <div class="note">
  <p>Some facts to better understand these definitions:
 
  <ul>
-  <li><p>The content that one would think of as being within the
-  <a href="#concept-range" title="concept-range">range</a> consists of all
-  <a href="#contained">contained</a> <a href="#concept-node" title="concept-node">nodes</a>, plus
-  possibly some of the contents of the
-  <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> and
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a> if those are
-  <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
-  <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">nodes</a>.
+  <li><p>The content that one would think of as being within the <a>range</a> consists of all <a>contained</a> <a>nodes</a>, plus possibly some of the contents of the <a>start node</a> and <a>end node</a> if those are <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>nodes</a>.
 
-  <li><p>The <a href="#concept-node" title="concept-node">nodes</a> that are contained in a
-  <a href="#concept-range" title="concept-range">range</a> will generally not be contiguous,
-  because the <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> of a
-  <a href="#contained">contained</a> <a href="#concept-node" title="concept-node">node</a> will not
-  always be <a href="#contained">contained</a>.
+  <li><p>The <a>nodes</a> that are contained in a <a>range</a> will generally not be contiguous, because the <a>parent</a> of a <a>contained</a> <a>node</a> will not always be <a>contained</a>.
 
-  <li><p>However, the <a href="#concept-tree-descendant" title="concept-tree-descendant">descendants</a>
-  of a <a href="#contained">contained</a> <a href="#concept-node" title="concept-node">node</a> are
-  <a href="#contained">contained</a>, and if two
-  <a href="#concept-tree-sibling" title="concept-tree-sibling">siblings</a> are
-  <a href="#contained">contained</a>, so are any
-  <a href="#concept-tree-sibling" title="concept-tree-sibling">siblings</a> that lie between them.
+  <li><p>However, the <a>descendants</a> of a <a>contained</a> <a>node</a> are <a>contained</a>, and if two <a>siblings</a> are <a>contained</a>, so are any <a>siblings</a> that lie between them.
 
-  <li><p>The first <a href="#contained">contained</a>
-  <a href="#concept-node" title="concept-node">node</a> (if there are any) will always be
-  after the <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>, and the
-  last <a href="#contained">contained</a> <a href="#concept-node" title="concept-node">node</a> will
-  always be equal to or before the
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>'s last
-  <a href="#concept-tree-descendant" title="concept-tree-descendant">descendant</a>.
+  <li><p>The first <a>contained</a> <a>node</a> (if there are any) will always be after the <a>start node</a>, and the last <a>contained</a> <a>node</a> will always be equal to or before the <a>end node</a>'s last <a>descendant</a>.
 
-  <li><p>The <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> and
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a> of a
-  <a href="#concept-range" title="concept-range">range</a> are never <a href="#contained">contained</a>
-  within it.
+  <li><p>The <a>start node</a> and <a>end node</a> of a <a>range</a> are never <a>contained</a> within it.
 
-  <li><p>There exists a partially contained
-  <a href="#concept-node" title="concept-node">node</a> if and only if the
-  <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> and
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a> are different.
+  <li><p>There exists a partially contained <a>node</a> if and only if the <a>start node</a> and <a>end node</a> are different.
 
-  <li><p>The
-  <code title="dom-Range-commonAncestorContainer"><a href="#dom-range-commonancestorcontainer">commonAncestorContainer</a></code>
-  attribute value is neither <a href="#contained">contained</a> nor
-  <a href="#partially-contained">partially contained</a>.
+  <li><p>The <code><a>commonAncestorContainer</a></code> attribute value is neither <a>contained</a> nor <a>partially contained</a>.
 
-  <li>If the <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> is an
-  <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a> of the
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, the common
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> will
-  be the <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>. Exactly one
-  of its <a href="#concept-tree-child" title="concept-tree-child">children</a> will be
-  <a href="#partially-contained">partially contained</a>, and a
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> will be <a href="#contained">contained</a>
-  if and only if it <a href="#concept-tree-preceding" title="concept-tree-preceding">precedes</a> the
-  <a href="#partially-contained">partially contained</a>
-  <a href="#concept-tree-child" title="concept-tree-child">child</a>. If the
-  <a href="#concept-range-end-node" title="concept-range-end-node">end node</a> is an
-  <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a> of the
-  <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>, the opposite
-  holds.
+  <li>If the <a>start node</a> is an <a>ancestor</a> of the <a>end node</a>, the common <a>inclusive ancestor</a> will be the <a>start node</a>. Exactly one of its <a>children</a> will be <a>partially contained</a>, and a <a>child</a> will be <a>contained</a> if and only if it <a>precedes</a> the <a>partially contained</a> <a>child</a>. If the <a>end node</a> is an <a>ancestor</a> of the <a>start node</a>, the opposite holds.
 
-  <li><p>If the <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> is
-  not an
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  the <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, nor vice versa,
-  the common
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> will
-  be distinct from both of them. Exactly two of its
-  <a href="#concept-tree-child" title="concept-tree-child">children</a> will be
-  <a href="#partially-contained">partially contained</a>, and a
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> will be contained if and only
-  if it lies between those two.
+  <li><p>If the <a>start node</a> is not an <a>inclusive ancestor</a> of the <a>end node</a>, nor vice versa, the common <a>inclusive ancestor</a> will be distinct from both of them. Exactly two of its <a>children</a> will be <a>partially contained</a>, and a <a>child</a> will be contained if and only if it lies between those two.
  </ul>
 </div>
 
 <hr>
 
-<dl class="domintro">
+<dl>
 
-  : <code><var>range</var> = new <a href="#dom-range" title="dom-Range">Range</a>()</code>
-  :: Returns a new <a href="#concept-range" title="concept-range">range</a>.
+  : <code><var>range</var> = new <a>Range</a>()</code>
+  :: Returns a new <a>range</a>.
 
 </dl>
 
-<p>The <dfn id="dom-range" title="dom-Range"><code>Range()</code></dfn> constructor must return a new
-<a href="#concept-range" title="concept-range">range</a> with
-(global object's associated <a href="#concept-document" title="concept-document">document</a>, 0) as its
-<a href="#concept-range-start" title="concept-range-start">start</a> and
-<a href="#concept-range-end" title="concept-range-end">end</a>.
+<p>The <dfn><code>Range()</code></dfn> constructor must return a new <a>range</a> with (global object's associated <a>document</a>, 0) as its <a>start</a> and <a>end</a>.
 
 <hr>
 
-<dl class="domintro">
+<dl>
 
-  : <var>node</var> = <var>range</var> . <code title="dom-Range-startContainer"><a href="#dom-range-startcontainer">startContainer</a></code>
-  :: Returns <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>.
+  : <var>node</var> = <var>range</var> . <code><a>startContainer</a></code>
+  :: Returns <var>range</var>'s <a>start node</a>.
 
-  : <var>offset</var> = <var>range</var> . <code title="dom-Range-startOffset"><a href="#dom-range-startoffset">startOffset</a></code>
-  :: Returns <var>range</var>'s <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>.
+  : <var>offset</var> = <var>range</var> . <code><a>startOffset</a></code>
+  :: Returns <var>range</var>'s <a>start offset</a>.
 
-  : <var>node</var> = <var>range</var> . <code title="dom-Range-endContainer"><a href="#dom-range-endcontainer">endContainer</a></code>
-  :: Returns <var>range</var>'s <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>.
+  : <var>node</var> = <var>range</var> . <code><a>endContainer</a></code>
+  :: Returns <var>range</var>'s <a>end node</a>.
 
-  : <var>offset</var> = <var>range</var> . <code title="dom-Range-endOffset"><a href="#dom-range-endoffset">endOffset</a></code>
-  :: Returns <var>range</var>'s <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>.
+  : <var>offset</var> = <var>range</var> . <code><a>endOffset</a></code>
+  :: Returns <var>range</var>'s <a>end offset</a>.
 
-  : <var>collapsed</var> = <var>range</var> . <code title="dom-Range-collapsed"><a href="#dom-range-collapsed">collapsed</a></code>
-  :: Returns true if <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> and <a href="#concept-range-end" title="concept-range-end">end</a> are the same, and false otherwise.
+  : <var>collapsed</var> = <var>range</var> . <code><a>collapsed</a></code>
+  :: Returns true if <var>range</var>'s <a>start</a> and <a>end</a> are the same, and false otherwise.
 
-  : <var>container</var> = <var>range</var> . <code title="dom-Range-commonAncestorContainer"><a href="#dom-range-commonancestorcontainer">commonAncestorContainer</a></code>
-  :: Returns the <a href="#concept-node" title="concept-node">node</a>, furthest away from the <a href="#concept-document" title="concept-document">document</a>, that is an <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a> of both <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> and <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>.
+  : <var>container</var> = <var>range</var> . <code><a>commonAncestorContainer</a></code>
+  :: Returns the <a>node</a>, furthest away from the <a>document</a>, that is an <a>ancestor</a> of both <var>range</var>'s <a>start node</a> and <a>end node</a>.
 
 </dl>
 
-<p>The <dfn id="dom-range-startcontainer" title="dom-Range-startContainer"><code>startContainer</code></dfn>
-attribute must return the
-<a href="#concept-range-start-node" title="concept-range-start-node">start node</a>.
+<p>The <dfn><code>startContainer</code></dfn> attribute must return the <a>start node</a>.
 
-<p>The <dfn id="dom-range-startoffset" title="dom-Range-startOffset"><code>startOffset</code></dfn>
-attribute must return the
-<a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>.
+<p>The <dfn><code>startOffset</code></dfn> attribute must return the <a>start offset</a>.
 
-<p>The <dfn id="dom-range-endcontainer" title="dom-Range-endContainer"><code>endContainer</code></dfn>
-attribute must return the
-<a href="#concept-range-end-node" title="concept-range-end-node">end node</a>.
+<p>The <dfn><code>endContainer</code></dfn> attribute must return the <a>end node</a>.
 
-<p>The <dfn id="dom-range-endoffset" title="dom-Range-endOffset"><code>endOffset</code></dfn>
-attribute must return the
-<a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>.
+<p>The <dfn><code>endOffset</code></dfn> attribute must return the <a>end offset</a>.
 
-<p>The <dfn id="dom-range-collapsed" title="dom-Range-collapsed"><code>collapsed</code></dfn> attribute
-must return true if <a href="#concept-range-start" title="concept-range-start">start</a> is the same
-as <a href="#concept-range-end" title="concept-range-end">end</a>, and false otherwise.
+<p>The <dfn><code>collapsed</code></dfn> attribute must return true if <a>start</a> is the same as <a>end</a>, and false otherwise.
 
-<p>The
-<dfn id="dom-range-commonancestorcontainer" title="dom-Range-commonAncestorContainer"><code>commonAncestorContainer</code></dfn>
-attribute must run these steps:
+<p>The <dfn><code>commonAncestorContainer</code></dfn> attribute must run these steps:
 
 <ol>
-  1. Let <var>container</var> be <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>.
+  1. Let <var>container</var> be <a>start node</a>.
 
-  2. While <var>container</var> is not an <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, let <var>container</var> be <var>container</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  2. While <var>container</var> is not an <a>inclusive ancestor</a> of <a>end node</a>, let <var>container</var> be <var>container</var>'s <a>parent</a>.
 
   3. Return <var>container</var>.
 
@@ -344,276 +204,183 @@ attribute must run these steps:
 
 <hr>
 
-<p>To <dfn id="concept-range-bp-set" title="concept-range-bp-set">set the start or end</dfn> of a
-<var>range</var> to a
-<a href="#concept-range-bp" title="concept-range-bp">boundary point</a>
-(<var>node</var>, <var>offset</var>), run these steps:
+<p>To <dfn lt="set the start|set the end">set the start or end</dfn> of a <var>range</var> to a <a>boundary point</a> (<var>node</var>, <var>offset</var>), run these steps:
 
 <ol>
-  <li>If <var>node</var> is a <a href="#concept-doctype" title="concept-doctype">doctype</a>, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+  <li>If <var>node</var> is a <a>doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
-  <li>If <var>offset</var> is greater than <var>node</var>'s <a href="#concept-node-length" title="concept-node-length">length</a>, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>IndexSizeError</code>" exception. [[!WEBIDL]]
+  <li>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an "<code>IndexSizeError</code>" exception. [[!WEBIDL]]
 
-  <li>Let <var>bp</var> be the <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>node</var>, <var>offset</var>).
+  <li>Let <var>bp</var> be the <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
   <li><dl class="switch"> 
   <dt>If these steps were invoked as "set the start"
    <dd>
     <ol>
-     <li><p>If <var>bp</var> is
-     <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a> the
-     <var>range</var>'s <a href="#concept-range-end" title="concept-range-end">end</a>, or
-     if <var>range</var>'s
-     <a href="#concept-range-root" title="concept-range-root">root</a> is not equal to
-     <var>node</var>'s <a href="#concept-tree-root" title="concept-tree-root">root</a>, set
-     <var>range</var>'s <a href="#concept-range-end" title="concept-range-end">end</a> to
-     <var>bp</var>.
+     <li><p>If <var>bp</var> is <a>after</a> the <var>range</var>'s <a>end</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#tree-root">root</a>, set <var>range</var>'s <a>end</a> to <var>bp</var>.
 
-     <li><p>Set <var>range</var>'s
-     <a href="#concept-range-start" title="concept-range-start">start</a> to <var>bp</var>.
+     <li><p>Set <var>range</var>'s <a>start</a> to <var>bp</var>.
     </ol>
    <dt>If these steps were invoked as "set the end"
    <dd>
     <ol>
-     <li><p>If <var>bp</var> is
-     <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a> the
-     <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a>,
-     or if <var>range</var>'s
-     <a href="#concept-range-root" title="concept-range-root">root</a> is not equal to
-     <var>node</var>'s <a href="#concept-tree-root" title="concept-tree-root">root</a>, set
-     <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a>
-     to <var>bp</var>.
+     <li><p>If <var>bp</var> is <a>before</a> the <var>range</var>'s <a>start</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#tree-root">root</a>, set <var>range</var>'s <a>start</a> to <var>bp</var>.
 
-     <li><p>Set <var>range</var>'s
-     <a href="#concept-range-end" title="concept-range-end">end</a> to <var>bp</var>.
+     <li><p>Set <var>range</var>'s <a>end</a> to <var>bp</var>.
     </ol>
   </dl>
 </ol>
 
 <p>The
-<dfn id="dom-range-setstart" title="dom-Range-setStart"><code>setStart(<var>node</var>, <var>offset</var>)</code></dfn>
-method must <a href="#concept-range-bp-set" title="concept-range-bp-set">set the start</a> of the
-<a href="#context-object">context object</a> to
-<a href="#concept-range-bp" title="concept-range-bp">boundary point</a>
-(<var>node</var>, <var>offset</var>).
+<dfn><code>setStart(<var>node</var>, <var>offset</var>)</code></dfn> method must <a>set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
-<p>The
-<dfn id="dom-range-setend" title="dom-Range-setEnd"><code>setEnd(<var>node</var>, <var>offset</var>)</code></dfn>
-method must <a href="#concept-range-bp-set" title="concept-range-bp-set">set the end</a> of the
-<a href="#context-object">context object</a> to
-<a href="#concept-range-bp" title="concept-range-bp">boundary point</a>
-(<var>node</var>, <var>offset</var>).
+<p>The <dfn><code>setEnd(<var>node</var>, <var>offset</var>)</code></dfn> method must <a>set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
-<p>The
-<dfn id="dom-range-setstartbefore" title="dom-Range-setStartBefore"><code>setStartBefore(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>setStartBefore(<var>node</var>)</code></dfn> method must run these steps:
 
 <ol>
-  1. Let <var>parent</var> be <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
-  3. <a href="#concept-range-bp-set" title="concept-range-bp-set">Set the start</a> of the <a href="#context-object">context object</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>node</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a>).
+  3. <a>Set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a>).
 
 </ol>
 
-<p>The
-<dfn id="dom-range-setstartafter" title="dom-Range-setStartAfter"><code>setStartAfter(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>setStartAfter(<var>node</var>)</code></dfn> method must run these steps:
 
 <ol>
-  1. Let <var>parent</var> be <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
-  3. <a href="#concept-range-bp-set" title="concept-range-bp-set">Set the start</a> of the <a href="#context-object">context object</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>node</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a> plus one).
+  3. <a>Set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a> plus one).
 
 </ol>
 
-<p>The
-<dfn id="dom-range-setendbefore" title="dom-Range-setEndBefore"><code>setEndBefore(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>setEndBefore(<var>node</var>)</code></dfn> method must run these steps:
 
 <ol>
-  1. Let <var>parent</var> be <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
-  3. <a href="#concept-range-bp-set" title="concept-range-bp-set">Set the end</a> of the <a href="#context-object">context object</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>node</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a>).
+  3. <a>Set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a>).
 
 </ol>
 
-<p>The
-<dfn id="dom-range-setendafter" title="dom-Range-setEndAfter"><code>setEndAfter(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>setEndAfter(<var>node</var>)</code></dfn> method must run these steps:
 
 <ol>
-  1. Let <var>parent</var> be <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
-  3. <a href="#concept-range-bp-set" title="concept-range-bp-set">Set the end</a> of the <a href="#context-object">context object</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>node</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a> plus one).
+  3. <a>Set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a> plus one).
 
 </ol>
 
-<p>The
-<dfn id="dom-range-collapse" title="dom-Range-collapse"><code>collapse(<var>toStart</var>)</code></dfn>
-method, when invoked, must if <var>toStart</var> is true, set
-<a href="#concept-range-end" title="concept-range-end">end</a> to
-<a href="#concept-range-start" title="concept-range-start">start</a>, and set
-<a href="#concept-range-start" title="concept-range-start">start</a> to
-<a href="#concept-range-end" title="concept-range-end">end</a> otherwise.
+<p>The <dfn><code>collapse(<var>toStart</var>)</code></dfn> method, when invoked, must if <var>toStart</var> is true, set <a>end</a> to <a>start</a>, and set <a>start</a> to <a>end</a> otherwise.
 
-<p>To <dfn id="concept-range-select" title="concept-range-select">select</dfn> a <a href="#concept-node" title="concept-node">node</a>
-<var>node</var> within a <a href="#concept-range" title="concept-range">range</a>
-<var>range</var>, run these steps:
+<p>To <dfn lt="range select|select">select</dfn> a <a>node</a> <var>node</var> within a <a>range</a> <var>range</var>, run these steps:
 
 <ol>
-  1. Let <var>parent</var> be <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+  1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
 
-  3. Let <var>index</var> be <var>node</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a>.
+  3. Let <var>index</var> be <var>node</var>'s <a>index</a>.
 
-  4. Set <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>index</var>).
+  4. Set <var>range</var>'s <a>start</a> to <a>boundary point</a> (<var>parent</var>, <var>index</var>).
 
-  5. Set <var>range</var>'s <a href="#concept-range-end" title="concept-range-end">end</a> to <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>parent</var>, <var>index</var> plus one).
+  5. Set <var>range</var>'s <a>end</a> to <a>boundary point</a> (<var>parent</var>, <var>index</var> plus one).
 
 </ol>
 
-<p>The
-<dfn id="dom-range-selectnode" title="dom-Range-selectNode"><code>selectNode(<var>node</var>)</code></dfn>
-method must <a href="#concept-range-select" title="concept-range-select">select</a> <var>node</var> within
-<a href="#context-object">context object</a>.
+<p>The <dfn><code>selectNode(<var>node</var>)</code></dfn> method must <a>select</a> <var>node</var> within <a>context object</a>.
 
-<p>The
-<dfn id="dom-range-selectnodecontents" title="dom-Range-selectNodeContents"><code>selectNodeContents(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>selectNodeContents(<var>node</var>)</code></dfn> method must run these steps:
 
 <ol>
-  1. If <var>node</var> is a <a href="#concept-doctype" title="concept-doctype">doctype</a>, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  1. If <var>node</var> is a <a>doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
 
-  2. Let <var>length</var> be the <a href="#concept-node-length" title="concept-node-length">length</a> of <var>node</var>.
+  2. Let <var>length</var> be the <a>length</a> of <var>node</var>.
 
-  3. Set <a href="#concept-range-start" title="concept-range-start">start</a> to the <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>node</var>, 0).
+  3. Set <a>start</a> to the <a>boundary point</a> (<var>node</var>, 0).
 
-  4. Set <a href="#concept-range-end" title="concept-range-end">end</a> to the <a href="#concept-range-bp" title="concept-range-bp">boundary point</a> (<var>node</var>, <var>length</var>).
+  4. Set <a>end</a> to the <a>boundary point</a> (<var>node</var>, <var>length</var>).
 
 </ol>
 
 <hr>
 
-<p>The
-<dfn id="dom-range-compareboundarypoints" title="dom-Range-compareBoundaryPoints"><code>compareBoundaryPoints(<var>how</var>, <var>sourceRange</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>compareBoundaryPoints(<var>how</var>, <var>sourceRange</var>)</code></dfn> method must run these steps:
 
 <ol>
   <li>If <var>how</var> is not one of <ul>
-   <li><code title="dom-CompareHow-START_TO_START"><a href="#dom-comparehow-start_to_start">START_TO_START</a></code>,
-   <li><code title="dom-CompareHow-START_TO_END"><a href="#dom-comparehow-start_to_end">START_TO_END</a></code>,
-   <li><code title="dom-CompareHow-END_TO_END"><a href="#dom-comparehow-end_to_end">END_TO_END</a></code>, and
-   <li><code title="dom-CompareHow-END_TO_START"><a href="#dom-comparehow-end_to_start">END_TO_START</a></code>,
+   <li><code><a>START_TO_START</a></code>,
+   <li><code><a>START_TO_END</a></code>,
+   <li><code><a>END_TO_END</a></code>, and
+   <li><code><a>END_TO_START</a></code>,
   </ul>
-  <p><a href="#dfn-throw" title="concept-throw">throw</a> a
-  "<code>NotSupportedError</code>" exception. [[!WEBIDL]]
- <li><p>If <a href="#context-object">context object</a>'s
- <a href="#concept-range-root" title="concept-range-root">root</a> is not the same as
- <var>sourceRange</var>'s <a href="#concept-range-root" title="concept-range-root">root</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> a
- "<code>WrongDocumentError</code>" exception. [[!WEBIDL]]
+  <p><a>throw</a> a "<code>NotSupportedError</code>" exception. [[!WEBIDL]]
+ <li><p>If <a>context object</a>'s <a href="#range-root">root</a> is not the same as <var>sourceRange</var>'s <a href="#range-root">root</a>, <a>throw</a> a "<code>WrongDocumentError</code>" exception. [[!WEBIDL]]
 
  <li>
   <p>If <var>how</var> is:
   <dl class="switch">
-   <dt><code title="dom-CompareHow-START_TO_START"><a href="#dom-comparehow-start_to_start">START_TO_START</a></code>:
+   <dt><code><a>START_TO_START</a></code>:
    <dd>
-    <p>Let <var>this point</var> be the <a href="#context-object">context object</a>'s
-    <a href="#concept-range-start" title="concept-range-start">start</a>.
-    <p>Let <var>other point</var> be <var>sourceRange</var>'s
-    <a href="#concept-range-start" title="concept-range-start">start</a>.
+    <p>Let <var>this point</var> be the <a>context object</a>'s <a>start</a>.
+    <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>start</a>.
 
-   <dt><code title="dom-CompareHow-START_TO_END"><a href="#dom-comparehow-start_to_end">START_TO_END</a></code>:
+   <dt><code><a>START_TO_END</a></code>:
    <dd>
-    <p>Let <var>this point</var> be the <a href="#context-object">context object</a>'s
-    <a href="#concept-range-end" title="concept-range-end">end</a>.
-    <p>Let <var>other point</var> be <var>sourceRange</var>'s
-    <a href="#concept-range-start" title="concept-range-start">start</a>.
+    <p>Let <var>this point</var> be the <a>context object</a>'s <a>end</a>.
+    <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>start</a>.
 
-    <dt><code title="dom-CompareHow-END_TO_END"><a href="#dom-comparehow-end_to_end">END_TO_END</a></code>:
+    <dt><code><a>END_TO_END</a></code>:
     <dd>
-     <p>Let <var>this point</var> be the <a href="#context-object">context object</a>'s
-     <a href="#concept-range-end" title="concept-range-end">end</a>.
-     <p>Let <var>other point</var> be <var>sourceRange</var>'s
-     <a href="#concept-range-end" title="concept-range-end">end</a>.
+     <p>Let <var>this point</var> be the <a>context object</a>'s <a>end</a>.
+     <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>end</a>.
 
-    <dt><code title="dom-CompareHow-END_TO_START"><a href="#dom-comparehow-end_to_start">END_TO_START</a></code>:
+    <dt><code><a>END_TO_START</a></code>:
     <dd>
-     <p>Let <var>this point</var> be the <a href="#context-object">context object</a>'s
-     <a href="#concept-range-start" title="concept-range-start">start</a>.
-     <p>Let <var>other point</var> be <var>sourceRange</var>'s
-     <a href="#concept-range-end" title="concept-range-end">end</a>.
+     <p>Let <var>this point</var> be the <a>context object</a>'s <a>start</a>.
+     <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>end</a>.
    </dl>
 
   <li>
-   <p>If the <a href="#concept-range-bp-position" title="concept-range-bp-position">position</a> of
-   <var>this point</var> relative to <var>other point</var> is
+   <p>If the <a>position</a> of <var>this point</var> relative to <var>other point</var> is
 
    <dl class="switch">
-    <dt><a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>
+    <dt><a>before</a>
     <dd>Return −1.
 
-    <dt><a href="#concept-range-bp-equal" title="concept-range-bp-equal">equal</a>
+    <dt><a>equal</a>
     <dd>Return 0.
 
-    <dt><a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>
+    <dt><a>after</a>
     <dd>Return 1.
    </dl>
 </ol>
 
-<p>The <dfn id="dom-range-deletecontents" title="dom-Range-deleteContents"><code>deleteContents()</code></dfn>
-method must run these steps:
+<p>The <dfn><code>deleteContents()</code></dfn>method must run these steps:
 
 <ol>
- <li><p>If <a href="#concept-range-start" title="concept-range-start">start</a> equals
- <a href="#concept-range-end" title="concept-range-end">end</a>, terminate these steps.
+ <li><p>If <a>start</a> equals <a>end</a>, terminate these steps.
  <!-- This might actually make no difference, but it's not immediately
  obvious what would happen otherwise if the start/end were text/comment:
  are all the substeps of the next step actually no-ops, or could some have
  side effects? -->
 
- <li><p>Let <var>original start node</var>,
- <var>original start offset</var>, <var>original end node</var>,
- and <var>original end offset</var> be the
- <a href="#context-object">context object</a>'s
- <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>,
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>,
- <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, and
- <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>, respectively.
+ <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be the <a>context object</a>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
- <li><p>If <var>original start node</var> and
- <var>original end node</var> are the same, and they are a
- <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
- <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">node</a>,
- <a href="#concept-cd-replace" title="concept-CD-replace">replace data</a> with node
- <var>original start node</var>, offset
- <var>original start offset</var>, count
- <var>original end offset</var> minus
- <var>original start offset</var>, and data the empty string, and then
- terminate these steps.
+ <li><p>If <var>original start node</var> and <var>original end node</var> are the same, and they are a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original end offset</var> minus <var>original start offset</var>, and data the empty string, and then terminate these steps.
 
- <li><p>Let <var>nodes to remove</var> be a list of all the
- <a href="#concept-node" title="concept-node">nodes</a> that are <a href="#contained">contained</a> in
- the <a href="#context-object">context object</a>, in
- <a href="#concept-tree-order" title="concept-tree-order">tree order</a>, omitting any
- <a href="#concept-node" title="concept-node">node</a> whose
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is also
- <a href="#contained">contained</a> in the <a href="#context-object">context object</a>.
+ <li><p>Let <var>nodes to remove</var> be a list of all the <a>nodes</a> that are <a>contained</a> in the <a>context object</a>, in <a>tree order</a>, omitting any <a>node</a> whose <a>parent</a> is also <a>contained</a> in the <a>context object</a>.
 
- <li><p>If <var>original start node</var> is an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set
- <var>new node</var> to <var>original start node</var> and
- <var>new offset</var> to <var>original start offset</var>.
+ <li><p>If <var>original start node</var> is an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>new node</var> to <var>original start node</var> and <var>new offset</var> to <var>original start offset</var>.
 
  <li>
   <p>Otherwise:
@@ -621,66 +388,29 @@ method must run these steps:
    <li><p>Let <var>reference node</var> equal
    <var>original start node</var>.
 
-   <li><p>While <var>reference node</var>'s
-   <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is not null and is not an
-   <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-   <var>original end node</var>, set <var>reference node</var>
-   to its <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+   <li><p>While <var>reference node</var>'s <a>parent</a> is not null and is not an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>reference node</var> to its <a>parent</a>.
 
    <li>
-    <p>Set <var>new node</var> to the
-    <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> of
-    <var>reference node</var>, and <var>new offset</var> to one
-    plus the <a href="#concept-tree-index" title="concept-tree-index">index</a> of
-    <var>reference node</var>.
+    <p>Set <var>new node</var> to the <a>parent</a> of <var>reference node</var>, and <var>new offset</var> to one plus the <a>index</a> of <var>reference node</var>.
 
-    <p class="note">Note: If <var>reference node</var>'s
-    <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> were null, it would be the
-    <a href="#concept-range-root" title="concept-range-root">root</a> of the
-    <a href="#context-object">context object</a>, so would be an
-    <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-    <var>original end node</var>, and we could not reach this point.
+    <p class="note">Note: If <var>reference node</var>'s <a>parent</a> were null, it would be the <a href="#range-root">root</a> of the <a>context object</a>, so would be an <a>inclusive ancestor</a> of <var>original end node</var>, and we could not reach this point.
   </ol>
 
- <li><p>If <var>original start node</var> is a <code><a href="#text">Text</a></code>,
- <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or <code><a href="#comment">Comment</a></code>
- <a href="#concept-node" title="concept-node">node</a>,
- <a href="#concept-cd-replace" title="concept-CD-replace">replace data</a> with node
- <var>original start node</var>, offset
- <var>original start offset</var>, count
- <var>original start node</var>'s
- <a href="#concept-node-length" title="concept-node-length">length</a> minus
- <var>original start offset</var>, data the empty string.
+ <li><p>If <var>original start node</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>, data the empty string.
 
- <li><p>For each <var>node</var> in <var>nodes to remove</var>,
- in <a href="#concept-tree-order" title="concept-tree-order">tree order</a>,
- <a href="#concept-node-remove" title="concept-node-remove">remove</a> <var>node</var> from
- its <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>For each <var>node</var> in <var>nodes to remove</var>, in <a>tree order</a>, <a>remove</a> <var>node</var> from its <a>parent</a>.
 
- <li><p>If <var>original end node</var> is a <code><a href="#text">Text</a></code>,
- <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or <code><a href="#comment">Comment</a></code>
- <a href="#concept-node" title="concept-node">node</a>,
- <a href="#concept-cd-replace" title="concept-CD-replace">replace data</a> with node
- <var>original end node</var>, offset 0, count
- <var>original end offset</var> and data the empty string.
+ <li><p>If <var>original end node</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>, <a>replace data</a> with node <var>original end node</var>, offset 0, count <var>original end offset</var> and data the empty string.
 
- <li><p>Set <a href="#concept-range-start" title="concept-range-start">start</a> and
- <a href="#concept-range-end" title="concept-range-end">end</a> to
- (<var>new node</var>, <var>new offset</var>).
+ <li><p>Set <a>start</a> and <a>end</a> to (<var>new node</var>, <var>new offset</var>).
 </ol>
 
-<p>To <dfn id="concept-range-extract" title="concept-range-extract">extract</dfn> a
-<a href="#concept-range" title="concept-range">range</a> <var>range</var>, run these steps:
+<p>To <dfn lt="range extract|extract">extract</dfn> a <a>range</a> <var>range</var>, run these steps:
 
 <ol>
- <li><p>Let <var>fragment</var> be a new <code><a href="#documentfragment">DocumentFragment</a></code>
- <a href="#concept-node" title="concept-node">node</a> whose
- <a href="#concept-node-document" title="concept-node-document">node document</a> is <var>range</var>'s
- <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>'s
- <a href="#concept-node-document" title="concept-node-document">node document</a>.
+ <li><p>Let <var>fragment</var> be a new <code><a>DocumentFragment</a></code> <a>node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
 
- <li><p>If <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> equals
- its <a href="#concept-range-end" title="concept-range-end">end</a>, return <var>fragment</var>.
+ <li><p>If <var>range</var>'s <a>start</a> equals its <a>end</a>, return <var>fragment</var>.
  <!-- This is only really needed when the start and end nodes are
  text/comment, to avoid creating an empty clone as the child of the
  fragment. (Opera 11 actually does include such an empty clone, it seems,
@@ -688,272 +418,143 @@ method must run these steps:
  Otherwise, the following steps are all no-ops. But it's simplest to include
  this step anyway. -->
 
- <li><p>Let <var>original start node</var>, <var>original start offset</var>,
- <var>original end node</var>, and <var>original end offset</var> be
- <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>,
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>,
- <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, and
- <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>, respectively.
+ <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be <var>range</var>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
  <li>
-  <p>If <var>original start node</var> equals
-  <var>original end node</var>, and they are a <code><a href="#text">Text</a></code>,
-  <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or <code><a href="#comment">Comment</a></code>
-  <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>original start node</var> equals <var>original end node</var>, and they are a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original start node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, and count
-   <var>original end offset</var> minus
-   <var>original start offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original start node</var>, offset <var>original start offset</var>, and count <var>original end offset</var> minus <var>original start offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p><a href="#concept-cd-replace" title="concept-CD-replace">Replace data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, count
-   <var>original end offset</var> minus
-   <var>original start offset</var>, and data the empty string.
+   <li><p><a>Replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original end offset</var> minus <var>original start offset</var>, and data the empty string.
 
    <li><p>Return <var>fragment</var>.
   </ol>
 
- <li><p>Let <var>common ancestor</var> be
- <var>original start node</var>.
+ <li><p>Let <var>common ancestor</var> be <var>original start node</var>.
 
- <li><p>While <var>common ancestor</var> is not an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set <var>common ancestor</var> to
- its own <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>While <var>common ancestor</var> is not an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>common ancestor</var> to its own <a>parent</a>.
 
  <li><p>Let <var>first partially contained child</var> be null.
 
- <li><p>If <var>original start node</var> is <em>not</em> an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set <var>first partially contained child</var>
- to the first <a href="#concept-tree-child" title="concept-tree-child">child</a> of
- <var>common ancestor</var> that is <a href="#partially-contained">partially contained</a> in
- <var>range</var>.
+ <li><p>If <var>original start node</var> is <em>not</em> an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>first partially contained child</var> to the first <a>child</a> of <var>common ancestor</var> that is <a>partially contained</a> in <var>range</var>.
 
  <li><p>Let <var>last partially contained child</var> be null.
 
  <li>
-  <p>If <var>original end node</var> is <em>not</em> an
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original start node</var>, set
-  <var>last partially contained child</var> to the last
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>common ancestor</var> that is
-  <a href="#partially-contained">partially contained</a> in <var>range</var>.
+  <p>If <var>original end node</var> is <em>not</em> an <a>inclusive ancestor</a> of <var>original start node</var>, set <var>last partially contained child</var> to the last <a>child</a> of <var>common ancestor</var> that is <a>partially contained</a> in <var>range</var>.
 
-  <p class="note no-backref">Note: These variable assignments do actually always make sense.
-  For instance, if <var>original start node</var> is not an
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original end node</var>, <var>original start node</var> is itself
-  <a href="#partially-contained">partially contained</a> in <var>range</var>, and so are all its
-  <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestors</a> up until a
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>common ancestor</var>.
-  <var>common ancestor</var> cannot be <var>original start node</var>, because
-  it has to be an <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original end node</var>. The other case is similar. Also, notice that the two
-  <a href="#concept-tree-child" title="concept-tree-child">children</a> will never be equal if both are defined.
+  <p class="note">Note: These variable assignments do actually always make sense. For instance, if <var>original start node</var> is not an <a>inclusive ancestor</a> of <var>original end node</var>, <var>original start node</var> is itself <a>partially contained</a> in <var>range</var>, and so are all its <a>ancestors</a> up until a <a>child</a> of <var>common ancestor</var>. <var>common ancestor</var> cannot be <var>original start node</var>, because it has to be an <a>inclusive ancestor</a> of <var>original end node</var>. The other case is similar. Also, notice that the two <a>children</a> will never be equal if both are defined.
 
- <li><p>Let <var>contained children</var> be a list of all
- <a href="#concept-tree-child" title="concept-tree-child">children</a> of
- <var>common ancestor</var> that are <a href="#contained">contained</a> in
- <var>range</var>, in <a href="#concept-tree-order" title="concept-tree-order">tree order</a>.
+ <li><p>Let <var>contained children</var> be a list of all <a>children</a> of <var>common ancestor</var> that are <a>contained</a> in <var>range</var>, in <a>tree order</a>.
 
  <li>
-  <p>If any member of <var>contained children</var> is a
-  <a href="#concept-doctype" title="concept-doctype">doctype</a>, <a href="#dfn-throw" title="concept-throw">throw</a> a
-  "<code><a href="#hierarchyrequesterror">HierarchyRequestError</a></code>" exception.
+  <p>If any member of <var>contained children</var> is a <a>doctype</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>" exception.
   <!-- Firefox 4.0 actually removes the non-DocumentType nodes before
   throwing the exception. Opera 11.00 removes the DocumentType too, and
   doesn't throw. I go with IE9 and Chrome 12 dev, which don't remove any
   nodes. DOM 2 Range doesn't specify what exactly happens here, except that
   an exception should be thrown. -->
 
-  <p class="note no-backref">Note: We do not have to worry about the first or last partially
-  contained node, because a <a href="#concept-doctype" title="concept-doctype">doctype</a> can never be
-  partially contained. It cannot be a boundary point of a range, and it
-  cannot be the ancestor of anything.
+  <p class="note">Note: We do not have to worry about the first or last partially contained node, because a <a>doctype</a> can never be partially contained. It cannot be a boundary point of a range, and it cannot be the ancestor of anything.
 
- <li><p>If <var>original start node</var> is an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set <var>new node</var> to
- <var>original start node</var> and <var>new offset</var> to
- <var>original start offset</var>.
+ <li><p>If <var>original start node</var> is an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>new node</var> to <var>original start node</var> and <var>new offset</var> to <var>original start offset</var>.
 
  <li>
   <p>Otherwise:
   <ol>
    <li><p>Let <var>reference node</var> equal <var>original start node</var>.
 
-   <li><p>While <var>reference node</var>'s
-   <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is not null and is not an
-   <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-   <var>original end node</var>, set <var>reference node</var> to its
-   <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+   <li><p>While <var>reference node</var>'s <a>parent</a> is not null and is not an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>reference node</var> to its <a>parent</a>.
 
    <li>
-    <p>Set <var>new node</var> to the
-    <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> of <var>reference node</var>, and
-    <var>new offset</var> to one plus <var>reference node</var>'s
-    <a href="#concept-tree-index" title="concept-tree-index">index</a>.
+    <p>Set <var>new node</var> to the <a>parent</a> of <var>reference node</var>, and <var>new offset</var> to one plus <var>reference node</var>'s <a>index</a>.
 
-    <p class="note">Note: If <var>reference node</var>'s
-    <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is null, it would be the
-    <a href="#concept-range-root" title="concept-range-root">root</a> of <var>range</var>, so would be an
-    <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-    <var>original end node</var>, and we could not reach this point.
+    <p class="note">Note: If <var>reference node</var>'s <a>parent</a> is null, it would be the <a href="#range-root">root</a> of <var>range</var>, so would be an <a>inclusive ancestor</a> of <var>original end node</var>, and we could not reach this point.
   </ol>
 
   <!-- Now we start with mutations, so we can't refer to the context object
   anymore unless we carefully consider how it will have mutated. -->
 
  <li>
-  <p>If <var>first partially contained child</var> is a
-  <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
-  <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>first partially contained child</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
-  <p class="note">Note: In this case, <var>first partially contained child</var> is
-  <var>original start node</var>.
+  <p class="note">Note: In this case, <var>first partially contained child</var> is <var>original start node</var>.
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original start node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, and count
-   <var>original start node</var>'s
-   <a href="#concept-node-length" title="concept-node-length">length</a> minus
-   <var>original start offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original start node</var>, offset <var>original start offset</var>, and count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p><a href="#concept-cd-replace" title="concept-CD-replace">Replace data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, count
-   <var>original start node</var>'s
-   <a href="#concept-node-length" title="concept-node-length">length</a> minus
-   <var>original start offset</var>, and data the empty string.
+   <li><p><a>Replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>, and data the empty string.
   </ol>
 
  <li>
-  <p>Otherwise, if <var>first partially contained child</var> is not
-  null:
+  <p>Otherwise, if <var>first partially contained child</var> is not null:
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>first partially contained child</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>first partially contained child</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p>Let <var>subrange</var> be a new <a href="#concept-range" title="concept-range">range</a>
-   whose <a href="#concept-range-start" title="concept-range-start">start</a> is
-   (<var>original start node</var>, <var>original start offset</var>) and
-   whose <a href="#concept-range-end" title="concept-range-end">end</a> is
-   (<var>first partially contained child</var>, <var>first partially contained child</var>'s <a href="#concept-node-length" title="concept-node-length">length</a>).
+   <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>original start node</var>, <var>original start offset</var>) and whose <a>end</a> is (<var>first partially contained child</var>, <var>first partially contained child</var>'s <a>length</a>).
 
-   <li><p>Let <var>subfragment</var> be the result of
-   <a href="#concept-range-extract" title="concept-range-extract">extracting</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a>extracting</a> <var>subrange</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>subfragment</var> to
-   <var>clone</var>.
+   <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
 
- <li><p>For each <var>contained child</var> in <var>contained children</var>,
- <a href="#concept-node-append" title="concept-node-append">append</a> <var>contained child</var> to
- <var>fragment</var>.
+ <li><p>For each <var>contained child</var> in <var>contained children</var>, <a>append</a> <var>contained child</var> to <var>fragment</var>.
 
  <li>
-  <p>If <var>last partially contained child</var> is a
-  <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
-  <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>last partially contained child</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
-  <p class="note">Note: In this case, <var>last partially contained child</var> is
-  <var>original end node</var>.
+  <p class="note">Note: In this case, <var>last partially contained child</var> is <var>original end node</var>.
 
   <ol>
-   <li><p>Let <var>clone</var> be a <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original end node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original end node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original end node</var>, offset 0, and count
-   <var>original end offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original end node</var>, offset 0, and count <var>original end offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p><a href="#concept-cd-replace" title="concept-CD-replace">Replace data</a> with node
-   <var>original end node</var>, offset 0, count
-   <var>original end offset</var>, and data the empty string.
+   <li><p><a>Replace data</a> with node <var>original end node</var>, offset 0, count <var>original end offset</var>, and data the empty string.
   </ol>
 
  <li>
-  <p>Otherwise, if <var>last partially contained child</var> is not
-  null:
+  <p>Otherwise, if <var>last partially contained child</var> is not null:
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>last partially contained child</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>last partially contained child</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p>Let <var>subrange</var> be a new <a href="#concept-range" title="concept-range">range</a>
-   whose <a href="#concept-range-start" title="concept-range-start">start</a> is
-   (<var>last partially contained child</var>, 0) and whose
-   <a href="#concept-range-end" title="concept-range-end">end</a> is
-   (<var>original end node</var>, <var>original end offset</var>).
+   <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>last partially contained child</var>, 0) and whose <a>end</a> is (<var>original end node</var>, <var>original end offset</var>).
 
-   <li><p>Let <var>subfragment</var> be the result of
-   <a href="#concept-range-extract" title="concept-range-extract">extracting</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a>extracting</a> <var>subrange</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>subfragment</var> to
-   <var>clone</var>.
+   <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
 
- <li><p>Set <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> and
- <a href="#concept-range-end" title="concept-range-end">end</a> to
- (<var>new node</var>, <var>new offset</var>).
+ <li><p>Set <var>range</var>'s <a>start</a> and <a>end</a> to (<var>new node</var>, <var>new offset</var>).
 
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn id="dom-range-extractcontents" title="dom-Range-extractContents"><code>extractContents()</code></dfn> method
-must return the result of <a href="#concept-range-extract" title="concept-range-extract">extracting</a>
-<a href="#context-object">context object</a>.
+<p>The <dfn><code>extractContents()</code></dfn> method must return the result of <a>extracting</a> <a>context object</a>.
 
-<p>To <dfn id="concept-range-clone" title="concept-range-clone">clone</dfn> a <a href="#concept-range" title="concept-range">range</a>
-<var>range</var>, run these steps:
+<p>To <dfn lt="range clone|clone">clone</dfn> a <a>range</a> <var>range</var>, run these steps:
 
 <ol>
- <li><p>Let <var>fragment</var> be a new <code><a href="#documentfragment">DocumentFragment</a></code>
- <a href="#concept-node" title="concept-node">node</a> whose
- <a href="#concept-node-document" title="concept-node-document">node document</a> is <var>range</var>'s
- <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>'s
- <a href="#concept-node-document" title="concept-node-document">node document</a>.
+ <li><p>Let <var>fragment</var> be a new <code><a>DocumentFragment</a></code> <a >node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
 
- <li><p>If <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> equals
- its <a href="#concept-range-end" title="concept-range-end">end</a>, return <var>fragment</var>.
+ <li><p>If <var>range</var>'s <a>start</a> equals its <a>end</a>, return <var>fragment</var>.
  <!-- This is only really needed when the start and end nodes are
  text/comment, to avoid creating an empty clone as the child of the
  fragment. (Opera 11 actually does include such an empty clone, it seems,
@@ -961,212 +562,116 @@ must return the result of <a href="#concept-range-extract" title="concept-range-
  Otherwise, the following steps are all no-ops. But it's simplest to include
  this step anyway. -->
 
- <li><p>Let <var>original start node</var>, <var>original start offset</var>,
- <var>original end node</var>, and <var>original end offset</var> be
- <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>,
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>,
- <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, and
- <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>, respectively.
+ <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be <var>range</var>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
  <li>
-  <p>If <var>original start node</var> equals
-  <var>original end node</var>, and they are a <code><a href="#text">Text</a></code>,
-  <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or <code><a href="#comment">Comment</a></code>
-  <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>original start node</var> equals <var>original end node</var>, and they are a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
   <ol>
-   <li><p>Let <var>clone</var> be a <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original start node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, and count
-   <var>original end offset</var> minus
-   <var>original start offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original start node</var>, offset <var>original start offset</var>, and count <var>original end offset</var> minus <var>original start offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
    <li><p>Return <var>fragment</var>.
   </ol>
 
- <li><p>Let <var>common ancestor</var> be
- <var>original start node</var>.
+ <li><p>Let <var>common ancestor</var> be <var>original start node</var>.
 
- <li><p>While <var>common ancestor</var> is not an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set
- <var>common ancestor</var> to its own
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>While <var>common ancestor</var> is not an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>common ancestor</var> to its own <a>parent</a>.
 
  <li><p>Let <var>first partially contained child</var> be null.
 
- <li><p>If <var>original start node</var> is <em>not</em> an
- <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
- <var>original end node</var>, set <var>first partially contained child</var>
- to the first <a href="#concept-tree-child" title="concept-tree-child">child</a> of
- <var>common ancestor</var> that is <a href="#partially-contained">partially contained</a> in
- <var>range</var>.
+ <li><p>If <var>original start node</var> is <em>not</em> an <a>inclusive ancestor</a> of <var>original end node</var>, set <var>first partially contained child</var> to the first <a>child</a> of <var>common ancestor</var> that is <a>partially contained</a> in <var>range</var>.
 
  <li><p>Let <var>last partially contained child</var> be null.
 
  <li>
-  <p>If <var>original end node</var> is <em>not</em> an
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original start node</var>, set
-  <var>last partially contained child</var> to the last
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>common ancestor</var> that is
-  <a href="#partially-contained">partially contained</a> in <var>range</var>.
+  <p>If <var>original end node</var> is <em>not</em> an <a>inclusive ancestor</a> of <var>original start node</var>, set <var>last partially contained child</var> to the last <a>child</a> of <var>common ancestor</var> that is <a>partially contained</a> in <var>range</var>.
 
-  <p class="note no-backref">Note: These variable assignments do actually always make sense.
-  For instance, if <var>original start node</var> is not an
-  <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original end node</var>, <var>original start node</var> is itself
-  <a href="#partially-contained">partially contained</a> in <var>range</var>, and so are all its
-  <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestors</a> up until a
-  <a href="#concept-tree-child" title="concept-tree-child">child</a> of <var>common ancestor</var>.
-  <var>common ancestor</var> cannot be <var>original start node</var>, because
-  it has to be an <a href="#concept-tree-inclusive-ancestor" title="concept-tree-inclusive-ancestor">inclusive ancestor</a> of
-  <var>original end node</var>. The other case is similar. Also, notice that the two
-  <a href="#concept-tree-child" title="concept-tree-child">children</a> will never be equal if both are defined.
+  <p class="note">Note: These variable assignments do actually always make sense. For instance, if <var>original start node</var> is not an <a>inclusive ancestor</a> of <var>original end node</var>, <var>original start node</var> is itself <a>partially contained</a> in <var>range</var>, and so are all its <a>ancestors</a> up until a <a>child</a> of <var>common ancestor</var>. <var>common ancestor</var> cannot be <var>original start node</var>, because it has to be an <a>inclusive ancestor</a> of <var>original end node</var>. The other case is similar. Also, notice that the two <a>children</a> will never be equal if both are defined.
 
- <li><p>Let <var>contained children</var> be a list of all
- <a href="#concept-tree-child" title="concept-tree-child">children</a> of
- <var>common ancestor</var> that are <a href="#contained">contained</a> in
- <var>range</var>, in <a href="#concept-tree-order" title="concept-tree-order">tree order</a>.
+ <li><p>Let <var>contained children</var> be a list of all <a>children</a> of <var>common ancestor</var> that are <a>contained</a> in <var>range</var>, in <a>tree order</a>.
 
  <li>
-  <p>If any member of <var>contained children</var> is a
-  <a href="#concept-doctype" title="concept-doctype">doctype</a>, <a href="#dfn-throw" title="concept-throw">throw</a> a
-  "<code><a href="#hierarchyrequesterror">HierarchyRequestError</a></code>" exception.
+  <p>If any member of <var>contained children</var> is a <a>doctype</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>" exception.
 
-  <p class="note no-backref">Note: We do not have to worry about the first or last partially
-  contained node, because a <a href="#concept-doctype" title="concept-doctype">doctype</a> can never be
+  <p class="note">Note: We do not have to worry about the first or last partially contained node, because a <a>doctype</a> can never be
   partially contained. It cannot be a boundary point of a range, and it
   cannot be the ancestor of anything.
 
  <li>
-  <p>If <var>first partially contained child</var> is a
-  <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
-  <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>first partially contained child</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
-  <p class="note">Note: In this case, <var>first partially contained child</var> is
-  <var>original start node</var>.
+  <p class="note">Note: In this case, <var>first partially contained child</var> is <var>original start node</var>.
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original start node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original start node</var>, offset
-   <var>original start offset</var>, and count
-   <var>original start node</var>'s
-   <a href="#concept-node-length" title="concept-node-length">length</a> minus
-   <var>original start offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original start node</var>, offset <var>original start offset</var>, and count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
   </ol>
 
  <li>
-  <p>Otherwise, if <var>first partially contained child</var> is not
-  null:
+  <p>Otherwise, if <var>first partially contained child</var> is not null:
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>first partially contained child</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>first partially contained child</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p>Let <var>subrange</var> be a new <a href="#concept-range" title="concept-range">range</a>
-   whose <a href="#concept-range-start" title="concept-range-start">start</a> is
-   (<var>original start node</var>, <var>original start offset</var>) and
-   whose <a href="#concept-range-end" title="concept-range-end">end</a> is
-   (<var>first partially contained child</var>, <var>first partially contained child</var>'s <a href="#concept-node-length" title="concept-node-length">length</a>).
+   <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>original start node</var>, <var>original start offset</var>) and whose <a>end</a> is (<var>first partially contained child</var>, <var>first partially contained child</var>'s <a>length</a>).
 
-   <li><p>Let <var>subfragment</var> be the result of
-   <a href="#concept-range-clone" title="concept-range-clone">cloning</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a>cloning</a> <var>subrange</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>subfragment</var> to
-   <var>clone</var>.
+   <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
 
  <li>
-  <p>For each <var>contained child</var> in
-  <var>contained children</var>:
+  <p>For each <var>contained child</var> in <var>contained children</var>:
 
   <ol>
-   <li><p>Let <var>clone</var> be a <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>contained child</var> with the <i>clone children flag</i> set.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>contained child</var> with the <i>clone children flag</i> set.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var> to
-   <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
   </ol>
 
  <li>
-  <p>If <var>last partially contained child</var> is a
-  <code><a href="#text">Text</a></code>, <code><a href="#processinginstruction">ProcessingInstruction</a></code>, or
-  <code><a href="#comment">Comment</a></code> <a href="#concept-node" title="concept-node">node</a>:
+  <p>If <var>last partially contained child</var> is a <code><a>Text</a></code>, <code><a>ProcessingInstruction</a></code>, or <code><a>Comment</a></code> <a>node</a>:
 
-  <p class="note">Note: In this case, <var>last partially contained child</var> is
-  <var>original end node</var>.
+  <p class="note">Note: In this case, <var>last partially contained child</var> is <var>original end node</var>.
 
   <ol>
-   <li><p>Let <var>clone</var> be a <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>original end node</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original end node</var>.
 
-   <li><p>Set the <a href="#concept-cd-data" title="concept-CD-data">data</a> of
-   <var>clone</var> to the result of
-   <a href="#concept-cd-substring" title="concept-CD-substring">substringing data</a> with node
-   <var>original end node</var>, offset 0, and count
-   <var>original end offset</var>.
+   <li><p>Set the <a>data</a> of <var>clone</var> to the result of <a>substringing data</a> with node <var>original end node</var>, offset 0, and count <var>original end offset</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var> to
-   <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
   </ol>
 
  <li>
-  <p>Otherwise, if <var>last partially contained child</var> is not
-  null:
+  <p>Otherwise, if <var>last partially contained child</var> is not null:
 
   <ol>
-   <li><p>Let <var>clone</var> be a
-   <a href="#concept-node-clone" title="concept-node-clone">clone</a> of
-   <var>last partially contained child</var>.
+   <li><p>Let <var>clone</var> be a <a>clone</a> of <var>last partially contained child</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>clone</var>
-   to <var>fragment</var>.
+   <li><p><a>Append</a> <var>clone</var> to <var>fragment</var>.
 
-   <li><p>Let <var>subrange</var> be a new <a href="#concept-range" title="concept-range">range</a>
-   whose <a href="#concept-range-start" title="concept-range-start">start</a> is
-   (<var>last partially contained child</var>, 0) and whose
-   <a href="#concept-range-end" title="concept-range-end">end</a> is
-   (<var>original end node</var>, <var>original end offset</var>).
+   <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>last partially contained child</var>, 0) and whose <a>end</a> is (<var>original end node</var>, <var>original end offset</var>).
 
-   <li><p>Let <var>subfragment</var> be the result of
-   <a href="#concept-range-clone" title="concept-range-clone">cloning</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a>cloning</a> <var>subrange</var>.
 
-   <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>subfragment</var> to
-   <var>clone</var>.
+   <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
 
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn id="dom-range-clonecontents" title="dom-Range-cloneContents"><code>cloneContents()</code></dfn>
-method must return the result of <a href="#concept-range-clone" title="concept-range-clone">cloning</a>
-<a href="#context-object">context object</a>.
+<p>The <dfn><code>cloneContents()</code></dfn> method must return the result of <a>cloning</a> <a>context object</a>.
 
-<p>To <dfn id="concept-range-insert" title="concept-range-insert">insert</dfn> a <a href="#concept-node" title="concept-node">node</a>
-<var>node</var> into a <a href="#concept-range" title="concept-range">range</a>
-<var>range</var>, run these steps:
+<p>To <dfn lt="range insert|insert">insert</dfn> a <a>node</a> <var>node</var> into a <a>range</a> <var>range</var>, run these steps:
 
 <ol>
   <!-- Chrome 12 dev throws "HierarchyRequestError" if node is the same
@@ -1174,12 +679,7 @@ method must return the result of <a href="#concept-range-clone" title="concept-r
   much sense, since insertBefore() works fine to move a node to its current
   position, and other browsers disagree, so the spec follows the majority.
   -->
- <li><p>If <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>
- is either a <code><a href="#processinginstruction">ProcessingInstruction</a></code> or <code><a href="#comment">Comment</a></code>
- <a href="#concept-node" title="concept-node">node</a>, or a <code><a href="#text">Text</a></code>
- <a href="#concept-node" title="concept-node">node</a> whose <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>
- is null, <a href="#dfn-throw" title="concept-throw">throw</a> an "<code><a href="#hierarchyrequesterror">HierarchyRequestError</a></code>"
- exception.
+ <li><p>If <var>range</var>'s <a>start node</a> is either a <code><a>ProcessingInstruction</a></code> or <code><a>Comment</a></code> <a>node</a>, or a <code><a>Text</a></code> <a>node</a> whose <a>parent</a> is null, <a>throw</a> an "<code><a>HierarchyRequestError</a></code>" exception. [[!WEBIDL]]
 
  <!--
  Behavior for Text node with null parent:
@@ -1199,23 +699,11 @@ method must return the result of <a href="#concept-range-clone" title="concept-r
  -->
  <li><p>Let <var>referenceNode</var> be null.
 
- <li><p>If <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>
- is a <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>,
- set <var>referenceNode</var> to that <code><a href="#text">Text</a></code>
- <a href="#concept-node" title="concept-node">node</a>. <!-- This will change when we split
- it. -->
+ <li><p>If <var>range</var>'s <a>start node</a> is a <code><a>Text</a></code> <a>node</a>, set <var>referenceNode</var> to that <code><a>Text</a></code> <a>node</a>. <!-- This will change when we split it. -->
 
- <li><p>Otherwise, set <var>referenceNode</var> to the
- <a href="#concept-tree-child" title="concept-tree-child">child</a> of
- <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> whose
- <a href="#concept-tree-index" title="concept-tree-index">index</a> is
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>, and null if
- there is no such <a href="#concept-tree-child" title="concept-tree-child">child</a>.
+ <li><p>Otherwise, set <var>referenceNode</var> to the <a>child</a> of <a>start node</a> whose <a>index</a> is <a>start offset</a>, and null if there is no such <a>child</a>.
 
- <li><p>Let <var>parent</var> be <var>range</var>'s
- <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> if <var>referenceNode</var>
- is null, and <var>referenceNode</var>'s
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> otherwise.
+ <li><p>Let <var>parent</var> be <var>range</var>'s <a>start node</a> if <var>referenceNode</var> is null, and <var>referenceNode</var>'s <a>parent</a> otherwise.
 
  <!-- IE9 and Chrome 12 dev throw an exception before splitting the text
  node if the insertBefore() is going to throw an exception (at least if the
@@ -1225,26 +713,14 @@ method must return the result of <a href="#concept-range-clone" title="concept-r
 
  IE9 doesn't call splitText() if the offset is 0. This makes sense, but I go
  with what all other browsers do. -->
- <li><p><a href="#concept-node-ensure-pre-insertion-validity" title="concept-node-ensure-pre-insertion-validity">Ensure pre-insertion validity</a>
- of <var>node</var> into <var>parent</var> before
- <var>referenceNode</var>.
+ <li><p><a>Ensure pre-insertion validity</a>of <var>node</var> into <var>parent</var> before <var>referenceNode</var>.
 
- <li><p>If <var>range</var>'s <a href="#concept-range-start-node" title="concept-range-start-node">start node</a>
- is a <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>,
- <a href="#concept-text-split" title="concept-Text-split">split</a> it with offset
- <var>range</var>'s <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a>,
- set <var>referenceNode</var> to the result, and set
- <var>parent</var> to <var>referenceNode</var>'s
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>If <var>range</var>'s <a>start node</a> is a <code><a>Text</a></code> <a>node</a>, <a>split</a> it with offset <var>range</var>'s <a>start offset</a>, set <var>referenceNode</var> to the result, and set <var>parent</var> to <var>referenceNode</var>'s <a>parent</a>.
 
- <li><p>If <var>node</var> equals <var>referenceNode</var>, set
- <var>referenceNode</var> to its
- <a href="#concept-tree-next-sibling" title="concept-tree-next-sibling">next sibling</a>. <!-- Because we're
+ <li><p>If <var>node</var> equals <var>referenceNode</var>, set <var>referenceNode</var> to its <a>next sibling</a>. <!-- Because we're
  about to remove node from its parent. -->
 
- <li><p>If <var>node</var>'s <a href="#concept-tree-parent" title="concept-tree-parent">parent</a> is not
- null, <a href="#concept-node-remove" title="concept-node-remove">remove</a> <var>node</var> from its
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>If <var>node</var>'s <a>parent</a> is not null, <a>remove</a> <var>node</var> from its <a>parent</a>.
 
  <!-- Browsers disagree on how to handle the case where the range is
  collapsed: do you increment the end offset so the node is now included, or
@@ -1267,31 +743,18 @@ method must return the result of <a href="#concept-range-clone" title="concept-r
  The logic for how much to increment the position by is copied from the
  "insert" algorithm.  Getting the new offset right was surprisingly tricky.
  -->
- <li><p>Let <var>newOffset</var> be <var>parent</var>'s
- <a href="#concept-node-length" title="concept-node-length">length</a> if <var>referenceNode</var> is null,
- and <var>referenceNode</var>'s <a href="#concept-tree-index" title="concept-tree-index">index</a>
- otherwise.
+ <li><p>Let <var>newOffset</var> be <var>parent</var>'s <a>length</a> if <var>referenceNode</var> is null, and <var>referenceNode</var>'s <a>index</a> otherwise.
 
- <li><p>Increase <var>newOffset</var> by <var>node</var>'s
- <a href="#concept-node-length" title="concept-node-length">length</a> if <var>node</var> is a
- <code><a href="#documentfragment">DocumentFragment</a></code> <a href="#concept-node" title="concept-node">node</a>, and one otherwise.
+ <li><p>Increase <var>newOffset</var> by <var>node</var>'s <a>length</a> if <var>node</var> is a <code><a>DocumentFragment</a></code> <a>node</a>, and one otherwise.
 
- <li><p><a href="#concept-node-pre-insert" title="concept-node-pre-insert">Pre-insert</a>
- <var>node</var> into <var>parent</var> before <var>referenceNode</var>.
+ <li><p><a>Pre-insert</a> <var>node</var> into <var>parent</var> before <var>referenceNode</var>.
 
- <li><p>If <var>range</var>'s <a href="#concept-range-start" title="concept-range-start">start</a> and
- <a href="#concept-range-end" title="concept-range-end">end</a> are the same, set <var>range</var>'s
- <a href="#concept-range-end" title="concept-range-end">end</a> to
- (<var>parent</var>, <var>newOffset</var>).
+ <li><p>If <var>range</var>'s <a>start</a> and <a>end</a> are the same, set <var>range</var>'s <a>end</a> to (<var>parent</var>, <var>newOffset</var>).
 </ol>
 
-<p>The <dfn id="dom-range-insertnode" title="dom-Range-insertNode"><code>insertNode(<var>node</var>)</code></dfn>
-method must <a href="#concept-range-insert" title="concept-range-insert">insert</a> <var>node</var> into
-<a href="#context-object">context object</a>.
+<p>The <dfn><code>insertNode(<var>node</var>)</code></dfn> method must <a>insert</a> <var>node</var> into <a>context object</a>.
 
-<p>The
-<dfn id="dom-range-surroundcontents" title="dom-Range-surroundContents"><code>surroundContents(<var>newParent</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>surroundContents(<var>newParent</var>)</code></dfn> method must run these steps:
 
 <!--
 IE9 and Chrome 12 dev throw exceptions before doing any DOM mutations in at
@@ -1305,20 +768,13 @@ check first thing, which matches everyone but Firefox.
 -->
 
 <ol>
- <li><p>If a non-<code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a> is
- <a href="#partially-contained">partially contained</a> in the <a href="#context-object">context object</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> an
- "<code><a href="#invalidstateerror">InvalidStateError</a></code>" exception.
+ <li><p>If a non-<code><a>Text</a></code> <a>node</a> is <a>partially contained</a> in the <a>context object</a>, <a>throw</a> an "<code><a>InvalidStateError</a></code>" exception. [[!WEBIDL]]
  <!-- Makes some sense: otherwise we'd clone a bunch of containers, which is
  unexpected. -->
  <!-- XXX Could we rephrase this condition to be more algorithmic and less
  declarative?-->
 
- <li><p>If <var>newParent</var> is a <code><a href="#document">Document</a></code>,
- <code><a href="#documenttype">DocumentType</a></code>, or <code><a href="#documentfragment">DocumentFragment</a></code>
- <a href="#concept-node" title="concept-node">node</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> an
- "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+ <li><p>If <var>newParent</var> is a <code><a>Document</a></code>, <code><a>DocumentType</a></code>, or <code><a>DocumentFragment</a></code> <a>node</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
  <!-- But for Comment, Text, and ProcessingInstruction, we just fall through
  and throw a HIERARCHY_REQUEST_ERR when we try appendChild(). This makes
  absolutely no sense, but it's what DOM 2 Range specifies, and it's what
@@ -1339,155 +795,106 @@ check first thing, which matches everyone but Firefox.
  split. -->
 
  <li><p>Let <var>fragment</var> be the result of
- <a href="#concept-range-extract" title="concept-range-extract">extracting</a> <a href="#context-object">context object</a>.
+ <a>extracting</a> <a>context object</a>.
  <!-- If the range contains a DocumentType, Firefox 4.0 and Opera 11.00 don't
  immediately throw here. Firefox removes the non-DocumentType nodes and
  throws, Opera removes all nodes and doesn't throw. This applies to
  extractContents() proper, and also affects surroundContents(). I match DOM 2
  Range, IE9, and Chrome 12 dev. -->
 
- <li><p>If <var>newParent</var> has
- <a href="#concept-tree-child" title="concept-tree-child">children</a>,
- <a href="#concept-node-replace-all" title="concept-node-replace-all">replace all</a> with null within
- <var>newParent</var>.
+ <li><p>If <var>newParent</var> has <a>children</a>, <a>replace all</a> with null within <var>newParent</var>.
 
- <li><p><a href="#concept-range-insert" title="concept-range-insert">Insert</a> <var>newParent</var> into
- <a href="#context-object">context object</a>.
+ <li><p><a>Insert</a> <var>newParent</var> into <a>context object</a>.
 
- <li><p><a href="#concept-node-append" title="concept-node-append">Append</a> <var>fragment</var> to
- <var>newParent</var>.
+ <li><p><a>Append</a> <var>fragment</var> to <var>newParent</var>.
 
- <li><p><a href="#concept-range-select" title="concept-range-select">Select</a> <var>newParent</var> within
- <a href="#context-object">context object</a>.
+ <li><p><a>Select</a> <var>newParent</var> within <a>context object</a>.
  <!-- Generally this isn't needed, because insertNode() will already do it,
  but it makes a difference in at least one corner case (when the original
  range lies in a single text node). -->
 </ol>
 
-<p>The <dfn id="dom-range-clonerange" title="dom-Range-cloneRange"><code>cloneRange()</code></dfn>
-method must return a new <a href="#concept-range" title="concept-range">range</a> with the
-same <a href="#concept-range-start" title="concept-range-start">start</a> and
-<a href="#concept-range-end" title="concept-range-end">end</a> as the <a href="#context-object">context object</a>.
+<p>The <dfn><code>cloneRange()</code></dfn> method must return a new <a>range</a> with the same <a>start</a> and <a>end</a> as the <a>context object</a>.
 
-<p>The <dfn id="dom-range-detach" title="dom-Range-detach"><code>detach()</code></dfn> method must
-do nothing. <span class="note">Note: Its functionality (disabling a
-<code><a href="#range">Range</a></code> object) was removed, but the method itself is preserved
-for compatibility.</span>
+<p>The <dfn id="range-detach-func" for="range"><code>detach()</code></dfn> method must do nothing. <span class="note">Note: Its functionality (disabling a <code><a>Range</a></code> object) was removed, but the method itself is preserved for compatibility.</span>
 
 <hr>
 
-<dl class="domintro">
- <dt><var>position</var> = <var>range</var> . <code title="dom-Range-comparePoint"><a href="#dom-range-comparepoint">comparePoint</a></code>( <var>parent</var>, <var>offset</var> )
+<dl>
+ <dt><var>position</var> = <var>range</var> . <code><a>comparePoint</a></code>( <var>parent</var>, <var>offset</var> )
  <dd><p>Returns −1 if the point is before the range, 0 if the point is
  in the range, and 1 if the point is after the range.
 
- <dt><var>intersects</var> = <var>range</var> . <code title="dom-Range-intersectsNode"><a href="#dom-range-intersectsnode">intersectsNode</a></code>( <var>node</var> )
+ <dt><var>intersects</var> = <var>range</var> . <code><a>intersectsNode</a></code>( <var>node</var> )
  <dd><p>Returns whether <var>range</var> intersects
  <var>node</var>.
 </dl>
 
-<div class="impl">
+<div>
 
-<p>The
-<dfn id="dom-range-ispointinrange" title="dom-Range-isPointInRange"><code>isPointInRange(<var>node</var>, <var>offset</var>)</code></dfn>
-must run these steps:
+<p>The <dfn><code>isPointInRange(<var>node</var>, <var>offset</var>)</code></dfn> must run these steps:
 <!-- Tested October 2011 on Firefox 9.0a2 and Chrome 16 dev.  IE9 and Opera
 11.50 don't support the method. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#concept-tree-root" title="concept-tree-root">root</a> is
- different from the <a href="#context-object">context object</a>'s <a href="#concept-range-root" title="concept-range-root">root</a>, return false.
+ <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
  <!-- This happens even if the offset is negative or too large, or if the node
  is a doctype, in both Firefox 9.0a2 and Chrome 16 dev. -->
 
- <li><p>If <var>node</var> is a
- <a href="#concept-doctype" title="concept-doctype">doctype</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> an
- "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+ <li><p>If <var>node</var> is a <a>doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
 
- <li><p>If (<var>node</var>, <var>offset</var>) is
- <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>
- <a href="#concept-range-start" title="concept-range-start">start</a> or
- <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>
- <a href="#concept-range-end" title="concept-range-end">end</a>, return false.
+ <li><p>If (<var>node</var>, <var>offset</var>) is <a>before</a> <a>start</a> or <a>after</a> <a>end</a>, return false.
 
  <li><p>Return true.
 </ol>
 
 
-<p>The
-<dfn id="dom-range-comparepoint" title="dom-Range-comparePoint"><code>comparePoint(<var>node</var>, <var>offset</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>comparePoint(<var>node</var>, <var>offset</var>)</code></dfn> method must run these steps:
 <!-- IE9 doesn't support this method at all.  Firefox 12.0a1, Chrome 17 dev,
 and Opera Next 12.00 alpha all do. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#concept-tree-root" title="concept-tree-root">root</a> is
- different from the <a href="#context-object">context object</a>'s
- <a href="#concept-range-root" title="concept-range-root">root</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> a "<code>WrongDocumentError</code>"
+ <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, <a>throw</a> a "<code>WrongDocumentError</code>"
  exception. [[!WEBIDL]]
  <!-- Opera Next 12.00 alpha seems to return -1 in this case.  The spec matches
  Firefox 12.0a1 and Chrome 17 dev. -->
 
- <li><p>If <var>node</var> is a
- <a href="#concept-doctype" title="concept-doctype">doctype</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> an
- "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
- <!-- This matches Chrome 17 dev instead of Firefox 12.0a1 and Opera Next 12.00
- alpha, which don't throw and seem to just ignore the offset instead.  See
+ <li><p>If <var>node</var> is a <a>doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>" exception. [[!WEBIDL]]
+ <!-- This matches Chrome 17 dev instead of Firefox 12.0a1 and Opera Next 12.00 alpha, which don't throw and seem to just ignore the offset instead.  See
  comment for isPointInRange(). -->
 
- <li><p>If <var>offset</var> is greater than
- <var>node</var>'s <a href="#concept-node-length" title="concept-node-length">length</a>,
- <a href="#dfn-throw" title="concept-throw">throw</a> an
- "<code><a href="#indexsizeerror">IndexSizeError</a></code>" exception.
+ <li><p>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an "<code><a>IndexSizeError</a></code>" exception. [[!WEBIDL]]
  <!-- This matches Chrome 17 dev instead of Firefox 12.0a1 and Opera Next 12.00
  alpha, which don't throw.  See comment for isPointInRange(). -->
 
- <li><p>If (<var>node</var>, <var>offset</var>) is
- <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>
- <a href="#concept-range-start" title="concept-range-start">start</a>, return −1.
+ <li><p>If (<var>node</var>, <var>offset</var>) is <a>before</a> <a>start</a>, return −1.
 
- <li><p>If (<var>node</var>, <var>offset</var>) is
- <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>
- <a href="#concept-range-end" title="concept-range-end">end</a>, return 1.
+ <li><p>If (<var>node</var>, <var>offset</var>) is <a>after</a> <a>end</a>, return 1.
 
  <li><p>Return 0.
 </ol>
 
 <hr>
 
-<p>The
-<dfn id="dom-range-intersectsnode" title="dom-Range-intersectsNode"><code>intersectsNode(<var>node</var>)</code></dfn>
-method must run these steps:
+<p>The <dfn><code>intersectsNode(<var>node</var>)</code></dfn> method must run these steps:
 <!-- Supported by Chrome 17 dev and Opera Next 12.00 alpha, but not IE9 or
 Firefox 12.0a1. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#concept-tree-root" title="concept-tree-root">root</a>
- is different from the <a href="#context-object">context object</a>'s
- <a href="#concept-range-root" title="concept-range-root">root</a>, return false.
+ <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
  <!-- It seems like for doctypes, Opera Next 12.00 alpha throws
  InvalidNodeTypeError instead of returning false.  The spec follows Chrome
  17 dev. -->
 
- <li><p>Let <var>parent</var> be <var>node</var>'s
- <a href="#concept-tree-parent" title="concept-tree-parent">parent</a>.
+ <li><p>Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
  <li><p>If <var>parent</var> is null, return true.
  <!-- browsers currently throw, but are willing to change
       https://www.w3.org/Bugs/Public/show_bug.cgi?id=16759 -->
 
- <li><p>Let <var>offset</var> be <var>node</var>'s
- <a href="#concept-tree-index" title="concept-tree-index">index</a>.
+ <li><p>Let <var>offset</var> be <var>node</var>'s <a>index</a>.
 
- <li><p>If (<var>parent</var>, <var>offset</var>) is
- <a href="#concept-range-bp-before" title="concept-range-bp-before">before</a>
- <a href="#concept-range-end" title="concept-range-end">end</a> and (<var>parent</var>,
- <var>offset</var> + 1) is
- <a href="#concept-range-bp-after" title="concept-range-bp-after">after</a>
- <a href="#concept-range-start" title="concept-range-start">start</a>, return true.
+ <li><p>If (<var>parent</var>, <var>offset</var>) is <a>before</a> <a>end</a> and (<var>parent</var>, <var>offset</var> + 1) is <a>after</a> <a>start</a>, return true.
 
  <li><p>Return false.
 </ol>
@@ -1496,49 +903,24 @@ Firefox 12.0a1. -->
 
 <hr>
 
-<p>The <dfn id="dom-range-stringifier" title="dom-Range-stringifier">stringifier</dfn> must run these
-steps:
+<p>The <dfn id="range-stringifier">stringifier</dfn> must run these steps:
 
 <ol>
  <li><p>Let <var>s</var> be the empty string.
 
- <li><p>If <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> equals
- <a href="#concept-range-end-node" title="concept-range-end-node">end node</a>, and it is a
- <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>, return the
- substring of that <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>'s <a href="#concept-cd-data" title="concept-CD-data">data</a> beginning at
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a> and ending at
- <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>.
+ <li><p>If <a>start node</a> equals <a>end node</a>, and it is a <code><a>Text</a></code> <a>node</a>, return the substring of that <code><a>Text</a></code> <a>node</a>'s <a>data</a> beginning at <a>start offset</a> and ending at <a>end offset</a>.
 
- <li><p>If <a href="#concept-range-start-node" title="concept-range-start-node">start node</a> is a
- <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>, append to
- <var>s</var> the substring of that
- <a href="#concept-node" title="concept-node">node</a>'s
- <a href="#concept-cd-data" title="concept-CD-data">data</a> from the
- <a href="#concept-range-start-offset" title="concept-range-start-offset">start offset</a> until the end.
+ <li><p>If <a>start node</a> is a <code><a>Text</a></code> <a>node</a>, append to <var>s</var> the substring of that <a>node</a>'s <a>data</a> from the <a>start offset</a> until the end.
 
- <li><p>Append to <var>s</var> the concatenation, in
- <a href="#concept-tree-order" title="concept-tree-order">tree order</a>, of the
- <a href="#concept-cd-data" title="concept-CD-data">data</a> of all <code><a href="#text">Text</a></code>
- <a href="#concept-node" title="concept-node">nodes</a> that are <a href="#contained">contained</a> in
- the <a href="#context-object">context object</a>.
+ <li><p>Append to <var>s</var> the concatenation, in <a>tree order</a>, of the <a>data</a> of all <code><a>Text</a></code> <a>nodes</a> that are <a>contained</a> in the <a>context object</a>.
 
- <li><p>If <a href="#concept-range-end-node" title="concept-range-end-node">end node</a> is a
- <code><a href="#text">Text</a></code> <a href="#concept-node" title="concept-node">node</a>, append to
- <var>s</var> the substring of that
- <a href="#concept-node" title="concept-node">node</a>'s
- <a href="#concept-cd-data" title="concept-CD-data">data</a> from its start until the
- <a href="#concept-range-end-offset" title="concept-range-end-offset">end offset</a>.
+ <li><p>If <a>end node</a> is a <code><a>node</a></code>, append to <var>s</var> the substring of that <a>node</a>'s <a>data</a> from its start until the <a>end offset</a>.
 
  <li><p>Return <var>s</var>.
 </ol>
 
 <hr>
 
-<p class="note">Note: The
-<code class="external" data-anolis-spec="domps" title="createContextualFragment"><a href="http://www.w3.org/TR/DOM-Parsing/#widl-Range-createContextualFragment-DocumentFragment-DOMString-fragment">createContextualFragment()</a></code>,
-<code class="external" data-anolis-spec="cssom-view" title="dom-Range-getClientRects"><a href="http://www.w3.org/TR/cssom-view/#the-getclientrects%28%29-and-getboundingclientrect%28%29-methods">getClientRects()</a></code>,
-and
-<code class="external" data-anolis-spec="cssom-view" title="dom-Range-getBoundingClientRect"><a href="http://www.w3.org/TR/cssom-view/#the-getclientrects%28%29-and-getboundingclientrect%28%29-methods">getBoundingClientRect()</a></code>
-methods are defined in other specifications.[[DOM-PARSING]][[CSSOM-VIEW-1]]
+<p class="note">Note: The <code><a href="http://www.w3.org/TR/DOM-Parsing/#widl-Range-createContextualFragment-DocumentFragment-DOMString-fragment">createContextualFragment()</a></code>, <code><a href="https://www.w3.org/TR/cssom-view-1/#dom-element-getclientrects">getClientRects()</a></code>, and <code><a href="https://www.w3.org/TR/cssom-view-1/#dom-element-getboundingclientrect">getBoundingClientRect()</a></code> methods are defined in other specifications.[[DOM-PARSING]][[CSSOM-VIEW-1]]
 
 </section>
