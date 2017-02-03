@@ -503,13 +503,15 @@ interface HTMLCollection {
 };
 </pre>
 
-<p>An <code><a>HTMLCollection</a></code> object is a <a>collection</a> of <a>elements</a>.
+<p>An {{HTMLCollection}} object is a <a>collection</a> of <a href="#concept-element">elements</a>.
 
-<p class="note">Note: <code>Elements</code> is the better solution for representing a <a>collection</a> of <a>elements</a>. <code><a>HTMLCollection</a></code> is an historical artifact we cannot rid the web of.
+<p class="note">Note: {{HTMLCollection}} is an historical artifact we cannot rid the web of.
+ While developers are of course welcome to keep using it, new API standard designers ought not to use
+ it (use <code>sequence&lt;T></code> in IDL instead).
 
 <dl>
  <dt><var>collection</var> . <code><a href="#htmlcollection-length">length</a></code>
- <dd><p>Returns the number of <a>elements</a> in the <a>collection</a>.
+ <dd><p>Returns the number of <a href="#concept-element">elements</a> in the <a>collection</a>.
 
  <dt><var>element</var> = <var>collection</var> . <code><a>item</a></code>(<var>index</var>)
  <dt><var>element</var> = <var>collection</var>[<var>index</var>]
@@ -522,9 +524,9 @@ interface HTMLCollection {
 
 <div>
 
-<p>The object's <a>supported property indices</a> are the numbers in the range zero to one less than the number of nodes <a>represented by the collection</a>. If there are no such elements, then there are no <a>supported property indices</a>.
+<p>The object's <a>supported property indices</a> are the numbers in the range zero to one less than the number of elements <a>represented by the collection</a>. If there are no such elements, then there are no <a>supported property indices</a>.
 
-<p>The <dfn id="htmlcollection-length" for="HTMLCollection"><code>length</code></dfn> attribute must return the number of nodes <a>represented by the collection</a>.
+<p>The <dfn id="htmlcollection-length" for="HTMLCollection"><code>length</code></dfn> attribute's getter must return the number of nodes <a>represented by the collection</a>.
 
 <p>The <dfn id="htmlcollection-item-func" for="HTMLCollection"><code>item(<var>index</var>)</code></dfn> method must return the <var>index</var>th <a>element</a> in the <a>collection</a>. If there is no <var>index</var>th <a>element</a> in the <a>collection</a>, then the method must return null.
 
@@ -535,7 +537,8 @@ interface HTMLCollection {
  <li>
   <p>For each <var>element</var> <a>represented by the collection</a>, in <a>tree order</a>, run these substeps:
   <ol>
-   <li><p>If <var>element</var> has an <a>ID</a> which is neither the empty string nor is in <var>result</var>, append <var>element</var>'s <a>ID</a> to <var>result</var>.
+   <li><p>If <var>element</var> has an <a href="#concept-id" title="concept-id">ID</a> which is not in <var>result</var>, append
+   <var>element</var>'s <a href="#concept-id" title="concept-id">ID</a> to <var>result</var>.
 
    <li><p>If <var>element</var> is in the <a>HTML namespace</a> and <a>has</a> a <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is neither the empty string nor is in <var>result</var>, append <var>element</var>'s <a href="#named-attribute"><code>name</code> attribute</a> <a href="#attribute-value">value</a> to <var>result</var>.
   </ol>
@@ -549,7 +552,8 @@ interface HTMLCollection {
   <p>Return the first <a>element</a> in the <a>collection</a> for which at least one of the following is true:
   <ul>
    <li>it has an <a>ID</a> which is <var>key</var>.
-   <li>it <a>has</a> a <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is <var>key</var>;
+   <li>it is in the <a>HTML namespace</a> and <a href="#concept-element-attribute-has" title="concept-element-attribute-has">has</a> a
+   <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is <var>key</var>;
   </ul>
   <p>or null if there is no such <a>element</a>.
 </ol>
