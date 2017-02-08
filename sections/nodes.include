@@ -1725,25 +1725,20 @@ interface XMLDocument : Document {};
 
 <p>The <dfn><code>createElementNS(<var>namespace</var>, <var>qualifiedName</var>)</code></dfn> method must run these steps:
 <ol>
- <li><p>If <var>namespace</var> is the empty string, set it to null.
+ <li><p>Let <var>namespace</var>, <var>prefix</var>, and <var>localName</var> be the result of
+ passing <var>namespace</var> and <var>qualifiedName</var> to <a>validate and extract</a>. Rethrow
+ any exceptions.
 
- <li><p>If <var>qualifiedName</var> does not match the <code><a href="http://www.w3.org/TR/xml/#NT-Name">Name</a></code> production, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>Let <var>interface</var> be the
+ <a href="#element-interface" title="element-interface">element interface</a> for
+ <var>localName</var> and <var>namespace</var>.
 
- <li><p>If <var>qualifiedName</var> does not match the <code><a>QName</a></code> production, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>qualifiedName</var> contains a "<code>:</code>" (U+003E), then split the string on it and let <var>prefix</var> be the part before and <var>localName</var> the part after. Otherwise, let <var>prefix</var> be null and <var>localName</var> be <var>qualifiedName</var>.
-
- <li><p>If <var>prefix</var> is not null and <var>namespace</var> is null, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>prefix</var> is "<code>xml</code>" and <var>namespace</var> is not the <a>XML namespace</a>, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>qualifiedName</var> or <var>prefix</var> is "<code>xmlns</code>" and <var>namespace</var> is not the <a>XMLNS namespace</a>, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>namespace</var> is the <a>XMLNS namespace</a> and neither <var>qualifiedName</var> nor <var>prefix</var> is "<code>xmlns</code>", <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>Let <var>interface</var> be the <a>element interface</a> for <var>localName</var> and <var>namespace</var>.
-
- <li><p>Return a new <a>element</a> that implements <var>interface</var>, with no attributes, <a href="#element-namespace">namespace</a> set to <var>namespace</var>, <a href="#element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#element-local-name">local name</a> set to <var>localName</var>, and <a>node document</a> set to the <a>context object</a>.
+ <li><p>Return a new <a href="#concept-element" title="concept-element">element</a> that implements <var>interface</var>,
+ with no attributes,
+ <a href="#element-namespace" title="element-namespace">namespace</a> set to <var>namespace</var>,
+ <a href="#element-namespace-prefix" title="element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>,
+ <a href="#element-local-name" title="element-local-name">local name</a> set to <var>localName</var>, and
+ <a href="#node-document" title="node-document">node document</a> set to the <a href="#context-object">context object</a>.
 </ol>
 
 <p>The <dfn><code>createDocumentFragment()</code></dfn> method must return a new <code><a>DocumentFragment</a></code> <a>node</a> with its <a>node document</a> set to the <a href="#context-object">context object</a>.
@@ -2048,7 +2043,7 @@ interface Element : Node {
   DOMString? getAttribute(DOMString name);
   DOMString? getAttributeNS(DOMString? namespace, DOMString localName);
   void setAttribute(DOMString name, DOMString value);
-  void setAttributeNS(DOMString? namespace, DOMString name, DOMString value);
+  void setAttributeNS(DOMString? namespace, DOMString qualifiedName, DOMString value);
   void removeAttribute(DOMString name);
   void removeAttributeNS(DOMString? namespace, DOMString localName);
   boolean hasAttribute(DOMString name);
@@ -2233,26 +2228,15 @@ must run these steps:
  <li><p><a>Change</a> <var>attribute</var> from <a>context object</a> to <var>value</var>.
 </ol>
 
-<p>The <dfn><code>setAttributeNS(<var>namespace</var>, <var>name</var>, <var>value</var>)</code></dfn> method must run these steps:
+<p>The <dfn><code>setAttributeNS(<var>namespace</var>, <var>qualifiedName</var>, <var>value</var>)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>If <var>namespace</var> is the empty string, set it to null.
+ <li><p>Let <var>namespace</var>, <var>prefix</var>, and <var>localName</var> be the result of
+ passing <var>namespace</var> and <var>qualifiedName</var> to <a>validate and extract</a>. Rethrow
+ any exceptions.
 
- <li><p>If <var>name</var> does not match the <code><a href="http://www.w3.org/TR/xml/#NT-Name">Name</a></code> production in XML, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
-
- <li><p>If <var>name</var> does not match the <code><a>QName</a></code> production in Namespaces in XML, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>name</var> contains a "<code>:</code>" (U+003E), then split the string on it and let <var>prefix</var> be the part before and <var>localName</var> the part after. Otherwise, let <var>prefix</var> be null and <var>localName</var> be <var>name</var>.
-
- <li><p>If <var>prefix</var> is not null and <var>namespace</var> is null, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>prefix</var> is "<code>xml</code>" and <var>namespace</var> is not the <a>XML namespace</a>, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>name</var> or <var>prefix</var> is "<code>xmlns</code>" and <var>namespace</var> is not the <a>XMLNS namespace</a>, <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p>If <var>namespace</var> is the <a>XMLNS namespace</a> and neither <var>name</var> nor <var>prefix</var> is "<code>xmlns</code>", <a>throw</a> a "<code><a>NamespaceError</a></code>" exception.
-
- <li><p><a>Set an attribute</a> for the <a>context object</a> using <var>localName</var>, <var>value</var>, and also <var>name</var>, <var>prefix</var>, and <var>namespace</var>.
+ <li><p><a>Set an attribute value</a> for the <a>context object</a> using <var>localName</var>,
+ <var>value</var>, and also <var>prefix</var> and <var>namespace</var>.
 </ol>
 
 <p>The <dfn><code>removeAttribute(<var>name</var>)</code></dfn> method must run these steps:
