@@ -123,6 +123,50 @@ return value.
 
 <h3 id="terminology-namespaces">Namespaces</h3>
 
+To <dfn export>validate</dfn> a <var>qualifiedName</var>, run these steps:
+
+<ol>
+ <li><p>If <var>qualifiedName</var> does not match the <code class="external" data-anolis-spec="xmlns">
+ <a href="https://www.w3.org/TR/xml/#NT-Name">Name</a></code> production,
+ then <a>throw</a> an {{InvalidCharacterError}}.
+
+ <li><p>If <var>qualifiedName</var> does not match the <code class="external" data-anolis-spec="xmlns">
+ <a>QName</a></code> production, then <a>throw</a> a {{NamespaceError}}.
+</ol>
+
+To <dfn export>validate and extract</dfn> a <var>namespace</var> and <var>qualifiedName</var>,
+run these steps:
+
+<ol>
+ <li>If <var>namespace</var> is the empty string, set it to null.
+
+ <li><a>Validate</a> <var>qualifiedName</var>. Rethrow any exceptions.
+
+ <li>Let <var>prefix</var> be null.
+
+ <li>Let <var>localName</var> be <var>qualifiedName</var>.
+
+ <li>If <var>qualifiedName</var> contains a "<code>:</code>" (U+003E), then split the
+ string on it and set <var>prefix</var> to the part before and <var>localName</var> to
+ the part after.
+
+ <li>If <var>prefix</var> is non-null and <var>namespace</var> is null, then <a>throw</a> a
+ {{NamespaceError}}.
+
+ <li>If <var>prefix</var> is "<code>xml</code>" and <var>namespace</var> is not the
+ <a>XML namespace</a>, then <a>throw</a> a {{NamespaceError}}.
+
+ <li>If either <var>qualifiedName</var> or <var>prefix</var> is
+ "<code>xmlns</code>" and <var>namespace</var> is not the
+ <a>XMLNS namespace</a>, then <a>throw</a> a
+ {{NamespaceError}}.
+
+ <li>If <var>namespace</var> is the <a>XMLNS namespace</a> and neither <var>qualifiedName</var>
+ nor <var>prefix</var> is "<code>xmlns</code>", then <a>throw</a> a {{NamespaceError}}.
+
+ <li>Return <var>namespace</var>, <var>prefix</var>, and <var>localName</var>.
+</ol>
+
 The <dfn>HTML namespace</dfn> is
 <code>http://www.w3.org/1999/xhtml</code>.
 
