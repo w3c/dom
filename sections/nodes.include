@@ -2051,13 +2051,13 @@ interface Element : Node {
   [SameObject] readonly attribute DOMTokenList classList;
 
   [SameObject] readonly attribute NamedNodeMap attributes;
-  DOMString? getAttribute(DOMString name);
+  DOMString? getAttribute(DOMString qualifiedName);
   DOMString? getAttributeNS(DOMString? namespace, DOMString localName);
-  void setAttribute(DOMString name, DOMString value);
+  void setAttribute(DOMString qualifiedName, DOMString value);
   void setAttributeNS(DOMString? namespace, DOMString qualifiedName, DOMString value);
-  void removeAttribute(DOMString name);
+  void removeAttribute(DOMString qualifiedName);
   void removeAttributeNS(DOMString? namespace, DOMString localName);
-  boolean hasAttribute(DOMString name);
+  boolean hasAttribute(DOMString qualifiedName);
   boolean hasAttributeNS(DOMString? namespace, DOMString localName);
 
 
@@ -2071,33 +2071,81 @@ interface Element : Node {
 
 <p><a href="#concept-element">Elements</a> have an associated <dfn id="element-namespace" for="element">namespace</dfn>, <dfn id="element-namespace-prefix" for="element">namespace prefix</dfn>, and <dfn id="element-local-name" for="element">local name</dfn>. When an <a href="#concept-element">element</a> is created, its <a href="#element-local-name">local name</a> is always given. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a href="#element-namespace">namespace</a> and <a href="#element-namespace-prefix">namespace prefix</a> are null.
 
+<p>An <a href="#concept-element">element</a>'s
+<dfn id="element-qualified-name">qualified name</dfn> is its
+<a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
+<a href="#element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its
+<a href="#element-local-name">local name</a>.
+
 <p><a href="#concept-element">Elements</a> also have an ordered <dfn>attribute list</dfn>. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a>attribute list</a> is empty. An <a href="#concept-element">element</a> <dfn>has</dfn> an <a href="#concept-attribute">attribute</a> <var>A</var> if <var>A</var> is in its <a>attribute list</a>.
 
 <p><a>Applicable specifications</a> and this specification (can) use the hooks an <dfn>attribute is set</dfn>, an <dfn id="attribute-is-changed">attribute is changed</dfn>, an <dfn>attribute is added</dfn>, and an <dfn>attribute is removed</dfn>, for further processing of the <a href="#concept-attribute">attribute</a>'s <a href="#attribute-value">value</a>.
 
-<p>To <dfn>get an attribute</dfn> for an <a href="#concept-element">element</a> <var>element</var> using a <var>localName</var> and optionally a <var>namespace</var>, run these steps:
+To <dfn id="element-attributes-get-by-name">get an attribute by name</dfn> given a
+<var>qualifiedName</var> and <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
 <ol>
- <li><p>If <var>namespace</var> is not given, set it to null.
+ <li><p>If <var>element</var> is in the <a>HTML namespace</a> and its <a>node document</a>
+ is an <a>HTML document</a>, then set <var>qualifiedName</var> to <var>qualifiedName</var> in
+ <a>ASCII lowercase</a>.
 
- <li><p>Return the <a href="#attribute-value">value</a> of the <a href="#concept-attribute">attribute</a> in <var>element</var>'s <a>attribute list</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var> and <a href="#attribute-local-name">local name</a> is <var>localName</var>, if it has one, and null otherwise.
+ <li><p>Return the first <a href="#concept-attribute">attribute</a> in <var>element</var>'s <a>attribute list</a>
+ whose <a href="#attribute-qualified-name">qualified name</a> is <var>qualifiedName</var>, and null otherwise.
 </ol>
 
-<p>To <dfn>set an attribute</dfn> for an <a href="#concept-element">element</a> <var>element</var> using a <var>localName</var> and <var>value</var>, and optionally a <var>name</var>, <var>prefix</var>, and <var>namespace</var>, run these steps:
+<p>To <dfn id="element-attributes-get-by-namespace">get an attribute by namespace and local name</dfn>
+given a <var>namespace</var>, <var>localName</var>, and <a href="#concept-element">element</a> <var>element</var>,
+run these steps:
 
 <ol>
- <li><p>If <var>name</var> is not given, set it to <var>localName</var>.
+ <li>If <var>namespace</var> is the empty string, set it to null.
 
- <li><p>If <var>prefix</var> is not given, set it to null.
-
- <li><p>If <var>namespace</var> is not given, set it to null.
-
- <li><p>Let <var>attribute</var> be the <a href="#concept-attribute">attribute</a> in <var>element</var>'s <a>attribute list</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var> and whose <a href="#attribute-local-name">local name</a> is <var>localName</var>, or null if there is no such <a href="#concept-attribute">attribute</a>.
-
- <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>localName</var>, <a href="#attribute-value">value</a> is <var>value</var>, <a href="#attribute-name">name</a> is <var>name</var>, <a href="#attribute-namespace">namespace</a> is <var>namespace</var>, and <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>, and then <a>append</a> this <a href="#concept-attribute">attribute</a> to <var>element</var> and terminate these steps.
-
- <li><p><a>Change</a> <var>attribute</var> from <var>element</var> to <var>value</var>.
+ <li>Return the <a href="#concept-attribute">attribute</a> in
+ <var>element</var>'s <a>attribute list</a>
+ whose <a href="#attribute-namespace">namespace</a> is
+ <var>namespace</var> and
+ <a href="#attribute-local-name">local name</a> is
+ <var>localName</var>, if any, and null otherwise.
 </ol>
+
+<p>To <dfn>get an attribute value</dfn> given <a href="#concept-element">element</a> <var>element</var>,
+<var>localName</var>, and optionally a <var>namespace</var> (null unless stated otherwise), run these steps:</p>
+
+<ol>
+ <li><p>Let <var>attr</var> be the result of
+ <a href="#element-attributes-get-by-namespace">getting an attribute</a> given
+ <var>namespace</var>, <var>localName</var>, and <var>element</var>.</p></li>
+
+ <li><p>If <var>attr</var> is null, then return the empty string.</p></li>
+
+ <li><p>Return <var>attr</var>'s <a for=Attr>value</a>.</p></li>
+</ol>
+
+<p>To <dfn>set an attribute value</dfn> for an <a href="#concept-element">element</a> <var>element</var>
+using a <var>localName</var> and <var>value</var>, and an optional <var>prefix</var>, and
+an optional <var>namespace</var>, run these steps:
+
+<ol>
+ <li>If <var>prefix</var> is not given, set it to null.
+
+ <li>If <var>namespace</var> is not given, set it to null.
+
+ <li>Let <var>attribute</var> be the result of
+ <a href="#element-attributes-get-by-namespace">getting an attribute</a> given
+ <var>namespace</var>, <var>localName</var>, and <var>element</var>.
+
+ <li>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is
+ <var>namespace</var>, <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>,
+ <a href="#attribute-local-name">local name</a> is <var>localName</var>, <a href="#attribute-value">value</a> is <var>value</var>, and
+ <a href="#concept-document">node document</a> is <var>element</var>'s <a href="#concept-document">node document</a>, then
+ <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to <var>element</var>, and then
+ terminate these steps.
+
+ <li><a>Change</a>
+ <var>attribute</var> from <var>element</var> to
+ <var>value</var>.
+</ol>
+
 
 <p>To <dfn>change</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var> to <var>value</var>, run these steps:
 
@@ -2109,7 +2157,7 @@ interface Element : Node {
  <li><p>An <a>attribute is set</a> and an <a>attribute is changed</a>.
 </ol>
 
-<p>To <dfn>append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
+<p>To <dfn id="element-append">append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
 <ol>
  <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue null.
@@ -2127,6 +2175,35 @@ interface Element : Node {
  <li><p>Remove <var>attribute</var> from the <var>element</var>'s <a>attribute list</a>.
 
  <li><p>An <a>attribute is removed</a>.
+</ol>
+
+<p>To <dfn id="element-attributes-remove-by-name">remove an attribute by name</dfn>
+given a <var>qualifiedName</var> and <a href="#concept-element">element</a> <var>element</var>, run these steps:
+
+<ol>
+ <li><p>Let <var>attr</var> be the result of
+ <a href="#element-attributes-get-by-name">getting an attribute</a> given
+ <var>qualifiedName</var> and <var>element</var>.
+
+ <li><p>If <var>attr</var> is non-null, <a href="#element-attributes-remove">remove</a> it from
+ <var>element</var>.
+
+ <li><p>Return <var>attr</var>.
+</ol>
+
+<p> To <dfn export id="element-attributes-remove-by-namespace">remove an attribute by namespace and local name</dfn>
+given a <var>namespace</var>, <var>localName</var>, and
+<a href="#concept-element">element</a> <var>element</var>, run these steps:
+
+<ol>
+ <li>Let <var>attr</var> be the result of
+ <a href="#element-attributes-get-by-namespace">getting an attribute</a> given
+ <var>namespace</var>, <var>localName</var>, and <var>element</var>.
+
+ <li><p>If <var>attr</var> is non-null, <a href="#element-attributes-remove">remove</a> it from
+ <var>element</var>.
+
+ <li><p>Return <var>attr</var>.
 </ol>
 
 <hr>
@@ -2192,14 +2269,14 @@ must run these steps:
 <p>Some IDL attributes are defined to <dfn>reflect</dfn> a particular content attribute of a given name. This means that on getting, these steps must be run:
 
 <ol>
- <li><p><a>Get an attribute</a> for the <a>context object</a> using content attribute's name and let <var>value</var> be the result.
+ <li><p><a>Get an attribute value</a> for the <a>context object</a> using content attribute's name and let <var>value</var> be the result.
 
  <li><p>If <var>value</var> is null, return the empty string.
 
  <li><p>Return <var>value</var>.
 </ol>
 
-<p>On setting, <a>set an attribute</a> for the <a>context object</a> using the name of the attribute and the given value.
+<p>On setting, <a>set an attribute value</a> for the <a>context object</a> using the name of the attribute and the given value.
 
 <p>The <dfn id="element-id" for="element"><code>id</code></dfn> attribute must <a>reflect</a> the "<code>id</code>" content attribute.
 
@@ -2211,30 +2288,35 @@ must run these steps:
 
 <p>The <dfn id="element-attributes" for="element"><code>attributes</code></dfn> attribute must return a <code><a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1780488922">NamedNodeMap</a></code>.
 
-<p>The <dfn><code>getAttribute(<var>name</var>)</code></dfn> method must run these steps:
-<ol>
- <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>name</var> be <a>converted to ASCII lowercase</a>.
+<p>The <dfn><code>getAttribute(<var>qualifiedName</var>)</code></dfn> method must run these steps:
 
- <li><p>Return the <a href="#attribute-value">value</a> of the first <a href="#concept-attribute">attribute</a> in the <a>context object</a>'s <a>attribute list</a> whose <a href="#attribute-name">name</a> is <var>name</var>, and null otherwise.
+<ol>
+ <li><p>Let <var>attr</var> be the result of
+ <a href="#element-attributes-get-by-name" title="#element-attributes-get-by-name">
+ getting an attribute</a> given <var>qualifiedName</var> and the <a>context object</a>.
+
+ <li><p>If <var>attr</var> is null, return null.
+
+ <li><p>Return <var>attr</var>'s <a href="#attribute-value">value</a>.
 </ol>
 
 <p>The <dfn><code>getAttributeNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method must return the following steps:
 <ol>
   <li><p>If <var>namespace</var> is the empty string, set it to null.
 
-  <li><p>Return <a>getting an attribute</a> for the <a>context object</a> using <var>localName</var> and <var>namespace</var>.
+  <li><p>Return <a href="#element-attributes-get-by-name">getting an attribute</a> for the <a>context object</a> using <var>localName</var> and <var>namespace</var>.
 </ol>
 
-<p>The <dfn><code>setAttribute(<var>name</var>, <var>value</var>)</code></dfn> method must run these steps:
+<p>The <dfn><code>setAttribute(<var>qualifiedName</var>, <var>value</var>)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>If <var>name</var> does not match the <code><a href="http://www.w3.org/TR/xml/#NT-Name">Name</a></code> production in XML, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>If <var>name</var> does not match the <code><a href="http://www.w3.org/TR/xml/#NT-QName">QName</a></code> production in XML, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
 
- <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>name</var> be <a>converted to ASCII lowercase</a>.
+ <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>qualifiedName</var> be <a>converted to ASCII lowercase</a>.
 
- <li><p>Let <var>attribute</var> be the first <a href="#concept-attribute">attribute</a> in the <a>context object</a>'s <a>attribute list</a> whose <a href="#attribute-name">name</a> is <var>name</var>, or null if there is no such <a href="#concept-attribute">attribute</a>.
+ <li><p>Let <var>attribute</var> be the first <a href="#concept-attribute">attribute</a> in the <a>context object</a>'s <a>attribute list</a> whose <a href="#attribute-name">name</a> is <var>qualifiedName</var>, or null if there is no such <a href="#concept-attribute">attribute</a>.
 
- <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>name</var> and <a href="#attribute-value">value</a> is <var>value</var>, and then <a>append</a> this <a href="#concept-attribute">attribute</a> to the <a>context object</a> and terminate these steps.
+ <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>qualifiedName</var> and <a href="#attribute-value">value</a> is <var>value</var>, and then <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to the <a>context object</a> and terminate these steps.
 
  <li><p><a>Change</a> <var>attribute</var> from <a>context object</a> to <var>value</var>.
 </ol>
@@ -2250,25 +2332,19 @@ must run these steps:
  <var>value</var>, and also <var>prefix</var> and <var>namespace</var>.
 </ol>
 
-<p>The <dfn><code>removeAttribute(<var>name</var>)</code></dfn> method must run these steps:
-<ol>
- <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>name</var> be <a>converted to ASCII lowercase</a>.
+<p>The <dfn><code>removeAttribute(<var>qualifiedName</var>)</code></dfn>
+method, when invoked, must <a lt="remove an attribute by name">remove an attribute</a> given
+<var>qualifiedName</var> and the <a>context object</a>, and then return undefined.
 
- <li><p><a href="#element-attributes-remove">Remove</a> the first <a href="#concept-attribute">attribute</a> from th <a>context object</a> whose <a href="#attribute-name">name</a> is <var>name</var>, if any.
-</ol>
-
-<p>The <dfn><code>removeAttributeNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method must return the following steps:
-<ol>
-  <li><p>If <var>namespace</var> is the empty string, set it to null.
-
-  <li><p><a href="#element-attributes-remove">Remove</a> the <a href="#concept-attribute">attribute</a> from the <a>context object</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var> and <a href="#attribute-local-name">local name</a> is <var>localName</var>, if any.
-</ol>
+<p>The <dfn><code>removeAttributeNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method must
+<a href="#element-attributes-remove-by-namespace">remove an attribute</a> given <var>namespace</var>,
+<var>localName</var>, and <a>context object</a>, and then return undefined.
 
 <p>The <dfn><code>hasAttribute(<var>name</var>)</code></dfn> method must run these steps:
 <ol>
  <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>name</var> be <a>converted to ASCII lowercase</a>.
 
- <li><p>Return true if the <a>context object</a> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-name">name</a> is <var>name</var>, and false otherwise.
+ <li><p>Return true if the <a>context object</a> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-qualified-name">qualifiedName</a> is <var>qualifiedName</var>, and false otherwise.
 </ol>
 
 <p>The <dfn><code>hasAttributeNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method must run these steps:
@@ -2307,6 +2383,12 @@ interface Attr {
 <p><a href="#concept-attribute">Attributes</a> have a <dfn id="attribute-namespace" for="attribute">namespace</dfn> (null or a non-empty string), <dfn id="attribute-namespace-prefix" for="attribute">namespace prefix</dfn> (null or a non-empty string), <dfn id="attribute-local-name" for="attribute">local name</dfn> (a non-empty string), <dfn id="attribute-name" for="attribute">name</dfn> (a non-empty string), <dfn id="attribute-value" for="attribute">value</dfn> (a string), and <dfn id="attribute-element" for="attribute">element</dfn> (null or an <a href="#concept-element">element</a>).
 
 <p class="note">Note: If designed today they would just have a name and value.
+
+<p>An <a>attribute</a>'s
+<dfn id="attribute-qualified-name">qualified name</dfn> is its
+<a href="#attribute-name">local name</a> if its <a href="#attribute-namespace-prefix">namespace prefix</a> is null, and its
+<a href="#attribute-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its
+<a href="#attribute-local-name">local name</a>, otherwise.
 
 <p>When an <a href="#concept-attribute">attribute</a> is created, its <a href="#attribute-local-name">local name</a> and <a href="#attribute-value">value</a> are always given. Unless explicitly given when an <a href="#concept-attribute">attribute</a> is created, its <a href="#attribute-name">name</a> is identical to its <a href="#attribute-local-name">local name</a>, and its <a href="#attribute-namespace">namespace</a> and <a href="#attribute-namespace-prefix">namespace prefix</a> are null.
 
