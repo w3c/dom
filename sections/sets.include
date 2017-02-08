@@ -28,7 +28,7 @@ interface DOMTokenList {
 <ol>
  <li><p>If there is no associated <a>attribute</a> (when the object is a <code><a>DOMSettableTokenList</a></code>), terminate these steps.
 
- <li><p><a>Set an attribute</a> for the associated <a>element</a> using associated <a>attribute</a>'s <a>local name</a> and the result of running the <a>ordered set serializer</a> for <a>tokens</a>.
+ <li><p><a>Set an attribute value</a> for the associated <a>element</a> using associated <a>attribute</a>'s <a>local name</a> and the result of running the <a>ordered set serializer</a> for <a>tokens</a>.
 </ol>
 
 <dl>
