@@ -943,23 +943,30 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
   </dl>
 </dl>
 
-<p>The <dfn><code>nodeType</code></dfn> attribute must return the type of the node, which must be one of the following:
+<p>The <dfn><code>nodeType</code></dfn> attribute's getter, when invoked, must return the first matching statement, switching on the <a>context object</a>:
 
-<ul>
- <li><dfn><code>ELEMENT_NODE</code></dfn> (1);
+<dl class="switch">
+ <dt>{{Element}}
+ <dd><dfn><code>ELEMENT_NODE</code></dfn> (1);
 
- <li><dfn><code>TEXT_NODE</code></dfn> (3);
+ <dt>{{Text}}
+ <dd><dfn><code>TEXT_NODE</code></dfn> (3);
 
- <li><dfn><code>PROCESSING_INSTRUCTION_NODE</code></dfn> (7);
+ <dt>{{ProcessingInstruction}}
+ <dd><dfn><code>PROCESSING_INSTRUCTION_NODE</code></dfn> (7);
 
- <li><dfn><code>COMMENT_NODE</code></dfn> (8);
+ <dt>{{Comment}}
+ <dd><dfn><code>COMMENT_NODE</code></dfn> (8);
 
- <li><dfn><code>DOCUMENT_NODE</code></dfn> (9);
+ <dt>{{Document}}
+ <dd><dfn><code>DOCUMENT_NODE</code></dfn> (9);
 
- <li><dfn><code>DOCUMENT_TYPE_NODE</code></dfn> (10);
+ <dt>{{DocumentType}}
+ <dd><dfn><code>DOCUMENT_TYPE_NODE</code></dfn> (10);
 
- <li><dfn><code>DOCUMENT_FRAGMENT_NODE</code></dfn> (11).
-</ul>
+ <dt>{{DocumentFragment}}
+ <dd><dfn><code>DOCUMENT_FRAGMENT_NODE</code></dfn> (11).
+</dl>
 
 
 <!-- NodeExodus
@@ -983,7 +990,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
 <p>The <dfn><code>localName</code></dfn> attribute must return the local name that is associated with the node, if it has one, and null otherwise.-->
 
-<p>The <code>nodeName</code> attribute must return the following, depending on the <a>context object</a>:
+<p>The <code>nodeName</code> attribute's getter, when invoked, must return the first matching statement, switching on the <a href="#context-object">context object</a>:
 
 <dl class="switch">
  <dt><code><a>Element</a></code>
