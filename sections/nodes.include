@@ -2388,6 +2388,7 @@ interface Attr {
   readonly attribute DOMString? prefix;
   readonly attribute DOMString localName;
   readonly attribute DOMString name;
+  readonly attribute DOMString nodeName; // for legacy use, alias of .name
            attribute DOMString value;
 
   readonly attribute boolean specified; // useless; always returns true
@@ -2410,7 +2411,7 @@ interface Attr {
 
 <p>The <dfn id="attr-localname" for="attr"><code>localName</code></dfn> attribute must return the <a href="#attribute-local-name">local name</a>.
 
-<p>The <dfn id="attr-name"  for="attr"><code>name</code></dfn> attribute's getter must return the <a href="#attribute-name">name</a>.
+<p>The <dfn id="attr-name"  for="attr"><code>name</code></dfn> attribute's getter and <dfn id="attr-nodename" for="attr"><code>nodeName</code></dfn> attribute's getter must return the <a href="#attribute-name">name</a>.
 
 <p>The <dfn id="attr-value" for="attr"><code>value</code></dfn> attribute's getter and <dfn id="attr-textcontent" for="attr"><code>textContent</code></dfn> attribute's getter must both return the <a href="#attribute-value">value</a>.
 
