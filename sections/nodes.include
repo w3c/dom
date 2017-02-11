@@ -1510,6 +1510,8 @@ interface Document : Node {
   readonly attribute USVString origin;
   readonly attribute DOMString compatMode;
   readonly attribute DOMString characterSet;
+  readonly attribute DOMString charset; // for legacy use, alias of .characterSet
+  readonly attribute DOMString inputEncoding; // for legacy use, alias of .characterSet
   readonly attribute DOMString contentType;
 
   readonly attribute DocumentType? doctype;
@@ -1596,98 +1598,7 @@ interface XMLDocument : Document {};
 
 <p>The <dfn><code>compatMode</code></dfn> attribute must return "<code>BackCompat</code>" if the <a>context object</a> is in <a>quirks mode</a>, and "<code>CSS1Compat</code>" otherwise.
 
-<p>The <dfn><code>characterSet</code></dfn> attribute's getter and <dfn><code>inputEncoding</code></dfn> attribute's getter must run these steps:
-
-<ol>
- <li><p>Let <var>name</var> be <a href="#document-encoding">encoding</a>'s <a href="http://www.w3.org/TR/encoding/#name">name</a>.
-
- <li>
-  <p>If <var>name</var> is in the first column in the table below, set <var>name</var> to the value of the second column on the same row:
-
-  <!-- The order matches the Encoding Standard -->
-  <table>
-   <tr>
-    <th>Name
-    <th>Compatibility name
-   <tr>
-    <td><a>utf-8</a>
-    <td>"<code>UTF-8</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#ibm866">ibm866</a>
-    <td>"<code>IBM866</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-2">iso-8859-2</a>
-    <td>"<code>ISO-8859-2</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-3">iso-8859-3</a>
-    <td>"<code>ISO-8859-3</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-4">iso-8859-4</a>
-    <td>"<code>ISO-8859-4</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-5">iso-8859-5</a>
-    <td>"<code>ISO-8859-5</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-6">iso-8859-6</a>
-    <td>"<code>ISO-8859-6</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-7">iso-8859-7</a>
-    <td>"<code>ISO-8859-7</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-8">iso-8859-8</a>
-    <td>"<code>ISO-8859-8</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-8-i">iso-8859-8-i</a>
-    <td>"<code>ISO-8859-8-I</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-10">iso-8859-10</a>
-    <td>"<code>ISO-8859-10</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-13">iso-8859-13</a>
-    <td>"<code>ISO-8859-13</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-14">iso-8859-14</a>
-    <td>"<code>ISO-8859-14</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-15">iso-8859-15</a>
-    <td>"<code>ISO-8859-15</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-8859-16">iso-8859-16</a>
-    <td>"<code>ISO-8859-16</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#koi8-r">koi8-r</a>
-    <td>"<code>KOI8-R</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#koi8-u">koi8-u</a>
-    <td>"<code>KOI8-U</code>"
-   <tr>
-    <td>gbk
-    <td>"<code>GBK</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#big5">big5</a>
-    <td>"<code>Big5</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#euc-jp">euc-jp</a>
-    <td>"<code>EUC-JP</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#iso-2022-jp">iso-2022-jp</a>
-    <td>"<code>ISO-2022-JP</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#shift_jis">shift_jis</a>
-    <td>"<code>Shift_JIS</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#euc-kr">euc-kr</a>
-    <td>"<code>EUC-KR</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#utf-16be">utf-16be</a>
-    <td>"<code>UTF-16BE</code>"
-   <tr>
-    <td><a href="http://www.w3.org/TR/encoding/#utf-16le">utf-16le</a>
-    <td>"<code>UTF-16LE</code>"
-  </table>
-
- <li><p>Return <var>name</var>.
-</ol>
+<p>The <dfn><code>characterSet</code></dfn> attribute's getter, <dfn><code>charSet</code></dfn> attribute's getter, and <dfn><code>inputEncoding</code></dfn> attribute's getter, must return <a>context object</a>'s <a href="#document-encoding">encoding</a>'s <a href="https://www.w3.org/TR/encoding/#name">name</a>.
 
 <p>The <dfn><code>contentType</code></dfn> attribute must return the <a>content type</a>.
 
