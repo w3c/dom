@@ -194,6 +194,10 @@ method must set the <a>stop propagation flag</a>.
 <p>The <dfn lt="dom event isTrusted|event isTrusted|isTrusted"><code>isTrusted</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be
 initialized to false.
 
+<p class="note">Note: <code><a>isTrusted</a></code> is a convenience that indicates whether an <a>event</a> is <a>dispatched</a> by the user agent
+(as opposed to using <code><a>dispatchEvent()</a></code>). The sole legacy exception is {{HTMLElement/click()}}, which causes
+the user agent to dispatch an <a>event</a> whose <code><a>isTrusted</a></code> attribute is initialized to false.
+
 <p>The <dfn lt="dom event timeStamp|event timeStamp|timeStamp"><code>timeStamp</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the number of milliseconds that have passed since 00:00:00 UTC on 1 January 1970, ignoring leap seconds.
 <!-- leap seconds are ignored by JavaScript too -->
 
