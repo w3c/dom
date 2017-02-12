@@ -561,7 +561,8 @@ interface HTMLCollection {
 </div>
 
 <h3 id="nodes-mutation-observers">Mutation observers</h3>
-<p>Each <a>unit of related similar-origin browsing contexts</a> has a <dfn>mutation observer compound microtask queued flag</dfn> and an associated list of <code><a>MutationObserver</a></code> objects which is initially empty.
+<p>Each <a>unit of related similar-origin browsing contexts</a> has a <dfn>mutation observer compound microtask queued flag</dfn>, which is initially unset,
+and an associated list of <code><a>MutationObserver</a></code> objects, which is initially empty.
 
 <p>To <dfn>queue a mutation observer compound microtask</dfn>, run these steps:
 
@@ -598,7 +599,13 @@ interface HTMLCollection {
 
 <p>Each <a>node</a> has an associated list of <a>registered observers</a>.
 
-<p>A <dfn>registered observer</dfn> consists of an <b>observer</b> (a <code><a>MutationObserver</a></code> object) and <b>options</b> (a <code><a>MutationObserverInit</a></code> dictionary). A <dfn>transient registered observer</dfn> is a specific type of <a>registered observer</a> that has a <b>source</b> which is a <a>registered observer</a>.Mutation observers</h3>
+<p>A <dfn>registered observer</dfn> consists of an <b>observer</b> (a <code><a>MutationObserver</a></code> object) and <b>options</b> (a <code><a>MutationObserverInit</a></code> dictionary).
+ A <dfn>transient registered observer</dfn> is a specific type of <a>registered observer</a> that has a <b>source</b> which is a <a>registered observer</a>.
+
+<p class="note no-backref"><a>Transient registered observers</a> are used to track
+mutations within a given <a>node</a>'s <a>descendants</a> after <a>node</a> has been
+removed so they do not get lost when <code>subtree</code> is set to true on <a>node</a>'s
+<a>parent</a>.
 
 <h4 id="interface-mutationobserver">Interface <code><a>MutationObserver</a></code></h4>
 
@@ -760,7 +767,7 @@ dictionary MutationObserverInit {
 [Exposed=Window]
 interface MutationRecord {
   readonly attribute DOMString type;
-  readonly attribute Node target;
+  [SameObject] readonly attribute Node target;
   [SameObject] readonly attribute NodeList addedNodes;
   [SameObject] readonly attribute NodeList removedNodes;
   readonly attribute Node? previousSibling;
