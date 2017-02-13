@@ -1,21 +1,20 @@
 <section>
 <h2 class="no-num" id="acknowledgements">Acknowledgements</h2>
 
-  There have been a lot of people that have helped make DOM more interoperable over the years and thereby furthered the goals of this standard. Likewise many people have helped making this standard what it is today.
+  Very many people that have contributed to earlier versions of DOM, to the WHATWG's
+  version, and to making DOM implementations more interoperable, over many years.
+  
+  Some contributions are are acknowledged in particular specification versions and implementations,
+  some are not. Without all of them this specification would be much poorer.
 
-  With that, many thanks to Adam Klein, Adrian Bateman, Alex Russell, Arkadiusz Michalski, Arnaud Le Hors, Arun Ranganathan, Björn Höhrmann, Boris Zbarsky, Brandon Slade, Brandon Wallace, Brian Kardell, Cameron McCormack, Christophe Dumez, Daniel Glazman, David Bruant, David Flanagan, David Håsäther, Dethe Elza, Dimitri Glazkov, Domenic Denicola, Dominic Cooney, Dominique Hazaël-Massieux, Don Jordan, Doug Schepers, Erik Arvidsson, Gavin Nicol, Geoffrey Sneddon, Glenn Maynard, Harald Alvestrand, Henri Sivonen, Ian Hickson, Igor Bukanov, Jacob Rossi, Jake Archibald, Jake Verbaten, James Graham, James Robinson, Jens Lindström, João Eiras, Joe Kesselman, Jonas Sicking, Jonathan Robie, Joshua Bell, Justin Summerlin, 呂康豪 (Kang-Hao Lu), Kevin Sweeney, Lachlan Hunt, Lauren Wood, Manish Goregaokar, Manish Tripathi, Marcos Caceres, Mark Miller, Mats Palmgren, Mounir Lamouri, Michael™ Smith, Mike Champion, Ojan Vafai, Olli Pettay, Ondřej Žára, Peter Sharpe, Philip Jägenstedt, Philippe Le Hégaret, Rafael Weinstein, Rick Waldron, Robbert Broersma, Robin Berjon, Rune F. Halvorsen, Ryosuke Niwa, Seo Sanghyeon, Shiki Okasaka, Simon Pieters, Steve Byrne, Stig Halvorsen, Tab Atkins, Timo Tijhof, Tom Pixley, Travis Leithead, Vidur Apparao, Warren He, Yehuda Katz, Yoichi Osato, and Zack Weinberg for being awesome!
-
-  This standard is written by
-<a href="https://annevankesteren.nl/" lang="nl">Anne van Kesteren</a>
-(<a href="https://www.mozilla.org/">Mozilla</a>,
-<a href="mailto:annevk@annevk.nl">annevk@annevk.nl</a>) with substantial contributions from
-Aryeh Gregor (<a href="https://www.mozilla.org/">Mozilla</a>,
-<a href="mailto:ayg@aryeh.name">ayg@aryeh.name</a>)
-and Ms2ger (<a href="https://www.mozilla.org/">Mozilla</a>,
-<a href="mailto:ms2ger@gmail.com">ms2ger@gmail.com</a>).
-
-  Per <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license">CC0</a>, to
-the extent possible under law, the WHATWG editors have waived all copyright and related or
-neighboring rights to the <a href='https://dom.spec.whatwg.org/'>WHATWG work</a>.
+  For specific contributions to this version, thanks are due to:
+  Guangzhen Li "Kurli",
+  Hongbo Lin,
+  Jin Howard 靳红浩,
+  "Linzhiping",
+  Rick Byers,
+  Cindy Wu Xiaoqian,
+  Wucongdonglai,
+  Zhiqiang Zhang
 
 </section>
