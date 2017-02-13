@@ -16,7 +16,7 @@ Mailing List: https://www-dom@w3.org
 Mailing List Archives: https://lists.w3.org/Archives/Public/www-dom/
 Test Suite: https://w3c-test.org/dom/
 Abstract: DOM defines a platform-neutral model for events and node trees.
-Status Text: This document is published as a snapshot of the <a href="https://dom.spec.whatwg.org/">DOM Living Standard</a> with the intent of keeping the differences from the original to a strict minimum, and only through subsetting (only things that are not implemented were removed for this publication).
+Status Text: This document is an editor's draft, which will be proposed as a First Public Working Draft of an update to the DOM 4 Recommendation.
 </pre>
 
 <pre class="anchors">
