@@ -3,18 +3,18 @@
 
   Very many people that have contributed to earlier versions of DOM, to the WHATWG's
   version, and to making DOM implementations more interoperable, over many years.
-  
+
   Some contributions are are acknowledged in particular specification versions and implementations,
   some are not. Without all of them this specification would be much poorer.
 
   For specific contributions to this version, thanks are due to:
-  Guangzhen Li "Kurli",
-  Hongbo Lin,
-  Jin Howard 靳红浩,
-  "Linzhiping",
-  Rick Byers,
   Cindy Wu Xiaoqian,
-  Wucongdonglai,
-  Zhiqiang Zhang
+  Donglei Wu "wucongdonglai",
+  Guangzhen Li "kurli",
+  Hongbo Min "hmin",
+  Honghao Jin "jinhoward",
+  Rick Byers,
+  Zhiping Lin "linzhiping",
+  Zhiqiang Zhang "zqzhang".
 
 </section>
