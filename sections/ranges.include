@@ -549,7 +549,7 @@ interface Range {
 
 <p>The <dfn><code>extractContents()</code></dfn> method must return the result of <a>extracting</a> <a>context object</a>.
 
-<p>To <dfn lt="range clone|clone">clone</dfn> a <a>range</a> <var>range</var>, run these steps:
+<p>To <dfn id="concept-range-clone" lt="clone the contents of a range">clone the contents</dfn> of a <a>range</a> <var>range</var>, run these steps:
 
 <ol>
  <li><p>Let <var>fragment</var> be a new <code><a>DocumentFragment</a></code> <a >node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
@@ -624,7 +624,7 @@ interface Range {
 
    <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>original start node</var>, <var>original start offset</var>) and whose <a>end</a> is (<var>first partially contained child</var>, <var>first partially contained child</var>'s <a>length</a>).
 
-   <li><p>Let <var>subfragment</var> be the result of <a>cloning</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a href="#concept-range-clone">cloning</a> <var>subrange</var>.
 
    <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
@@ -661,7 +661,7 @@ interface Range {
 
    <li><p>Let <var>subrange</var> be a new <a>range</a> whose <a>start</a> is (<var>last partially contained child</var>, 0) and whose <a>end</a> is (<var>original end node</var>, <var>original end offset</var>).
 
-   <li><p>Let <var>subfragment</var> be the result of <a>cloning</a> <var>subrange</var>.
+   <li><p>Let <var>subfragment</var> be the result of <a href="#concept-range-clone">cloning</a> <var>subrange</var>.
 
    <li><p><a>Append</a> <var>subfragment</var> to <var>clone</var>.
   </ol>
@@ -669,7 +669,7 @@ interface Range {
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn><code>cloneContents()</code></dfn> method must return the result of <a>cloning</a> <a>context object</a>.
+<p>The <dfn><code>cloneContents()</code></dfn> method must return the result of <a href="#concept-range-clone">cloning</a> <a>context object</a>.
 
 <p>To <dfn lt="range insert|insert">insert</dfn> a <a>node</a> <var>node</var> into a <a>range</a> <var>range</var>, run these steps:
 
