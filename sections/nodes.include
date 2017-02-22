@@ -798,7 +798,7 @@ interface MutationRecord {
 [Exposed=Window]
 interface Node : EventTarget {
   const unsigned short ELEMENT_NODE = 1;
-  const unsigned short ATTRIBUTE_NODE = 2; // historical
+  const unsigned short ATTRIBUTE_NODE = 2;
   const unsigned short TEXT_NODE = 3;
   const unsigned short CDATA_SECTION_NODE = 4; // historical
   const unsigned short ENTITY_REFERENCE_NODE = 5; // historical
@@ -870,7 +870,10 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
   <dl>
    <dt><code><a href="#dom-node">Node</a> . <a>ELEMENT_NODE</a></code> (1)
-   <dd><var>node</var> is an <a>element</a>.
+   <dd><var>node</var> is an <a href="#concept-element">element</a>.
+
+   <dt><code><a href="#dom-node">Node</a> . <a>ATTRIBUTE_NODE</a></code> (2)
+   <dd><var>node</var> is an <a href="#concept-attribute">attribute</a>.
 
    <dt><code><a href="#dom-node">Node</a> . <a>TEXT_NODE</a></code> (3)
    <dd><var>node</var> is a <code><a>Text</a></code> <a>node</a>.
@@ -900,6 +903,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dt><code><a href="#element">Element</a></code>
    <dd>Its <code><a>tagName</a></code> attribute value.
 
+   <dt><code><a href="#attr">Attr</a></code>
+   <dd>Its <code><a href="#attribute-qualified-name">qualified name</a></code>.
+
    <dt><code><a>Text</a></code>
    <dd>"<code>#text</code>".
 
@@ -925,6 +931,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <dl class="switch">
  <dt>{{Element}}
  <dd><dfn><code>ELEMENT_NODE</code></dfn> (1);
+
+ <dt>{{Attr}}
+ <dd><dfn><code>ATTRIBUTE_NODE</code></dfn> (2);
 
  <dt>{{Text}}
  <dd><dfn><code>TEXT_NODE</code></dfn> (3);
@@ -972,6 +981,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <dl class="switch">
  <dt><code><a>Element</a></code>
  <dd><p>Its <code><a>tagName</a></code> attribute value.
+
+ <dt><code><a href="#attr">Attr</a></code>
+ <dd>Its <code><a href="#attribute-qualified-name">qualified name</a></code>.
 
  <dt><code><a>Text</a></code>
  <dd><p>"<code>#text</code>".
@@ -1050,6 +1062,8 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
 <p>The <dfn><code>parentNode</code></dfn> attribute must return the <a>parent</a>.
 
+<p class="note">An {{Attr}} <a>node</a> has no <a>parent</a>.
+
 <p>The <dfn><code>parentElement</code></dfn> attribute must return the <a>parent element</a>.
 
 <p>The <dfn><code>hasChildNodes()</code></dfn> method must return true if the <a>context object</a> has <a href="#tree-child">children</a>, and false otherwise.
@@ -1062,6 +1076,8 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
 <p>The <dfn id="node-previoussibling" for="node"><code>previousSibling</code></dfn> attribute must return the <a href="#tree-previous-sibling">previous sibling</a>.
 
+<p class="note">An {{Attr}} <a>node</a> has no <a>siblings</a>.
+
 <p>The <dfn id="node-nextsibling" for="node"><code>nextSibling</code></dfn> attribute must return the <a href="#tree-next-sibling">next sibling</a>.
 </div>
 
@@ -1072,6 +1088,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <p>The <dfn><code>nodeValue</code></dfn> attribute must return the following, depending on the <a>context object</a>:
 
 <dl class="switch">
+ <dt><code><a>Attr</a></code>
+ <dd><p><a>context object</a>'s <a href="#attribute-value">value</a>.
+
  <dt><code><a>Text</a></code>
  <dt><code><a>Comment</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
@@ -1084,6 +1103,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <p>The <code><a>nodeValue</a></code> attribute must, on setting, if the new value is null, act as if it was the empty string instead, and then do as described below, depending on the <a>context object</a>:
 
 <dl class="switch">
+ <dt><code><a>Attr</a></code>
+ <dd><p><a>Set an existing attribute value</a> with <a>context object</a> and new value.
+
  <dt><code><a>Text</a></code>
  <dt><code><a>Comment</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
@@ -1099,6 +1121,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
  <dt><code><a>DocumentFragment</a></code>
  <dt><code><a>Element</a></code>
  <dd><p>The concatenation of <a href="#cd-data">data</a> of all the <code><a>Text</a></code> <a>node</a> <a>descendants</a> of the <a>context object</a>, in <a>tree order</a>.
+
+ <dt><code><a>Attr</a></code>
+ <dd><p><a>context object</a>'s <a href="#attribute-value">value</a>.
 
  <dt><code><a>Text</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
@@ -1122,6 +1147,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
    <li><p><a>Replace all</a> with <var>node</var> within the <a>context object</a>.
   </ol>
+
+ <dt><code><a>Attr</a></code>
+ <dd><p><a>Set an existing attribute value</a> with <a>context object</a> and new value.
 
  <dt><code><a>Text</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
@@ -1196,14 +1224,31 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <ol>
  <li><p>If <var>document</var> is not given, let <var>document</var> be <var>node</var>'s <a>node document</a>.
 
- <li><p>Let <var>copy</var> be a <a>node</a> that implements the same interfaces as <var>node</var>.
-
  <li>
-  <p>If <var>copy</var> is a <a>document</a>, set its <a>node document</a> and <var>document</var> to <var>copy</var>.
-  <p>Otherwise, set <var>copy</var>'s <a>node document</a> to <var>document</var>.
+  <p>If <var>node</var> is an <a href="#concept-element">element</a>, then:
 
- <li>
-  <p>Copy the following from <var>node</var> to <var>copy</var>, depending on the type of <var>node</var>:
+  <ol>
+   <li><p>Let <var>copy</var> be the result of <a>creating an element</a>, given
+   <var>document</var>, <var>node</var>'s <a href="#element-local-name">local name</a>, <var>node</var>'s
+   <a href="#element-namespace">namespace</a>, <var>node</var>'s <a href="#element-namespace-prefix">namespace prefix</a>, and the
+   value of <var>node</var>'s <code>is</code> attribute if present (or null if not).
+   <li>
+    <p>For each <var>attribute</var> in <var>node</var>'s
+    <a>attribute list</a>, in order, run these substeps:
+
+    <ol>
+     <li><p>Let <var>copyAttribute</var> be a <a>clone</a> of <var>attribute</var>.
+
+     <li><p><a lt="append an attribute">Append</a> <var>copyAttribute</var> to <var>copy</var>.
+    </ol>
+   </li>
+  </ol>
+ </li>
+
+ <li><p>Otherwise, let <var>copy</var> be a <a>node</a> that implements the same interfaces as <var>node</var>,
+  <var>node</var>, and fulfills these additional requirements, switching on
+  <var>node</var>:
+
   <dl>
    <dt><code><a>Document</a></code>
    <dd><p>Its <a>encoding</a>, <a>content type</a>, <a href="#document-url">URL</a>, its mode (<a>quirks mode</a>, <a>limited quirks mode</a>, or <a>no-quirks mode</a>), and its type (<a>XML document</a> or <a>HTML document</a>).
@@ -1211,8 +1256,8 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dt><code><a>DocumentType</a></code>
    <dd><p>Its <a href="#doctype-name">name</a>, <a>public ID</a>, and <a>system ID</a>.
 
-   <dt><code><a>Element</a></code>
-   <dd><p>Its <a href="#element-namespace">namespace</a>, <a href="#element-namespace-prefix">namespace prefix</a>, <a href="#element-local-name">local name</a>, and its <a>attribute list</a>.
+   <dt><code><a>Attr</a></code>
+   <dd><p>Its <a href="#attribute-namespace">namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>.
 
    <dt><code><a>Text</a></code>
    <dt><code><a>Comment</a></code>
@@ -1224,6 +1269,10 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dt>Any other node
    <dd><p>—
   </dl>
+
+ <li><p>Set <var>copy</var>'s <a>node document</a> and <var>document</var> to
+ <var>copy</var>, if <var>copy</var> is a <a>document</a>, and set <var>copy</var>'s
+ <a>node document</a> to <var>document</var> otherwise.
 
  <li><p>Run any <a>cloning steps</a> defined for <var>node</var> in <a>other applicable specifications</a> and pass <var>copy</var>, <var>node</var>, <var>document</var> and the <i>clone children flag</i> if set, as parameters.
 
@@ -1248,6 +1297,10 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dd>
     <p>Its <a href="#element-namespace">namespace</a>, <a href="#element-namespace-prefix">namespace prefix</a>, <a href="#element-local-name">local name</a>, and its number of <a href="#concept-attribute">attributes</a> in its <a>attribute list</a>.
 
+   <dt><code><a>Attr</a></code>
+   <dd><p>Its <a href="#attribute-namespace">namespace</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>.
+
+
    <dt><code><a>ProcessingInstruction</a></code>
    <dd><p>Its <a href="#pi-target">target</a> and <a href="#cd-data">data</a>.
 
@@ -1258,7 +1311,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dt>Any other node
    <dd><p>—
   </dl>
- <li><p>If <var>A</var> is an <a>element</a>, each <a href="#concept-attribute">attribute</a> in its <a>attribute list</a> has an <a href="#concept-attribute">attribute</a> with the same <a href="#attribute-namespace">namespace</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a> in <var>B</var>'s <a>attribute list</a>.
+ <li><p>If <var>A</var> is an <a>element</a>, each <a href="#concept-attribute">attribute</a> in its <a>attribute list</a> has an <a href="#concept-attribute">attribute</a> that <a>equals</a> in <var>B</var>'s <a>attribute list</a>.
  <li><p><var>A</var> and <var>B</var> have the same number of <a href="#tree-child">children</a>.
  <li><p>Each <a href="#tree-child">child</a> of <var>A</var> <a>equals</a> the <a href="#tree-child">child</a> of <var>B</var> at the identical <a>index</a>.
 </ul>
@@ -1309,19 +1362,70 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 <p>The <dfn><code>compareDocumentPosition(<var>other</var>)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>Let <var>reference</var> be the <a>context object</a>.
- <li><p>If <var>other</var> and <var>reference</var> are the same object, return zero.
+ <li><p>If <a>context object</a> is <var>other</var>, then return zero.
+
+ <li><p>Let <var>node1</var> be <var>other</var> and <var>node2</var> be <a>context object</a>.
+
+ <li><p>Let <var>attr1</var> and <var>attr2</var> be null.
+
+ <li><p>If <var>node1</var> is an <a>attribute</a>, then set <var>attr1</var> to <var>node1</var>
+ and <var>node1</var> to <var>attr1</var>'s <a href="#concept-element">element</a>.
 
  <li>
-  <p>If <var>other</var> and <var>reference</var> are not in the same <a>tree</a>, return the result of adding <code><a>DOCUMENT_POSITION_DISCONNECTED</a></code>, <code><a>DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC</a></code>, and either <code><a>DOCUMENT_POSITION_PRECEDING</a></code> or <code><a>DOCUMENT_POSITION_FOLLOWING</a></code>, with the constraint that this is to be consistent, together.
+  <p>If <var>node2</var> is an <a>attribute</a>, then:
 
-  <p class="note">Note: Whether to return <code><a>DOCUMENT_POSITION_PRECEDING</a></code> or <code><a>DOCUMENT_POSITION_FOLLOWING</a></code> is typically implemented via pointer comparison. In JavaScript implementations <code>Math.random()</code> can be used.
+  <ol>
+   <li><p>Set <var>attr2</var> to <var>node2</var> and <var>node2</var> to <var>attr2</var>'s
+   <a href="#concept-element">element</a>.
 
- <li><p>If <var>other</var> is an <a>ancestor</a> of <var>reference</var>, return the result of adding <code><a>DOCUMENT_POSITION_CONTAINS</a></code> to <code><a>DOCUMENT_POSITION_PRECEDING</a></code>.
+   <li>
+    <p>If <var>attr1</var> and <var>node1</var> are non-null, and <var>node2</var> is
+    <var>node1</var>, then:
 
- <li><p>If <var>other</var> is a <a>descendant</a> of <var>reference</var>, return the result of adding <code><a>DOCUMENT_POSITION_CONTAINED_BY</a></code> to <code><a>DOCUMENT_POSITION_FOLLOWING</a></code>.
+    <ol>
+     <li>
+      <p>For each <a>attribute</a> <var>attr</var> in <var>node2</var>'s
+      <a>attribute list</a>:
 
- <li><p>If <var>other</var> is <a>preceding</a> <var>reference</var> return <code><a>DOCUMENT_POSITION_PRECEDING</a></code>.
+      <ol>
+       <li><p>If <var>attr</var> <a>equals</a> <var>attr1</var>, then return the result of
+       adding {{Node/DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC}} and
+       {{Node/DOCUMENT_POSITION_PRECEDING}}.
+
+       <li><p>If <var>attr</var> <a>equals</a> <var>attr2</var>, then return the result of
+       adding {{Node/DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC}} and
+       {{Node/DOCUMENT_POSITION_FOLLOWING}}.
+      </ol>
+    </ol>
+  </ol>
+
+ <li>
+  <p>If <var>node1</var> or <var>node2</var> is null, or <var>node1</var>'s <a>root</a> is
+  not <var>node2</var>'s <a>root</a>, then return the result of adding
+  {{Node/DOCUMENT_POSITION_DISCONNECTED}}, {{Node/DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC}}, and
+  either {{Node/DOCUMENT_POSITION_PRECEDING}} or {{Node/DOCUMENT_POSITION_FOLLOWING}}, with the
+  constraint that this is to be consistent, together.
+
+  <p class="note no-backref">Whether to return {{Node/DOCUMENT_POSITION_PRECEDING}} or
+  {{Node/DOCUMENT_POSITION_FOLLOWING}} is typically implemented via pointer comparison. In
+  JavaScript implementations a cached <code class='lang-javascript'>Math.random()</code> value can
+  be used.
+
+ <li><p>If <var>node1</var> is an <a>ancestor</a> of <var>node2</var> and <var>attr1</var> is null,
+ or <var>node1</var> is <var>node2</var> and <var>attr2</var> is non-null, then return the result of
+ adding {{Node/DOCUMENT_POSITION_CONTAINS}} to {{Node/DOCUMENT_POSITION_PRECEDING}}.
+
+ <li><p>If <var>node1</var> is a <a>descendant</a> of <var>node2</var> and <var>attr2</var> is null,
+ or <var>node1</var> is <var>node2</var> and <var>attr1</var> is non-null, then return the result of
+ adding {{Node/DOCUMENT_POSITION_CONTAINED_BY}} to {{Node/DOCUMENT_POSITION_FOLLOWING}}.
+
+ <li>
+  <p>If <var>node1</var> is <a>preceding</a> <var>node2</var>, then return
+  {{Node/DOCUMENT_POSITION_PRECEDING}}.
+
+  <p class="note">Due to the way <a>attributes</a> are handled in this algorithm this results in a
+  <a>node</a>'s <a>attributes</a> counting as <a>preceding</a> that <a>node</a>'s <a>children</a>,
+  despite <a>attributes</a> not <a>participating</a> in a <a>tree</a>.
 
  <li><p>Return <code><a>DOCUMENT_POSITION_FOLLOWING</a></code>.
 </ol>
@@ -1380,6 +1484,15 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
  <dt><code><a>DocumentFragment</a></code>
  <dd><p>Return null.
 
+ <dt>{{Attr}}
+ <dd>
+  <ol>
+   <li><p>If its <a>element</a> is null, then return null.
+
+   <li><p>Return the result of running <a>locate a namespace</a> on its <a>element</a>
+   using <var>prefix</var>.
+  </ol>
+
  <dt>Any other node
  <dd>
   <ol>
@@ -1399,17 +1512,21 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
   <dl class="switch">
    <dt><code><a href="#dom-element">Element</a></code>
-   <dd><p>Return the result of <a>locating a namespace prefix</a> for the node using <var>namespace</var>.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for the node using <var>namespace</var>.
 
    <dt><code><a>Document</a></code>
-   <dd><p>Return the result of <a>locating a namespace prefix</a> for its <a>document element</a>, if that is not null, and null otherwise.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>document element</a>, if that is not null, and null otherwise.
 
    <dt><code><a>DocumentType</a></code>
    <dt><code><a>DocumentFragment</a></code>
    <dd><p>Return null.
 
+   <dt>{{Attr}}
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a href="#attribute-element">element</a>,
+   if its <a href="#attribute-element">element</a> is non-null, and null otherwise.
+
    <dt>Any other node
-   <dd><p>Return the result of <a>locating a namespace prefix</a> for its <a>parent element</a>, or if that is null, null.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>parent element</a>, or if that is null, null.
   </dl>
 </ol>
 
@@ -2121,7 +2238,7 @@ an optional <var>namespace</var>, run these steps:
  <li>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is
  <var>namespace</var>, <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>,
  <a href="#attribute-local-name">local name</a> is <var>localName</var>, <a href="#attribute-value">value</a> is <var>value</var>, and
- <a href="#concept-document">node document</a> is <var>element</var>'s <a href="#concept-document">node document</a>, then
+ <a href="#node-document">node document</a> is <var>element</var>'s <a href="#node-document">node document</a>, then
  <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to <var>element</var>, and then
  terminate these steps.
 
@@ -2300,7 +2417,9 @@ must run these steps:
 
  <li><p>Let <var>attribute</var> be the first <a href="#concept-attribute">attribute</a> in the <a>context object</a>'s <a>attribute list</a> whose <a href="#attribute-name">name</a> is <var>qualifiedName</var>, or null if there is no such <a href="#concept-attribute">attribute</a>.
 
- <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>qualifiedName</var> and <a href="#attribute-value">value</a> is <var>value</var>, and then <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to the <a>context object</a> and terminate these steps.
+ <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>qualifiedName</var>, <a href="#attribute-value">value</a> is <var>value</var>,
+and <a href="#node-document">node document</a> is <a>context object</a>'s <a href="#node-document">node document</a>,
+ and then <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to the <a>context object</a> and terminate these steps.
 
  <li><p><a>Change</a> <var>attribute</var> from <a>context object</a> to <var>value</var>.
 </ol>
@@ -2350,7 +2469,7 @@ method, when invoked, must <a lt="remove an attribute by name">remove an attribu
 <h4 id="interface-attr">Interface <code><a>Attr</a></code></h4>
 <pre class='idl'>
 [Exposed=Window]
-interface Attr {
+interface Attr : Node {
   readonly attribute DOMString? namespaceURI;
   readonly attribute DOMString? prefix;
   readonly attribute DOMString localName;
@@ -2358,11 +2477,13 @@ interface Attr {
   readonly attribute DOMString nodeName; // for legacy use, alias of .name
            attribute DOMString value;
 
+  readonly attribute Element? ownerElement;
+
   readonly attribute boolean specified; // useless; always returns true
 };
 </pre>
 
-<p><code><a>Attr</a></code> objects are simply known as <dfn id="concept-attribute" for="attribute">attributes</dfn>. They are sometimes referred to as <em>content attributes</em> to avoid confusion with IDL attributes.
+<p><code><a href="#attr">Attr</a></code> <a href="#node">nodes</a> are simply known as <dfn id="concept-attribute" for="attribute">attributes</dfn>. They are sometimes referred to as <em>content attributes</em> to avoid confusion with IDL attributes.
 
 <p><a href="#concept-attribute">Attributes</a> have a <dfn id="attribute-namespace" for="attribute">namespace</dfn> (null or a non-empty string), <dfn id="attribute-namespace-prefix" for="attribute">namespace prefix</dfn> (null or a non-empty string), <dfn id="attribute-local-name" for="attribute">local name</dfn> (a non-empty string), <dfn id="attribute-name" for="attribute">name</dfn> (a non-empty string), <dfn id="attribute-value" for="attribute">value</dfn> (a string), and <dfn id="attribute-element" for="attribute">element</dfn> (null or an <a href="#concept-element">element</a>).
 
@@ -2378,26 +2499,32 @@ interface Attr {
 
 <p>An <dfn id="named-attribute" for="named"><code><var>A</var></code> attribute</dfn> is an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <code><var>A</var></code> and whose <a href="#attribute-namespace">namespace</a> and <a href="#attribute-namespace-prefix">namespace prefix</a> are null.
 
-<p>The <dfn id="attr-namespaceuri" for="attr"><code>namespaceURI</code></dfn> attribute must return the <a href="#attribute-namespace">namespace</a>.
+<p>The <dfn id="attr-namespaceuri" for="attr"><code>namespaceURI</code></dfn> attribute's getter must return the <a href="#attribute-namespace">namespace</a>.
 
-<p>The <dfn id="attr-prefix" for="attr"><code>prefix</code></dfn> attribute must return the <a href="#attribute-namespace-prefix">namespace prefix</a>.
+<p>The <dfn id="attr-prefix" for="attr"><code>prefix</code></dfn> attribute's getter must return the <a href="#attribute-namespace-prefix">namespace prefix</a>.
 
-<p>The <dfn id="attr-localname" for="attr"><code>localName</code></dfn> attribute must return the <a href="#attribute-local-name">local name</a>.
+<p>The <dfn id="attr-localname" for="attr"><code>localName</code></dfn> attribute's getter must return the <a href="#attribute-local-name">local name</a>.
 
 <p>The <dfn id="attr-name"  for="attr"><code>name</code></dfn> attribute's getter and <dfn id="attr-nodename" for="attr"><code>nodeName</code></dfn> attribute's getter must return the <a href="#attribute-name">name</a>.
 
-<p>The <dfn id="attr-value" for="attr"><code>value</code></dfn> attribute's getter and <dfn id="attr-textcontent" for="attr"><code>textContent</code></dfn> attribute's getter must both return the <a href="#attribute-value">value</a>.
+<p>The <dfn id="attr-value" for="attr"><code>value</code></dfn> attribute's getter must both return the <a href="#attribute-value">value</a>.
 
-<p>Setting the <code><a href="#attr-value">value</a></code> attribute must <a>change</a> <a href="#attribute-value">value</a> to the new value.
-
-<p>The <code><a href="#attr-value">value</a></code> attribute's setter and <code><a href="#attr-textcontent">textContent</a></code> attribute's setter must both run these steps:
+<p>To <dfn>set an existing attribute value</dfn>, given an <a>attribute</a> <var>attribute</var> and
+string <var>value</var>, run these steps:
 
 <ol>
- <li><p>If <a>context object</a>'s <a href="#attribute-element">element</a> is null, set <a>context object</a>'s <a href="#attribute-value">value</a> to the given value.
-<li>Otherwise, <a>change</a> the <a>context object</a> from <a>context objec </a>’s <a href="#attribute-element">element</a> to the given value.</li>
+ <li>If <var>attribute</var>'s <a href="#attribute-element">element</a> is null, then set <var>attribute</var>'s
+ <a href="#attribute-value">value</a> to <var>value</var>.
+
+ <li>Otherwise, <a>change</a> <var>attribute</var> from
+ <var>attribute</var>'s <a href="#attribute-element">element</a> to <var>value</var>.
 </ol>
 
-<p class="note">Unlike <a>node</a>’s <code><a href="#attr-textcontent">textContent</a></code>, no special null handling is required. </p>
+<p>The {{Attr/value}} attribute's setter must <a>set an existing attribute value</a> with
+<a>context object</a> and the given value.
+
+<p>The <dfn attribute for="Attr"><code>ownerElement</code></dfn> attribute's getter must return
+<a>context object</a>'s <a href="#attribute-element">element</a>.
 
 <p>The <dfn><code>specified</code></dfn> attribute must return true.
 
