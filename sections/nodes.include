@@ -1909,9 +1909,25 @@ interface XMLDocument : Document {};
 
  <li><p>If <var>node</var>'s <a>parent</a> is not null, <a href="#node-remove">remove</a> <var>node</var> from its <a>parent</a>.
 
- <li><p>Set <var>node</var>'s <a>inclusive descendants</a>'s <a>node document</a> to <var>document</var>.
+ <li>
+  <p>If <var>document</var> is not the same as <var>oldDocument</var>, run these substeps:
 
- <li><p>Run any <a>adopting steps</a> defined for <var>node</var> in <a>other applicable specifications</a> and pass <var>node</var> and <var>oldDocument</var> as parameters.
+  <ol>
+   <li>
+    <p>For each <var>inclusiveDescendant</var> in <var>node</var>'s
+    <a>inclusive descendants</a>, run these subsubsteps:
+    <ol>
+     <li><p>Set <var>inclusiveDescendant</var>'s <a>node document</a> to <var>document</var>.
+
+     <li><p>If <var>inclusiveDescendant</var> is an <a href="#concept-element">element</a>, then set the
+     <a>node document</a> of each <a href="#concept-attribute">attribute</a> in <var>inclusiveDescendant</var>'s
+     <a>attribute list</a> to <var>document</var>.
+    </ol>
+
+   <li><p>For each <var>inclusiveDescendant</var> in <var>node</var>'s
+   <a>inclusive descendants</a>, in <a>tree order</a>, run the
+   <a>adopting steps</a> with <var>inclusiveDescendant</var> and <var>oldDocument</var>.
+  </ol>
 </ol>
 
 <p>The <dfn><code>adoptNode(<var>node</var>)</code></dfn> method must run these steps:
@@ -1919,7 +1935,7 @@ interface XMLDocument : Document {};
 <ol>
  <li><p>If <var>node</var> is a <a>document</a>, <a>throw</a> a "<code><a>NotSupportedError</a></code>" exception.
 
- <li><p><>Adopt</a> <var>node</var> into the <a>context object</a>.
+ <li><p><a>Adopt</a> <var>node</var> into the <a>context object</a>.
 
  <li><p>Return <var>node</var>.
 </ol>
