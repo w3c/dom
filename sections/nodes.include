@@ -2446,19 +2446,19 @@ must run these steps:
 
 <hr>
 
-<p>Some IDL attributes are defined to <dfn>reflect</dfn> a particular content attribute of a given name. This means that on getting, these steps must be run:
+<p>IDL attributes that are defined to <dfn export id="concept-reflect">reflect</dfn> a content <a href="#concept-attribute">attribute</a> of a given <var>name</var>, must have a getter and setter that follow these steps:
 
-<ol>
- <li><p><a>Get an attribute value</a> for the <a>context object</a> using content attribute's name and let <var>value</var> be the result.
+<dl>
+  <dt>getter
+  <dd>
+    <p>Return the result of running <a>get an attribute value</a> given <a>context object</a> and <var>name</var>.
 
- <li><p>If <var>value</var> is null, return the empty string.
+  <dt>setter
+  <dd>
+    <p><a>Set an attribute value</a> for the <a>context object</a> using <var>name</var> and the given value.
+</dl>
 
- <li><p>Return <var>value</var>.
-</ol>
-
-<p>On setting, <a>set an attribute value</a> for the <a>context object</a> using the name of the attribute and the given value.
-
-<p>The <dfn id="element-id" for="element"><code>id</code></dfn> attribute must <a>reflect</a> the "<code>id</code>" content attribute.
+<p>The <dfn id="element-id" for="element"><code>id</code></dfn> <a>attribute</a> must <a>reflect</a> the "<code>id</code>" content attribute.
 
 <p>The <dfn><code>className</code></dfn> attribute must <a>reflect</a> the "<code>class</code>" content attribute.
 
