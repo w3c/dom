@@ -129,7 +129,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 
    <dt><a>element</a> <dd><p><var>parent</var> has an <a>element</a> <a>child</a>, <var>child</var> is a <a>doctype</a>, or <var>child</var> is not null and a <a>doctype</a> is <a>following</a> <var>child</var>.
 
-   <dt><a>doctype</a> <dd><p><var>parent</var> has a <a>doctype</a> <a>child</a>, an <a>element</a> is <a>preceding</a> <var>child</var>, or <var>child</var> is null and <var>parent</var> has an <a>element</a> <a>child</a>.
+   <dt><a>doctype</a> <dd><p><var>parent</var> has a <a>doctype</a> <a>child</a>, <var>child</var> is non-null and an <a>element</a> is <a>preceding</a> <var>child</var>, or <var>child</var> is null and <var>parent</var> has an <a>element</a> <a>child</a>.
   </dl>
 </ol>
 
