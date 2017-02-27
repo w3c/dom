@@ -371,29 +371,9 @@ Element implements ParentNode;
 
 <p>The <dfn><code>childElementCount</code></dfn> attribute must return the number of <a>children</a> of the <a>context object</a> that are <a>elements</a>.
 
-<p>To <dfn>match a relative selectors string</dfn> <var>relativeSelectors</var> against a <var>set</var>, run these steps:
+<p>The <dfn><code>querySelector(<var>selectors</var>)</code></dfn> method, when invoked, must return the first result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>, and null if the result is an empty list otherwise.
 
-<ol>
- <li><p>Let <var>s</var> be the result of <a href="https://drafts.csswg.org/selectors-4/#parse-relative-selector">parse a relative selector</a> from <var>relativeSelectors</var> against <var>set</var>. [[!SELECTORS4]]
-
- <li><p>If <var>s</var> is failure, <a>throw</a> a "<code><a>SyntaxError</a></code>".
-
- <li><p>Return the result of <a href="https://drafts.csswg.org/selectors4/#evaluate-a-selector">evaluate a selector</a> <var>s</var> using <a href="https://drafts.csswg.org/selectors-4/#scope-element">:scope elements</a> <var>set</var>. [[!SELECTORS4]]
-</ol>
-
-<p>To <dfn>scope-match a selectors string</dfn> <var>selectors</var> against a <var>node</var>, run these steps:
-
-<ol>
- <li><p>Let <var>s</var> be the result of <a href="https://drafts.csswg.org/selectors-4/#parse-a-selector">parse a selector</a> <var>selectors</var>. [[!SELECTORS4]]
-
- <li><p>If <var>s</var> is failure, <a>throw</a> a "<code><a>SyntaxError</a></code>".
-
- <li><p>Return the result of <a href="https://drafts.csswg.org/selectors-4/#evaluate-a-selector">evaluate a selector</a> <var>s</var> against <var>node</var>'s <a href="#tree-root">root</a> using <a href="https://drafts.csswg.org/selectors-4/#scoping-root">scoping root</a> <var>node</var> and scoping method <a href="https://drafts.csswg.org/selectors-4/#scoped-selector">scope-filtered</a>. [[!SELECTORS4]].
-</ol>
-
-<p>The <dfn><code>querySelector(<var>selectors</var>)</code></dfn> method must return the first result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>, and null if the result is an empty list otherwise.
-
-<p>The <dfn><code>querySelectorAll(<var>selectors</var>)</code></dfn> method must return the <a>static</a> result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>.
+<p>The <dfn><code>querySelectorAll(<var>selectors</var>)</code></dfn> method, when invoked, must return the <a>static</a> result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>.
 
 <h4 id="interface-nondocumenttypechildnode">Interface <code><a >NonDocumentTypeChildNode</a></code></h4>
 
