@@ -121,6 +121,40 @@ return value.
 <var>set</var> and returns the concatenation of the strings in
 <var>set</var>, separated from each other by U+0020.
 
+<h3 id="terminology-selectors">Selectors</h3>
+<!--
+To <dfn export>match a relative selectors string</dfn> <var>relativeSelectors</var>
+against a <var>set</var>, run these steps:
+
+<ol>
+ <li>Let <var>s</var> be the result of
+ <a>parse a relative selector</a> from
+ <var>relativeSelectors</var> against <var>set</var>.
+ [[!SELECTORS4]]
+
+ <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
+
+ <li>Return the result of <a>evaluate a selector</a> <var>s</var>
+  using <a>:scope elements</a> <var>set</var>. [[!SELECTORS4]]
+</ol>
+-->
+
+<p>To <dfn export>scope-match a selectors string</dfn> <var>selectors</var> against a
+<var>node</var>, run these steps:
+
+<ol>
+ <li>Let <var>s</var> be the result of <a>parse a selector</a> <var>selectors</var>.
+ [[!SELECTORS4]]
+
+ <li><p>If <var>s</var> is failure, then <a>throw</a> a {{SyntaxError}}.
+
+ <li><p>Return the result of <a>evaluate a selector</a> <var>s</var> against <var>node</var>'s
+ <a for=tree>root</a> using <a>scoping root</a> <var>node</var>. [[!SELECTORS4]].
+</ol>
+
+<p class=note>Support for namespaces within selectors is not planned and will not be
+added.
+
 <h3 id="terminology-namespaces">Namespaces</h3>
 
 To <dfn export>validate</dfn> a <var>qualifiedName</var>, run these steps:
