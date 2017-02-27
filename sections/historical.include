@@ -1,171 +1,57 @@
 <section>
 <h2 id="historical">Historical</h2>
 
-As explained in <a>goals</a> this specification is a significant revision of various DOM specifications. This section attempts to enumerate the changes.
+  This section outlines notable changes between Working Drafts. A complete history of revisions for this version
+  is available in the <a href="https://github.com/w3c/dom/commits/">W3C DOM repository</a>.
 
-<h3 id="historical-dom-events">DOM Events</h3>
-<p>These are the changes made to the features described in the "DOM Event Architecture", "Basic Event Interfaces", "Mutation Events", and "Mutation Name Event Types" chapters of <cite>UI Events Specification (formerly DOM Level 3 Events)</cite>.  [[UIEVENTS]]
+<h3 id="historical-changes-fpwd-dom4">Changes between the First Public Working Draft of DOM 4.1 and the <a>DOM 4 Recommendation</a></h3>
 
-<ul>
- <li>Events have constructors now.
- <li>Removes <dfn><code>MutationEvent</code></dfn>, and <dfn><code>MutationNameEvent</code></dfn>.
- <li>Fire is no longer synonymous with dispatch, but includes initializing an event.</li>
- <li>The propagation and canceled flags are unset when invoking <code><a>initEvent()</a></code> rather than after dispatch.
-</ul>
-
-<h3 id="historical-dom-core">DOM Core</h3>
-<p>These are the changes made to the features described in <cite>DOM Level 3 Core</cite>.
-
-<p><dfn><code>DOMString</code></dfn> and <dfn><code>DOMTimeStamp</code></dfn> are now defined in Web IDL.
-
-<p><code><a>Node</a></code> now inherits from <code><a>EventTarget</a></code>.</p>
-
-<p><a>Nodes</a> are implicitly <a>adopted</a> across <a>document</a> boundaries.
-
-<p><a>Doctypes</a> now always have a <a>node document</a> and can be moved across <a>document</a> boundaries.
-
-<p><code><a>ProcessingInstruction</a></code> now inherits from <code><a>CharacterData</a></code>.
-
-<p><code>attributes</code> moved from <code><a href="#node">Node</a></code> to <code><a>Element</a></code>.</p>
-
-<p><code>namespaceURI</code>, <code>prefix</code>, and <code>localName</code> moved from <code><a>Node</a></code> to <code><a>Element</a></code> and <code><a>Attr</a></code>.</p>
-
-<p>The remainder of interfaces and interface members listed in this section were removed to simplify the DOM platform. Implementations conforming to this specification will not support them.
-
-<p class="warning">It is not yet clear if it would be web-compatible to remove all the following features. The editors welcome any data showing that some of these features should be reintroduced.
-
-<p>Interfaces:
-<ul class="brief">
- <li><dfn><code>CDATASection</code></dfn>
- <li><dfn><code>DOMConfiguration</code></dfn>
- <li><dfn><code>DOMErrorHandler</code></dfn>
- <li><dfn><code>DOMImplementationList</code></dfn>
- <li><dfn><code>DOMImplementationSource</code></dfn>
- <li><dfn><code>DOMLocator</code></dfn>
- <li><dfn><code>DOMObject</code></dfn>
- <li><dfn><code>DOMStringList</code></dfn>
- <li><dfn><code>DOMUserData</code></dfn>
- <li><dfn><code>Entity</code></dfn>
- <li><dfn><code>EntityReference</code></dfn>
- <li><dfn><code>NameList</code></dfn>
- <li><dfn><code>Notation</code></dfn>
- <li><dfn><code>TypeInfo</code></dfn>
- <li><dfn><code>UserDataHandler</code></dfn>
-</ul>
-
-<p>Interface members:
 <dl>
- <dt><code><a>Node</a></code>
- <dd>
-  <ul>
-   <!--AttrExodus-->
-   <li><dfn><code>hasAttributes()</code></dfn>
-   <li><dfn id="node-attributes"><code>attributes</code></dfn>
-
-   <!--NodeExodus-->
-   <li><dfn><code>namespaceURI</code></dfn>
-   <li><dfn id="node-prefix" for="node"><code>prefix</code></dfn>
-   <li><dfn id="node-localname" for="node"><code>localName</code></dfn>
-
-   <li><dfn id="node-issupported" for="node"><code>isSupported</code></dfn>
-   <li><dfn for="historical"><code>getFeature()</code></dfn>
-   <li><dfn><code>getUserData()</code></dfn>
-   <li><dfn><code>setUserData()</code></dfn>
-
-   <li><dfn><code>isSameNode()</code></dfn>
-  </ul>
-
- <dt><code><a href="#document">Document</a></code>
- <dd>
-  <ul class="brief">
-   <li><dfn><code>createCDATASection()</code></dfn>
-   <li><dfn><code>createAttribute()</code></dfn>
-   <li><dfn><code>createAttributeNS()</code></dfn>
-   <li><dfn><code>createEntityReference()</code></dfn>
-   <li><dfn id="document-inputencoding-brief" for="brief"><code>inputEncoding</code></dfn>
-   <li><dfn><code>xmlEncoding</code></dfn>
-   <li><dfn><code>xmlStandalone</code></dfn>
-   <li><dfn><code>xmlVersion</code></dfn>
-   <li><dfn><code>strictErrorChecking</code></dfn>
-   <li><dfn><code>domConfig</code></dfn>
-   <li><dfn><code>normalizeDocument()</code></dfn>
-   <li><dfn><code>renameNode()</code></dfn>
-  </ul>
-
- <dt><code><a>DOMImplementation</a></code>
- <dd>
-  <ul>
-   <li><dfn><code>getFeature()</code></dfn>
-  </ul>
-
- <dt><code><a>Attr</a></code>
- <dd>
-  <p>No longer inherits from <code><a href="#node">Node</a></code> and therefore completely changed.
-  <!--AttrExodus
-  <p><dfn title=dom-Attr-schemaTypeInfo><code>schemaTypeInfo</code></dfn>
-  <p><dfn title=dom-Attr-isId><code>isId</code></dfn>
-  -->
-
- <dt><code><a>Element</a></code>
- <dd>
-  <ul class="brief">
-   <li><dfn><code>getAttributeNode()</code></dfn>
-   <li><dfn><code>getAttributeNodeNS()</code></dfn>
-   <li><dfn><code>setAttributeNode()</code></dfn>
-   <li><dfn><code>removeAttributeNode()</code></dfn>
-   <li><dfn><code>schemaTypeInfo</code></dfn>
-   <li><dfn><code>setIdAttribute()</code></dfn>
-   <li><dfn><code>setIdAttributeNS()</code></dfn>
-   <li><dfn><code>setIdAttributeNode()</code></dfn>
-  </ul>
-
- <dt><code><a>DocumentType</a></code>
- <dd>
-  <ul>
-   <li><dfn><code>entities</code></dfn>
-   <li><dfn><code>notations</code></dfn>
-   <li><dfn><code>internalSubset</code></dfn>
-  </ul>
-
- <dt><code><a>Text</a></code>
- <dd>
-  <ul>
-   <li><dfn><code>isElementContentWhitespace</code></dfn>
-   <li><dfn><code>replaceWholeText()</code></dfn>
-  </ul>
+<dt>Use “is” for comparisons</dt>
+<dt>Add <code>.NodeName</code> for interface Attr</dt>
+ <dd><code>.nodeName</code> is still being used. It's an alias of .name attribute.</dd>
+<dt>Update the IDL for the Node interface;</dt>
+ <dd>The attributes related to base URL are not optional and should be type of USVString instead of DOMString.
+  Use the normalized name by following the HTML spec.</dd>
+<dt>Update the description for the HTMLCollection interface</dt>
+<dt>Add two clarifications for "Mutation observers"</dt>
+<dt>Clarify the <code>isTrusted</code> attribute;</dt>
+ <dd>Add a note for <code>Event.isTrusted</code> to clarify that mouse click event generated by a user is trusted
+  though historically its <code>isTrusted</code> attribute is initialized to <code>false</code></dd>
+<dt>Update the steps for <code>qualifiedName()</code> method and the way to validate a qualifiedName.</dt>
+ <dd>Add Qualified name definition for Element and Attr.
+  There are several attribute related methods of Interface Element to use name instead of qualified name.
+  Moreover, combine and refine some duplicated functions into one procedure, like 'get an attribute by name',
+  'remove an attribute by name', etc</dd>
+<dt>Update the algorithm of the <code>nodeType</code> attribute.</dt>
+ <dd>Cleanup <code>nodeType</code> and <code>nodeName</code> getter attribute's description. Also change <code>nodeType</code>'s list style to be similar to <code>nodeName</code></dd>
+<dt>Always queue mutation records after mutations</dt>
+ <dd>Queuing of mutation records looks inconsistent. To replace a child with node within a parent,
+  the mutation record should be queued after the removal of <code>child</code> and insertion of <code>node</code></dd>
+<dt>Remove the <code>unenumable</code> keyword</dt>
+ <dd>For compatibility with <a>WebIDL</a></dd>
 </dl>
 
-<h3 id="historical-dom-ranges">DOM Ranges</h3>
-<p>These are the changes made to the features described in the "Document Object Model Range" chapter of <cite>DOM Level 2 Traversal and Range</cite>.
+<h3 id="historical-DOM-spec-history">DOM Specification History</a>
+  The W3C produced the first Working Draft of a "Document Object Model Specification" in October 1997,
+  and a year later a version 1.0 Recommendation.
 
-<ul>
- <li><p><dfn><code>RangeException</code></dfn> has been removed.
+  Between 2000 and 2003 a set of Recommendations collectively forming DOM 2.0 was published,
+  and in 2004 a set of DOM 3.0 Recommendations were published.
 
- <li><p><code><a>Range</a></code> objects can now be moved between <a>documents</a> and used on <a>nodes</a> that are not <a>in a document</a>.
+  The Element Traversal Recommendation was published in 2008,
+  and the Selectors API Recommendation was published in February 2013.
 
- <li><p>A wild <code><a>Range()</a></code> constructor appeared.
+  Other DOM specifications have been in development during that time, and continue to be developed.
 
- <li><p>New methods <code><a>comparePoint()</a></code>, <code><a>intersectsNode()</a></code>, and <code><a>isPointInRange()</a></code> have been added.
+  Around 2009 some employees of Opera software began to write a new version of a DOM specification,
+  which was then worked on by the "Web Hypertext Application Technology Working Group".
+  In November 2013 W3C produced a W3C First Public Working draft based on this work,
+  and after subsequent development that became the W3C Recommendation DOM 4, in November 2015.
 
- <li><p><code><a>detach()</a></code> is now a no-op.
-
- <li><p><dfn><code>toString()</code></dfn> is now defined through IDL.
-</ul>
-
-<h3 id="historical-dom-traversal">DOM Traversal</h3>
-
-<p>These are the changes made to the features described in the "Document Object Model Traversal" chapter of <cite>DOM Level 2 Traversal and Range</cite>.
-
-<ul>
- <li><p><code><a>createNodeIterator()</a></code> and <code><a>createTreeWalker()</a></code> now have optional arguments and lack a fourth argument which is no longer relevant given entity references never made it into the DOM.
-
- <li><p>The <code>expandEntityReferences</code> attribute has been removed from the <code><a>NodeIterator</a></code> and <code><a>TreeWalker</a></code> interfaces for the aforementioned reason.
-
- <li><p>The <code><a>referenceNode</a></code> and <code><a>pointerBeforeReferenceNode</a></code> attributes have been added to <code><a>NodeIterator</a></code> objects to align with proprietary extensions of implementations.
-
- <li><p><code><a>nextNode()</a></code> and <code><a href="#nodeiterator-previousnode-func">previousNode()</a></code> now throw when invoked from a <code><a>NodeFilter</a></code> to align with user agents.
-
- <li><p><code><a>detach()</a></code> is now a no-op.
-</ul>
+  The current DOM 4.1 revision is produced by W3C, with the primary aim of documenting
+  what is interoperably implemented that seems likely to become more interoperable.
+  As far as possible, a secondary goal is to minimise incompatibility with the specification that continues
+  to be developed at WHATWG.
 
 </section>
