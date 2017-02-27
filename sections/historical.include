@@ -40,18 +40,21 @@
   and in 2004 a set of DOM 3.0 Recommendations were published.
 
   The Element Traversal Recommendation was published in 2008,
-  and the Selectors API Recommendation was published in February 2013.
+  and the Selectors API Recommendation was published in February 2013. The UI Events specification, and its predecessors,
+  have been in development since around 2000.
 
   Other DOM specifications have been in development during that time, and continue to be developed.
 
   Around 2009 some employees of Opera software began to write a new version of a DOM specification,
-  which was then worked on by the "Web Hypertext Application Technology Working Group".
-  In November 2013 W3C produced a W3C First Public Working draft based on this work,
-  and after subsequent development that became the W3C Recommendation DOM 4, in November 2015.
+  which was then worked on by the "Web Hypertext Application Technology Working Group", 
+  and subsequently developed jointly with the W3C.
+  The eventual goals of that works were described
+  <a href="https://www.w3.org/TR/2015/REC-dom-20151119/#goals">in the DOM 4 Recommendation</a>
+  In November 2013 W3C produced a W3C First Public Working draft based on that work,
+  and after subsequent development that became the W3C Recommendation <a>DOM 4</a>, in November 2015.
 
   The current DOM 4.1 revision is produced by W3C, with the primary aim of documenting
-  what is interoperably implemented that seems likely to become more interoperable.
-  As far as possible, a secondary goal is to minimise incompatibility with the specification that continues
-  to be developed at WHATWG.
+  what is interoperably implemented and is, or is likely to become, a core part of the Web Platform.
+  An important secondary goal is to minimise incompatibility with the ongoing work at WHATWG.
 
 </section>
