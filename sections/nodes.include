@@ -288,7 +288,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
  <li><p>Remove <var>node</var> from its <var>parent</var>.
 
  <li><p>Run the <a>removing steps</a> with <var>node</var>, <var>parent</var>, and <var>oldPreviousSibling</var>.
- <li><p>For each <a>ancestor</a> <var>ancestor</var> of <var>node</var>, if <var>ancestor</var> has any <a>registered observers</a> whose <b>options</b>'s <code>subtree</code> is true, then for each such <a>registered observer</a> <var>registered</var>, append a <a>transient registered observer</a> whose <b>observer</b> and <b>options</b> are identical to those of <var>registered</var> and <b>source</b> which is <var>registered</var> to <var>node</var>'s list of <a>registered observers</a>.
+ <li><p>For each <a>ancestor</a> <var>ancestor</var> of <var>node</var>, if <var>ancestor</var> has any <a>registered observers</a> whose <b>options</b>' <code>subtree</code> is true, then for each such <a>registered observer</a> <var>registered</var>, append a <a>transient registered observer</a> whose <b>observer</b> and <b>options</b> are identical to those of <var>registered</var> and <b>source</b> which is <var>registered</var> to <var>node</var>'s list of <a>registered observers</a>.
 </ol>
 
 <h4 id="interface-nonelementparentnode">Interface <code><a>NonElementParentNode</a></code></h4>
@@ -528,8 +528,8 @@ interface HTMLCollection {
  <li>
   <p>Return the first <a>element</a> in the <a>collection</a> for which at least one of the following is true:
   <ul>
-   <li>it has an <a>ID</a> which is <var>key</var>.
-   <li>it is in the <a>HTML namespace</a> and <a>has</a> a
+   <li>it has an <a>ID</a> which is <var>key</var>;
+   <li>it is in the <a>HTML namespace</a> and <a href="#concept-element-attribute-has" title="concept-element-attribute-has">has</a> a
    <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is <var>key</var>;
   </ul>
   <p>or null if there is no such <a>element</a>.
@@ -556,7 +556,7 @@ and an associated list of <code><a>MutationObserver</a></code> objects, which is
 <ol>
  <li><p>Unset <a>mutation observer compound microtask queued flag</a>.
 
- <li><p>Let <var>notify list</var> be a copy of <a>unit of related similar-origin browsing contexts</a>'s list of <code><a>MutationObserver</a></code> objects.
+ <li><p>Let <var>notify list</var> be a copy of <a>unit of related similar-origin browsing contexts</a>' list of <code><a>MutationObserver</a></code> objects.
 
  <li>
   <p>For each <code><a>MutationObserver</a></code> object <var>mo</var> in <var>notify list</var>, <a>execute a compound microtask subtask</a> to run these steps:
@@ -654,7 +654,7 @@ dictionary MutationObserverInit {
  <dd><p>Empties the <a>record queue</a> and returns what was in there.
 </dl>
 
-<p>The <dfn><code>MutationObserver(<var>callback</var>)</code></dfn> constructor must create a new <code><a>MutationObserver</a></code> object with <a>callback</a> set to <var>callback</var>, append it to the <a>unit of related similar-origin browsing contexts</a>'s list of <code><a>MutationObserver</a></code> objects, and then return it.
+<p>The <dfn><code>MutationObserver(<var>callback</var>)</code></dfn> constructor must create a new <code><a>MutationObserver</a></code> object with <a>callback</a> set to <var>callback</var>, append it to the <a>unit of related similar-origin browsing contexts</a>' list of <code><a>MutationObserver</a></code> objects, and then return it.
 
 <p>The <dfn><code>observe(<var>target</var>, <var>options</var>)</code></dfn> method, when invoked, must run these steps:
 
@@ -699,19 +699,19 @@ dictionary MutationObserverInit {
   <p>Then, for each <var>node</var> in <var>nodes</var>, and then for each <var>registered observer</var> (with <var>registered observer</var>'s <b>options</b> as <var>options</var>) in <var>node</var>'s list of <a>registered observers</a>:
 
   <ol>
-   <li><p>If <var>node</var> is not <var>target</var> and <var>options</var>'s <code>subtree</code> is false, continue.
+   <li><p>If <var>node</var> is not <var>target</var> and <var>options</var>' <code>subtree</code> is false, continue.
 
-   <li><p>If <var>type</var> is "<code>attributes</code>" and <var>options</var>'s <code>attributes</code> is not true, continue.
+   <li><p>If <var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributes</code> is not true, continue.
 
-   <li><p>If <var>type</var> is "<code>attributes</code>", <var>options</var>'s <code>attributeFilter</code> is present, and either <var>options</var>'s <code>attributeFilter</code> does not contain <var>name</var> or <var>namespace</var> is non-null, continue.
+   <li><p>If <var>type</var> is "<code>attributes</code>", <var>options</var>' <code>attributeFilter</code> is present, and either <var>options</var>' <code>attributeFilter</code> does not contain <var>name</var> or <var>namespace</var> is non-null, continue.
 
-   <li><p>If <var>type</var> is "<code>characterData</code>" and <var>options</var>'s <code>characterData</code> is not true, continue.
+   <li><p>If <var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterData</code> is not true, continue.
 
-   <li><p>If <var>type</var> is "<code>childList</code>" and <var>options</var>'s <code>childList</code> is false, continue.
+   <li><p>If <var>type</var> is "<code>childList</code>" and <var>options</var>' <code>childList</code> is false, continue.
 
    <li><p>If <var>registered observer</var>'s <b>observer</b> is not in <var>interested observers</var>, append <var>registered observer</var>'s <b>observer</b> to <var>interested observers</var>.
 
-   <li><p>If either <var>type</var> is "<code>attributes</code>" and <var>options</var>'s <code>attributeOldValue</code> is true, or <var>type</var> is "<code>characterData</code>" and <var>options</var>'s <code>characterDataOldValue</code> is true, set the paired string of <var>registered observer</var>'s <b>observer</b> in <var>interested observers</var> to <var>oldValue</var>.
+   <li><p>If either <var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributeOldValue</code> is true, or <var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterDataOldValue</code> is true, set the paired string of <var>registered observer</var>'s <b>observer</b> in <var>interested observers</var> to <var>oldValue</var>.
   </ol>
 
  <li>
@@ -1187,11 +1187,11 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
 <div>
 
-<p><a>Specifications</a> may define <dfn>cloning steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>copy</var>, <var>node</var>, <var>document</var>, and optionally a <i>clone children flag</i>, as indicated in the <a href="#node-clone">clone</a> algorithm.
+<p><a>Specifications</a> may define <dfn>cloning steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>copy</var>, <var>node</var>, <var>document</var>, and an optional <i>clone children flag</i>, as indicated in the <a href="#node-clone">clone</a> algorithm.
 
 <p class="note">Note: HTML defines <a>cloning steps</a> for <code><a href="http://www.w3.org/TR/html5/scripting-1.html#the-script-element">script</a></code> and <code><a href="http://www.w3.org/TR/html5/forms.html#the-input-element">input</a></code> elements. SVG ought to do the same for its <code>script</code> elements, but does not call this out at the moment.
 
-<p>To <dfn id="node-clone" for="node">clone</dfn> a <var>node</var>, optionally with a <var>document</var> and a <i>clone children flag</i>, run these steps:
+<p>To <dfn id="node-clone" for="node">clone</dfn> a <var>node</var>, with an optional <var>document</var> and <i>clone children flag</i>, run these steps:
 
 <ol>
  <li><p>If <var>document</var> is not given, let <var>document</var> be <var>node</var>'s <a>node document</a>.
@@ -2093,7 +2093,7 @@ run these steps:
 </ol>
 
 <p>To <dfn>get an attribute value</dfn> given <a href="#concept-element">element</a> <var>element</var>,
-<var>localName</var>, and optionally a <var>namespace</var> (null unless stated otherwise), run these steps:</p>
+<var>localName</var>, and an optional <var>namespace</var> (null unless stated otherwise), run these steps:</p>
 
 <ol>
  <li><p>Let <var>attr</var> be the result of
