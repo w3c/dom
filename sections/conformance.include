@@ -12,7 +12,7 @@ specification. [[!RFC2119]]
   Requirements phrased in the imperative as part of algorithms
 (such as "strip any leading space characters" or "return false and
 terminate these steps") are to be interpreted with the meaning of the
-key word ("must", "should", "may", etc.) used in introducing the
+keywords ("must", "should", "may", etc.) used in introducing the
 algorithm.
 
   Conformance requirements phrased as algorithms or specific steps
