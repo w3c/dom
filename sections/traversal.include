@@ -176,8 +176,10 @@ interface TreeWalker {
 
  <li><p>Set <var>node</var> to <var>node</var>'s <a>first child</a> if <var>type</var> is first, and <var>node</var>'s <a>last child</a> if <var>type</var> is last.
 
+ <li><p>If <var>node</var> is null, return null.
+
  <li>
-  <p><dfn>Main</dfn>: While <var>node</var> is not null, run these substeps:
+  <p><dfn>Main</dfn>: Repeat these substeps:
 
   <ol>
    <li><p><a href="#node-filter">Filter</a> <var>node</var> and let <var>result</var> be the return value.
@@ -194,7 +196,7 @@ interface TreeWalker {
     </ol>
 
    <li>
-    <p>While <var>node</var> is not null, run these subsubsteps:
+    <p>Repeat these substeps:
 
     <ol>
      <li><p>Let <var>sibling</var> be <var>node</var>'s <a href="#tree-next-sibling">next sibling</a> if <var>type</var> is first, and <var>node</var>'s <a href="#tree-previous-sibling">previous sibling</a> if <var>type</var> is last.
@@ -208,7 +210,6 @@ interface TreeWalker {
      <li><p>Otherwise, set <var>node</var> to <var>parent</var>.
     </ol>
   </ol>
- <li><p>Return null.
 </ol>
 
 <p>The <dfn><code>firstChild()</code></dfn> method must <a>traverse children</a> of type first.
