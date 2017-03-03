@@ -2224,6 +2224,28 @@ interface Element : Node {
 
 <p><a>Applicable specifications</a> and this specification (can) use the hooks an <dfn>attribute is set</dfn>, an <dfn id="attribute-is-changed">attribute is changed</dfn>, an <dfn>attribute is added</dfn>, and an <dfn>attribute is removed</dfn>, for further processing of the <a href="#concept-attribute">attribute</a>'s <a href="#attribute-value">value</a>.
 
+To <dfn export id=concept-element-attributes-replace lt="replace an attribute">replace</dfn> an
+<a>attribute</a> <var>oldAttr</var> by an <a>attribute</a> <var>newAttr</var>
+in an <a href="#concept-element">element</a> <var>element</var>, run these steps:
+
+<ol>
+ <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var>
+ with name <var>oldAttr</var>'s <a href="#attribute-localname">local name</a>,
+ namespace <var>oldAttr</var>'s <a href="#attribute-namespace">namespace</a>,
+ and oldValue <var>oldAttr</var>'s <a href="#attribute-value">value</a>.
+
+ <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>oldAttr</var>'s
+ <a href="#attribute-localname">local name</a>, <var>oldAttr</var>'s <a href="#attribute-value">value</a>, <var>newAttr</var>'s
+ <a href="#attribute-value">value</a>, and <var>oldAttr</var>'s <a href="#attribute-namespace">namespace</a>.
+
+ <li><p>Replace <var>oldAttr</var> by <var>newAttr</var> in the <var>element</var>'s
+ <a href="#element-attribute-list">attribute list</a>.
+
+ <li><p>Set <var>oldAttr</var>'s <a href="#concept-element">element</a> to null.
+
+ <li><p>Set <var>newAttr</var>'s <a href="#concept-element">element</a> to <var>element</var>.
+</ol>
+
 To <dfn id="element-attributes-get-by-name">get an attribute by name</dfn> given a
 <var>qualifiedName</var> and <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
@@ -2262,6 +2284,28 @@ run these steps:
  <li><p>If <var>attr</var> is null, then return the empty string.</p></li>
 
  <li><p>Return <var>attr</var>'s <a for=Attr>value</a>.</p></li>
+</ol>
+
+To <dfn>set an attribute</dfn> given an
+<var>attr</var> and <var>element</var>, run these steps:
+
+<ol>
+ <li><p>If <var>attr</var>'s <a href="#concept-element">element</a> is neither null nor <var>element</var>,
+ <a>throw</a> an {{InUseAttributeError}}.
+
+ <li><p>Let <var>oldAttr</var> be the result of
+ <a lt="get an attribute by namespace and local name">getting an attribute</a> given
+ <var>attr</var>'s <a href="#attribute-namespace">namespace</a>, <var>attr</var>'s <a href="#attribute-local-name">local name</a>, and
+ <var>element</var>.
+
+ <li><p>If <var>oldAttr</var> is <var>attr</var>, return <var>attr</var>.
+
+ <li><p>If <var>oldAttr</var> is non-null, <a lt="replace an attribute">replace</a> it
+  by <var>attr</var> in <var>element</var>.
+
+ <li><p>Otherwise, <a href="#element-append">append</a> <var>attr</var> to <var>element</var>.
+
+ <li><p>Return <var>oldAttr</var>.
 </ol>
 
 <p>To <dfn>set an attribute value</dfn> for an <a href="#concept-element">element</a> <var>element</var>
@@ -2429,7 +2473,7 @@ must run these steps:
 
 <hr>
 
-<p>The <dfn id="element-attributes" for="element"><code>attributes</code></dfn> attribute must return a <code><a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1780488922">NamedNodeMap</a></code>.
+<p>The <dfn id="element-attributes" for="element"><code>attributes</code></dfn> attribute must return a <code>{{{NamedNodeMap}}}</code>.
 
 <p>The <dfn><code>getAttribute(<var>qualifiedName</var>)</code></dfn> method must run these steps:
 
@@ -2507,6 +2551,123 @@ method, when invoked, must <a lt="remove an attribute by name">remove an attribu
 <p>The <dfn id="element-getelementsbytagnamens-func" for="element"><code>getElementsByTagNameNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method must return the <a>list of elements with namespace <var>namespace</var> and local name <var>localName</var></a> for the <a>context object</a>.
 
 <p>The <dfn id="element-getelementsbyclassname-func" for="element"><code>getElementsByClassName(<var>classNames</var>)</code></dfn> method must return the <a>list of elements with class names <var>classNames</var></a> for the <a>context object</a>.
+
+<h4 id=interface-namednodemap>Interface {{NamedNodeMap}}</h4>
+
+<pre class=idl>
+[Exposed=Window, LegacyUnenumerableNamedProperties]
+interface NamedNodeMap {
+  readonly attribute unsigned long length;
+  getter Attr? item(unsigned long index);
+  getter Attr? getNamedItem(DOMString qualifiedName);
+  Attr? getNamedItemNS(DOMString? namespace, DOMString localName);
+  Attr? setNamedItem(Attr attr);
+  Attr? setNamedItemNS(Attr attr);
+  Attr removeNamedItem(DOMString qualifiedName);
+  Attr removeNamedItemNS(DOMString? namespace, DOMString localName);
+};
+</pre>
+
+A {{NamedNodeMap}} has an associated
+<dfn export id=concept-namednodemap-element for=NamedNodeMap>element</dfn> (an
+<a href="#concept-element">element</a>).
+
+A {{NamedNodeMap}} object's
+<dfn export id=concept-namednodemap-attribute for=NamedNodeMap>attribute list</dfn> is its
+<a href="#concept-namednodemap-element">element</a>'s
+<a href="#attribute-list">attribute list</a>.
+
+<hr>
+
+A {{NamedNodeMap}} object's
+<a>supported property indices</a> are the numbers in the
+range zero to the number of <a>attributes</a> in its
+<a href="#concept-namednodemap-attribute">attribute list</a> map minus one, unless the
+<a href="#concept-namednodemap-attribute">attribute list</a> is empty, in which case
+there are no <a>supported property indices</a>.
+
+<p>The <dfn attribute for="NamedNodeMap"><code>length</code></dfn> attribute's getter must return
+the number of <a>attributes</a> in the <a for=NamedNodeMap>attribute list</a>.
+
+<p>The <dfn method for="NamedNodeMap"><code>item(<var>index</var>)</code></dfn> method, when
+invoked, must run these steps:
+
+<ol>
+ <li><p>If <var>index</var> is equal to or greater than the number of <a>attributes</a> in the
+ <a for=NamedNodeMap>attribute list</a>, return null.
+
+ <li><p>Otherwise, return the <var>index</var>th <a>attribute</a> in the
+ <a for=NamedNodeMap>attribute list</a>.
+</ol>
+
+<p>A {{NamedNodeMap}} object's <a>supported property names</a> are the return value of running these
+steps:
+
+<ol>
+ <li><p>Let <var>names</var> be the <a href="#attribute-qualified-name">qualified names</a> of the <a>attributes</a> in this
+ {{NamedNodeMap}} object's <a for=NamedNodeMap>attribute list</a>, with duplicates omitted, in
+ order.
+ <!-- Even though not all names that map to an attribute are listed, due to lowercasing, ECMAScript
+      invariants are not violated. https://github.com/whatwg/dom/issues/141#issuecomment-168753410
+      has details. -->
+
+ <li>
+  <p>If this {{NamedNodeMap}} object's <a for=NamedNodeMap>element</a> is in the
+  <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, then for
+  each <var>name</var> in <var>names</var>, run these substeps:
+
+  <ol>
+   <li><p>Let <var>lowercaseName</var> be <var>name</var>, in <a href="#converted-to-ascii-lowercase">ASCII lowercase</a>.
+
+   <li><p>If <var>lowercaseName</var> is not equal to <var>name</var>, remove <var>name</var> from
+   <var>names</var>.
+  </ol>
+
+ <li><p>Return <var>names</var>.
+</ol>
+
+<p>The <dfn method for="NamedNodeMap"><code>getNamedItem(<var>qualifiedName</var>)</code></dfn>
+method, when invoked, must return the result of
+<a lt="get an attribute by name">getting an attribute</a> given <var>qualifiedName</var> and
+<a for=NamedNodeMap>element</a>.
+
+<p>The
+<dfn method for="NamedNodeMap"><code>getNamedItemNS(<var>namespace</var>, <var>localName</var>)</code></dfn>
+method, when invoked, must return the result of
+<a lt="get an attribute by namespace and local name">getting an attribute</a> given
+<var>namespace</var>, <var>localName</var>, and
+<a for=NamedNodeMap>element</a>.
+
+<p>The <dfn method for="NamedNodeMap"><code>setNamedItem(<var>attr</var>)</code></dfn> and
+<dfn method for="NamedNodeMap"><code>setNamedItemNS(<var>attr</var>)</code></dfn>
+methods, when invoked, must return the result of <a lt="set an attribute">setting an attribute</a> given <var>attr</var> and <a for=NamedNodeMap>element</a>. Rethrow any exceptions.
+
+<p>The <dfn method for="NamedNodeMap"><code>removeNamedItem(<var>qualifiedName</var>)</code></dfn>
+method, when invoked, must run these steps:
+
+<ol>
+ <li><p>Let <var>attr</var> be the result of
+ <a lt="remove an attribute by name">removing an attribute</a> given
+ <var>qualifiedName</var> and <a for=NamedNodeMap>element</a>.
+
+ <li><p>If <var>attr</var> is null, then <a>throw</a> a {{NotFoundError}}.
+
+ <li><p>Return <var>attr</var>.
+</ol>
+
+<p>The
+<dfn method for="NamedNodeMap"><code>removeNamedItemNS(<var>namespace</var>, <var>localName</var>)</code></dfn>
+method, when invoked, must run these steps:
+
+<ol>
+ <li><p>Let <var>attr</var> be the result of
+ <a lt="remove an attribute by namespace and local name">removing an attribute</a> given
+ <var>namespace</var>, <var>localName</var>, and <a for=NamedNodeMap>element</a>.
+
+ <li><p>If <var>attr</var> is null, then <a>throw</a> a {{NotFoundError}}.
+
+ <li><p>Return <var>attr</var>.
+</ol>
 
 <h4 id="interface-attr">Interface <code><a>Attr</a></code></h4>
 <pre class='idl'>
