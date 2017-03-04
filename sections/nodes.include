@@ -1269,21 +1269,26 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
   <var>node</var>:
 
   <dl>
-   <dt><code><a>Document</a></code>
-   <dd><p>Its <a>encoding</a>, <a>content type</a>, <a href="#document-url">URL</a>, its mode (<a>quirks mode</a>, <a>limited quirks mode</a>, or <a>no-quirks mode</a>), and its type (<a>XML document</a> or <a>HTML document</a>).
+   <dt>{{Document}}
+   <dd><p>Set <var>copy</var>'s <a href="#document-encoding">encoding</a>,
+   <a href="#concept-document-content-type">content type</a>, <a href="#document-url">URL</a>,
+   <a href="#dom-document-doctype">type</a>, and <a href="#dom-document-compatmode">mode</a>,
+   to those of <var>node</var>.
 
-   <dt><code><a>DocumentType</a></code>
-   <dd><p>Its <a href="#doctype-name">name</a>, <a>public ID</a>, and <a>system ID</a>.
+   <dt>{{DocumentType}}
+   <dd><p>Set <var>copy</var>'s <a href="#doctype-name">name</a>, <a>public ID</a>, and
+   <a>system ID</a>, to those of <var>node</var>.
 
-   <dt><code><a>Attr</a></code>
-   <dd><p>Its <a href="#attribute-namespace">namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>.
+   <dt>{{Attr}}
+   <dd><p>Set <var>copy</var>'s <a href="#attribute-namespace">namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>, to those of <var>node</var>.
 
-   <dt><code><a>Text</a></code>
-   <dt><code><a>Comment</a></code>
-   <dd><p>Its <a href="#cd-data">data</a>.
+   <dt>{{Text}}
+   <dt>{{Comment}}
+   <dd>Set <var>copy</var>'s <a href="#cd-data">data</a>, to that of <var>node</var>.
 
-   <dt><code><a>ProcessingInstruction</a></code>
-   <dd><p>Its <a href="#pi-target">target</a> and <a href="#cd-data">data</a>.
+   <dt>{{ProcessingInstruction}}
+   <dd>Set <var>copy</var>'s<a href="#pi-target">target</a> and <a href="#cd-data">data</a> to
+   those of <var>node</var>.
 
    <dt>Any other node
    <dd><p>—
