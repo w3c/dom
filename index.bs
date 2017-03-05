@@ -6,17 +6,12 @@ Status: ED
 ED: https://w3c.github.io/dom/
 Group: webplatform
 Editor: Yongsheng Zhu, Alibaba, yongsheng.zys@alibaba-inc.com
-Former Editor: Anne van Kesteren, Mozilla - Upstream WHATWG version, https://annevankesteren.nl/
-Former Editor: Aryeh Gregor, Mozilla - Upstream WHATWG version
-Former Editor: Ms2ger, Mozilla - Upstream WHATWG version
-Former Editor: Alex Russell, Google, https://infrequently.org/
-Former Editor: Robin Berjon, W3C, http://berjon.com/
 Repository: https://github.com/w3c/dom
 Mailing List: https://www-dom@w3.org
 Mailing List Archives: https://lists.w3.org/Archives/Public/www-dom/
 Test Suite: https://w3c-test.org/dom/
 Abstract: DOM defines a platform-neutral model for events and node trees.
-Status Text: This document is an editor's draft, which will be proposed as a First Public Working Draft of an update to the DOM 4 Recommendation.
+Status Text: This document is an editor's draft, which will be proposed as a First Public Working Draft of an update to the DOM 4 Recommendation. The goals of this revision are to update the W3C's DOM specification to cover what is interoperably implemented as a core part of the Web Platform
 </pre>
 
 <pre class="anchors">
@@ -111,10 +106,6 @@ ul.domTree .t10 code { color: teal; }
     "publisher": "W3C"
   }
   }
-</pre>
-
-<pre class="include">
-path: sections/goals.include
 </pre>
 
 <pre class="include">
