@@ -534,8 +534,8 @@ interface HTMLCollection {
  <li>
   <p>For each <var>element</var> <a>represented by the collection</a>, in <a>tree order</a>, run these substeps:
   <ol>
-   <li><p>If <var>element</var> has an <a href="#concept-id" title="concept-id">ID</a> which is not in <var>result</var>, append
-   <var>element</var>'s <a href="#concept-id" title="concept-id">ID</a> to <var>result</var>.
+   <li><p>If <var>element</var> has an <a>ID</a> which is not in <var>result</var>, append
+   <var>element</var>'s <a>ID</a> to <var>result</var>.
 
    <li><p>If <var>element</var> is in the <a>HTML namespace</a> and <a>has</a> a <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is neither the empty string nor is in <var>result</var>, append <var>element</var>'s <a href="#named-attribute"><code>name</code> attribute</a> <a href="#attribute-value">value</a> to <var>result</var>.
   </ol>
@@ -549,7 +549,7 @@ interface HTMLCollection {
   <p>Return the first <a>element</a> in the <a>collection</a> for which at least one of the following is true:
   <ul>
    <li>it has an <a>ID</a> which is <var>key</var>.
-   <li>it is in the <a>HTML namespace</a> and <a href="#concept-element-attribute-has" title="concept-element-attribute-has">has</a> a
+   <li>it is in the <a>HTML namespace</a> and <a>has</a> a
    <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is <var>key</var>;
   </ul>
   <p>or null if there is no such <a>element</a>.
@@ -2076,7 +2076,7 @@ interface Element : Node {
 <p><a href="#concept-element">Elements</a> have an associated <dfn id="element-namespace" for="element">namespace</dfn>, <dfn id="element-namespace-prefix" for="element">namespace prefix</dfn>, and <dfn id="element-local-name" for="element">local name</dfn>. When an <a href="#concept-element">element</a> is created, its <a href="#element-local-name">local name</a> is always given. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a href="#element-namespace">namespace</a> and <a href="#element-namespace-prefix">namespace prefix</a> are null.
 
 <p>An <a href="#concept-element">element</a>'s
-<dfn id="element-qualified-name">qualified name</dfn> is its
+<a>qualified name</a> is its
 <a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
 <a href="#element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its
 <a href="#element-local-name">local name</a>.
