@@ -707,34 +707,44 @@ dictionary MutationObserverInit {
 <p>To <dfn>queue a mutation record</dfn> of <var>type</var> for <var>target</var> with one or more of (depends on <var>type</var>) name <var>name</var>, namespace <var>namespace</var>, oldValue <var>oldValue</var>, addedNodes <var>addedNodes</var>, removedNodes <var>removedNodes</var>, previousSibling <var>previousSibling</var>, and nextSibling <var>nextSibling</var>, run these steps:
 
 <ol>
- <li><p>Let <var>interested observers</var> be an initially empty set of <code><a>MutationObserver</a></code> objects optionally paired with a string.
+ <li><p>Let <var>interested observers</var> be an initially empty set of <code> {{MutationObserver}} </code> objects optionally paired with a string.
 
  <li><p>Let <var>nodes</var> be the <a>inclusive ancestors</a> of <var>target</var>.
 
  <li>
-  <p>Then, for each <var>node</var> in <var>nodes</var>, and then for each <var>registered observer</var> (with <var>registered observer</var>'s <b>options</b> as <var>options</var>) in <var>node</var>'s list of <a>registered observers</a>:
+  <p>Then, for each <var>node</var> in <var>nodes</var>, and then for each <var>registered observer</var> (with <var>registered observer</var>'s <b>options</b> as <var>options</var>) in <var>node</var>'s list of <a>registered observers</a>, run these substeps:
 
   <ol>
-   <li><p>If <var>node</var> is not <var>target</var> and <var>options</var>' <code>subtree</code> is false, continue.
+   <li>
+    <p>If none of the following are true
 
-   <li><p>If <var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributes</code> is not true, continue.
+    <ul class=brief>
+     <li><var>node</var> is not <var>target</var> and <var>options</var>' <code>subtree</code> is false
 
-   <li><p>If <var>type</var> is "<code>attributes</code>", <var>options</var>' <code>attributeFilter</code> is present, and either <var>options</var>' <code>attributeFilter</code> does not contain <var>name</var> or <var>namespace</var> is non-null, continue.
+     <li><var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributes</code> is false
 
-   <li><p>If <var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterData</code> is not true, continue.
+     <li><var>type</var> is "<code>attributes</code>", <var>options</var>'
+     <code>attributeFilter</code> is present, and <var>options</var>' <code>attributeFilter</code>
+     does not contain <var>name</var> or <var>namespace</var> is non-null
 
-   <li><p>If <var>type</var> is "<code>childList</code>" and <var>options</var>' <code>childList</code> is false, continue.
+     <li><var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterData</code> is false
 
-   <li><p>If <var>registered observer</var>'s <b>observer</b> is not in <var>interested observers</var>, append <var>registered observer</var>'s <b>observer</b> to <var>interested observers</var>.
+     <li><var>type</var> is "<code>childList</code>" and <var>options</var>' <code>childList</code> is false
+    </ul>
 
-   <li><p>If either <var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributeOldValue</code> is true, or <var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterDataOldValue</code> is true, set the paired string of <var>registered observer</var>'s <b>observer</b> in <var>interested observers</var> to <var>oldValue</var>.
+    <p>then run these subsubsteps:
+    <ol>
+     <li><p>If <var>registered observer</var>'s <b>observer</b> is not in <var>interested observers</var>, append <var>registered observer</var>'s <b>observer</b> to <var>interested observers</var>.
+
+     <li><p>If either <var>type</var> is "<code>attributes</code>" and <var>options</var>' <code>attributeOldValue</code> is true, or <var>type</var> is "<code>characterData</code>" and <var>options</var>' <code>characterDataOldValue</code> is true, set the paired string of <var>registered observer</var>'s <b>observer</b> in <var>interested observers</var> to <var>oldValue</var>.
+    </ol>
   </ol>
 
  <li>
   <p>Then, for each <var>observer</var> in <var>interested observers</var>:
 
   <ol>
-   <li><p>Let <var>record</var> be a new <code><a>MutationRecord</a></code> object with its <code><a>type</a></code> set to <var>type</var> and <code><a>target</a></code> set to <var>target</var>.
+   <li><p>Let <var>record</var> be a new <code> {{MutationRecord}} </code> object with its <code><a href="#mutationrecord-type">type</a></code> set to <var>type</var> and <code><a href="#mutationrecord-target">target</a></code> set to <var>target</var>.
 
    <li><p>If <var>name</var> and <var>namespace</var> are given, set <var>record</var>'s <code><a>attributeName</a></code> to <var>name</var>, and <var>record</var>'s <code><a>attributeNamespace</a></code> to <var>namespace</var>.
 
@@ -772,7 +782,7 @@ interface MutationRecord {
 </pre>
 
 <dl>
- <dt><code><var>record</var> . <a>type</a></code>
+ <dt><code><var>record</var> . <a href="#mutationrecord-type">type</a></code>
  <dd><p>Returns "<code>attributes</code>" if it was an <a href="#concept-attribute">attribute</a> mutation. "<code>characterData</code>" if it was a mutation to a <code><a>CharacterData</a></code> <a>node</a>. And "<code>childList</code>" if it was a mutation to the <a>tree</a> of <a>nodes</a>.
 
  <dt><code><var>record</var> . <a href="#mutationrecord-target">target</a></code>
