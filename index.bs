@@ -56,12 +56,14 @@ urlPrefix: https://infra.spec.whatwg.org/#; spec: encoding;
     text: ASCII whitespace; url: ascii-whitespace; type: dfn
 urlPrefix: https://www.w3.org/TR/encoding/#; spec: encoding;
     text: utf-8; url: utf-8; type: dfn
+    text: encoding; url: encoding; type: dfn
 urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: report the exception; url: webappapis.html#report-the-exception; type: dfn
     text: compound microtask; url: webappapis.html#compound-microtasks; type: dfn
-    text: HTML parsing; url: syntax.html#html-parser; type: dfn
+    text: HTML parser; url: syntax.html#html-parser; type: dfn
     text: execute a compound microtask subtask; url: webappapis.html#wrap-callbacks; type: dfn
     text: origin; url: browsers.html#origin; type: dfn
+    text: browsing context; url: browsers.html#browsing-context; type: dfn
 urlPrefix: https://www.w3.org/TR/html5/; spec: HTML5;
     text: effective script origin; url: browsers.html#effective-script-origin; type: dfn
     text: alias; url: browsers.html#concept-origin-alias; type: dfn
