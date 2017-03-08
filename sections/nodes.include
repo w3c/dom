@@ -52,7 +52,7 @@
 http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%0A%3Chtml%20class%3De%3E%0D%0A%20%3Chead%3E%3Ctitle%3EAliens%3F%3C%2Ftitle%3E%3C%2Fhead%3E%0D%0A%20%3Cbody%3EWhy%20yes.%3C%2Fbody%3E%0D%0A%3C%2Fhtml%3E
 -->
 
-<p>Note that, due to the magic that is <a>HTML parsing</a>, not all <a>ASCII whitespace</a> were turned into <code><a>Text</a></code> <a>nodes</a>, but the general concept is clear. Markup goes in, a <a>tree</a> of <a>nodes</a> comes out.
+<p>Note that, due to the magic of <a>HTML parser</a>, not all <a>ASCII whitespace</a> were turned into <code><a>Text</a></code> <a>nodes</a>, but the general concept is clear. Markup goes in, a <a>tree</a> of <a>nodes</a> comes out.
 
 <p class="note">Note: The most excellent <a href="http://software.hixie.ch/utilities/js/live-dom-viewer/">Live DOM Viewer</a> can be used to explore this matter in more detail.
 
@@ -1265,7 +1265,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
  </li>
 
  <li><p>Otherwise, let <var>copy</var> be a <a>node</a> that implements the same interfaces as <var>node</var>,
-  <var>node</var>, and fulfills these additional requirements, switching on
+  and fulfills these additional requirements, switching on
   <var>node</var>:
 
   <dl>
@@ -1629,7 +1629,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
  <li>
   <p>Return a <code><a>HTMLCollection</a></code> rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> that have all their <a>classes</a> in <var>classes</var>.
 
-  <p>The comparisons for the <a>classes</a> must be done in an <a>ASCII case-insensitive</a> manner if <var>root</var>'s <a>node document</a> is in <a>quirks mode</a>, and in a <a>case-sensitive</a> manner otherwise.
+  <p>The comparisons for the <a>classes</a> must be done in an <a>ASCII case-insensitive</a> manner if <var>root</var>'s <a>node document</a>'s <a for=Document>mode</a> is "<code>quirks</code>", and in a <a>case-sensitive</a> manner otherwise.
 </ol>
 
 <p>When invoked with the same argument, the same <code><a>HTMLCollection</a></code> object may be returned as returned by an earlier call.
@@ -1681,19 +1681,20 @@ interface XMLDocument : Document {};
 
 <p><code><dfn id="dom-document" for="dom">Document</dfn></code> <a>nodes</a> are simply known as <dfn for="concept" lt="document|documents">documents</dfn>.
 
-<p>Each <a>document</a> has an associated <dfn id="document-encoding" for="document">encoding</dfn>, <dfn id="concept-document-content-type" title="concept-document-content-type">content type</dfn>, and <dfn id="document-url"  for="document">URL</dfn>. [[!ENCODING]] [[!URL]]
+<p>Each <a>document</a> has an associated <dfn export for=Document id=document-encoding>encoding</dfn> (an <a spec=encoding>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>),
+<dfn export for=Document id=concept-document-type>type</dfn> ("<code>xml</code>" or "<code>html</code>"), and <dfn export for=Document id=concept-document-mode>mode</dfn> ("<code>no-quirks</code>", "<code>quirks</code>", or "<code>limited-quirks</code>"). [[!ENCODING]] [[!URL]]
 
-<p>Unless stated otherwise, a <a>document</a>'s <a href="#document-encoding">encoding</a> is the <code><a>encoding</a></code>, its <a>content type</a> is "<code>application/xml</code>", and its <a href="#document-url" title="document-url">URL</a> is "<code>about:blank</code>".
+<p>Unless stated otherwise, a <a>document</a>'s <a href="#document-encoding">encoding</a> is the <a>utf-8</a> <a spec=encoding>encoding</a>, its <a for=Document>content type</a> is "<code>application/xml</code>", and its <a for=Document" title="document-url">URL</a> is "<code>about:blank</code>", <a for=Document>type</a> is "<code>xml</code>", and its <a for=Document>mode</a> is "<code>no-quirks</code>".
 
-<p>Unless stated otherwise, a <a>document</a>'s <a>origin</a> is a globally unique identifier and its <a>effective script origin</a> is an <a>alias</a> of that <a>origin</a>. [[!HTML5]
+<p>Unless stated otherwise, a <a>document</a>'s <a>origin</a> is a globally unique identifier and its <a>effective script origin</a> is an <a>alias</a> of that <a>origin</a>. [[!HTML5]]
 
-<p>A <a>document</a> is assumed to be an <dfn>XML document</dfn> unless it is flagged as being an <dfn>HTML document</dfn>. Whether a <a>document</a> is an <a>HTML document</a> or an <a>XML document</a> affects the behavior of certain APIs.
+<p>A <a>document</a> is said to be an <dfn export>XML document</dfn> if its <a for=Document>type</a> is "<code>xml</code>", and an <dfn>HTML document</dfn> otherwise. Whether a <a>document</a> is an <a>HTML document</a> or an <a>XML document</a> affects the behavior of certain APIs.
 
-<p>A <a>document</a> is always set to one of three modes: <dfn>no-quirks mode</dfn>, the default; <dfn>quirks mode</dfn>, used typically for legacy documents; and <dfn>limited-quirks mode</dfn>. Unless stated otherwise, a <a>document</a> must be in <a>no-quirks mode</a>.
+A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-quirks mode</dfn> if its <a for=Document>mode</a> is "<code>no-quirks</code>", <dfn export id=concept-document-quirks>quirks mode</dfn> if its <a for=Document>mode</a> is "<code>quirks</code>", and <dfn export id=concept-document-limited-quirks>limited-quirks mode</dfn> if its <a for=Document>mode</a> is "<code>limited-quirks</code>".
 
-<p class="note">Note: The mode is only ever changed from the default if the <a>document</a> is created by the <a>HTML parser</a>, based on the presence, absence, or value of the DOCTYPE string. [[!HTML5]
+<div class="note no-backref"> <p>The <a for=Document>mode</a> is only ever changed from the default for <a>documents</a> created by the <a>HTML parser</a> based on the presence, absence, or value of the DOCTYPE string, and by a new <a>browsing context</a> (initial "<code>about:blank</code>"). [[!HTML]]
 
-<p class="note">Note: <a>No-quirks mode</a> was originally known as "standards mode" and <a>limited-quirks mode</a> was once known as "almost standards mode". They have been renamed because their details are now defined by standards. (And because Ian Hickson vetoed their original names on the basis that they are nonsensical.)
+<p><a>No-quirks mode</a> was originally known as "standards mode" and <a>limited-quirks mode</a> was once known as "almost standards mode". They have been renamed because their details are now defined by standards. (And because Ian Hickson vetoed their original names on the basis that they are nonsensical.)</div>
 
 <hr>
 
@@ -1713,7 +1714,7 @@ interface XMLDocument : Document {};
 
  <dt><code><var>document</var> . <a>compatMode</a></code>
  <dd>
-  <p>Returns the string "<code>CSS1Compat</code>" if <var>document</var> is in <a>no-quirks mode</a> or <a>limited-quirks mode</a>, and "<code>BackCompat</code>", if <var>document</var> is in <a>quirks mode</a>.
+  <p>Returns the string "<code>BackCompat</code>" if <var>document</var>'s <a for=Document>mode</a> is "<code>quirks mode</code>", and "<code>CSS1Compat</code>" otherwise.
 
  <dt><code><var>document</var> . <a>characterSet</a></code>
  <dd><p>Returns <var>document</var>'s <a href="#document-encoding">encoding</a>.
@@ -1732,7 +1733,7 @@ interface XMLDocument : Document {};
 
 <p>The <dfn id="document-origin" for="document"><code>origin</code></dfn> attribute must return the <a href="http://www.w3.org/TR/html51/browsers.html#unicode-serialization">Unicode serialization</a> of <a>context object</a>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a>.
 
-<p>The <dfn><code>compatMode</code></dfn> attribute must return "<code>BackCompat</code>" if the <a>context object</a> is in <a>quirks mode</a>, and "<code>CSS1Compat</code>" otherwise.
+<p>The <dfn><code>compatMode</code></dfn> attribute's getter must return "<code>BackCompat</code>" if the <a>context object</a>'s <a for=Document>mode</a> is "<code>quirks</code>", and "<code>CSS1Compat</code>" otherwise.
 
 <p>The <dfn><code>characterSet</code></dfn> attribute's getter, <dfn><code>charSet</code></dfn> attribute's getter, and <dfn><code>inputEncoding</code></dfn> attribute's getter, must return <a>context object</a>'s <a href="#document-encoding">encoding</a>'s <a href="https://www.w3.org/TR/encoding/#name">name</a>.
 
