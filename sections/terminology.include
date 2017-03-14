@@ -204,6 +204,9 @@ run these steps:
 The <dfn>HTML namespace</dfn> is
 <code>http://www.w3.org/1999/xhtml</code>.
 
+The <dfn>SVG namespace</dfn> is
+<code>http://www.w3.org/2000/svg</code>.
+
 The <dfn>XML namespace</dfn> is
 <code>http://www.w3.org/XML/1998/namespace</code>.
 
