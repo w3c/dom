@@ -1247,10 +1247,9 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
   <p>If <var>node</var> is an <a href="#concept-element">element</a>, then:
 
   <ol>
-   <li><p>Let <var>copy</var> be the result of <a>creating an element</a>, given
-   <var>document</var>, <var>node</var>'s <a href="#element-local-name">local name</a>, <var>node</var>'s
-   <a href="#element-namespace">namespace</a>, <var>node</var>'s <a href="#element-namespace-prefix">namespace prefix</a>, and the
-   value of <var>node</var>'s <code>is</code> attribute if present (or null if not).
+   <li>let <var>copy</var> be a <a lt="nodes">node</a> that implements the same interfaces as <var>node</var>.
+   <li><p>Set <var>copy</var>'s <a href="#element-local-name">local name</a>, <a href="#element-namespace">namespace</a>,
+   <a href="#element-namespace-prefix">namespace prefix</a>, to those of <var>node</var>.
    <li>
     <p>For each <var>attribute</var> in <var>node</var>'s
     <a>attribute list</a>, in order, run these substeps:
@@ -1264,7 +1263,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
   </ol>
  </li>
 
- <li><p>Otherwise, let <var>copy</var> be a <a>node</a> that implements the same interfaces as <var>node</var>,
+ <li><p>Otherwise, let <var>copy</var> be a <a lt="nodes">node</a> that implements the same interfaces as <var>node</var>,
   and fulfills these additional requirements, switching on
   <var>node</var>:
 
@@ -2343,7 +2342,7 @@ an optional <var>namespace</var>, run these steps:
  <li><p>An <a>attribute is set</a> and an <a>attribute is changed</a>.
 </ol>
 
-<p>To <dfn id="element-append">append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
+<p>To <dfn id="element-append" lt="append an attribute">append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
 <ol>
  <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue null.
