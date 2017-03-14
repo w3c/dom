@@ -2095,6 +2095,20 @@ interface DOMImplementation {
 
  <li><p><var>document</var>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> is an <a>alias</a> to the <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> of the <a>context object</a>'s associated <a>document</a>, and <var>document</var>'s <a>effective script origin</a> is an <a>alias</a> to the <a>effective script origin</a> of the <a>context object</a>'s associated <a>document</a>. [[!HTML5]
 
+ <li>
+  <p><var>document</var>'s <a>content type</a> is determined by <var>namespace</var>:
+
+    <dl class=switch>
+      <dt><a>HTML namespace</a>
+      <dd><code>application/xhtml+xml</code>
+
+      <dt><a>SVG namespace</a>
+      <dd><code>image/svg+xml</code>
+
+      <dt><a>Any other namespace</a>
+      <dd><code>application/xml</code>
+    </dl>
+
  <li><p>Return <var>document</var>.
 </ol>
 
