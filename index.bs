@@ -62,12 +62,11 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: compound microtask; url: webappapis.html#compound-microtasks; type: dfn
     text: HTML parser; url: syntax.html#html-parser; type: dfn
     text: execute a compound microtask subtask; url: webappapis.html#wrap-callbacks; type: dfn
-    text: origin; url: browsers.html#origin; type: dfn
+    text: origin; url: browsers.html#concept-cross-origin; type: dfn
+    text: opaque origin; url:browsers.html#opaque-origin; type: dfn
     text: browsing context; url: browsers.html#browsing-context; type: dfn
-urlPrefix: https://www.w3.org/TR/html5/; spec: HTML5;
-    text: effective script origin; url: browsers.html#effective-script-origin; type: dfn
-    text: alias; url: browsers.html#concept-origin-alias; type: dfn
     text: unit of related similar-origin browsing contexts; url: browsers.html#unit-of-related-similar-origin-browsing-contexts; type: dfn
+    text: Unicode serialization; url: browsers.html#unicode-serialization; type: dfn
 url: https://heycam.github.io/webidl/#idl-enums; type: dfn;
     text: unenumerable
 urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1

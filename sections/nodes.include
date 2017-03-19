@@ -1271,6 +1271,7 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
    <dt>{{Document}}
    <dd><p>Set <var>copy</var>'s <a href="#document-encoding">encoding</a>,
    <a href="#concept-document-content-type">content type</a>, <a href="#document-url">URL</a>,
+   <a href="#concept-document-origin">origin</a>,
    <a href="#dom-document-doctype">type</a>, and <a href="#dom-document-compatmode">mode</a>,
    to those of <var>node</var>.
 
@@ -1680,12 +1681,10 @@ interface XMLDocument : Document {};
 
 <p><code><dfn id="dom-document" for="dom">Document</dfn></code> <a>nodes</a> are simply known as <dfn for="concept" lt="document|documents">documents</dfn>.
 
-<p>Each <a>document</a> has an associated <dfn export for=Document id=document-encoding>encoding</dfn> (an <a spec=encoding>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>),
-<dfn export for=Document id=concept-document-type>type</dfn> ("<code>xml</code>" or "<code>html</code>"), and <dfn export for=Document id=concept-document-mode>mode</dfn> ("<code>no-quirks</code>", "<code>quirks</code>", or "<code>limited-quirks</code>"). [[!ENCODING]] [[!URL]]
+<p>Each <a>document</a> has an associated <dfn export for=Document id=document-encoding>encoding</dfn> (an <a spec=encoding>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>), <dfn export for=Document id=concept-document-origin>origin</dfn> (an <a spec=HTML51>origin</a>),
+<dfn export for=Document id=concept-document-type>type</dfn> ("<code>xml</code>" or "<code>html</code>"), and <dfn export for=Document id=concept-document-mode>mode</dfn> ("<code>no-quirks</code>", "<code>quirks</code>", or "<code>limited-quirks</code>"). [[!ENCODING]] [[!URL]] [[!HTML51]]
 
-<p>Unless stated otherwise, a <a>document</a>'s <a href="#document-encoding">encoding</a> is the <a>utf-8</a> <a spec=encoding>encoding</a>, its <a for=Document>content type</a> is "<code>application/xml</code>", and its <a for=Document" title="document-url">URL</a> is "<code>about:blank</code>", <a for=Document>type</a> is "<code>xml</code>", and its <a for=Document>mode</a> is "<code>no-quirks</code>".
-
-<p>Unless stated otherwise, a <a>document</a>'s <a>origin</a> is a globally unique identifier and its <a>effective script origin</a> is an <a>alias</a> of that <a>origin</a>. [[!HTML5]]
+<p>Unless stated otherwise, a <a>document</a>'s <a href="#document-encoding">encoding</a> is the <a>utf-8</a> <a spec=encoding>encoding</a>, its <a for=Document>content type</a> is "<code>application/xml</code>", its <a for=Document" title="document-url">URL</a> is "<code>about:blank</code>", <a for=Document>origin</a> is an <code><a>opaque origin</a></code>, <a for=Document>type</a> is "<code>xml</code>", and its <a for=Document>mode</a> is "<code>no-quirks</code>".
 
 <p>A <a>document</a> is said to be an <dfn export>XML document</dfn> if its <a for=Document>type</a> is "<code>xml</code>", and an <dfn>HTML document</dfn> otherwise. Whether a <a>document</a> is an <a>HTML document</a> or an <a>XML document</a> affects the behavior of certain APIs.
 
@@ -1709,7 +1708,7 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
  <dd><p>Returns <var>document</var>'s <a href="#document-url">URL</a>.
 
  <dt><code><var>document</var> . <a href="#document-origin">origin</a></code>
- <dd><p>Returns <var>document</var>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a>.
+ <dd><p>Returns <var>document</var>'s <a href="#concept-document-origin">origin</a>.
 
  <dt><code><var>document</var> . <a>compatMode</a></code>
  <dd>
@@ -1722,7 +1721,7 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
  <dd><p>Returns <var>document</var>'s <a>content type</a>.
 </dl>
 
-<p>The <dfn><code>Document()</code></dfn> constructor must return a new <a>document</a> whose <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> is an <a>alias</a> to the <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> of the global object's associated <a>document</a>, and <a>effective script origin</a> is an <a>alias</a> to the <a>effective script origin</a> of the global object's associated <a>document</a>. [[!HTML5]
+<p>The <dfn><code>Document()</code></dfn> constructor must return a new <a>document</a> whose <a href="#concept-document-origin">origin</a> is the <a href="#concept-document-origin">origin</a> of the global object's associated <a>document</a>. [[!HTML51]]
 
 <p class="note">Note: Unlike <code><a>createDocument()</a></code> this constructor does not return an <code><a>XMLDocument</a></code> object, but a <a>document</a> (<code><a href="#dom-document">Document</a></code> object).
 
@@ -1730,7 +1729,7 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
 
 <p>The <dfn id="document-url"><code>URL</code></dfn> and <dfn><code>documentURI</code></dfn> attributes must return the <a href="#document-url">URL</a>.
 
-<p>The <dfn id="document-origin" for="document"><code>origin</code></dfn> attribute must return the <a href="http://www.w3.org/TR/html51/browsers.html#unicode-serialization">Unicode serialization</a> of <a>context object</a>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a>.
+<p>The <dfn id="document-origin" for="document"><code>origin</code></dfn> attribute must return the <a spec=HTML51>Unicode serialization</a> of <a>context object</a>'s <a href="#concept-document-origin">origin</a>.
 
 <p>The <dfn><code>compatMode</code></dfn> attribute's getter must return "<code>BackCompat</code>" if the <a>context object</a>'s <a for=Document>mode</a> is "<code>quirks</code>", and "<code>CSS1Compat</code>" otherwise.
 
@@ -2093,7 +2092,7 @@ interface DOMImplementation {
 
  <li><p>If <var>element</var> is not null, <a>append</a> <var>element</var> to <var>document</var>.
 
- <li><p><var>document</var>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> is an <a>alias</a> to the <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> of the <a>context object</a>'s associated <a>document</a>, and <var>document</var>'s <a>effective script origin</a> is an <a>alias</a> to the <a>effective script origin</a> of the <a>context object</a>'s associated <a>document</a>. [[!HTML5]
+ <li><p><var>document</var>'s <a href="#concept-document-origin">origin</a> is <a>context object</a>'s associated <a href="#concept-document">document</a>'s <a href="#concept-document-origin">origin</a>.
 
  <li>
   <p><var>document</var>'s <a>content type</a> is determined by <var>namespace</var>:
@@ -2136,7 +2135,7 @@ interface DOMImplementation {
 
  <li><p>Create a <code>body</code> element in the <a>HTML namespace</a>, and <a>append</a> it to the <code>html</code> element created in the earlier step.
 
- <li><p><var>doc</var>'s <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> is an <a>alias</a> to the <a href="http://www.w3.org/TR/html5/browsers.html#origin">origin</a> of the <a>context object</a>'s associated <a>document</a>, and <var>doc</var>'s <a>effective script origin</a> is an <a>alias</a> to the <a>effective script origin</a> of the <a>context object</a>'s associated <a>document</a>. [[!HTML5]
+ <li><p><var>document</var>'s <a href="#concept-document-origin">origin</a> is <a>context object</a>'s associated <a href="#concept-document">document</a>'s <a href="#concept-document-origin">origin</a>.
 
  <li><p>Return <var>doc</var>.
 </ol>
