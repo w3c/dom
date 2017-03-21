@@ -1723,7 +1723,7 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
 
 <p>The <dfn><code>Document()</code></dfn> constructor must return a new <a>document</a> whose <a href="#concept-document-origin">origin</a> is the <a href="#concept-document-origin">origin</a> of the global object's associated <a>document</a>. [[!HTML51]]
 
-<p class="note">Note: Unlike <code><a>createDocument()</a></code> this constructor does not return an <code><a>XMLDocument</a></code> object, but a <a>document</a> (<code><a href="#dom-document">Document</a></code> object).
+<p class="note">Note: Unlike <code><a>createDocument()</a></code>, this constructor does not return an <code><a>XMLDocument</a></code> object, but a <a href="#concept-document">document</a> (<code><a href="#dom-document">Document</a></code> object).
 
 <p>The <dfn><code>implementation</code></dfn> attribute must return the <code><a>DOMImplementation</a></code> object that is associated with the <a>document</a>.
 
@@ -2081,8 +2081,6 @@ interface DOMImplementation {
 <ol>
  <li>
   <p>Let <var>document</var> be a new <code><a href="#xmldocument">XMLDocument</a></code> [see <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=22960">bug 22960</a>].
-
-  <p class="note">Note: This method creates an <code><a>XMLDocument</a></code> rather than a normal <a>document</a>. They are identical except for the addition of the <code><a href="http://www.w3.org/TR/html51/dom.html#dom-xmldocument-load">load()</a></code> method deployed content relies upon. [[!HTML5]
 
  <li><p>Let <var>element</var> be null.
 
