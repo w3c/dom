@@ -883,11 +883,6 @@ interface Node : EventTarget {
 
 <p class="note">Note: A <a>node</a>'s <a>node document</a> can be changed by the <a>adopt</a> algorithm.
 
-<p>Each <a>node</a> also has an associated <dfn>document base URL</dfn>.
-
-<p class="note">Note: Other specifications define the value of the <a>document base URL</a> and its observable behavior. This specification solely defines the concept and the <code>baseURI</code> attribute.
-For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructure.html#document-base-url"> document base URL</a>.
-
 <hr>
 
 <dl>
@@ -1034,10 +1029,11 @@ For HTML, see the definition of <a href="https://www.w3.org/TR/html/infrastructu
 
 <dl>
  <dt><code><var>node</var> . baseURI</code>
- <dd><p>Returns the <a>document base URL</a>.
+ <dd><p>Returns <var>node</var>'s <a>node document</a>'s <a>base URL</a>.
 </dl>
 
-<p>The <code>baseURI</code> attribute's getter must return the associated <a>document base URL</a>.
+The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must return
+<a>node document</a>'s <a>base URL</a>.
 
 <hr>
 
