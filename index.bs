@@ -93,6 +93,8 @@ urlPrefix: https://www.w3.org/TR/webmessaging/
     text: MessageEvent; url: #messageevent; type: dfn
 urlPrefix: https://www.w3.org/TR/webstorage/
     text: StorageEvent; url: #storageevent; type: dfn
+urlPrefix: https://tc39.github.io/ecma262/#; spec: ECMASCRIPT
+    text: Realm; url: realm; type: dfn
 </pre>
 
 <style>
