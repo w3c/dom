@@ -2212,7 +2212,7 @@ method, when invoked, must run these steps:
   <p class=note>Typically user agents disable support for touch events in some configurations, in
   which case this clause would be triggered for the interface <a>TouchEvent</a>.
 
- <li><p>Let <var>event</var> be the result of <a>creating an event</a> given <var>constructor</var>.
+ <li><p>Let <var>event</var> be the result of <a lt="creating an event">creating an event</a> given <var>constructor</var>.
 
  <li><p>Initialize <var>event</var>'s {{Event/type}} attribute to the empty string.
 
