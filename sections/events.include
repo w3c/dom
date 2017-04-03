@@ -353,7 +353,7 @@ method must run these steps:
 <dfn><code>dispatchEvent(<var>event</var>)</code></dfn>
 method must run these steps:
 <ol>
-  1. If <var>event</var>'s <a>dispatch flag</a> is set, or if its <a>initialized flag</a> is not set, <a>throw</a> an "<code>InvalidStateError</code>" exception.[[!WEBIDL]]
+  1. If <var>event</var>'s <a>dispatch flag</a> is set, or if its <a>initialized flag</a> is not set, <a>throw</a> an "<code>InvalidStateError</code>".[[!WEBIDL]]
   2. Initialize <var>event</var>'s <code><a>isTrusted</a></code> attribute to false.
   3. <a>Dispatch</a> the <var>event</var> and return the value that returns.
 
