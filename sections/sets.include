@@ -38,25 +38,25 @@ interface DOMTokenList {
 
  <dt><code><var>tokenlist</var> . <a>contains</a>(<var>token</var>)</code>
  <dd>
-  <p>Returns true if <var>token</var> is present, and false otherwise. <p>Throws a "<code><a>SyntaxError</a></code>" exception if <var>token</var> is the empty string. <p>Throws an "<code><a>InvalidCharacterError</a></code>" exception if <var>token</var> contains any <a>ASCII whitespace</a>.
+  <p>Returns true if <var>token</var> is present, and false otherwise. <p>Throws a "<code><a>SyntaxError</a></code>" if <var>token</var> is the empty string. <p>Throws an "<code><a>InvalidCharacterError</a></code>" if <var>token</var> contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . <a>add</a>(<var>tokens</var>…)</code>
  <dd>
   <p>Adds all arguments passed, except those already present.
-  <p>Throws a "<code><a>SyntaxError</a></code>" exception if one of the arguments is the empty string.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" exception if one of the arguments contains any <a>ASCII whitespace</a>.
+  <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
+  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . <a>remove</a>(<var>tokens</var>…)</code>
  <dd>
   <p>Removes arguments passed, if they are present.
-  <p>Throws a "<code><a>SyntaxError</a></code>" exception if one of the arguments is the empty string.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" exception if one of the arguments contains any <a>ASCII whitespace</a>.
+  <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
+  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . <a>toggle</a>(<var>token</var> [, <var>force</var>])</code>
  <dd>
   <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it's present and adding it if it's not. If <var>force</var> is true, adds <var>token</var> (same as <code><a>add()</a></code>).  If <var>force</var> is false, removes <var>token</var> (same as <code><a>remove()</a></code>). <p>Returns true if <var>token</var> is now present, and false otherwise.
-  <p>Throws a "<code><a>SyntaxError</a></code>" exception if <var>token</var> is empty.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" exception if <var>token</var> contains any spaces.
+  <p>Throws a "<code><a>SyntaxError</a></code>" if <var>token</var> is empty.
+  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if <var>token</var> contains any spaces.
 </dl>
 
 <div>
@@ -77,9 +77,9 @@ interface DOMTokenList {
 <dfn id="set-contains-func" for="set"><code>contains(<var>token</var>)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>" exception.
+ <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
 
- <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
 
  <li><p>Return true if <var>token</var> is in <a>tokens</a>, and false otherwise.
 </ol>
@@ -87,9 +87,9 @@ interface DOMTokenList {
 <p>The <dfn><code>add(<var>tokens</var>…)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>If one of <var>tokens</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>" exception.
+ <li><p>If one of <var>tokens</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>".
 
- <li><p>If one of <var>tokens</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>If one of <var>tokens</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
 
  <li><p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in <a>tokens</a>, append <var>token</var> to <a>tokens</a>.
 
@@ -99,9 +99,9 @@ interface DOMTokenList {
 <p>The <dfn id="set-remove-func" for="set"><code>remove(<var>tokens</var>…)</code></dfn> method must run these steps:
 
 <ol>
- <li><p>If one of <var>tokens</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>" exception.
+ <li><p>If one of <var>tokens</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>".
 
- <li><p>If one of <var>tokens</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>If one of <var>tokens</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
 
  <li><p>For each <var>token</var> in <var>tokens</var>, remove <var>token</var> from <a>tokens</a>.
 
@@ -112,9 +112,9 @@ interface DOMTokenList {
 method must run these steps:
 
 <ol>
- <li><p>If <var>token</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>" exception.
+ <li><p>If <var>token</var> is the empty string, <a>throw</a> a "<code><a>SyntaxError</a></code>".
 
- <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>" exception.
+ <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
 
  <li>
   <p>If <var>token</var> is in <a>tokens</a>, run these substeps:
