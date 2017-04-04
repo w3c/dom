@@ -1450,7 +1450,7 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  <li><p>Return <code><a>DOCUMENT_POSITION_FOLLOWING</a></code>.
 </ol>
 
-<p>The <dfn id="node-contains-func" for="node"><code>contains(<var>other</var>)</code></dfn> method must return true if <var>other</var> is an <a>inclusive descendant</a> of the <a>context object</a>, and false otherwise (including when <var>other</var> is null).
+<p>The <dfn id="node-contains-func" for="node"><code>contains(<var>other</var>)</code></dfn> method, when invoked, must return true if <var>other</var> is an <a>inclusive descendant</a> of <a>context object</a>, and false otherwise (including when <var>other</var> is null).
 
 <hr>
 
@@ -1460,34 +1460,34 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  https://bugzilla.mozilla.org/show_bug.cgi?id=505178
 -->
 
-<p>To <dfn>locate a namespace prefix</dfn> for an <var>element</var> using <var>namespace</var> run these steps:
+<p>To <dfn>locate a namespace prefix</dfn> for an <var>element</var> using <var>namespace</var>, run these steps:
 
 <ol>
- <li><p>If <var>element</var>'s <a href="#element-namespace">namespace</a> is <var>namespace</var> and its <a href="#element-namespace-prefix">namespace prefix</a> is not null, return its <a href="#element-namespace-prefix">namespace prefix</a>.
+ <li><p>If <var>element</var>'s <a href="#element-namespace">namespace</a> is <var>namespace</var> and its <a href="#element-namespace-prefix">namespace prefix</a> is not null, then return its <a href="#element-namespace-prefix">namespace prefix</a>.
 
  <li><p>If, <var>element</var> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#attribute-value">value</a> is <var>namespace</var>, then return <var>element</var>'s first such <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
 
- <li><p>If <var>element</var>'s <a>parent element</a> is not null, return the result of running <a>locate a namespace prefix</a> on that <a>element</a> using <var>namespace</var>. Otherwise, return null.
+ <li><p>If <var>element</var>'s <a>parent element</a> is not null, then return the result of running <a>locate a namespace prefix</a> on that <a>element</a> using <var>namespace</var>. <li><p>Return null.
+
 </ol>
 
-<p>To <dfn>locate a namespace</dfn> for a <var>node</var> using <var>prefix</var> depends on <var>node</var>:
+<p>To <dfn>locate a namespace</dfn> for a <var>node</var> using <var>prefix</var> switch on <var>node</var>:
 
 <dl class="switch">
  <dt><code><a href="#dom-element">Element</a></code>
  <dd>
   <ol>
-   <li><p>If its <a href="#element-namespace">namespace</a> is not null and its <a href="#element-namespace-prefix">namespace prefix</a> is <var>prefix</var>, return <a href="#element-namespace">namespace</a>.
+   <li><p>If its <a href="#element-namespace">namespace</a> is not null and its <a href="#element-namespace-prefix">namespace prefix</a> is <var>prefix</var>, then return <a href="#element-namespace">namespace</a>.
 
-   <li>
-    <p>If it <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is the <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#attribute-local-name">local name</a> is <var>prefix</var>, or if <var>prefix</var> is null and it <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is the <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is null and <a href="#attribute-local-name">local name</a> is "<code>xmlns</code>":
+   <li><p>If it <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a>
+   is the <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>", and
+   <a href="#attribute-local-name">local name</a> is <var>prefix</var>, or if <var>prefix</var> is null and it
+   <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is the
+   <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is null, and <a href="#attribute-local-name">
+   local name</a> is "<code>xmlns</code>", then return its <a href="#attribute-value">value</a> if it is not the empty string,
+   and null otherwise.
 
-    <ol>
-     <li><p>Let <var>value</var> be its <a href="#attribute-value">value</a> if it is not the empty string, and null otherwise.
-
-     <li><p>Return <var>value</var>.
-    </ol>
-
-   <li><p>If its <a>parent element</a> is null, return null.
+   <li><p>If its <a>parent element</a> is null, then return null.
 
    <li><p>Return the result of running <a>locate a namespace</a> on its <a>parent element</a> using <var>prefix</var>.
   </ol>
@@ -1495,7 +1495,7 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  <dt><code><a>Document</a></code>
  <dd>
   <ol>
-   <li><p>If its <a>document element</a> is null, return null.
+   <li><p>If its <a>document element</a> is null, then return null.
 
    <li><p>Return the result of running <a>locate a namespace</a> on its <a>document element</a> using <var>prefix</var>.
   </ol>
@@ -1516,26 +1516,26 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  <dt>Any other node
  <dd>
   <ol>
-   <li><p>If its <a>parent element</a> is null, return null.
+   <li><p>If its <a>parent element</a> is null, then return null.
 
    <li><p>Return the result of running <a>locate a namespace</a> on its <a>parent element</a> using <var>prefix</var>.
   </ol>
 </dl>
 
-<p>The <dfn><code>lookupPrefix(<var>namespace</var>)</code></dfn> method must run these steps:
+<p>The <dfn><code>lookupPrefix(<var>namespace</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>namespace</var> is null or the empty string, return null.
+ <li><p>If <var>namespace</var> is null or the empty string, then return null.
 
  <li>
-  <p>Otherwise it depends on the <a>context object</a>:
+  <p>Switch on the <a>context object</a>:
 
   <dl class="switch">
    <dt><code><a href="#dom-element">Element</a></code>
-   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for the node using <var>namespace</var>.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for it using <var>namespace</var>.
 
    <dt><code><a>Document</a></code>
-   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>document element</a>, if that is not null, and null otherwise.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>document element</a>, if its <a>document element</a> is non-null, and null otherwise.
 
    <dt><code><a>DocumentType</a></code>
    <dt><code><a>DocumentFragment</a></code>
@@ -1546,24 +1546,24 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
    if its <a href="#attribute-element">element</a> is non-null, and null otherwise.
 
    <dt>Any other node
-   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>parent element</a>, or if that is null, null.
-  </dl>
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>parent element</a>, if its <a>parent element</a> is non-null, and null otherwise.
+   </dl>
 </ol>
 
-<p>The <dfn><code>lookupNamespaceURI(<var>prefix</var>)</code></dfn> method must run these steps:
+<p>The <dfn><code>lookupNamespaceURI(<var>prefix</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>prefix</var> is the empty string, set it to null.
+ <li><p>If <var>prefix</var> is the empty string, then set it to null.
 
  <li><p>Return the result of running <a>locate a namespace</a> for the <a>context object</a> using <var>prefix</var>.
 </ol>
 
-<p>The <dfn><code>isDefaultNamespace(<var>namespace</var>)</code></dfn> method must run these steps:
+<p>The <dfn><code>isDefaultNamespace(<var>namespace</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>namespace</var> is the empty string, set it to null.
+ <li><p>If <var>namespace</var> is the empty string, then set it to null.
 
- <li><p>Let <var>defaultNamespace</var> be the result of running <a>locate a namespace</a> for the <a>context object</a> using null.
+ <li><p>Let <var>defaultNamespace</var> be the result of running <a>locate a namespace</a> for <a>context object</a> using null.
 
  <li><p>Return true if <var>defaultNamespace</var> is the same as <var>namespace</var>, and false otherwise.
 </ol>
