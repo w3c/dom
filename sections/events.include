@@ -421,4 +421,17 @@ event run these steps:</p>
  </li>
 </ol>
 
+<h3 id="action-versus-occurance">Action versus occurrence</h3>
+
+<p>An <a>event</a> signifies an occurrence, not an action. Phrased differently, it
+represents a notification from an algorithm and can be used to influence the future course
+of that algorithm (e.g., through invoking <a>preventDefault()</a>). <a>Events</a> must not be
+used as actions or initiators that cause some algorithm to start running. That is not what
+they are for.
+
+<p class="note no-backref">This is called out here specifically because previous
+iterations of the DOM had a concept of "default actions" associated with <a>events</a>
+that gave folks all the wrong ideas. <a>Events</a> do not represent or cause actions, they
+can only be used to influence an ongoing one.
+
 </section>
