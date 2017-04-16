@@ -1570,13 +1570,13 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
 
 <hr>
 
-<p>The <dfn><code>insertBefore(<var>node</var>, <var>child</var>)</code></dfn> method must return the result of <a>pre-inserting</a> <var>node</var> into the <a>context object</a> before <var>child</var>.
+<p>The <dfn><code>insertBefore(<var>node</var>, <var>child</var>)</code></dfn> method, when invoked, must return the result of <a>pre-inserting</a> <var>node</var> into <a>context object</a> before <var>child</var>.
 
-<p>The <dfn><code>appendChild(<var>node</var>)</code></dfn> method must return the result of <a>appending</a> <var>node</var> to the <a>context object</a>.
+<p>The <dfn><code>appendChild(<var>node</var>)</code></dfn> method, when invoked, must return the result of <a>appending</a> <var>node</var> to <a>context object</a>.
 
-<p>The <dfn><code>replaceChild(<var>node</var>, <var>child</var>)</code></dfn> method must return the result of <a>replacing</a> <var>child</var> with <var>node</var> within the <a>context object</a>.
+<p>The <dfn><code>replaceChild(<var>node</var>, <var>child</var>)</code></dfn> method, when invoked, must return the result of <a>replacing</a> <var>child</var> with <var>node</var> within <a>context object</a>.
 
-<p>The <dfn><code>removeChild(<var>child</var>)</code></dfn> method must return the result of <a>pre-removing</a> <var>child</var> from the <a>context object</a>.
+<p>The <dfn><code>removeChild(<var>child</var>)</code></dfn> method, when invoked, must return the result of <a>pre-removing</a> <var>child</var> from <a>context object</a>.
 
 <p>The <dfn>list of elements with local name <var>localName</var></dfn> for a <a>node</a> <var>root</var> is the <code><a>HTMLCollection</a></code> returned by the following algorithm:
 <ol>
