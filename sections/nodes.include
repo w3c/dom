@@ -2211,6 +2211,9 @@ interface Element : Node {
   boolean hasAttribute(DOMString qualifiedName);
   boolean hasAttributeNS(DOMString? namespace, DOMString localName);
 
+  Element? closest(DOMString selectors);
+  boolean matches(DOMString selectors);
+  boolean webkitMatchesSelector(DOMString selectors); // historical alias of .matches
 
   HTMLCollection getElementsByTagName(DOMString localName);
   HTMLCollection getElementsByTagNameNS(DOMString? namespace, DOMString localName);
@@ -2553,6 +2556,42 @@ method, when invoked, must <a lt="remove an attribute by name">remove an attribu
  <li><p>If <var>namespace</var> is the empty string, set it to null.
 
  <li><p>Return true if the <a>context object</a> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var> and <a href="#attribute-local-name">local name</a> is <var>localName</var>, and false otherwise.
+</ol>
+
+<hr>
+
+<dl>
+ <dt><code><var>element</var> . {{closest(selectors)}}</code>
+ <dd>Returns the first (starting at <var>element</var>) <a>inclusive ancestor</a> that matches <var>selectors</var>, and null otherwise.
+
+ <dt><code><var>element</var> . {{matches(selectors)}}</code>
+ <dd>Returns true if matching <var>selectors</var> against <var>element</var>'s <a>root</a> yields <var>element</var>, and false otherwise.
+</dl>
+
+The <dfn method for=Element><code>closest(<var>selectors</var>)</code></dfn>
+method, when invoked, must run these steps:
+
+<ol>
+ <li>Let <var>s</var> be the result of <a>parse a selector</a> from <var>selectors</var>. [[!SELECTORS4]]
+
+ <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
+
+ <li>Let <var>elements</var> be <a>context object</a>'s <a>inclusive ancestors</a> that are <a href="#concept-element">elements</a>, in reverse <a>tree order</a>.
+
+ <li>For each <var>element</var> in <var>elements</var>, if <a>match a selector against an element</a>, using <var>s</var>, <var>element</var>, and <a>:scope element</a> <a>context object</a>, returns success, return <var>element</var>. [[!SELECTORS4]]
+
+ <li>Return null.
+</ol>
+
+The <dfn method for=Element><code>matches(<var>selectors</var>)</code></dfn> and
+<dfn method for=Element><code>webkitMatchesSelector(<var>selectors</var>)</code></dfn> methods, when invoked, must run these steps:
+
+<ol>
+ <li>Let <var>s</var> be the result of <a>parse a selector</a> from <var>selectors</var>. [[!SELECTORS4]]
+
+ <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
+
+ <li>Return true if the result of <a>match a selector against an element</a>, using <var>s</var>, <var>element</var>, and <a>:scope element</a> <a>context object</a>, returns success, and false otherwise. [[!SELECTORS4]]
 </ol>
 
 <hr>
