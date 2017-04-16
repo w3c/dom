@@ -149,7 +149,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
  <li><p>Return <var>node</var>.
 </ol>
 
-<p><a>Specifications</a> may define <dfn>insertion steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>newNode</var> as indicated in the <a>insert</a> algorithm below.
+<p><a>Specifications</a> may define <dfn>insertion steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>newNode</var>, as indicated in the <a href="#node-insert">insert</a> algorithm below.
 
 <p>To <dfn id="node-insert" for="node">insert</dfn> a <var>node</var> into a <var>parent</var> before a <var>child</var> with an optional <i>suppress observers flag</i>, run these steps:
 
@@ -167,7 +167,6 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 
  <li><p>Let <var>nodes</var> be <var>node</var>'s <a>children</a> if <var>node</var> is a <code><a>DocumentFragment</a></code> <a>node</a>, and a list containing solely <var>node</var> otherwise.
 
- <li>
  <li><p>If <var>node</var> is a <code><a>DocumentFragment</a></code> <a>node</a>, <a href="#node-remove">remove</a> its <a>children</a> with the <i>suppress observers flag</i> set.
   <p>If <var>node</var> is a <code><a>DocumentFragment</a></code> <a>node</a>, <a>queue a mutation record</a> of "<code>childList</code>" for <var>node</var> with removedNodes <var>nodes</var>.
 
@@ -179,6 +178,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
    <li><p>Insert <var>newNode</var> into <var>parent</var> before <var>child</var> or at the end of <var>parent</var> if <var>child</var> is null.
 
    <li><p>Run the <a>insertion steps</a> with <var>newNode</var>.
+   <li><p>For each <a>inclusive descendant</a> <var>inclusiveDescendant</var> of <var>node</var>, in <a>tree order</a>, run the <a>insertion steps</a> with <var>inclusiveDescendant</var> and <var>parent</var>.
   </ol>
  <li><p>If <i>suppress observers flag</i> is unset, <a>queue a mutation record</a> of "<code>childList</code>" for <var>parent</var> with addedNodes <var>nodes</var>, nextSibling <var>child</var>, and previousSibling <var>child</var>'s <a href="#tree-previous-sibling">previous sibling</a> or <var>parent</var>'s <a>last child</a> if <var>child</var> is null.
 
@@ -300,8 +300,8 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 
  <li><p>Remove <var>node</var> from its <var>parent</var>.
 
- <li><p>Run the <a>removing steps</a> with <var>node</var>, <var>parent</var>, and <var>oldPreviousSibling</var>.
- <li><p>For each <a>ancestor</a> <var>ancestor</var> of <var>node</var>, if <var>ancestor</var> has any <a>registered observers</a> whose <b>options</b>' <code>subtree</code> is true, then for each such <a>registered observer</a> <var>registered</var>, append a <a>transient registered observer</a> whose <b>observer</b> and <b>options</b> are identical to those of <var>registered</var> and <b>source</b> which is <var>registered</var> to <var>node</var>'s list of <a>registered observers</a>.
+ <li><p>For each <a>inclusive descendant</a> <var>inclusiveDescendant</var> of <var>node</var>, run the <a>removing steps</a> with <var>inclusiveDescendant</var> and <var>parent</var>.
+ <li><p>For each <a>inclusive ancestor</a> <var>inclusiveAncestor</var> of <var>node</var>, if <var>inclusiveAncestor</var> has any <a>registered observers</a> whose <b>options</b>' <code>subtree</code> is true, then for each such <a>registered observer</a> <var>registered</var>, append a <a>transient registered observer</a> whose <b>observer</b> and <b>options</b> are identical to those of <var>registered</var> and <b>source</b> which is <var>registered</var> to <var>node</var>'s list of <a>registered observers</a>.
 
  <li><p>If <i>suppress observers flag</i> is unset, <a>queue a mutation record</a> of "<code>childList</code>" for <var>parent</var> with removedNodes a list solely containing <var>node</var>, nextSibling <var>oldNextSibling</var>, and previousSibling <var>oldPreviousSibling</var>.
 
