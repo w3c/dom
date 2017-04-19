@@ -1974,41 +1974,20 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
    <thead>
     <tr><th>String<th>Interface<td>Notes
    <tbody>
-    <tr><td>"<code>animationevent</code>"<td><code><a>AnimationEvent</a></code><td> [[CSS3-ANIMATIONS]]
-    <tr><td>"<code>beforeunloadevent</code>"<td><code><a>BeforeUnloadEvent</a></code><td> [[HTML51]]
-    <tr><td>"<code>closeevent</code>"<td><code><a>CloseEvent</a></code><td>
     <tr><td>"<code>compositionevent</code>"<td><code><a>CompositionEvent</a></code><td> [[UIEVENTS]]
-    <tr><td>"<code>customevent</code>"<td><code><a>CustomEvent</a></code><td>
-    <!-- textevent also maps to CompositionEvent -->
-    <tr><td>"<code>devicemotionevent</code>"<td><code><a>DeviceMotionEvent</a></code><td> [[DEVICE-ORIENTATION]]
-    <tr><td>"<code>deviceorientationevent</code>"<td><code><a>DeviceOrientationEvent</a></code><td> [[DEVICE-ORIENTATION]]
-    <tr><td>"<code>dragevent</code>"<td><code><a>DragEvent</a></code><td> [[HTML51]]
-    <tr><td>"<code>errorevent</code>"<td><code><a>ErrorEvent</a></code><td>
+    <tr><td>"<code>customevent</code>"<td>{{CustomEvent}}<td>
     <tr><td>"<code>event</code>"<td><code><a>Event</a></code><td>
     <tr><td>"<code>event</code>"<td><code><a>Event</a></code><td>
     <tr><td>"<code>events</code>"<td><code><a>Event</a></code><td>
-    <!-- htmlevents and svgevent also map to Event -->
-    <tr><td>"<code>focusevent</code>"<td><code><a>FocusEvent</a></code><td> [[UIEVENTS]]
     <tr><td>"<code>hashchangeevent</code>"<td><code><a>HashChangeEvent</a></code><td> [[HTML51]]
     <tr><td>"<code>htmlevents</code>"<td><code><a>Event</a></code><td>
-    <tr><td>"<code>idbversionchangeevent</code>"<td><code><a>IDBVersionChangeEvent</a></code><td> [[INDEXDB]]
-    <tr><td>"<code>keyboardevent</code>"<td><code>KeyboardEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>keyevents</code>"<td><code>KeyboardEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>messageevent</code>"<td><code>MessageEvent</code><td> [[HTML51]]</a>
-    <tr><td>"<code>mouseevent</code>"<td><code>MouseEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>mouseevents</code>"<td><code>MouseEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>pagetransitionevent</code>"<td><code>PageTransitionEvent</code><td> [[HTML51]]
-    <tr><td>"<code>popstateevent</code>"<td><code>PopStateEvent</code><td> [[HTML51]]
-    <tr><td>"<code>storageevent</code>"<td><code>StorageEvent</code><td> [[HTML51]]
-    <tr><td>"<code>svgzoomevent</code>"<td><code>SVGZoomEvent</code><td> [[SVG]]
-    <tr><td>"<code>textevent</code>"<td><code>CompositionEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>touchevent</code>"<td><code>TouchEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>trackevent</code>"<td><code>TrackEvent</code><td> [[HTML51]]
-    <tr><td>"<code>transitionevent</code>"<td><code>TransitionEvent</code><td> [[CSS3-ANIMATIONS]]
-    <tr><td>"<code>uievent</code>"<td><code>UIEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>uievents</code>"<td><code>UIEvent</code><td> [[UIEVENTS]]
-    <tr><td>"<code>webglcontextevent</code>"<td><code>WebGLContextEvent</code><td> [[WEBGL]]
-    <tr><td>"<code>wheelevent</code>"<td><code>WheelEvent</code><td> [[UIEVENTS]]
+    <tr><td>"<code>keyboardevent</code>"<td><code><a>KeyboardEvent</a></code><td> [[UIEVENTS]]
+    <tr><td>"<code>messageevent</code>"<td><code><a>MessageEvent</a></code><td> [[WEBMESSAGING]]
+    <tr><td>"<code>mouseevent</code>"<td><code><a>MouseEvent</a></code><td> [[UIEVENTS]]
+    <tr><td>"<code>mouseevents</code>"<td><code><a>MouseEvent</a></code><td> [[UIEVENTS]]
+    <tr><td>"<code>storageevent</code>"<td><code><a>StorageEvent</a></code><td> [[WEBSTORAGE]]
+    <tr><td>"<code>uievent</code>"<td><code><a>UIEvent</a></code><td> [[UIEVENTS]]
+    <tr><td>"<code>uievents</code>"<td><code><a>UIEvent</a></code><td> [[UIEVENTS]]
   </table></li>
 
  <li><p>If <var>constructor</var> is null, <a>throw</a> a "<code><a>NotSupportedError</a></code>".
