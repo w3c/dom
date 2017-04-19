@@ -68,6 +68,7 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: browsing context; url: browsers.html#browsing-context; type: dfn
     text: unit of related similar-origin browsing contexts; url: browsers.html#unit-of-related-similar-origin-browsing-contexts; type: dfn
     text: Unicode serialization; url: browsers.html#unicode-serialization; type: dfn
+    text: HashChangeEvent; url: browsers.html#the-hashchangeevent-interface; type: dfn
 url: https://heycam.github.io/webidl/#idl-enums; type: dfn;
     text: unenumerable
 urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1
@@ -77,6 +78,15 @@ urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1
     text: supported property indices; url: dfn-supported-property-indices; type: dfn
     text: supported property names; url: dfn-supported-property-names; type: dfn
     text: code units; url: dfn-code-unit; type: dfn
+urlPrefix: https://www.w3.org/TR/uievents/
+    text: CompositionEvent; url: #compositionevent; type: dfn
+    text: KeyboardEvent; url: #keyboardevent-keyboardevent; type: dfn
+    text: MouseEvent; url: #mouseevent; type: dfn
+    text: UIEvent; url: #uievent-uievent; type: dfn
+urlPrefix: https://www.w3.org/TR/webmessaging/
+    text: MessageEvent; url: #messageevent; type: dfn
+urlPrefix: https://www.w3.org/TR/webstorage/
+    text: StorageEvent; url: #storageevent; type: dfn
 </pre>
 
 <style>
