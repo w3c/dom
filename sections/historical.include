@@ -1,8 +1,43 @@
 <section>
 <h2 id="historical">Historical</h2>
-This section outlines notable changes between Working Drafts. A complete history of revisions for this version is available in the <a href="https://github.com/w3c/dom/commits/">W3C DOM repository</a>.
+This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version
+is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>.
 
-<h3 id="historical-changes-fpwd-dom4">Changes between the <a href="#">First Public Working Draft of DOM 4.1</a> and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></h3>
+<h3 id="historical-changes-wd2-fpwd">Changes between this draft and the 
+<a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.
+
+<dl>
+ <dt><a href="https://github.com/w3c/dom/commit/7be726731a84dedb1ded94647f7e10c83e4ba6b7">Add
+   <code>insertAdjacentElement()</code> and insertAdjacentText()</code> methods</a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/b805c03b4a70c400dde052dc6461c0bcda2966a5">Add
+   event types from other specifications to createEvent()</a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/e7db2549d0ab5378ac74daaca5a9c16390b464d6">Remove
+   <code>XMLDocument.prototype.load</code></a></dt>
+   <dd>This is not implemented widely and has long been deprecated</dd>
+ <dt><a href="https://github.com/w3c/dom/commit/281b5ae90accaa93304b1938cf254430691525d6">Set
+   a document's content-type for createDocument based on namespace</a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/08c82ac31169f149e2779ecc2a78b55c0f06eb9e">Add
+   getters and setters</a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/c9410eac91a48183e066ff94ededc537dbb68867">Add 
+   <code>NamedNodeMap</code></a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/7f175df0dd5741446761aa9419711ebdedf5a6db">Queue
+   a mutation record after all operations</a></dt>
+ <dt><a href="https://github.com/w3c/dom/commit/0bff94f552f69866c7cdeecfef2d6928920a0918">Improve
+   node replacement specification</a></dt>
+   <dd>Do not record removal when a node is replaced by itself…</dd>
+ <dt><a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine 
+   adopting a node for a document.</a></dt>
+   <dd>Only do it if <code>document</code> changes, and</dd>
+   <dd>Apply recursively to dependents</dd>
+<dt><a href="https://github.com/w3c/dom/commit/41e708c42a7fb56eb07a8523a29b06cc49eae415">Make
+  <code>attr</code> inherit from node</a></dt>
+   <dd>(again)</dd>
+</dl>
+
+
+<h3 id="historical-changes-fpwd-dom4">Changes
+between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>
+and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></h3>
 
 <dl>
 <dt><a href="https://github.com/w3c/dom/commit/01f4c51e1eab23d5e7812995ef496a02f8d90a06">Use “is” for comparisons</a></dt>
