@@ -90,6 +90,7 @@ its last <a>child</a> or null if it has no <a>children</a>.
 other.
 
 <h3 id="terminology-ordered-sets">Ordered sets</h3>
+<p>An <dfn>ordered set</dfn> is a list that it must not contain the same item twice.</p>
 <p>The <dfn>ordered set parser</dfn> takes a string <var>input</var> and then runs these steps:</p>
 <ol>
   <li>Let <var>position</var> be a pointer into <var>input</var>, initially pointing at the start of the string.</li>
@@ -99,6 +100,17 @@ other.
   <li><a>Skip ASCII whitespace</a>.</li>
 
   <li><p>While <var>position</var> is not past the end of <var>input</var>:</p><ol><li><a>Collect a code point sequence</a> of code points that are not <a>ASCII whitespace</a>.</li><li>If the collected string is not in <var>tokens</var>, append the collected string to <var>tokens</var>.</li><li><a>Skip ASCII whitespace</a>. </li></ol></li><li>Return <var>tokens</var>.</li>
+</ol>
+
+<p>To <dfn export for="ordered set" id="ordered-set-replace">replace</dfn> within an <a>ordered set</a>, given <var>item</var>,
+<var>set</var>, and <var>replacement</var>, run these steps:
+
+<ol>
+ <li><p>If <var>set</var>[<var>replacement</var>] exists, then <a>remove</a>
+ <var>item</var> from <var>set</var>.
+
+ <li><p>Otherwise, if <var>set</var>[<var>item</var>] exists, replace <var>item</var>
+ within <var>set</var> with <var>replacement</var>.
 </ol>
 
 <p>To <dfn>collect a code point sequence</dfn> of <var>code points</var>, run these steps:</p>

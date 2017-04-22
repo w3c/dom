@@ -187,7 +187,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 
 <p>To <dfn id="node-append" for="node">append</dfn> a <var>node</var> to a <var>parent</var>, <a>pre-insert</a> <var>node</var> into <var>parent</var> before null.
 
-<p>To <dfn>replace</dfn> a <var>child</var> with <var>node</var> within a <var>parent</var>, run these steps:
+<p>To <dfn id="node-replace" for="node">replace</dfn> a <var>child</var> with <var>node</var> within a <var>parent</var>, run these steps:
 
 <ol>
  <li><p>If <var>parent</var> is not a {{Document}}, {{DocumentFragment}}, or {{Element}} <a href="#concept-node">node</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
@@ -1574,7 +1574,7 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
 
 <p>The <dfn><code>appendChild(<var>node</var>)</code></dfn> method, when invoked, must return the result of <a>appending</a> <var>node</var> to <a>context object</a>.
 
-<p>The <dfn><code>replaceChild(<var>node</var>, <var>child</var>)</code></dfn> method, when invoked, must return the result of <a>replacing</a> <var>child</var> with <var>node</var> within <a>context object</a>.
+<p>The <dfn><code>replaceChild(<var>node</var>, <var>child</var>)</code></dfn> method, when invoked, must return the result of <a href="#node-replace">replacing</a> <var>child</var> with <var>node</var> within <a>context object</a>.
 
 <p>The <dfn><code>removeChild(<var>child</var>)</code></dfn> method, when invoked, must return the result of <a>pre-removing</a> <var>child</var> from <a>context object</a>.
 
@@ -2156,7 +2156,7 @@ interface DocumentFragment : Node {
 
 <p>An object <var>A</var> is a <dfn>host-including inclusive ancestor</dfn> of an object <var>B</var>, if either <var>A</var> is an <a>inclusive ancestor</a> of <var>B</var>, or if <var>B</var>'s <a href="#tree-root">root</a> has an associated <a>host</a> and <var>A</var> is a <a>host-including inclusive ancestor</a> of <var>B</var>'s <a href="#tree-root">root</a>'s <a>host</a>.
 
-<p class="note">Note: The <code><a>DocumentFragment</a></code> <a>node</a>'s <a>host</a> concept is useful for HTML's <code>template</code> element and the <code>ShadowRoot</code> object and impacts the <a>pre-insert</a> and <a>replace</a> algorithms.
+<p class="note">Note: The <code><a>DocumentFragment</a></code> <a>node</a>'s <a>host</a> concept is useful for HTML's <code>template</code> element and the <code>ShadowRoot</code> object and impacts the <a>pre-insert</a> and <a href="#node-replace">replace</a> algorithms.
 
 <dl>
  <dt><code><var>tree</var> = new <a>DocumentFragment</a>()</code>
