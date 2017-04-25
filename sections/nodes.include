@@ -679,7 +679,7 @@ dictionary MutationObserverInit {
 
  <li><p>If <var>options</var>' <code>characterDataOldValue</code> is present and <var>options</var>' <code>characterData</code> is omitted, set <var>options</var>' <code>characterData</code> to true.
 
- <li><p>If none of <var>options</var>' <code>childList</code> <code>attributes</code>, and <code>characterData</code> is true, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throw</a> a <code>TypeError</code>.
+ <li><p>If none of <var>options</var>' <code>childList</code>, <code>attributes</code>, and <code>characterData</code> is true, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throw</a> a <code>TypeError</code>.
 
  <li><p>If <var>options</var>' <code>attributeOldValue</code> is true and <var>options</var>' <code>attributes</code> is false, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throw</a> a JavaScript <code>TypeError</code>.
 
