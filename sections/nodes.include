@@ -2211,6 +2211,12 @@ interface Element : Node {
   boolean hasAttribute(DOMString qualifiedName);
   boolean hasAttributeNS(DOMString? namespace, DOMString localName);
 
+  Attr? getAttributeNode(DOMString qualifiedName);
+  Attr? getAttributeNodeNS(DOMString? namespace, DOMString localName);
+  Attr? setAttributeNode(Attr attr);
+  Attr? setAttributeNodeNS(Attr attr);
+  Attr removeAttributeNode(Attr attr);
+
   Element? closest(DOMString selectors);
   boolean matches(DOMString selectors);
   boolean webkitMatchesSelector(DOMString selectors); // historical alias of .matches
@@ -2300,7 +2306,7 @@ run these steps:
  <li><p>Return <var>attr</var>'s <a for=Attr>value</a>.</p></li>
 </ol>
 
-To <dfn>set an attribute</dfn> given an
+To <dfn id="element-attributes-set-by-attr">set an attribute</dfn> given an
 <var>attr</var> and <var>element</var>, run these steps:
 
 <ol>
@@ -2346,7 +2352,6 @@ an optional <var>namespace</var>, run these steps:
  <var>attribute</var> from <var>element</var> to
  <var>value</var>.
 </ol>
-
 
 <p>To <dfn>change</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var> to <var>value</var>, run these steps:
 
@@ -2592,6 +2597,29 @@ The <dfn method for=Element><code>matches(<var>selectors</var>)</code></dfn> and
  <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
 
  <li>Return true if the result of <a>match a selector against an element</a>, using <var>s</var>, <var>element</var>, and <a>:scope element</a> <a>context object</a>, returns success, and false otherwise. [[!SELECTORS4]]
+</ol>
+
+<hr>
+<p>The <dfn><code>getAttributeNode(<var>name</var>)</code></dfn> method, when invoked, must return the result of
+<a href="#element-attributes-get-by-name">getting an attribute</a> given <var>qualifiedName</var> and the <a>context object</a>.
+
+<p>The <dfn><code>getAttributeNodeNS(<var>namespace</var>, <var>localName)</var></code></dfn> method, when invoked,
+must return the result of <a href="#element-attributes-get-by-namespace">getting an attribute</a> given
+<var>namespace</var>, <var>localName</var>, and the <a>context object</a>.
+
+<p>The <dfn><code>setAttributeNode(<var>attr</var>)</code></dfn> and <dfn><code>settAttributeNodeNS(<var>attr</var>)</code></dfn> method,
+when invoked, must return the result of <a href="#element-attributes-set-by-attr">setting an attribute</a> given
+<var>attr</var> and the <a>context object</a>.
+
+<p>The <dfn><code>removeAttributeNode(<var>attr</var>)</code></dfn> method, when invoked, must run these steps:
+
+<ol>
+ <li><p>If <a>context object</a>'s attribute list doesn't contain <var>attr</var>,
+ <a href="#attribute-list">attribute list</a>, <a>throw</a> a {{NotFoundError}}.
+
+ <li><p><a href="#element-attributes-remove-by-name">Remove</a> <var>attr</var> from <a>context object</a>.
+
+ <li> Return <var>attr</var>.
 </ol>
 
 <hr>
