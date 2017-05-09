@@ -826,7 +826,7 @@ interface Node : EventTarget {
   const unsigned short ELEMENT_NODE = 1;
   const unsigned short ATTRIBUTE_NODE = 2;
   const unsigned short TEXT_NODE = 3;
-  const unsigned short CDATA_SECTION_NODE = 4; // historical
+  const unsigned short CDATA_SECTION_NODE = 4;
   const unsigned short ENTITY_REFERENCE_NODE = 5; // historical
   const unsigned short ENTITY_NODE = 6; // historical
   const unsigned short PROCESSING_INSTRUCTION_NODE = 7;
@@ -899,6 +899,9 @@ interface Node : EventTarget {
    <dt><code><a href="#dom-node">Node</a> . <a>TEXT_NODE</a></code> (3)
    <dd><var>node</var> is a <code><a>Text</a></code> <a>node</a>.
 
+   <dt><code><a href="#dom-node">Node</a> . <a>CDATA_SECTION_NODE</a></code> (4)
+   <dd><var>node</var> is a <code><a>CDATASection</a></code> <a>node</a>.
+
    <dt><code><a href="#dom-node">Node</a> . <a>PROCESSING_INSTRUCTION_NODE</a></code> (7)
    <dd><var>node</var> is a <code><a>ProcessingInstruction</a></code> <a>node</a>.
 
@@ -930,6 +933,9 @@ interface Node : EventTarget {
    <dt><code><a>Text</a></code>
    <dd>"<code>#text</code>".
 
+   <dt><code><a>CDATASection</a></code>
+   <dd>"<code>#cdata-section</code>".
+
    <dt><code><a>ProcessingInstruction</a></code>
    <dd>Its <a href="#pi-target">target</a>.
 
@@ -958,6 +964,9 @@ interface Node : EventTarget {
 
  <dt>{{Text}}
  <dd><dfn><code>TEXT_NODE</code></dfn> (3);
+
+ <dt>{{CDATASection}}
+ <dd><dfn><code>CDATA_SECTION_NODE</code></dfn> (4);
 
  <dt>{{ProcessingInstruction}}
  <dd><dfn><code>PROCESSING_INSTRUCTION_NODE</code></dfn> (7);
@@ -1008,6 +1017,9 @@ interface Node : EventTarget {
 
  <dt><code><a>Text</a></code>
  <dd><p>"<code>#text</code>".
+
+ <dt><code><a>CDATASection</a></code>
+ <dd>"<code>#cdata-section</code>".
 
  <dt><code><a>ProcessingInstruction</a></code>
  <dd><p>Its <a href="#pi-target">target</a>.
@@ -1179,45 +1191,58 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
 
 <dl>
  <dt><code><var>node</var> . <a>normalize</a>()</code>
- <dd><p>Removes <a>empty</a> <code><a>Text</a></code> <a>nodes</a> and concatenates the <a href="#cd-data">data</a> of remaining <a>contiguous <code>Text</code> nodes</a> into the first of their <a>nodes</a>.
+ <dd><p>Removes <a>empty</a> <code><a>exclusive <code>Text</code> nodes</a> and concatenates the <a href="#cd-data">data</a> of remaining <a>contiguous exclusive <code>Text</code> nodes</a> into the first of their <a>nodes</a>.
 </dl>
 
-<p>The <dfn><code>normalize()</code></dfn> method must run these steps:</p>
-
-<p>For each <code><a>Text</a></code> <a>node</a> <a>descendant</a> of the <a>context object</a>:
+<p>The <dfn method for=Node><code>normalize()</code></dfn> method, when invoked, must run these
+steps for each <a>descendant</a> <a>exclusive <code>Text</code> node</a> <var>node</var> of
+<a>context object</a>:
 
 <ol>
- <li><p>Let <var>node</var> be the <code><a>Text</a></code> <a>node</a> <a>descendant</a>.
+ <li>Let <var>length</var> be <var>node</var>'s <a href="#node-length">length</a>.
 
- <li><p>Let <var>length</var> be <var>node</var>'s <code><a href="#characterdata-length">length</a></code> attribute value.
+ <li>If <var>length</var> is zero, then <a>remove</a> <var>node</var> and continue with the next
+ <a>exclusive <code>Text</code> node</a>, if any.
 
- <li><p>If <var>length</var> is zero, <a href="#node-remove">remove</a> <var>node</var> and continue with the next <code><a>Text</a></code> <a>node</a>, if any.
+ <li>Let <var>data</var> be the concatenation of the <a href="#cd-data">data</a> of
+ <var>node</var>'s <a>contiguous exclusive <code>Text</code> nodes</a> (excluding itself), in
+ <a>tree order</a>.
 
- <li><p>Let <var>data</var> be the concatenation of the <a href="#cd-data">data</a> of <var>node</var>'s <a>contiguous <code>Text</code> nodes</a> (excluding itself), in <a>tree order</a>.
+ <li><a>Replace data</a> with node <var>node</var>, offset <var>length</var>, count 0, and data
+ <var>data</var>.
 
- <li><p><a>Replace data</a> with node <var>node</var>, offset <var>length</var>, count 0, and data <var>data</var>.
+ <li>Let <var>currentNode</var> be <var>node</var>'s <a for=tree>next sibling</a>.
 
- <li><p>Let <var>current node</var> be <var>node</var>'s <a href="#tree-next-sibling">next sibling</a>.
+ <li>
+  <p>While <var>currentNode</var> is an <a>exclusive <code>Text</code> node</a>:
 
- <li><p>While <var>current node</var> is a <code><a>Text</a></code> node:
+  <ol>
+   <li><p>For each <a>range</a> whose <a for=Range>start node</a> is <var>currentNode</var>, add
+   <var>length</var> to its <a>start offset</a> and set its <a for=Range>start node</a> to
+   <var>node</var>.
 
- <ol>
-  <li><p>For each <a>range</a> whose <a>start node</a> is <var>current node</var>, add <var>length</var> to its <a>start offset</a> and set its <a>start node</a> to <var>node</var>.
+   <li><p>For each <a>range</a> whose <a for=Range>end node</a> is <var>currentNode</var>, add
+   <var>length</var> to its <a>end offset</a> and set its <a for=Range>end node</a> to
+   <var>node</var>.
 
-  <li><p>For each <a>range</a> whose <a>end node</a> is <var>current node</var>, add <var>length</var> to its <a>end offset</a> and set its <a>end node</a> to <var>node</var>.
+   <li><p>For each <a>range</a> whose <a for=Range>start node</a> is <var>currentNode</var>'s
+   <a for=tree>parent</a> and <a>start offset</a> is <var>currentNode</var>'s <a for=tree>index</a>,
+   set its <a for=Range>start node</a> to <var>node</var> and its <a>start offset</a> to
+   <var>length</var>.
 
-  <li><p>For each <a>range</a> whose <a>start node</a> is <var>current node</var>'s <a>parent</a> and <a>start offset</a> is <var>current node</var>'s <a>index</a>, set its <a>start node</a> to <var>node</var> and its <a>start offset</a> to <var>length</var>.
+   <li><p>For each <a>range</a> whose <a for=Range>end node</a> is <var>currentNode</var>'s
+   <a for=tree>parent</a> and <a>end offset</a> is <var>currentNode</var>'s <a for=tree>index</a>,
+   set its <a for=Range>end node</a> to <var>node</var> and its <a>end offset</a> to
+   <var>length</var>.
 
-  <li><p>For each <a>range</a> whose <a>end node</a> is <var>current node</var>'s <a>parent</a> and <a>end offset</a> is <var>current node</var>'s <a>index</a>, set its <a>end node</a> to <var>node</var> and its <a>end offset</a> to <var>length</var>.
+   <li><p>Add <var>currentNode</var>'s <a for=Node>length</a> to <var>length</var>.
 
-  <li><p>Add <var>current node</var>'s <code><a>length</a></code> attribute value to <var>length</var>.
+   <li><p>Set <var>currentNode</var> to its <a for=tree>next sibling</a>.
+  </ol>
 
-  <li><p>Set <var>current node</var> to its <a href="#tree-next-sibling">next sibling</a>.
- </ol>
-
- <li><p><a href="#node-remove">Remove</a> <var>node</var>'s <a>contiguous <code>Text</code> nodes</a> (excluding itself), in <a>tree order</a>.
+ <li><a>Remove</a> <var>node</var>'s <a>contiguous exclusive <code>Text</code> nodes</a> (excluding
+ itself), in <a>tree order</a>.
 </ol>
-
 <hr>
 
 <dl>
@@ -1657,6 +1682,7 @@ interface Document : Node {
   [NewObject] Element createElementNS(DOMString? namespace, DOMString qualifiedName);
   [NewObject] DocumentFragment createDocumentFragment();
   [NewObject] Text createTextNode(DOMString data);
+  [NewObject] CDATASection createCDATASection(DOMString data);
   [NewObject] Comment createComment(DOMString data);
   [NewObject] ProcessingInstruction createProcessingInstruction(DOMString target, DOMString data);
 
@@ -1824,17 +1850,20 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
   </ul>
 
  <dt><var>documentFragment</var> = <var>document</var> . <code><a>createDocumentFragment()</a></code>
- <dd><p>Returns a <code><a>DocumentFragment</a></code> <a>node</a>.
+ <dd><p>Returns a {{DocumentFragment}} <a>node</a>.
 
  <dt><var>text</var> = <var>document</var> . <code><a>createTextNode(<var>data</var>)</a></code>
- <dd><p>Returns a <code><a>Text</a></code> <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
+ <dd><p>Returns a {{Text}} <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
+
+ <dt><var>cdataSection</var> = <var>document</var> . <code><a>createCDATASection(<var>data</var>)</a></code>
+ <dd><p>Returns a {{CDATASection}} <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
 
  <dt><var>comment</var> = <var>document</var> . <code><a>createComment(<var>data</var>)</a></code>
- <dd><p>Returns a <code><a>Comment</a></code> <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
+ <dd><p>Returns a {{Comment}} <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
 
  <dt><var>processingInstruction</var> = <var>document</var> . <code><a>createProcessingInstruction(<var>target</var>, <var>data</var>)</a></code>
  <dd>
-  <p>Returns a <code><a>ProcessingInstruction</a></code> <a>node</a> whose <a href="#pi-target">target</a> is <var>target</var> and <a href="#cd-data">data</a> is <var>data</var>.
+  <p>Returns a {{ProcessingInstruction}} <a>node</a> whose <a href="#pi-target">target</a> is <var>target</var> and <a href="#cd-data">data</a> is <var>data</var>.
   <p>If <var>target</var> does not match the <code><a href="http://www.w3.org/TR/xml/#NT-Name">Name</a></code> production an "<code><a>InvalidCharacterError</a></code>" will be thrown.
   <p>If <var>data</var> contains "<code>?&gt;</code>" an "<code><a>InvalidCharacterError</a></code>" will be thrown.
 </dl>
@@ -1878,6 +1907,20 @@ A <a>document</a> is said to be in <dfn export id=concept-document-no-quirks>no-
 <p>The <dfn><code>createTextNode(<var>data</var>)</code></dfn> method must return a new <code><a>Text</a></code> <a>node</a> with its <a href="#cd-data">data</a> set to <var>data</var> and <a>node document</a> set to the <a>context object</a>.
 
 <p class="note">Note: No check is performed that <var>data</var> consists of characters that match the <code><a href="http://www.w3.org/TR/xml/#NT-Char">Char</a></code> production.
+
+<p>The <dfn method for=Document><code>createCDATASection(<var>data</var>)</code></dfn> method, when
+invoked, must run these steps:
+
+<ol>
+ <li><p>If <a>context object</a> is an <a>HTML document</a>, then <a>throw</a> a
+ {{NotSupportedError}}.
+
+ <li><p>If <var>data</var> contains the string "<code>]]></code>", then <a>throw</a> an
+ {{InvalidCharacterError}}.
+
+ <li><p>Return a new {{CDATASection}} <a>node</a> with its <a href="#cd-data">data</a> set to <var>data</var> and
+ <a href="#node-document">node document</a> set to the <a>context object</a>.
+</ol>
 
 <p>The <dfn><code>createComment(<var>data</var>)</code></dfn> method must return a new <code><a>Comment</a></code> <a>node</a> with its <a href="#cd-data">data</a> set to <var>data</var> and <a>node document</a> set to the <a>context object</a>.
 <p class="note">Note: No check is performed that <var>data</var> consists of characters that match the <code><a href="http://www.w3.org/TR/xml/#NT-Char">Char</a></code> production or that it contains two adjacent hyphens or ends with a hyphen.
@@ -2942,6 +2985,19 @@ interface Text : CharacterData {
 };
 </pre>
 
+<p>An <dfn export>exclusive {{Text}} node</dfn> is a {{Text}} <a>node</a> that is not a
+{{CDATASection}} <a>node</a>.
+
+<p>The <dfn export>contiguous {{Text}} nodes</dfn> of a <a>node</a> <var>node</var> are
+<var>node</var>, <var>node</var>'s <a>previous sibling</a> {{Text}} <a>node</a>, if any, and its
+<a>contiguous <code>Text</code> nodes</a>, and <var>node</var>'s <a for=tree>next sibling</a> {{Text}}
+<a>node</a>, if any, and its <a>contiguous <code>Text</code> nodes</a>, avoiding any duplicates.
+
+<p>The <dfn export>contiguous exclusive {{Text}} nodes</dfn> of a <a>node</a> <var>node</var> are
+<var>node</var>, <var>node</var>'s <a>previous sibling</a> <a>exclusive <code>Text</code> node</a>,
+if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>node</var>'s
+<a for=tree>next sibling</a> <a>exclusive <code>Text</code> node</a>, if any, and its
+<a>contiguous exclusive <code>Text</code> nodes</a>, avoiding any duplicates.
 <dl>
  <dt><code><var>text</var> = new <a href="#documentfragment">Text</a>([<var>data</var> = ""])</code>
  <dd><p>Returns a new <code><a>Text</a></code> <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
@@ -3008,9 +3064,15 @@ interface Text : CharacterData {
 <p>The <dfn><code>splitText(<var>offset</var>)</code></dfn> method must <a>split</a> the <a>context object</a> with offset <var>offset</var>.
 
 
-<p>The <dfn>contiguous <code>Text</code> nodes</dfn> of a node are the node itself, the <a href="#tree-previous-sibling">previous sibling</a> <code><a>Text</a></code> node (if any) and its <a>contiguous <code>Text</code> nodes</a>, and the <a href="#tree-next-sibling">next sibling</a> <code><a>Text</a></code> node (if any) and its <a>contiguous <code>Text</code> nodes</a>, avoiding any duplicates.
 
 <p>The <dfn><code>wholeText</code></dfn> attribute must return a concatenation of the <a href="#cd-data">data</a> of the <a>contiguous <code>Text</code> nodes</a> of the <a>context object</a>, in <a>tree order</a>.
+
+<h3 id=interface-cdatasection>Interface {{CDATASection}}</h3>
+
+<pre class='idl'>
+[Exposed=Window]
+interface CDATASection : Text {
+};</pre>
 
 <h3 id="nodes-interface-processinginstruction">Interface <code><a>ProcessingInstruction</a></code></h3>
 

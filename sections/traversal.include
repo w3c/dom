@@ -344,7 +344,7 @@ callback interface NodeFilter {
   const unsigned long SHOW_ELEMENT = 0x1;
   const unsigned long SHOW_ATTRIBUTE = 0x2;
   const unsigned long SHOW_TEXT = 0x4;
-  const unsigned long SHOW_CDATA_SECTION = 0x8; // historical
+  const unsigned long SHOW_CDATA_SECTION = 0x8;
   const unsigned long SHOW_ENTITY_REFERENCE = 0x10; // historical
   const unsigned long SHOW_ENTITY = 0x20; // historical
   const unsigned long SHOW_PROCESSING_INSTRUCTION = 0x40;
@@ -378,13 +378,9 @@ bitmask.
 <ul>
  <li><dfn><code>SHOW_ALL</code></dfn> (4294967295, FFFFFFFF in hexadecimal);
  <li><dfn><code>SHOW_ELEMENT</code></dfn> (1);
- <!-- AttrExodus
- <li><dfn><code>SHOW_ATTRIBUTE</code></dfn> (2, historical);
- -->
+ <li><dfn><code>SHOW_ATTRIBUTE</code></dfn> (2);
  <li><dfn><code>SHOW_TEXT</code></dfn> (4);
- <!-- XXX still questionable
- <li><dfn><code>SHOW_CDATA_SECTION</code></dfn> (8; historical);
- -->
+ <li><dfn><code>SHOW_CDATA_SECTION</code></dfn> (8);
  <li><dfn><code>SHOW_PROCESSING_INSTRUCTION</code></dfn> (64, 40 in hexadecimal);
  <li><dfn><code>SHOW_COMMENT</code></dfn> (128, 80 in hexadecimal);
  <li><dfn><code>SHOW_DOCUMENT</code></dfn> (256, 100 in hexadecimal);
