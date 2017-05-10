@@ -84,7 +84,8 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 </dl>
 <!--AttrExodus -->
 
-<p>The <dfn id="node-length" for="node">length</dfn> of a <a>node</a> <var>node</var> depends on <var>node</var>:
+<p>To determine the <dfn id="node-length" for="node">length</dfn> of a <a>node</a> <var>node</var>,
+ switch on <var>node</var>:
 <dl class="switch">
  <dt><code><a>DocumentType</a></code>
  <dd><p>Zero.
@@ -92,8 +93,7 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
  <dt><code><a>Text</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
  <dt><code><a>Comment</a></code>
- <dd><p>Its <code><a href="#characterdata-length">length</a></code> attribute
- value.
+ <dd><p>The number of <a>code units</a> in its <a>data</a>.
 
  <dt>Any other node
  <dd><p>Its number of <a>children</a>.
@@ -1139,7 +1139,7 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  <dt><code><a>Text</a></code>
  <dt><code><a>Comment</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
- <dd><p><a>Replace data</a> with node <a>context object</a>, offset 0, count <code><a>length</a></code> attribute value, and data new value.
+ <dd><p><a>Replace data</a> with node <a>context object</a>, offset 0, count <a>context object</a>'s <a href="#node-length">length</a>, and data new value.
 
  <dt>Any other node
  <dd><p>Do nothing.
@@ -1184,7 +1184,7 @@ The <dfn attribute for=Node><code>baseURI</code></dfn> attribute's getter must r
  <dt><code><a>Text</a></code>
  <dt><code><a>ProcessingInstruction</a></code>
  <dt><code><a>Comment</a></code>
- <dd><p><a>Replace data</a> with node <a>context object</a>, offset 0, count <code><a>length</a></code> attribute value, and data new value.
+ <dd><p><a>Replace data</a> with node <a>context object</a>, offset 0, count <a>context object</a>'s <a href="#node-length">length</a>, and data new value.
 
  <dt>Any other node
  <dd><p>Do nothing.
@@ -2959,7 +2959,7 @@ interface CharacterData : Node {
 <p>To <dfn>substring data</dfn> with node <var>node</var>, offset <var>offset</var>, and count <var>count</var>, run these steps:
 
 <ol>
- <li><p>Let <var>length</var> be <var>node</var>'s <code><a href="#characterdata-length">length</a></code> attribute value.
+ <li><p>Let <var>length</var> be <var>node</var>'s <a href="#node-length">length</a>.
 
  <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an "<code><a>IndexSizeError</a></code>".
 
@@ -2968,13 +2968,13 @@ interface CharacterData : Node {
  <li><p>Return a string whose value is the <a>code units</a> from the <var>offset</var><sup>th</sup> <a>code unit</a> to the <var>offset</var>+<var>count</var><sup>th</sup> <a>code unit</a> in <var>node</var>'s <a href="#cd-data">data</a>.
 </ol>
 
-<p>The <dfn id="characterdata-data" for="characterdata"><code>data</code></dfn> attribute must return <a href="#cd-data">data</a>, and on setting, must <a>replace data</a> with node <a>context object</a> offset 0, count <code><a href="#characterdata-length">length</a></code> attribute value, and data new value.
+<p>The <dfn id="characterdata-data" for="characterdata"><code>data</code></dfn> attribute must return <a href="#cd-data">data</a>, and on setting, must <a>replace data</a> with node <a>context object</a> offset 0, count <a>context object</a>'s <a href="#node-length">length</a>, and data new value.
 
-<p>The <dfn id="characterdata-length" for="characterdata"><code>length</code></dfn> attribute must return the number of <a>code units</a> in <a href="#cd-data">data</a>.
+<p>The <dfn id="characterdata-length" for="characterdata"><code>length</code></dfn> attribute must return <a>context object</a>'s <a href="#node-length">length</a>.
 
 <p>The <dfn><code>substringData(<var>offset</var>, <var>count</var>)</code></dfn> method must <a>substring data</a> with node <a>context object</a>, offset <var>offset</var>, and count <var>count</var>.
 
-<p>The <dfn><code>appendData(<var>data</var>)</code></dfn> method must <a>replace data</a> with node <a>context object</a>, offset <code><a href="#characterdata-length">length</a></code> attribute value, count 0, and data <var>data</var>.
+<p>The <dfn><code>appendData(<var>data</var>)</code></dfn> method must <a>replace data</a> with node <a>context object</a>, offset <code><a>context object</a>'s <a href="#node-length">length</a>, count 0, and data <var>data</var>.
 
 <p>The <dfn><code>insertData(<var>offset</var>, <var>data</var>)</code></dfn> method must <a>replace data</a> with node <a>context object</a>, offset <var>offset</var>, count 0, and data <var>data</var>.
 
@@ -3019,10 +3019,10 @@ if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>no
 
 <p>The <dfn><code>Text(<var>data</var>)</code></dfn> constructor must return a new <code><a>Text</a></code> <a>node</a> whose <a href="#cd-data">data</a> is <var>data</var> and <a>node document</a> is the global object's associated <a>document</a>.
 
-<p>To <dfn>split</dfn> a <code><a>Text</a></code> <a>node</a> <var>node</var> with offset <var>offset</var>, run these steps:
+<p>To <dfn>split</dfn> a <code>{{Text}}</code> <a>node</a> <var>node</var> with offset <var>offset</var>, run these steps:
 
 <ol>
- <li><p>Let <var>length</var> be <var>node</var>'s <code><a href="#characterdata-length">length</a></code> attribute value.
+ <li><p>Let <var>length</var> be <var>node</var>'s <a href="#node-length">length</a>.
 
  <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an "<code><a>IndexSizeError</a></code>".
 
