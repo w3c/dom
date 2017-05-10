@@ -14,9 +14,9 @@ function imgFetched(ev) {
 
 <p><a>Event listeners</a> can be removed by utilizing the <code><a>removeEventListener()</a></code> method, passing the same arguments.
 
-<p><a>Events</a> are objects too and implement the <code><a>Event</a></code> interface (or a derived interface). In the example above <var>ev</var> is the <a>event</a>. It is passed as argument to <a>event listener</a>'s <b>callback</b> (typically a JavaScript Function as shown above).
+<p><a>Events</a> are objects too and implement the <code><a>Event</a></code> interface (or a derived interface). In the example above <var ignore>ev</var> is the <a>event</a>. It is passed as argument to <a>event listener</a>'s <b>callback</b> (typically a JavaScript Function as shown above).
 
-<a>Event listeners</a> key off the <a>event</a>'s <code><a>type</a></code> attribute value ("<code>load</code>" in the above example). The <a>event</a>'s <code><a>target</a></code> attribute value returns the object to which the <a>event</a> was <a>dispatched</a> (<var>obj</var> above).
+<a>Event listeners</a> key off the <a>event</a>'s <code>{{Event/type}}</code> attribute value ("<code>load</code>" in the above example). The <a>event</a>'s <code><a>target</a></code> attribute value returns the object to which the <a>event</a> was <a>dispatched</a> (<var ignore>obj</var> above).
 
 <p>Now while typically <a>events</a> are <a>dispatched</a> by the user agent as the result of user interaction or the completion of some task, applications can <a>dispatch</a> <a>events</a> themselves, commonly known as synthetic events:
 
@@ -28,7 +28,7 @@ obj.addEventListener("cat", function(e) { process(e.detail) })
 var event = new CustomEvent("cat", {"detail":{"hazcheeseburger":true}})
 obj.dispatchEvent(event)</code></pre>
 
-<p>Apart from signaling, <a>events</a> are sometimes also used to let an application control what happens next in an operation. For instance as part of form submission an <a>event</a> whose <code><a>type</a></code> attribute value is "<code>submit</code>" is <a>dispatched</a>. If this <a>event</a>'s <code><a>preventDefault()</a></code> method is invoked, form submission will be terminated. Applications who wish to make use of this functionality through <a>events</a> <a>dispatched</a> by the application (synthetic events) can make use of the return value of the <code><a>dispatchEvent()</a></code> method:
+<p>Apart from signaling, <a>events</a> are sometimes also used to let an application control what happens next in an operation. For instance as part of form submission an <a>event</a> whose <code>{{Event/type}}</code> attribute value is "<code>submit</code>" is <a>dispatched</a>. If this <a>event</a>'s <code><a>preventDefault()</a></code> method is invoked, form submission will be terminated. Applications who wish to make use of this functionality through <a>events</a> <a>dispatched</a> by the application (synthetic events) can make use of the return value of the <code><a>dispatchEvent()</a></code> method:
 
 <pre class='example'><code>
 if(obj.dispatchEvent(event)) {
@@ -36,7 +36,7 @@ if(obj.dispatchEvent(event)) {
   …
 }</code></pre>
 
-<p>When an <a>event</a> is <a>dispatched</a> to an object that <a>participates</a> in a <a>tree</a> (e.g. an <a>element</a>), it can reach <a>event listeners</a> on that object's <a>ancestors</a> too. First all object's <a>ancestor</a> <a>event listeners</a> whose <b>capture</b> variable is set to true are invoked, in <a>tree order</a>. Second, object's own <a>event listeners</a> are invoked. And finally, and only if <a>event</a>'s <a>bubbles</a> attribute value is true, object's  <a>ancestor</a> <a>event listeners</a> are invoked again, but now in reverse <a>tree order</a>.
+<p>When an <a>event</a> is <a>dispatched</a> to an object that <a>participates</a> in a <a>tree</a> (e.g. an <a href="#concept-element">element</a>), it can reach <a>event listeners</a> on that object's <a>ancestors</a> too. First all object's <a>ancestor</a> <a>event listeners</a> whose <b>capture</b> variable is set to true are invoked, in <a>tree order</a>. Second, object's own <a>event listeners</a> are invoked. And finally, and only if <a>event</a>'s {{Event/bubbles}} attribute value is true, object's  <a>ancestor</a> <a>event listeners</a> are invoked again, but now in reverse <a>tree order</a>.
 
 <p>Lets look at an example of how <a>events</a> work in a <a>tree</a>:
 
@@ -59,12 +59,13 @@ if(obj.dispatchEvent(event)) {
  &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-<p>The <code>debug</code> function will be invoked twice. Each time the <a>event</a>'s <code><a>target</a></code> attribute value will be the <code>span</code> <a>element</a>. The first time <code><a>currentTarget</a></code> attribute's value will be the <a>document</a>, the second time the <code>body</code> <a>element</a>. <code><a>eventPhase</a></code> attribute's value switches from <code><a>CAPTURING_PHASE</a></code> to <code><a>BUBBLING_PHASE</a></code>. If an <a>event listener</a> was registered for the <code>span</code> <a>element</a>, <code><a>eventPhase</a></code> attribute's value would have been <code><a>AT_TARGET</a></code>.
+<p>The <code>debug</code> function will be invoked twice. Each time the <a>event</a>'s <code><a>target</a></code> attribute value will be the <code>span</code> <a href="#concept-element">element</a>. The first time <code>{{Event/currentTarget}}</code> attribute's value will be the <a href="#concept-document">document</a>, the second time the <code>body</code> <a href="#concept-element">element</a>. <code>{{Event/eventPhase}}</code> attribute's value switches from <code>{{Event/CAPTURING_PHASE}}</code> to <code>{{Event/BUBBLING_PHASE}}</code>. If an <a>event listener</a> was registered for the <code>span</code> <a href="#concept-element">element</a>, <code>{{Event/eventPhase}}</code> attribute's value would have been <code>{{Event/AT_TARGET}}</code>.
 
 <h3 id="events-interface-event">Interface <code><a>Event</a></code></h3>
 <pre class='idl'>
 [Constructor(DOMString type, optional EventInit eventInitDict),
  Exposed=(Window,Worker)]
+
 interface Event {
   readonly attribute DOMString type;
   readonly attribute EventTarget? target;
@@ -97,80 +98,77 @@ dictionary EventInit {
 };
 </pre>
 
-<p>An <dfn>event</dfn> allows for signaling that
+<p>An {{Event}} object allows for signaling that
 something has occurred. e.g. that an image has completed downloading. It is
 represented by the <code><a>Event</a></code> interface or an interface that
 inherits from the <code><a>Event</a></code> interface.</p>
 
 <dl>
-  : <code><var>event</var> = new <a>Event</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
-  :: <p>Returns a new <var>event</var> whose <code><a>type</a></code> attribute value is set to <var>type</var>. The optional <var>eventInitDict</var> argument allows for setting the <code><a>bubbles</a></code> and <code><a>cancelable</a></code> attributes via object members of the same name.
+  : <code><var ignore>event</var> = new <a>Event</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
+  :: <p>Returns a new <var>event</var> whose <code>{{Event/type}}</code> attribute value is set to <var>type</var>. The optional <var>eventInitDict</var> argument allows for setting the <code>{{Event/bubbles}}</code> and <code>{{Event/cancelable}}</code> attributes via object members of the same name.
 
-  : <code><var>event</var> . <a>type</a></code>
+  : <code><var>event</var> . {{Event/type}}</code>
   :: <p>Returns the type of <var>event</var>, e.g. "<code>click</code>", "<code>hashchange</code>", or "<code>submit</code>".
 
-  : <code><var>event</var> . <a>target</a></code>
+  : <code><var>event</var> . {{Event/target}}</code>
   :: <p>Returns the object to which <var>event</var> is <a>dispatched</a>.
 
-  : <code><var>event</var> . <a>currentTarget</a></code>
+  : <code><var>event</var> . {{Event/currentTarget}}</code>
   :: <p>Returns the object whose <a>event listener</a>'s <b>callback</b> is currently being invoked.
 
-  : <code><var>event</var> . <a>eventPhase</a></code>
-  :: <p>Returns the <a>event</a>'s phase, which is one of <code><a>NONE</a></code>, <code title="dom-Event-CAPTURING_PHASE"><a>CAPTURING_PHASE</a></code>, <code><a>AT_TARGET</a></code>, and <code><a>BUBBLING_PHASE</a></code>.
+  : <code><var>event</var> . {{Event/eventPhase}}</code>
+  :: <p>Returns the <a>event</a>'s phase, which is one of <code>{{Event/NONE}}</code>, <code title="dom-Event-CAPTURING_PHASE">{{Event/CAPTURING_PHASE}}</code>, <code>{{Event/AT_TARGET}}</code>, and <code>{{Event/BUBBLING_PHASE}}</code>.
 
-  : <code><var>event</var> . <a>stopPropagation</a>()</code>
+  : <code><var>event</var> . {{Event/stopPropagation()}}</code>
   :: <p>When <a>dispatched</a> in a <a>tree</a>, invoking this method prevents <var>event</var> from reaching any objects other than the current object.
 
-  : <code><var>event</var> . <a>stopImmediatePropagation</a>()</code>
+  : <code><var>event</var> . {{Event/stopImmediatePropagation()}}</code>
   :: <p>Invoking this method prevents <var>event</var> from reaching any registered <a>event listeners</a> after the current one finishes running and, when <a>dispatched</a> in a <a>tree</a>, also prevents <var>event</var> from reaching any other objects.
 
-  : <code><var>event</var> . <a>bubbles</a></code>
+  : <code><var>event</var> . {{Event/bubbles}}</a></code>
   :: <p>Returns true or false depending on how event was initialized. True if <var>event</var> goes through its <code><a>target</a></code> attribute value's <a>ancestors</a> in reverse <a>tree order</a>, and false otherwise.
 
-  : <code><var>event</var> . <a>cancelable</a></code>
+  : <code><var>event</var> . {{Event/cancelable}}</code>
   :: <p>Returns true or false depending on how <var>event</var> was initialized. Its return value does not always carry meaning, but true can indicate that part of the operation during which <var>event</var> was <a>dispatched</a>, can be canceled by invoking the <code><a>preventDefault()</a></code> method.
 
-  : <code><var>event</var> . <a>preventDefault</a>()</code>
-  :: <p>If invoked when the <code><a>cancelable</a></code> attribute value is true, and while executing a
- listener for the <var>event</var> with {{AddEventListenerOptions/passive}} set to false, signals to the operation that caused <var>event</var> to be <a>dispatched</a> that it needs to be canceled.
+  : <code><var>event</var> . {{Event/preventDefault()}}</code>
+  :: <p>If invoked when the <code>{{Event/cancelable}}</code> attribute value is true, and while executing a listener for the <var>event</var> with {{AddEventListenerOptions/passive}} set to false, signals to the operation that caused <var>event</var> to be <a>dispatched</a> that it needs to be canceled.
 
-  : <code><var>event</var> . <a>defaultPrevented</a></code>
+  : <code><var>event</var> . {{Event/defaultPrevented}}</code>
   :: <p>Returns true if {{Event/preventDefault()}} was invoked successfully to indicate cancellation, and false otherwise.
 
-  : <code><var>event</var> . <a>isTrusted</a></code>
+  : <code><var>event</var> . {{Event/isTrusted}}</code>
   :: <p>Returns true if <var>event</var> was <a>dispatched</a> by the user agent, and false otherwise.
 
-  : <code><var>event</var> . <a>timeStamp</a></code>
+  : <code><var>event</var> . {{Event/timeStamp}}</code>
   :: <p>Returns the creation time of <var>event</var> as the number of milliseconds that passed since 00:00:00 UTC on 1 January 1970.
 
 </dl>
 
-<p>The <dfn lt="dom event type|event type|type"><code>type</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the empty string.
+<p>The <dfn attribute for=Event lt="dom event type|event type|type"><code>type</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the empty string.
 
-<p>The <dfn lt="dom event target|event target|target"><code>target</code></dfn> and <dfn lt="dom event currentTarget|event currentTarget|currentTarget"><code>currentTarget</code></dfn> attributes must return the values they were initialized to. When an <a>event</a> is created the attributes must be initialized to null.
+<p>The <dfn attribute for=Event lt="dom event target|event target|target"><code>target</code></dfn> attribute's getter and <dfn attribute for=Event lt="dom event currentTarget|event currentTarget|currentTarget"><code>currentTarget</code></dfn> attribute's getter must return the values they were initialized to. When an <a>event</a> is created the attributes must be initialized to null.
 
-<p>The <dfn lt="dom event eventPhase|event eventPhase|eventPhase"><code>eventPhase</code></dfn> attribute must return the value it was initialized to, which must be one of the following:</p>
+<p>The <dfn attribute for=Event lt="dom event eventPhase|event eventPhase|eventPhase"><code>eventPhase</code></dfn> attribute's getter must return the value it was initialized to, which must be one of the following:</p>
 <dl>
-  : <dfn lt="dom event NONE|event NONE|NONE"><code>NONE</code></dfn> (numeric value 0)
+  : <dfn const for=Event><code>NONE</code></dfn> (numeric value 0)
   :: <p><a>Events</a> not currently <a>dispatched</a> are in this phase.
 
-  : <dfn lt="dom event capturing_phase|event capturing_phase|capturing_phase"><code>CAPTURING_PHASE</code></dfn> (numeric value 1)</dt>
+  : <dfn const for=Event lt="CAPTURING_PHASE"><code>CAPTURING_PHASE</code></dfn> (numeric value 1)
   :: <p>When an <a>event</a> is <a>dispatched</a> to an object that <a>participates</a> in a <a>tree</a> it will be in this phase before it reaches its <code><a>target</a></code> attribute value.
 
-  : <dfn lt="dom event AT_TARGET|event AT_TARGET|AT_TARGET"><code>AT_TARGET</code></dfn> (numeric value 2)
+  : <dfn const for=Event lt="AT_TARGET"><code>AT_TARGET</code></dfn> (numeric value 2)
   :: <p>When an <a>event</a> is <a>dispatched</a> it will be in this phase on its <code><a>target</a></code> attribute value.
 
-  : <dfn lt="dom event BUBBLING_PHASE|event BUBBLING_PHASE|BUBBLING_PHASE"><code>BUBBLING_PHASE</code></dfn> (numeric value 3)
+  : <dfn const for=Event lt="BUBBLING_PHASE"><code>BUBBLING_PHASE</code></dfn> (numeric value 3)
   :: <p>When an <a>event</a> is <a>dispatched</a> to an object that <a>participates</a> in a <a>tree</a> it will be in this phase after it reaches its <code><a>target</a></code> attribute value.
 
   </dl>
-<p>Initially the attribute must be initialized to
-<code><a>NONE</a></code>.
+<p>Initially the attribute must be initialized to <code>{{Event/NONE}}</code>.
 
 <hr>
 
-<p>Each <a>event</a> has the following associated
-flags that are all initially unset:</p>
+<p>Each <a>event</a> has the following associated flags that are all initially unset:</p>
 <ul>
  <li><dfn>stop propagation flag</dfn>
  <li><dfn>stop immediate propagation flag</dfn>
@@ -180,7 +178,7 @@ flags that are all initially unset:</p>
  <li><dfn>dispatch flag</dfn>
 </ul>
 
-<p>The <dfn attribute for=Event><code>stopPropagation()</code></dfn> method, when invoked, must set the <a>context object</a>'s <a>stop propagation flag</a>.
+<p>The <dfn method for=Event><code>stopPropagation()</code></dfn> method, when invoked, must set the <a>context object</a>'s <a>stop propagation flag</a>.
 
 <p>The <dfn attribute for=Event><code>cancelBubble</code></dfn> attribute's getter must return true
 if <a>context object</a>'s <a>stop propagation flag</a> is set, and false otherwise.
@@ -188,11 +186,11 @@ if <a>context object</a>'s <a>stop propagation flag</a> is set, and false otherw
 <p>The {{Event/cancelBubble}} attribute's setter must set <a>context object</a>'s
 <a>stop propagation flag</a> if the given value is true, and do nothing otherwise.
 
-<p>The <dfn><code>stopImmediatePropagation()</code></dfn> method must set both the <a>stop propagation flag</a> and <a>stop immediate propagation flag</a>.
+<p>The <dfn method for=Event><code>stopImmediatePropagation()</code></dfn> method must set both the <a>stop propagation flag</a> and <a>stop immediate propagation flag</a>.
 
-<p>The <dfn lt="dom event bubble|event bubble|bubble|dom event bubbles|event bubbles|bubbles"><code>bubbles</code></dfn> and <dfn lt="dom event cancelable|event cancelable|cancelable"><code>cancelable</code></dfn> attributes must return the values they were initialized to.
+<p>The <dfn attribute for=Event lt="dom event bubble|event bubble|bubble|dom event bubbles|event bubbles|bubbles"><code>bubbles</code></dfn> and <dfn attribute for=Event lt="dom event cancelable|event cancelable|cancelable"><code>cancelable</code></dfn> attributes must return the values they were initialized to.
 
-<p>The <dfn><code>preventDefault()</code></dfn> method, when invoked, must set the
+<p>The <dfn method for=Event><code>preventDefault()</code></dfn> method, when invoked, must set the
 <a>canceled flag</a> if the {{Event/cancelable}} attribute value is true and the
 <a>in passive listener flag</a> is unset.
 
@@ -200,18 +198,18 @@ if <a>context object</a>'s <a>stop propagation flag</a> is set, and false otherw
 has no effect. User agents are encouraged to log the precise cause in a developer console, to aid
 debugging.
 
-<p>The <dfn lt="dom event defaultPrevented|event defaultPrevented|defaultPrevented"><code>defaultPrevented</code></dfn> attribute must return true if the <a>canceled flag</a> is set and false otherwise.
+<p>The <dfn attribute for=Event lt="dom event defaultPrevented|event defaultPrevented|defaultPrevented"><code>defaultPrevented</code></dfn> attribute must return true if the <a>canceled flag</a> is set and false otherwise.
 
 <hr>
 
-<p>The <dfn lt="dom event isTrusted|event isTrusted|isTrusted"><code>isTrusted</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be
+<p>The <dfn attribute for=Event lt="dom event isTrusted|event isTrusted|isTrusted"><code>isTrusted</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be
 initialized to false.
 
-<p class="note">Note: <code><a>isTrusted</a></code> is a convenience that indicates whether an <a>event</a> is <a>dispatched</a> by the user agent
+<p class="note">Note: <code>{{Event/isTrusted}}</code> is a convenience that indicates whether an <a>event</a> is <a>dispatched</a> by the user agent
 (as opposed to using <code><a>dispatchEvent()</a></code>). The sole legacy exception is {{HTMLElement/click()}}, which causes
-the user agent to dispatch an <a>event</a> whose <code><a>isTrusted</a></code> attribute is initialized to false.
+the user agent to dispatch an <a>event</a> whose <code>{{Event/isTrusted}}</code> attribute is initialized to false.
 
-<p>The <dfn lt="dom event timeStamp|event timeStamp|timeStamp"><code>timeStamp</code></dfn> attribute must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the number of milliseconds that have passed since 00:00:00 UTC on 1 January 1970, ignoring leap seconds.
+<p>The <dfn attribute for=Event lt="dom event timeStamp|event timeStamp|timeStamp"><code>timeStamp</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the number of milliseconds that have passed since 00:00:00 UTC on 1 January 1970, ignoring leap seconds.
 <!-- leap seconds are ignored by JavaScript too -->
 
 <hr>
@@ -221,16 +219,16 @@ the user agent to dispatch an <a>event</a> whose <code><a>isTrusted</a></code> a
 <ol>
   1. Set the <a>initialized flag</a>.
   2. Unset the <a>stop propagation flag</a>, <a>stop immediate propagation flag</a>, and <a>canceled flag</a>.
-  3. Set the <code><a>isTrusted</a></code> attribute to false.
+  3. Set the <code>{{Event/isTrusted}}</code> attribute to false.
   4. Set the <code><a>target</a></code> attribute to null.
-  5. Set the <code><a>type</a></code> attribute to <var>type</var>.
-  6. Set the <code><a>bubbles</a></code> attribute to <var>bubbles</var>.
-  7. Set the <code><a>cancelable</a></code> attribute to <var>cancelable</var>.
+  5. Set the <code>{{Event/type}}</code> attribute to <var>type</var>.
+  6. Set the <code>{{Event/bubbles}}</code> attribute to <var>bubbles</var>.
+  7. Set the <code>{{Event/cancelable}}</code> attribute to <var>cancelable</var>.
 
 </ol>
 
 <p>The
-<dfn><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>
+<dfn method for=Event><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -242,7 +240,7 @@ method, when invoked, must run these steps:
 
 <p class="note">Note: As <a>events</a> have constructors <code><a>initEvent()</a></code> is superfluous. However, it has to be supported for legacy content.
 
-<h3 id="events-interface-customevent">Interface <code><a>CustomEvent</a></code></h3>
+<h3 id="events-interface-customevent">Interface <code>{{CustomEvent}}</code></h3>
 
 <pre class="idl">
 [Constructor(DOMString type, optional CustomEventInit eventInitDict),
@@ -258,30 +256,30 @@ dictionary CustomEventInit : EventInit {
 };
 </pre>
 
-<p><a>Events</a> using the <code><a>CustomEvent</a></code> interface can be used to carry custom data.</p>
+<p><a>Events</a> using the <code>{{CustomEvent}}</code> interface can be used to carry custom data.</p>
 
 <dl class="domintro">
-  : <code><var>event</var> = new <a>CustomEvent</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
+  : <code><var>event</var> = new <a constructor lt="CustomEvent()">CustomEvent</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
   :: <p>Works analogously to the constructor for <code><a>Event</a></code> except that the optional <var>eventInitDict</var> argument now allows for setting the <code title="dom-Event-detail">detail</code> attribute too.
 
-  : <code><var>event</var> . <a>detail</a></code>
+  : <code><var>event</var> . {{CustomEvent/detail}}</code>
   :: <p>Returns any custom data <var>event</var> was created with. Typically used for synthetic events.
 
 </dl>
 
-<p>The <dfn lt="dom event customevent detail|event customevent detail|customevent detail|detail"><code>detail</code></dfn> attribute
+<p>The <dfn attribute for=CustomEvent lt="dom event customevent detail|event customevent detail|customevent detail|detail"><code>detail</code></dfn> attribute
 must return the value it was initialized to.
 
 <p>The
-<dfn><code>initCustomEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>, <var>detail</var>)</code></dfn>
-method must, when invoked, run these steps:
+<dfn method for=CustomEvent><code>initCustomEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>, <var>detail</var>)</code></dfn>
+method, when invoked, must run these steps:
 
 <ol>
   <li>If <a>context object</a>'s <a>dispatch flag</a> is set, terminate these steps.
 
   <li><a>Initialize</a> the <a>context object</a> with <var>type</var>, <var>bubbles</var>, and <var>cancelable</var>.
 
-  <li>Set <a>context object</a>'s <code><a>detail</a></code> attribute to <var>detail</var>.
+  <li>Set <a>context object</a>'s <code>{{CustomEvent/detail}}</code> attribute to <var>detail</var>.
 
 </ol>
 
@@ -294,7 +292,7 @@ method must, when invoked, run these steps:
 
   <li><p> Set its <a>initialized flag</a>.
 
-  <li><p> Initialize the <code><a>type</a></code> attribute to the <var>type</var> argument.
+  <li><p> Initialize the <code>{{Event/type}}</code> attribute to the <var>type</var> argument.
 
   <li><p> If there is an <var>eventInitDict</var> argument then for each <a>dictionary member</a> present, find the attribute on <a>event</a> whose <a>identifier</a> matches the key of the <a>dictionary member</a> and then set the attribute to the value of that <a>dictionary member</a>.
 
@@ -332,9 +330,9 @@ it, and optionally given a <a>Realm</a> <var>realm</var>, run these steps:</p>
 In general, when defining a new interface that inherits from <code><a>Event</a></code> please always ask feedback from the WHATWG or the
 W3C www-dom@w3.org mailing list.
 
-The <code><a>CustomEvent</a></code> interface can be used as starting point. However, do not introduce any <code>init<var>*</var>Event()</code> methods as they are redundant with constructors. Interfaces that inherit from the <code><a>Event</a></code> interface that have such a method only have it for historical reasons.
+The <code>{{CustomEvent}}</code> interface can be used as starting point. However, do not introduce any <code>init<var ignore>*</var>Event()</code> methods as they are redundant with constructors. Interfaces that inherit from the <code><a>Event</a></code> interface that have such a method only have it for historical reasons.
 
-<h3 id="events-interface-eventtarget">Interface <code><a>EventTarget</a></code></h3>
+<h3 id="events-interface-eventtarget">Interface <code>{{EventTarget}}</code></h3>
 
 <pre class="idl">
 [Exposed=(Window,Worker)]
@@ -370,7 +368,7 @@ when something has occurred.
 
 <ul class="brief">
  <li><dfn id="event-listener-type">type</dfn> (a string)
- <li><dfn id="event-listener-callback">callback</dfn> (an {{EventListener}})
+ <li><dfn id="event-listener-callback" for=EventListener>callback</dfn> (an {{EventListener}})
  <li><dfn id="event-listener-capture">capture</dfn> (a boolean, initially false)
  <li><dfn id="event-listener-passive">passive</dfn> (a boolean, initially false)
  <li><dfn id="event-listener-once">once</dfn> (a boolean, initially false)
@@ -384,7 +382,7 @@ fields above, an <a>event listener</a> is a broader concept.
 which takes an <a>event</a> <var>event</var>, and returns an {{EventTarget}} object. Unless
 specified otherwise it returns null.
 
-<p class="note no-backref"><a>Nodes</a> and <a>documents</a> override the <a>get the parent</a> algorithm.
+<p class="note no-backref"><a>Nodes</a> and <a href="#concept-document">documents</a> override the <a>get the parent</a> algorithm.
 
 <p>Each {{EventTarget}} object can have an associated
 <dfn export for=EventTarget>activation behavior</dfn> algorithm. The
@@ -436,7 +434,7 @@ are not to be used for anything else. [[!HTML51]]
   <dd>Remove the <a>event listener</a> in <var>target</var>'s list of <a>event listeners</a> with the same <var>type</var>, <var>callback</var>, and <var>options</var>.
 
   <dt><code><var>target</var> . <a method for=EventTarget lt=dispatchEvent()>dispatchEvent</a>(<var>event</var>)</code>
-  <dd><a>Dispatches</a> a synthetic event <var>event</var> to <var>target</var> and returns true if either <var>event</var>'s <code><a>cancelable</a></code> attribute value is false or its <code><a>preventDefault()</a></code> method was not invoked, and false otherwise.
+  <dd><a>Dispatches</a> a synthetic event <var>event</var> to <var>target</var> and returns true if either <var>event</var>'s <code>{{Event/cancelable}}</code> attribute value is false or its <code><a>preventDefault()</a></code> method was not invoked, and false otherwise.
 </dl>
 
 
@@ -470,7 +468,7 @@ steps:
 </ol>
 
 <p>The
-<dfn><code>addEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</code></dfn>
+<dfn method for=EventTarget><code>addEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</code></dfn>
 method, when invoked, must run these steps:
 <ol>
  <li><p>If <var>callback</var> is null, then return.
@@ -486,7 +484,7 @@ method, when invoked, must run these steps:
 </ol>
 
 <p>The
-<dfn><code>removeEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</code></dfn> method, when invoked, must run these steps:
+<dfn method for=EventTarget><code>removeEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</code></dfn> method, when invoked, must run these steps:
 <ol>
  <li><p>Let <var>capture</var> be the result of <a>flattening</a> <var>options</var>.
 
@@ -495,10 +493,10 @@ method, when invoked, must run these steps:
  the associated list of <a>event listeners</a>.
 </ol>
 
-<p>The <dfn><code>dispatchEvent(<var>event</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=EventTarget><code>dispatchEvent(<var>event</var>)</code></dfn> method, when invoked, must run these steps:
 <ol>
   <li><p>If <var>event</var>'s <a>dispatch flag</a> is set, or if its <a>initialized flag</a> is not set, <a>throw</a> an "<code>InvalidStateError</code>" exception.[[!WEBIDL]]
-  <li><p>Initialize <var>event</var>'s <code><a>isTrusted</a></code> attribute to false.
+  <li><p>Initialize <var>event</var>'s <code>{{Event/isTrusted}}</code> attribute to false.
   <li><p><a>Dispatch</a> the <var>event</var> and return the value that returns.
 
 </ol>
@@ -515,9 +513,9 @@ that even empty listeners can have a dramatic performance impact on the behavior
 For example, touch and wheel events which can be used to block asynchronous scrolling. In some cases
 this problem can be mitigated by specifying the event to be {{Event/cancelable}} only when there is
 at least one non-{{AddEventListenerOptions/passive}} listener. For example,
-non-{{AddEventListenerOptions/passive}} {{TouchEvent}} listeners must block scrolling, but if all
+non-{{AddEventListenerOptions/passive}} <a>TouchEvent</a> listeners must block scrolling, but if all
 listeners are {{AddEventListenerOptions/passive}} then scrolling can be allowed to start
-<a>in parallel</a> by making the {{TouchEvent}} uncancelable (so that calls to
+<a>in parallel</a> by making the <a>TouchEvent</a> uncancelable (so that calls to
 {{Event/preventDefault()}} are ignored). So code dispatching an event is able to observe the absence
 of non-{{AddEventListenerOptions/passive}} listeners, and use that to clear the {{Event/cancelable}}
 property of the event being dispatched.
@@ -543,7 +541,7 @@ for discussion).
   <li><p>Let <var>activationTarget</var> be <var>target</var>, if <var>isActivationEvent</var> is
   true and <var>target</var> has <a for=EventTarget>activation behavior</a>, and null otherwise.
 
-  <li>Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>CAPTURING_PHASE</a></code>.
+  <li>Initialize <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute to <code>{{Event/CAPTURING_PHASE}}</code>.
 
   <li><p>If <var>activationTarget</var> is non-null and <var>activationTarget</var> has
   <a for=EventTarget>legacy-pre-activation behavior</a>, then run <var>activationTarget</var>'s
@@ -551,16 +549,16 @@ for discussion).
 
   <li>For each object in <var>event path</var>, <a>invoke</a> its <a>event listeners</a> with event <var>event</var>, as long as <var>event</var>'s <a>stop propagation flag</a> is unset.
 
-  <li>Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>AT_TARGET</a></code>.
+  <li>Initialize <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute to <code>{{Event/AT_TARGET}}</code>.
 
   <li><a>Invoke</a> the <a>event listeners</a> of <var>event</var>'s <code><a>target</a></code> attribute value with <var>event</var>, if <var>event</var>'s <a>stop propagation flag</a> is unset.
 
-  <li>If <var>event</var>'s <code><a>bubbles</a></code> attribute value is true, run these substeps:
+  <li>If <var>event</var>'s <code>{{Event/bubbles}}</code> attribute value is true, run these substeps:
 
   <ol>
     1. Reverse the order of <var>event path</var>.
 
-    2. Initialize <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>BUBBLING_PHASE</a></code>.
+    2. Initialize <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute to <code>{{Event/BUBBLING_PHASE}}</code>.
 
     3. For each object in <var>event path</var>, <a>invoke</a> its <a>event listeners</a>, with event <var>event</var> as long as <var>event</var>'s <a>stop propagation flag</a> is unset.
 
@@ -568,9 +566,9 @@ for discussion).
 
   <li>Unset <var>event</var>'s <a>dispatch flag</a>, <a>stop propagation flag</a>, and <a>stop immediate propagation flag</a>.
 
-  <li>Set <var>event</var>'s <code><a>eventPhase</a></code> attribute to <code><a>NONE</a></code>.
+  <li>Set <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute to <code>{{Event/NONE}}</code>.
 
-  <li>Set <var>event</var>'s <code><a>currentTarget</a></code> attribute to null.
+  <li>Set <var>event</var>'s <code>{{Event/currentTarget}}</code> attribute to null.
 
   <li>
    <p>If <var>activationTarget</var> is non-null, then:
@@ -589,21 +587,21 @@ for discussion).
 </ol>
 
 
-<p>To <dfn lt="listener invoke|event listener invoke|invoke|invokes|invoked">invoke</dfn> an <var> object</var> with <var>event</var> and optional legacyOutputDidListenersThrowFlag, run these steps:</p>
+<p>To <dfn lt="listener invoke|event listener invoke|invoke|invokes|invoked">invoke</dfn> an <var>object</var> with <var>event</var> and optional legacyOutputDidListenersThrowFlag, run these steps:</p>
 <ol>
   <li><p>If <var>event</var>'s <a>stop propagation flag</a> is set, then return.
   <li>Let <var>listeners</var> be a copy of the <a>event listeners</a> associated with the <var>object</var>.
-  <li>Initialize <var>event</var>'s <code><a>currentTarget</a></code> attribute to the <var>object</var>.
+  <li>Initialize <var>event</var>'s <code>{{Event/currentTarget}}</code> attribute to the <var>object</var>.
   <li>For each <a>event listener</a> in <var>listeners</var>, whose <a href="#event-listener-removed">removed</a> is false:
 
   <ol>
    <li><p>Let <var>listener</var> be the <a>event listener</a>.
-   <li><p>If <var>event</var>'s <code><a>type</a></code> attribute value is not <var>listener</var>'s <b>type</b>, terminate these substeps (and run them for the next <a>event listener</a>).
-   <li><p>If <var>event</var>'s <code><a>eventPhase</a></code> attribute value is <code><a>CAPTURING_PHASE</a></code> and <var>listener</var>'s <b>capture</b> is false, terminate these substeps (and run them for the next <a>event listener</a>).
-   <li><p>If <var>event</var>'s <code><a>eventPhase</a></code> attribute value is <code><a>BUBBLING_PHASE</a></code> and <var>listener</var>'s <b>capture</b> is true, terminate these substeps (and run them for the next <a>event listener</a>).
+   <li><p>If <var>event</var>'s <code>{{Event/type}}</code> attribute value is not <var>listener</var>'s <b>type</b>, terminate these substeps (and run them for the next <a>event listener</a>).
+   <li><p>If <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute value is <code>{{Event/CAPTURING_PHASE}}</code> and <var>listener</var>'s <b>capture</b> is false, terminate these substeps (and run them for the next <a>event listener</a>).
+   <li><p>If <var>event</var>'s <code>{{Event/eventPhase}}</code> attribute value is <code>{{Event/BUBBLING_PHASE}}</code> and <var>listener</var>'s <b>capture</b> is true, terminate these substeps (and run them for the next <a>event listener</a>).
    <li><p>If <var>listener</var>'s <a href="#event-listener-once">once</a> is true, then remove <var>listener</var> from    <var>object</var>'s associated list of <a>event listeners</a>.
    <li><p>If <var>listener</var>'s <a href="#event-listener-passive">passive</a> is true, then set <var>event</var>'s <a>in passive listener flag</a>.
-   <li><p>Call <var>listener</var>'s <b>callback</b>'s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>'s <code><a>currentTarget</a></code> attribute value as <a>callback this value</a>. If this throws any exception, <a>report the exception</a>.
+   <li><p>Call <var>listener</var>'s <b>callback</b>'s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>'s <code>{{Event/currentTarget}}</code> attribute value as <a>callback this value</a>. If this throws any exception, <a>report the exception</a>.
     <ol>
      <li><p><a>Report the exception</a>.
 
@@ -617,7 +615,7 @@ for discussion).
    <li><p>Unset <var>event</var>'s <a>in passive listener flag</a>.
 
    <li><p>If <var>event</var>'s <a>stop immediate propagation flag</a> is set, then return
-   <var>found</var>.
+   <var ignore>found</var>.
 
   </ol>
  </li>
