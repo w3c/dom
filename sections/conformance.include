@@ -1,5 +1,5 @@
 <section>
-<h2 id="conformance">Conformance</h2>
+<h2 id="conformance-all">Conformance</h2>
 
   All diagrams, examples, and notes in this specification are non-normative, as are all sections explicitly marked non-normative. Everything else in this specification is normative.
 
@@ -34,11 +34,10 @@ out of memory, or to work around platform-specific limitations.
 
   The IDL fragments in this specification must be interpreted as
 required for conforming IDL fragments, as described in the Web IDL
-specification. [[WEBIDL]]
+specification. [[!WEBIDL]]
 
-  Some of the terms used in this specification are defined in
-<a>Encoding</a>, <a>Selectors</a>, <a>Web IDL</a>, <a>XML</a>, and
-<a>Namespaces in XML</a>.[[ENCODING]][[SELECTORS-API]][[WEBIDL]][[XML]][[XML-NAMES]]
+  Some of the terms used in this specification are defined in <a spec=W3ENCODING>Encoding</a>, <cite>Selectors</cite>, <cite>WEBIDL</cite>,
+<cite>XML</cite>, and <cite>Namespaces in XML</cite>.[[!ENCODING]][[!SELECTORS4]][[!WEBIDL]][[!XML]][[!XML-NAMES]]
 
 <h3 id="conformance-extensibility">Extensibility</h3>
 
@@ -49,6 +48,6 @@ allowing only users of specific user agents to access the content in
 question.
 
 When extensions are needed, the DOM Standard can be updated accordingly, or a new standard
-can be written that hooks into the provided extensibility hooks for <dfn lt="applicable specifications|other applicable specifications|applicable specification|other applicable specification">applicable specifications</dfn>.
+can be written that hooks into the provided extensibility hooks for <dfn lt="applicable specifications|other applicable specifications|applicable specification|other applicable specification|specifications">applicable specifications</dfn>.
 
 </section>

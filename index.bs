@@ -16,7 +16,7 @@ Status Text: This document is the Second Public Working Draft of an update to th
 </pre>
 
 <pre class="anchors">
-url: https://www.w3.org/TR/WebIDL-1/#idl-DOMException; 
+url: https://www.w3.org/TR/WebIDL-1/#idl-DOMException;
     text: DOMException; type: dfn
     text: IndexSizeError; type: dfn
     text: HierarchyRequestError; type: dfn
@@ -52,12 +52,17 @@ url: https://www.w3.org/TR/WebIDL-1/#idl-DOMException;
     text: NotAllowedError; type: dfn
 urlPrefix: https://www.w3.org/TR/xml/; spec: XML;
     text: xml:space; url: #sec-white-space; type: dfn
-url: https://www.w3.org/TR/xml-names/#NT-QName; type: dfn; spec: xmlns;
-    text: QName
-urlPrefix: https://infra.spec.whatwg.org/#; spec: encoding;
+urlPrefix: https://www.w3.org/TR/xml/#NT-
+    type: type
+        text: Name; url: Name
+        text: Char; url: Char
+urlPrefix: https://www.w3.org/TR/xml-names/#NT-
+    type: type
+        text: QName; url: QName
+urlPrefix: https://infra.spec.whatwg.org/#; spec: infra;
     text: ASCII whitespace; url: ascii-whitespace; type: dfn
     text: ASCII lowercase; url: ascii-lowercase; type: dfn
-urlPrefix: https://www.w3.org/TR/encoding/#; spec: encoding;
+urlPrefix: https://www.w3.org/TR/encoding/#; spec: W3ENCODING;
     text: utf-8; url: utf-8; type: dfn
     text: encoding; url: encoding; type: dfn
 urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
@@ -66,22 +71,26 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: HTML parser; url: syntax.html#html-parser; type: dfn
     text: execute a compound microtask subtask; url: webappapis.html#wrap-callbacks; type: dfn
     text: origin; url: browsers.html#concept-cross-origin; type: dfn
-    text: opaque origin; url:browsers.html#opaque-origin; type: dfn
+    text: opaque origin; url: browsers.html#opaque-origin; type: dfn
     text: browsing context; url: browsers.html#browsing-context; type: dfn
     text: unit of related similar-origin browsing contexts; url: browsers.html#unit-of-related-similar-origin-browsing-contexts; type: dfn
     text: Unicode serialization; url: browsers.html#unicode-serialization; type: dfn
     text: HashChangeEvent; url: browsers.html#the-hashchangeevent-interface; type: dfn
     text: template; url: semantics-scripting.html#the-template-element; type: dfn
     text: relevant global object; url: webappapis.html#relevant-global-object; type:dfn
-url: https://heycam.github.io/webidl/#idl-enums; type: dfn;
-    text: unenumerable
-urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1
+    text: Queue; url: webappapis.html#queue-a-microtask; type: dfn
+    text: script; url: semantics-scripting.html#the-script-element; type: dfn
+    text: input; url: sec-forms.html#the-input-element; type: dfn
+    text: document base URL; url: infrastructure.html#document-base-url; type: dfn
+urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WEBIDL1
     text: dictionary member; url: dfn-dictionary-member; type: dfn
     text: identifier; url: dfn-identifier; type: dfn
     text: callback this value; url: dfn-callback-this-value; type: dfn
     text: supported property indices; url: dfn-supported-property-indices; type: dfn
     text: supported property names; url: dfn-supported-property-names; type: dfn
     text: code units; url: dfn-code-unit; type: dfn
+    text: supported property indices; url: dfn-supported-property-indices; type: dfn
+    text: throw; url: dfn-throw; type: dfn
 urlPrefix: https://www.w3.org/TR/uievents/
     text: CompositionEvent; url: #compositionevent; type: dfn
     text: KeyboardEvent; url: #keyboardevent-keyboardevent; type: dfn
@@ -95,6 +104,13 @@ urlPrefix: https://www.w3.org/TR/webstorage/
     text: StorageEvent; url: #storageevent; type: dfn
 urlPrefix: https://tc39.github.io/ecma262/#; spec: ECMASCRIPT
     text: Realm; url: realm; type: dfn
+urlPrefix: https://www.w3.org/TR/DOM-Parsing/
+    text: createContextualFragment; url: #widl-Range-createContextualFragment-DocumentFragment-DOMString-fragment; type: dfn
+urlPrefix: https://www.w3.org/TR/cssom-view-1/
+    text: getClientRects; url: #dom-element-getclientrects; type: dfn
+    text: getBoundingClientRect; url: #dom-element-getboundingclientrect; type: dfn
+url: http://software.hixie.ch/utilities/js/live-dom-viewer
+    text: Live DOM Viewer; type: dfn
 </pre>
 
 <style>

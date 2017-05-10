@@ -27,7 +27,7 @@ or null, and an ordered list of zero or more
 <var>B</var>, if either <var>A</var> is a
 <a>child</a> of <var>B</var> or
 <var>A</var> is a <a>child</a> of an
-object <var>C</var> that is a
+object <var ignore>C</var> that is a
 <a>descendant</a> of <var>B</var>.
 
 <p>An
@@ -49,7 +49,7 @@ an object or one of its <a>ancestors</a>.
 share the same non-null <a>parent</a>.
 
 <p>An object <var>A</var> is
-<dfn>preceding</dfn> an object
+<dfn lt="preceding | precedes">preceding</dfn> an object
 <var>B</var> if <var>A</var> and <var>B</var> are in the
 same <a>tree</a> and <var>A</var> comes
 before <var>B</var> in
@@ -171,11 +171,11 @@ To <dfn export>validate</dfn> a <var>qualifiedName</var>, run these steps:
 
 <ol>
  <li><p>If <var>qualifiedName</var> does not match the <code class="external" data-anolis-spec="xmlns">
- <a href="https://www.w3.org/TR/xml/#NT-Name">Name</a></code> production,
+ <a type>Name</a></code> production,
  then <a>throw</a> an {{InvalidCharacterError}}.
 
  <li><p>If <var>qualifiedName</var> does not match the <code class="external" data-anolis-spec="xmlns">
- <a>QName</a></code> production, then <a>throw</a> a {{NamespaceError}}.
+ <a type>QName</a></code> production, then <a>throw</a> a {{NamespaceError}}.
 </ol>
 
 To <dfn export>validate and extract</dfn> a <var>namespace</var> and <var>qualifiedName</var>,

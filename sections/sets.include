@@ -1,36 +1,40 @@
 <section>
 <h2 id="sets">Sets</h2>
 
-<p class="note">Note: Yes, the name <code><a>DOMTokenList</a></code> is unfortunate legacy mishap.
+<p class="note">Note: Yes, the name <code>{{DOMTokenList}}</code> is unfortunate legacy mishap.
 
 
-<h3 id="sets-interface-domtokenlist">Interface <code><a>DOMTokenList</a></code></h3>
+<h3 id="sets-interface-domtokenlist">Interface <code>{{DOMTokenList}}</code></h3>
 
 <pre class='idl'>
 interface DOMTokenList {
   readonly attribute unsigned long length;
   getter DOMString? item(unsigned long index);
   boolean contains(DOMString token);
+
   void add(DOMString... tokens);
   void remove(DOMString... tokens);
+
   boolean toggle(DOMString token, optional boolean force);
   void replace(DOMString token, DOMString newToken);
+
   boolean supports(DOMString token);
+
   stringifier attribute DOMString value;
-  iterable<DOMString>;
+  iterable&lt;DOMString>;
 };
 </pre>
 
-<p>A <code><a>DOMTokenList</a></code> object has an associated of <dfn>token set</dfn> (an <a>ordered set</a>), which is initially empty.
+<p>A <code>{{DOMTokenList}}</code> object has an associated of <dfn>token set</dfn> (an <a>ordered set</a>), which is initially empty.
 
-<p>A <code><a>DOMTokenList</a></code> object also has an associated <a>element</a> and an <a>attribute</a>'s <a>local name</a>.
+<p>A <code>{{DOMTokenList}}</code> object also has an associated <a href="#concept-element">element</a> and an <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
 
-<p>Specifications may define <dfn>supported tokens</dfn> for a <code><a>DOMTokenList</a></code>'s associated <a>attribute</a>'s <a>local name</a>.
+<p><a>Specifications</a> may define <dfn>supported tokens</dfn> for a <code>{{DOMTokenList}}</code>'s associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
 
-<p>A <code><a>DOMTokenList</a></code> object's <dfn>validation steps</dfn> for a given <var>token</var> are:
+<p>A <code>{{DOMTokenList}}</code> object's <dfn>validation steps</dfn> for a given <var>token</var> are:
 
 <ol>
- <li>If the associated <a>attribute</a>'s <a>local name</a> does not define <a>supported tokens</a>, then <a>throw</a> a "<code><a>TypeError</a></code>".
+ <li>If the associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> does not define <a>supported tokens</a>, then <a>throw</a> a "<code><a>TypeError</a></code>".
 
  <li>Let <var>lowercase token</var> be a copy of <var>token</var>, in <a>ASCII lowercase</a>.
 
@@ -39,49 +43,54 @@ interface DOMTokenList {
  <li>Return false.
 </ol>
 
-<p>A <code><a>DOMTokenList</a></code> object's <dfn>update steps</dfn> are to <a>set an attribute value</a> for the associated <a>element</a> using associated <a>attribute</a>'s <a>local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
+<p>A <code>{{DOMTokenList}}</code> object's <dfn>update steps</dfn> are to <a>set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
 
-<p>A <code><a>DOMTokenList</a></code> object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a>element</a> and the associated <a>attribute</a>'s <a>local name</a>.
+<p>A <code>{{DOMTokenList}}</code> object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a href="#concept-element">element</a> and the associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
 
 <dl>
- <dt><code><var>tokenlist</var> . <a href="#domtokenlist-length">length</a></code> <dd><p>Returns the number of tokens.
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/length}}</code>
+ <dd>
+  <p>Returns the number of tokens.
 
- <dt><code><var>tokenlist</var> . <a>item</a>(<var>index</var>)</code> <dt><code><var>tokenlist</var>[<var>index</var>]</code> <dd><p>Returns the token with index <var>index</var>.
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/item(index)}}</code>
+ <dt><code><var>tokenlist</var>[<var>index</var>]</code>
+ <dd>
+  <p>Returns the token with index <var>index</var>.
 
- <dt><code><var>tokenlist</var> . <a>contains</a>(<var>token</var>)</code>
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/contains(token)}}</code>
  <dd>
   <p>Returns true if <var>token</var> is present, and false otherwise.
 
- <dt><code><var>tokenlist</var> . <a>add</a>(<var>tokens</var>…)</code>
+ <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="add()">add(<var>tokens</var>&hellip;)</a></code>
  <dd>
   <p>Adds all arguments passed, except those already present.
   <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
   <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
 
- <dt><code><var>tokenlist</var> . <a>remove</a>(<var>tokens</var>…)</code>
+ <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="remove()">remove(<var>tokens</var>&hellip;)</a></code>
  <dd>
   <p>Removes arguments passed, if they are present.
   <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
   <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
 
- <dt><code><var>tokenlist</var> . <a>toggle</a>(<var>token</var> [, <var>force</var>])</code>
+ <dt><code><var>tokenlist</var> . <a method for=DOMTokenList lt="toggle()">toggle(<var>token</var> [, <var>force</var>])</a></code>
  <dd>
   <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it's present and adding it if it's not. If <var>force</var> is true, adds <var>token</var> (same as <code><a>add()</a></code>).  If <var>force</var> is false, removes <var>token</var> (same as <code><a>remove()</a></code>). <p>Returns true if <var>token</var> is now present, and false otherwise.
   <p>Throws a "<code><a>SyntaxError</a></code>" if <var>token</var> is empty.
   <p>Throws an "<code><a>InvalidCharacterError</a></code>" if <var>token</var> contains any spaces.
 
- <dt><code><var>tokenlist</var> . <a>replace</a>(<var>token</var>, <var>newToken</var>)</code>
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/replace(token, newToken)}}</code>
  <dd>
   <p>Replaces <var>token</var> with <var>newToken</var>.
   <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
   <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
 
- <dt><code><var>tokenlist</var> . <a>supports</a>(<var>token</var>)</code>
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/supports(token)}}</code>
  <dd>
   <p>Returns true if <var>token</var> is in the associated attribute’s supported tokens. Returns false otherwise.
   <p>Throws a "<code><a>TypeError</a></code>" if the associated attribute has no supported tokens defined.
 
- <dt><code><var>tokenlist</var> . <a href="#domtokenlist-value">value</a></code>
+ <dt><code><var>tokenlist</var> . {{DOMTokenList/value}}</code>
  <dd>
   <p>Returns the associated set as string.
   <p>Can be set, to change the associated set.
@@ -89,11 +98,11 @@ interface DOMTokenList {
 
 <div>
 
-<p>The <dfn id="domtokenlist-length" for="domtokenlist"><code>length</code></dfn> attribute' getter must return the number of tokens in the <a>token set</a>.
+<p>The <dfn attribute id="domtokenlist-length" for=DOMTokenList><code>length</code></dfn> attribute's getter must return the number of tokens in the <a>token set</a>.
 
 <p>The object's <a>supported property indices</a> are the numbers in the range zero to the number of tokens in <a>token set</a> minus one, unless <a>token set</a> is  empty, in which case there are no <a>supported property indices</a>.
 
-<p>The <dfn id="domtokenlist-item" for="domtokenlist"><code>item(<var>index</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=DOMTokenList id="domtokenlist-item"><code>item(<var>index</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>If <var>index</var> is equal to or greater than the number of tokens in <a>token set</a>, then return null.
@@ -101,11 +110,10 @@ interface DOMTokenList {
  <li><p>Return the <var>index</var>th token in <a>token set</a>.
 </ol>
 
-<p>The
-<dfn id="set-contains-func" for="set"><code>contains(<var>token</var>)</code></dfn> method, when invoked, must return true if <var>token</var> is in <a>token set</a>,
+<p>The <dfn method for=DOMTokenList id="set-contains-func"><code>contains(<var>token</var>)</code></dfn> method, when invoked, must return true if <var>token</var> is in <a>token set</a>,
 and false otherwise.
 
-<p>The <dfn><code>add(<var>tokens</var>…)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=DOMTokenList><code>add(<var>tokens</var>&hellip;)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>For each <var>token</var> in <var>tokens</var>:
@@ -121,8 +129,7 @@ and false otherwise.
  <li><p>Run the <a>update steps</a>.
 </ol>
 
-<p>The <dfn id="set-remove-func" for="set"><code>remove(<var>tokens</var>…)</code></dfn>
-method, when invoked, must run these steps:
+<p>The <dfn method for=DOMTokenList id="set-remove-func"><code>remove(<var>tokens</var>&hellip;)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>For each <var>token</var> in <var>tokens</var>:
@@ -138,8 +145,7 @@ method, when invoked, must run these steps:
  <li><p>Run the <a>update steps</a>.
 </ol>
 
-<p>The <dfn><code>toggle(<var>token</var>, <var>force</var>)</code></dfn>
-method, when invoked, must run these steps:
+<p>The <dfn method for=DOMTokenList><code>toggle(<var>token</var>, <var>force</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
@@ -165,7 +171,7 @@ method, when invoked, must run these steps:
  <li>Return <var>result</var>.
 </ol>
 
-<p>The <dfn id="set-replace-func" for="set"><code>replace(<var>token</var>, <var>newToken</var>)</code></dfn>
+<p>The <dfn method for=DOMTokenList id="set-replace-func"><code>replace(<var>token</var>, <var>newToken</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
@@ -178,12 +184,12 @@ method, when invoked, must run these steps:
  <li><p>Run the <a>update steps</a>.
 </ol>
 
-<p>The <dfn id="set-supports-func" for="set"><code>supports(<var>token</var>)</code></dfn>
+<p>The <dfn method for=DOMTokenList id="set-supports-func"><code>supports(<var>token</var>)</code></dfn>
 method, when invoked, must return the result of running <a>validation steps</a> for the given <var>token</var>.
 
-<p>The <dfn id="domtokenlist-value"><code>value</code></dfn> attribute must return the result of running <a>serialize steps</a> for <a>token set</a>.
+<p>The <dfn attribute for=DOMTokenList id="domtokenlist-value"><code>value</code></dfn> attribute's getter must return the result of running <a>serialize steps</a> for <a>token set</a>.
 
-<p>Setting the <code><a href="#domtokenlist-value">value</a></code> attribute must run the <a>ordered set parser</a> for the given value and set <a>token set</a> to the result.
+<p>Setting the {{DOMTokenList/value}} attribute must run the <a>ordered set parser</a> for the given value and set <a>token set</a> to the result.
 
 </div>
 

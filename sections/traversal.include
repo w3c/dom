@@ -1,14 +1,14 @@
 <section>
 <h2 id="traversal">Traversal</h2>
 
-<code><a>NodeIterator</a></code> and <code><a>TreeWalker</a></code> objects can be used to filter and traverse <a>node</a> <a>trees</a>.
+<code>{{NodeIterator}}</code> and <code>{{TreeWalker}}</code> objects can be used to filter and traverse <a href="#concept-node">node</a> <a>trees</a>.
 
-Each <code><a>NodeIterator</a></code> and <code><a>TreeWalker</a></code> object also has an associated <dfn id="traversal-root" for="traversal">root</dfn> <a>node</a>, <dfn id="traversal-whattoshow" for="traversal">whatToShow</dfn> bitmask, and <dfn id="traversal-filter" for="traversal">filter</dfn> callback.
+Each <code>{{NodeIterator}}</code> and <code>{{TreeWalker}}</code> object also has an associated <dfn id="traversal-root" for="traversal">root</dfn> <a href="#concept-node">node</a>, <dfn id="traversal-whattoshow" for="traversal">whatToShow</dfn> bitmask, and <dfn id="traversal-filter" for="traversal">filter</dfn> callback.
 
 To <dfn dfn id="node-filter" for="node">filter</dfn> <var>node</var> run these steps:
 
 <ol>
-  1. Let <var>n</var> be <var>node</var>'s <code><a>nodeType</a></code> attribute value minus 1. 
+  1. Let <var>n</var> be <var>node</var>'s <code>{{Node/nodeType}}</code> attribute value minus 1. 
 
   2. If the <var>n</var><sup>th</sup> bit (where 0 is the least significant bit) of <a href="#traversal-whattoshow">whatToShow</a> is not set, return <code><a>FILTER_SKIP</a></code>.
 
@@ -20,7 +20,7 @@ To <dfn dfn id="node-filter" for="node">filter</dfn> <var>node</var> run these s
 
 </ol>
 
-<h3 id="traversal-interface-nodeiterator">Interface <code><a>NodeIterator</a></code></h3>
+<h3 id="traversal-interface-nodeiterator">Interface <code>{{NodeIterator}}</code></h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -38,11 +38,11 @@ interface NodeIterator {
 };
 </pre>
 
-<p class="note">Note: <code><a>NodeIterator</a></code> objects can be created using the <code><a>createNodeIterator()</a></code> method.
+<p class="note">Note: <code>{{NodeIterator}}</code> objects can be created using the <code><a>createNodeIterator()</a></code> method.
 
-<p>Each <code><a>NodeIterator</a></code> object has an associated <dfn>iterator collection</dfn>, which is a <a>collection</a> rooted at <a href="#traversal-root">root</a>, whose filter matches any <a>node</a>.
+<p>Each <code>{{NodeIterator}}</code> object has an associated <dfn>iterator collection</dfn>, which is a <a>collection</a> rooted at <a href="#traversal-root">root</a>, whose filter matches any <a href="#concept-node">node</a>.
 
-<p class="note">Note: As mentioned earlier <code><a>NodeIterator</a></code> objects have an associated <a href="#traversal-root">root</a> <a>node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback as well.
+<p class="note">Note: As mentioned earlier <code>{{NodeIterator}}</code> objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback as well.
 
 The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIterator</var> and <var>toBeRemovedNode</var>, are as followings:
 
@@ -55,9 +55,9 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
 
   <ol>
    <li><p>Let <var>next</var> be <var>toBeRemovedNode</var>'s first <a>following</a>
-   <a>node</a> that is an <a>inclusive descendant</a> of <var>nodeIterator</var>'s
+   <a href="#concept-node">node</a> that is an <a>inclusive descendant</a> of <var>nodeIterator</var>'s
    <a for=traversal>root</a> and is not an <a>inclusive descendant</a> of
-   <var>toBeRemovedNode</var>, and null if there is no such <a>node</a>.
+   <var>toBeRemovedNode</var>, and null if there is no such <a href="#concept-node">node</a>.
 
    <li><p>If <var>next</var> is non-null, then set <var>nodeIterator</var>'s
    {{NodeIterator/referenceNode}} attribute to <var>next</var> and return.
@@ -78,20 +78,20 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
 
 <hr>
 
-<p>The <dfn attribute id="iterator-root" for="iterator"><code>root</code></dfn> attribute must return <a href="#traversal-root">root</a>.</p>
+<p>The <dfn attribute id="iterator-root" for=NodeIterator><code>root</code></dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
 
-<p>The <dfn><code>referenceNode</code></dfn> and <dfn><code>pointerBeforeReferenceNode</code></dfn> attributes must return what they were initialized to.</p>
+<p>The <dfn attribute for=NodeIterator><code>referenceNode</code></dfn> and <dfn attribute for=NodeIterator><code>pointerBeforeReferenceNode</code></dfn> attributes must return what they were initialized to.</p>
 
-<p>The <dfn attribute id="iterator-whattoshow" for="iterator"><code>whatToShow</code></dfn> attribute must return <a href="#traversal-whattoshow">whatToShow</a>.
+<p>The <dfn attribute id="iterator-whattoshow" for=NodeIterator><code>whatToShow</code></dfn> attribute's getter must return <a href="#traversal-whattoshow">whatToShow</a>.
 
-<p>The <dfn attribute id="iterator-filter" for="iterator"><code>filter</code></dfn> attribute must return <a href="#traversal-filter">filter</a>.
+<p>The <dfn attribute id="iterator-filter" for=NodeIterator><code>filter</code></dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
-<p>To <dfn attribute id="iterator-traverse" for="iterator">traverse</dfn> in direction <var>direction</var> run these steps:
+<p>To <dfn attribute id="iterator-traverse" for=NodeIterator>traverse</dfn> in direction <var ignore>direction</var> run these steps:
 
 <ol>
- <li><p>Let <var>node</var> be the value of the <code><a>referenceNode</a></code> attribute.
+ <li><p>Let <var>node</var> be the value of the <code>{{NodeIterator/referenceNode}}</code> attribute.
 
- <li><p>Let <var>before node</var> be the value of the <code><a>pointerBeforeReferenceNode</a></code> attribute.
+ <li><p>Let <var>before node</var> be the value of the <code>{{NodeIterator/pointerBeforeReferenceNode}}</code> attribute.
 
  <li>
   <p>Run these substeps:
@@ -100,12 +100,12 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
     <dl class="switch">
      <dt>If direction is next</dt>
      <dd>
-      <p>If <var>before node</var> is false, let <var>node</var> be the first <a>node</a> <a>following</a> <var>node</var> in the <a>iterator collection</a>. If there is no such <a>node</a> return null.
+      <p>If <var>before node</var> is false, let <var>node</var> be the first <a href="#concept-node">node</a> <a>following</a> <var>node</var> in the <a>iterator collection</a>. If there is no such <a href="#concept-node">node</a> return null.
       <p>If <var>before node</var> is true, set it to false.
      <dt>If direction is previous</dt>
      <dd>
       <p>If <var>before node</var> is true, let <var>node</var>
-      be the first <a>node</a> <a>preceding</a> <var>node</var> in the <a>iterator collection</a>. If there is no such <a>node</a> return null.
+      be the first <a href="#concept-node">node</a> <a>preceding</a> <var>node</var> in the <a>iterator collection</a>. If there is no such <a href="#concept-node">node</a> return null.
       <p>If <var>before node</var> is false, set it to true.
     </dl>
    <li><p><a href="#node-filter">Filter</a> <var>node</var> and let <var>result</var> be the return value.
@@ -114,16 +114,16 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
     next step in the overall set of steps.
     <p>Otherwise, run these substeps again.
   </ol>
- <li><p>Set the <code><a>referenceNode</a></code> attribute to <var>node</var>, set the <code><a>pointerBeforeReferenceNode</a></code> attribute to <var>before node</var>, and return <var>node</var>.
+ <li><p>Set the <code>{{NodeIterator/referenceNode}}</code> attribute to <var>node</var>, set the <code>{{NodeIterator/pointerBeforeReferenceNode}}</code> attribute to <var>before node</var>, and return <var>node</var>.
 </ol>
 
-<p>The <dfn id="nodeiterator-nextnode-func" for="nodeiterator"><code>nextNode()</code></dfn> method must <a>traverse</a> in direction next.
+<p>The <dfn method id="nodeiterator-nextnode-func" for=NodeIterator><code>nextNode()</code></dfn> method, when invoked, must <a>traverse</a> in direction next.
 
-<p>The <dfn id="nodeiterator-previousnode-func" for="nodeiterator"><code>previousNode()</code></dfn> method must <a>traverse</a> in direction previous.
+<p>The <dfn method id="nodeiterator-previousnode-func" for=NodeIterator><code>previousNode()</code></dfn> method, when invoked, must <a>traverse</a> in direction previous.
 
-<p>The <dfn id="traversal-detach-func" for="traversal"><code>detach()</code></dfn> method must do nothing. <span class="note">Note: Its functionality (disabling a <code><a>NodeIterator</a></code> object) was removed, but the method itself is preserved for compatibility.</span>
+<p>The <dfn method id="traversal-detach-func" for=NodeIterator><code>detach()</code></dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a <code>{{NodeIterator}}</code> object) was removed, but the method itself is preserved for compatibility.</span>
 
-<h3 id="traversal-interface-treewalker">Interface <code><a>TreeWalker</a></code></h3>
+<h3 id="traversal-interface-treewalker">Interface <code>{{TreeWalker}}</code></h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -143,22 +143,22 @@ interface TreeWalker {
 };
 </pre>
 
-<p class="note">Note: <code><a>TreeWalker</a></code> objects can be created using the <code><a>createTreeWalker()</a></code> method.
+<p class="note">Note: <code>{{TreeWalker}}</code> objects can be created using the <code><a>createTreeWalker()</a></code> method.
 
-<p class="note">Note: As mentioned earlier <code><a>TreeWalker</a></code> objects have an associated <a href="#traversal-root">root</a> <a>node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback.
+<p class="note">Note: As mentioned earlier <code>{{TreeWalker}}</code> objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback.
 
-<p>The <dfn id="treewalker-root" for="treeWalker"><code>root</code></dfn> attribute must return <a href="#traversal-root">root</a>.</p>
+<p>The <dfn attribute id="treewalker-root" for=TreeWalker><code>root</code></dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
 
-<p>The <dfn id="dom-treewalker-whattoshow" title="dom-TreeWalker-whatToShow"><code>whatToShow</code></dfn> attribute must return <a href="#traversal-whattoshow" title="concept-traversal-whatToShow">whatToShow</a>.
+<p>The <dfn attribute for=TreeWalker id="dom-treewalker-whattoshow" title="dom-TreeWalker-whatToShow"><code>whatToShow</code></dfn> attribute's getter must return <a href="#traversal-whattoshow" title="concept-traversal-whatToShow">whatToShow</a>.
 
-<p>The <dfn id="treewalker-filter"><code>filter</code></dfn> attribute must return <a href="#traversal-filter">filter</a>.
+<p>The <dfn attribute for=TreeWalker id="treewalker-filter"><code>filter</code></dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
-<p>The <dfn id="treewalker-currentnode"><code>currentNode</code></dfn> attribute must return what it was initialized to.</p>
+<p>The <dfn attribute for=TreeWalker id="treewalker-currentnode"><code>currentNode</code></dfn> attribute's getter must return what it was initialized to.</p>
 
-<p>Setting the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute must set it to the new value.</p>
+<p>Setting the <code>{{TreeWalker/currentNode}}</code> attribute must set it to the new value.</p>
 
 
-<p>The <dfn><code>parentNode()</code></dfn> method must run these steps:
+<p>The <dfn method for=TreeWalker><code>parentNode()</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -218,9 +218,9 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<p>The <dfn><code>firstChild()</code></dfn> method must <a>traverse children</a> of type first.
+<p>The <dfn method for=TreeWalker><code>firstChild()</code></dfn> method, when invoked, must <a>traverse children</a> of type first.
 
-<p>The <dfn><code>lastChild()</code></dfn> method must <a>traverse children</a> of type last.
+<p>The <dfn method for=TreeWalker><code>lastChild()</code></dfn> method, when invoked, must <a>traverse children</a> of type last.
 
 <p>To <dfn>traverse siblings</dfn> of type <var>type</var> run these steps:
 
@@ -260,11 +260,11 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<p>The <dfn><code>nextSibling()</code></dfn> method must <a>traverse siblings</a> of type next.
+<p>The <dfn method for=TreeWalker><code>nextSibling()</code></dfn> method, when invoked, must <a>traverse siblings</a> of type next.
 
-<p>The <dfn><code>previousSibling()</code></dfn> method must <a>traverse siblings</a> of type previous.
+<p>The <dfn method for=TreeWalker><code>previousSibling()</code></dfn> method, when invoked, must <a>traverse siblings</a> of type previous.
 
-<p>The <dfn id="treewalker-previousnode" for="treewalker"><code>previousNode()</code></dfn> method must run these steps:
+<p>The <dfn method for=TreeWalker><code>previousNode()</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -300,7 +300,7 @@ interface TreeWalker {
  <li><p>Return null.
 </ol>
 
-<p>The <dfn id="treewalker-nextnode-func" for="treewalker"><code>nextNode()</code></dfn> method must run these steps:
+<p>The <dfn  method for=TreeWalker id="treewalker-nextnode-func"><code>nextNode()</code></dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -323,7 +323,7 @@ interface TreeWalker {
     </ol>
 
    <li>
-    <p>If a <a>node</a> is <a>following</a> <var>node</var> and is not <a>following</a> <a href="#traversal-root">root</a>, set <var>node</var> to the first such <a>node</a>.
+    <p>If a <a href="#concept-node">node</a> is <a>following</a> <var>node</var> and is not <a>following</a> <a href="#traversal-root">root</a>, set <var>node</var> to the first such <a href="#concept-node">node</a>.
     <p>Otherwise, return null.
     <!-- Implemented as iterating over parent/nextSibling -->
 
@@ -335,7 +335,7 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<h3 id="traversal-interface-nodefilter">Interface <code><a>NodeFilter</a></code></h3>
+<h3 id="traversal-interface-nodefilter">Interface <code>{{NodeFilter}}</code></h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -364,10 +364,8 @@ callback interface NodeFilter {
 };
 </pre>
 
-<p><code><a>NodeFilter</a></code> objects can be used as
-<a href="#traversal-filter">filter</a> callback and provide
-constants for the <a href="#traversal-whattoshow">whatToShow</a>
-bitmask.
+<p><code>{{NodeFilter}}</code> objects can be used as <a href="#traversal-filter">filter</a> callback and provide
+constants for the <a href="#traversal-whattoshow">whatToShow</a> bitmask.
 
 <p class="note">Note: It is typically implemented as a JavaScript function.
 

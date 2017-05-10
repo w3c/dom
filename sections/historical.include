@@ -62,7 +62,7 @@ and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendati
  <dd>Queuing of mutation records looks inconsistent. To replace a child with node within a parent,
   the mutation record should be queued after the removal of <code>child</code> and insertion of <code>node</code></dd>
 <dt><a href="https://github.com/w3c/dom/commit/eb8190173bd1a174b651872708b708395fea5ef3">Remove the <code>unenumable</code> keyword</a></dt>
- <dd>For compatibility with <a>WebIDL</a></dd>
+ <dd>For compatibility with <cite>WEBIDL</cite></dd> [[!WEBIDL]]
 </dl>
 
 <h3 id="historical-DOM-spec-history">DOM Specification History</h3>
@@ -74,7 +74,7 @@ The Element Traversal Recommendation was published in 2008, and the Selectors AP
 
 Other DOM specifications have been in development during that time, and continue to be developed.
 
-Around 2009 some employees of Opera software began to write a new version of a DOM specification, which was then worked on by the "Web Hypertext Application Technology Working Group", and subsequently developed jointly with the W3C. The eventual goals of that works were described <a href="https://www.w3.org/TR/2015/REC-dom-20151119/#goals">in the DOM 4 Recommendation</a>. In November 2013 W3C produced a W3C First Public Working draft based on that work, and after subsequent development that became the W3C Recommendation <a>DOM 4</a>, in November 2015.
+Around 2009 some employees of Opera software began to write a new version of a DOM specification, which was then worked on by the "Web Hypertext Application Technology Working Group", and subsequently developed jointly with the W3C. The eventual goals of that works were described <a href="https://www.w3.org/TR/2015/REC-dom-20151119/#goals">in the DOM 4 Recommendation</a>. In November 2013 W3C produced a W3C First Public Working draft based on that work, and after subsequent development that became the W3C Recommendation <cite>DOM 4</cite>, in November 2015.
 
 The current DOM 4.1 revision is produced by W3C, with the primary aim of documenting what is interoperably implemented and is, or is likely to become, a core part of the Web Platform. An important secondary goal is to minimise incompatibility with the ongoing work at WHATWG.
 
