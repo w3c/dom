@@ -338,17 +338,24 @@ DocumentFragment implements NonElementParentNode;
 
 <h4 id="interface-parentnode">Interface <code><a>ParentNode</a></code></h4>
 
-<p>The <dfn>mutation method macro</dfn>:
+To <dfn export lt="converting nodes into a node">convert nodes into a node</dfn>, given
+<var>nodes</var> and <var>document</var>, run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be null.
 
- <li><p>Replace each string in <var>nodes</var> with a <code><a>Text</a></code> <a>node</a> whose <a>data</a> is the string value.
+ <li><p>Replace each string in <var>nodes</var> with a new {{Text}} <a href="#concept-node">node</a> whose
+ <a href="#cd-data">data</a> is the string and <a>node document</a> is
+ <var>document</var>.
 
- <li>
-  <p>If <var>nodes</var> contains more than one <a>node</a>, set <var>node</var> to a new <code><a>DocumentFragment</a></code> and <a>append</a> each <a>node</a> in <var>nodes</var> to it. Rethrow any exceptions.
+ <li><p>If <var>nodes</var> contains one <a href="#concept-node">node</a>, set <var>node</var> to that
+ <a href="#concept-node">node</a>.
 
-  <p>Otherwise, set <var>node</var> to the single <a>node</a> <var>nodes</var> contains.
+ <li><p>Otherwise, set <var>node</var> to a new {{DocumentFragment}} whose
+ <a>node document</a> is <var>document</var>, and then <a>append</a> each <a href="#concept-node">node</a> in
+ <var>nodes</var>, if any, to it.
+
+ <li><p>Return <var>node</var>.
 </ol>
 
 <pre class='idl'>
@@ -360,6 +367,9 @@ interface ParentNode {
   readonly attribute Element? lastElementChild;
   readonly attribute unsigned long childElementCount;
 
+  [Unscopable] void prepend((Node or DOMString)... nodes);
+  [Unscopable] void append((Node or DOMString)... nodes);
+
   Element? querySelector(DOMString selectors);
   [NewObject] NodeList querySelectorAll(DOMString selectors);
 };
@@ -369,35 +379,73 @@ Element implements ParentNode;
 </pre>
 
 <dl>
- <dt><code><var>collection</var> = <var>node</var> . <a href="#parentnode-children">children</a></code> 
- <dd><p>Returns the <a>child</a><a>elements</a>.
+ <dt><code><var>collection</var> = <var>node</var> . {{ParentNode/children}}
+ <dd><p>Returns the <a>child</a> <a href="#concept-element">elements</a>.
 
- <dt><code><var>element</var> = <var>node</var> . <a>firstElementChild</a></code>
- <dd><p>Returns the first <a>child</a> that is an <a>element</a>, and null otherwise.
+ <dt><code><var>element</var> = <var>node</var> . {{ParentNode/firstElementChild}}
+ <dd><p>Returns the first <a>child</a> that is an <a href="#concept-element">element</a>, and null otherwise.
 
- <dt><code><var>element</var> = <var>node</var> . <a>lastElementChild</a></code>
- <dd><p>Returns the last <a>child</a> that is an <a>element</a>, and null otherwise.
+ <dt><code><var>element</var> = <var>node</var> . {{ParentNode/lastElementChild}}
+ <dd><p>Returns the last <a>child</a> that is an <a href="#concept-element">element</a>, and null otherwise.
 
  <!-- childElementCount is redundant -->
 
- <dt><code><var>node</var> . <a>querySelector</a>(<var>selectors</var>)</code>
- <dd><p>Returns the first <a>element</a> that is a <a>descendant</a> of <var>node</var> that matches <var>selectors</var>.
+ <dt><code><var>node</var> . {{ParentNode/prepend(nodes)}}
+ <dd>
+  Inserts <var>nodes</var> before the  <a href="#tree-first-child">first child</a> of
+  <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
 
- <dt><code><var>node</var> . <a>querySelectorAll</a>(<var>selectors</var>)</code>
- <dd><p>Returns all <a>element</a> <a>descendants</a> of <var>node</var> that match <var>selectors</var>.
+  <a>Throws</a> a <a>HierarchyRequestError</a> if the constraints of the <a>node tree</a> are violated.
+  <!-- "NotFoundError" is impossible -->
+
+ <dt><code><var>node</var> . {{ParentNode/append(nodes)}}
+ <dd>
+  Inserts <var>nodes</var> after the <a>last child</a> of <var>node</var>, while replacing strings in <var>nodes</var>
+  with equivalent {{Text}} <a>nodes</a>.
+
+  <a>Throws</a> a <a>HierarchyRequestError</a> if the constraints of the <a>node tree</a> are violated.
+  <!-- "NotFoundError" is impossible -->
+
+ <dt><code><var>node</var> . {{ParentNode/querySelector(selectors)}}
+ <dd><p>Returns the first <a href="#concept-element">element</a> that is a <a>descendant</a> of <var>node</var> that matches <var>selectors</var>.
+
+ <dt><code><var>node</var> . {{ParentNode/querySelectorAll(selectors)}}
+ <dd><p>Returns all <a href="#concept-element">element</a> <a>descendants</a> of <var>node</var> that match <var>selectors</var>.
 </dl>
 
-<p>The <dfn id="parentnode-children" for="parentnode"><code>children</code></dfn> attribute must return an <code>{{HTMLCollection}}</code> <a>collection</a> rooted at the <a>context object</a> matching only <a>element</a> <a>children</a>.
+<p>The <dfn attribute id="parentnode-children" for=ParentNode><code>children</code></dfn> attribute's getter must return an
+<code>{{HTMLCollection}}</code> <a>collection</a> rooted at the <a>context object</a> matching only <a>element</a> <a>children</a>.
 
-<p>The <dfn><code>firstElementChild</code></dfn> attribute must return the first <a>child</a> that is an <a>element</a>, and null otherwise.
+<p>The <dfn attribute for=ParentNode><code>firstElementChild</code></dfn> attribute's getter must return the first <a>child</a> that is an <a>element</a>, and null otherwise.
 
-<p>The <dfn><code>lastElementChild</code></dfn> attribute must return the last <a>child</a> that is an <a>element</a>, and null otherwise.
+<p>The <dfn attribute for=ParentNode><code>lastElementChild</code></dfn> attribute's getter must return the last <a>child</a> that is an <a>element</a>, and null otherwise.
 
-<p>The <dfn><code>childElementCount</code></dfn> attribute must return the number of <a>children</a> of the <a>context object</a> that are <a>elements</a>.
+<p>The <dfn attribute for=ParentNode><code>childElementCount</code></dfn> attribute's getter must return the number of <a>children</a> of the <a>context object</a> that are <a>elements</a>.
 
-<p>The <dfn><code>querySelector(<var>selectors</var>)</code></dfn> method, when invoked, must return the first result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>, and null if the result is an empty list otherwise.
+<p>The <dfn method for=ParentNode><code>prepend(<var>nodes</var>)</code></dfn> method, when invoked,
+must run these steps:
 
-<p>The <dfn><code>querySelectorAll(<var>selectors</var>)</code></dfn> method, when invoked, must return the <a>static</a> result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>.
+<ol>
+ <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a> given
+ <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
+
+ <li><p><a>Pre-insert</a> <var>node</var> into <a>context object</a> before the
+ <a>context object</a>'s <a href="#tree-first-child">first child</a>.
+</ol>
+
+<p>The <dfn method for=ParentNode><code>append(<var>nodes</var>)</code></dfn> method, when invoked,
+must run these steps:
+
+<ol>
+ <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a> given
+ <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
+
+ <li><p><a>Append</a> <var>node</var> to <a>context object</a>.
+</ol>
+
+<p>The <dfn method for=ParentNode><code>querySelector(<var>selectors</var>)</code></dfn> method, when invoked, must return the first result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>, and null if the result is an empty list otherwise.
+
+<p>The <dfn method for=ParentNode><code>querySelectorAll(<var>selectors</var>)</code></dfn> method, when invoked, must return the <a>static</a> result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>.
 
 <h4 id="interface-nondocumenttypechildnode">Interface <code><a >NonDocumentTypeChildNode</a></code></h4>
 
