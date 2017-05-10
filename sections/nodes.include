@@ -309,7 +309,8 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%
 
 <h4 id="interface-nonelementparentnode">Interface <code><a>NonElementParentNode</a></code></h4>
 
-<p class="note">Note: The <code><a>getElementById()</a></code> method is not on <a>elements</a> for compatibility with older versions of jQuery. If a time comes where that version of jQuery has disappeared, we might be able to support it.
+<p class="note no-backref">Web compatibility prevents the {{NonElementParentNode/getElementById()}}
+method from being exposed on <a href="#concept-element">elements</a> (and therefore on {{ParentNode}}).
 
 <pre class='idl'>
 [NoInterfaceObject,
@@ -393,7 +394,9 @@ Element implements ParentNode;
 
 <h4 id="interface-nondocumenttypechildnode">Interface <code><a >NonDocumentTypeChildNode</a></code></h4>
 
-<p class="note">Note: The <code><a>previousElementSibling</a></code> and <code><a>nextElementSibling</a></code> attributes have been removed from <code><a>DocumentType</a></code> nodes for compatibility reasons. If these additions are deemed compatible enough in the future, they could be reinstated.
+<p class="note no-backref">Web compatibility prevents the {{previousElementSibling}} and
+{{nextElementSibling}} attributes from being exposed on <a href="#concept-doctype">doctypes</a> (and therefore on
+{{ChildNode}}).
 
 <pre class='idl'>
 [NoInterfaceObject,
