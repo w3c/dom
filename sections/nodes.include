@@ -2244,6 +2244,7 @@ interface Element : Node {
            attribute DOMString className;
   [SameObject] readonly attribute DOMTokenList classList;
 
+  boolean hasAttributes();
   [SameObject] readonly attribute NamedNodeMap attributes;
   DOMString? getAttribute(DOMString qualifiedName);
   DOMString? getAttributeNS(DOMString? namespace, DOMString localName);
@@ -2535,7 +2536,11 @@ must run these steps:
 
 <hr>
 
-<p>The <dfn id="element-attributes" for="element"><code>attributes</code></dfn> attribute must return a <code>{{{NamedNodeMap}}}</code>.
+<p>The <dfn method for=Element><code>hasAttributes()</code></dfn> method, when invoked, must return
+false if <a>context object</a>'s <a href="#attribute-list">attribute list</a> is empty, and
+true otherwise.
+
+<p>The <dfn id="element-attributes" for="element"><code>attributes</code></dfn> attribute must return a <code> {{NamedNodeMap}}</code>.
 
 <p>The <dfn><code>getAttribute(<var>qualifiedName</var>)</code></dfn> method must run these steps:
 
