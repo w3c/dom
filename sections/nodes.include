@@ -2289,7 +2289,7 @@ interface DocumentFragment : Node {
 
 <p>An object <var>A</var> is a <dfn>host-including inclusive ancestor</dfn> of an object <var>B</var>, if either <var>A</var> is an <a>inclusive ancestor</a> of <var>B</var>, or if <var>B</var>'s <a href="#tree-root">root</a> has an associated <a>host</a> and <var>A</var> is a <a>host-including inclusive ancestor</a> of <var>B</var>'s <a href="#tree-root">root</a>'s <a>host</a>.
 
-<p class="note">Note: The <code><a>DocumentFragment</a></code> <a>node</a>'s <a>host</a> concept is useful for HTML's <code>template</code> element and the <code>ShadowRoot</code> object and impacts the <a>pre-insert</a> and <a href="#node-replace">replace</a> algorithms.
+<p class="note">Note: The <code><a>DocumentFragment</a></code> <a>node</a>'s <a>host</a> concept is useful for HTML's <a>template</a> element and impacts the <a>pre-insert</a> and <a href="#node-replace">replace</a> algorithms.
 
 <dl>
  <dt><code><var>tree</var> = new <a>DocumentFragment</a>()</code>

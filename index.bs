@@ -69,6 +69,7 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: unit of related similar-origin browsing contexts; url: browsers.html#unit-of-related-similar-origin-browsing-contexts; type: dfn
     text: Unicode serialization; url: browsers.html#unicode-serialization; type: dfn
     text: HashChangeEvent; url: browsers.html#the-hashchangeevent-interface; type: dfn
+    text: template; url: semantics-scripting.html#the-template-element; type: dfn
 url: https://heycam.github.io/webidl/#idl-enums; type: dfn;
     text: unenumerable
 urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WebIDL-1
