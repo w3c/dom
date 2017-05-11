@@ -426,7 +426,10 @@ CharacterData implements NonDocumentTypeChildNode;
 [NoInterfaceObject,
  Exposed=Window]
 interface ChildNode {
-  void remove();
+  [Unscopable] void before((Node or DOMString)... nodes);
+  [Unscopable] void after((Node or DOMString)... nodes);
+  [Unscopable] void replaceWith((Node or DOMString)... nodes);
+  [Unscopable] void remove();
 };
 DocumentType implements ChildNode;
 Element implements ChildNode;
@@ -434,14 +437,91 @@ CharacterData implements ChildNode;
 </pre>
 
 <dl>
- <dt><code><var>node</var> . <a>remove</a>()</code>
+ <dt><code><var>node</var> . {{ChildNode/before(nodes)}}</code>
+ <dd>
+  Inserts <var>nodes</var> just before <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
+
+  <a>Throws</a> a {{HierarchyRequestError}} if the constraints of the <a>node tree</a> are violated.
+
+ <dt><code><var>node</var> . {{ChildNode/after(nodes)}}</code>
+ <dd>
+  Inserts <var>nodes</var> just after <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
+
+  <a>Throws</a> a {{HierarchyRequestError}} if the constraints of the <a>node tree</a> are violated.
+
+ <dt><code><var>node</var> . {{ChildNode/replaceWith(nodes)}}</code>
+ <dd>
+  Replaces <var>node</var> with <var>nodes</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
+
+ <dt><code><var>node</var> . {{ChildNode/remove()}}</code>
  <dd><p>Removes <var>node</var>.
 </dl>
 
-<p>The <dfn id="node-contains-func" for="node"><code>remove()</code></dfn> method must run these steps:
+<p>The <dfn method for=ChildNode><code>before(<var>nodes</var>)</code></dfn> method, when invoked,
+must run these steps:
+<ol>
+ <li><p>Let <var>parent</var> be <a>context object</a>'s <a href="#tree-parent">parent</a>.
+
+ <li><p>If <var>parent</var> is null, then return.
+
+ <li><p>Let <var>viablePreviousSibling</var> be <a>context object</a>'s first
+ <a>preceding</a> <a href="#tree-sibling">sibling</a> not in <var>nodes</var>, and null otherwise.
+
+ <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a>, given
+ <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
+
+ <li><p>If <var>viablePreviousSibling</var> is null, set it to <var>parent</var>'s
+ <a href="#tree-first-child">first child</a>, and to <var>viablePreviousSibling</var>'s <a href="#tree-next-sibling">next sibling</a> otherwise.
+
+ <li><p><a>Pre-insert</a> <var>node</var> into <var>parent</var> before <var>viablePreviousSibling</var>.
+</ol>
+
+<p>The <dfn method for=ChildNode><code>after(<var>nodes</var>)</code></dfn> method, when invoked,
+must run these steps:
 
 <ol>
- <li><p>If the <a>context object</a> does not have a <a>parent</a>, terminate these steps.
+ <li><p>Let <var>parent</var> be <a>context object</a>'s <a href="#tree-parent">parent</a>.
+
+ <li><p>If <var>parent</var> is null, then return.
+
+ <li><p>Let <var>viableNextSibling</var> be <a>context object</a>'s first <a>following</a>
+ <a href="#tree-sibling">sibling</a> not in <var>nodes</var>, and null otherwise.
+
+ <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a>, given
+ <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
+
+ <li><p><a>Pre-insert</a> <var>node</var> into <var>parent</var> before
+ <var>viableNextSibling</var>.
+</ol>
+
+<p>The <dfn method for=ChildNode><code>replaceWith(<var>nodes</var>)</code></dfn> method, when
+invoked, must run these steps:
+
+<ol>
+ <li><p>Let <var>parent</var> be <a>context object</a>'s <a href="#tree-parent">parent</a>.
+
+ <li><p>If <var>parent</var> is null, then return.
+
+ <li><p>Let <var>viableNextSibling</var> be <a>context object</a>'s first <a>following</a>
+ <a href="#tree-sibling">sibling</a> not in <var>nodes</var>, and null otherwise.
+
+ <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a>, given
+ <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
+
+ <li>
+  <p>If <a>context object</a>'s <a href="#tree-parent">parent</a> is <var>parent</var>, <a>replace</a> the
+  <a>context object</a> with <var>node</var> within <var>parent</var>.
+
+  <p class=note><a>Context object</a> could have been inserted into <var>node</var>.
+
+ <li><p>Otherwise, <a>pre-insert</a> <var>node</var> into <var>parent</var> before
+ <var>viableNextSibling</var>.
+</ol>
+
+<p>The <dfn method id="node-remove-func" for="ChildNode"><code>remove()</code></dfn> method must run these steps:
+
+<ol>
+ <li><p>If the <a>context object</a> does not have a <a href="#tree-parent">parent</a>, terminate these steps.
 
  <li><p><a href="#node-remove">Remove</a> the <a>context object</a> from the <a>context object</a>'s <a>parent</a>.
 </ol>
