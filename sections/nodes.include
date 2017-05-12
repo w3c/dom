@@ -2467,7 +2467,9 @@ interface Element : Node {
 
 <p><a href="#concept-element">Elements</a> also have an ordered <dfn>attribute list</dfn>. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a>attribute list</a> is empty. An <a href="#concept-element">element</a> <dfn>has</dfn> an <a href="#concept-attribute">attribute</a> <var>A</var> if <var>A</var> is in its <a>attribute list</a>.
 
-<p><a>Applicable specifications</a> and this specification (can) use the hooks an <dfn>attribute is set</dfn>, an <dfn id="attribute-is-changed">attribute is changed</dfn>, an <dfn>attribute is added</dfn>, and an <dfn>attribute is removed</dfn>, for further processing of the <a href="#concept-attribute">attribute</a>'s <a href="#attribute-value">value</a>.
+This and <a lt="other applicable specifications">other specifications</a> may define
+<dfn>attribute change steps</dfn> for <a href="#concept-element">elements</a>. The algorithm is passed <var>element</var>, <var>localName</var>,
+<var>oldValue</var>, <var>value</var>, and <var>namespace</var>.
 
 To <dfn export id=concept-element-attributes-replace lt="replace an attribute">replace</dfn> an
 <a>attribute</a> <var>oldAttr</var> by an <a>attribute</a> <var>newAttr</var>
@@ -2583,9 +2585,11 @@ an optional <var>namespace</var>, run these steps:
 <ol>
  <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue <var>attribute</var>'s <a href="#attribute-value">value</a>.
 
- <li><p>Set <var>attribute</var>'s <a href="#attribute-value">value</a> to <var>value</var>.
+ <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
+ <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and
+ <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>.
 
- <li><p>An <a>attribute is set</a> and an <a>attribute is changed</a>.
+ <li><p>Set <var>attribute</var>'s <a href="#attribute-value">value</a> to <var>value</var>.
 </ol>
 
 <p>To <dfn id="element-append" lt="append an attribute">append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
@@ -2593,9 +2597,14 @@ an optional <var>namespace</var>, run these steps:
 <ol>
  <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue null.
 
+ <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
+ <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and
+ <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>.
+
  <li><p>Append the <var>attribute</var> to the <var>element</var>'s <a>attribute list</a>.
 
- <li><p>An <a>attribute is set</a> and an <a>attribute is added</a>.
+ <li>Set <var>attribute</var>'s
+ <a for=Attr>element</a> to <var>element</var>.
 </ol>
 
 <p>To <dfn id="element-attributes-remove" for="element-attributes">remove</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var>, run these steps:
@@ -2639,19 +2648,28 @@ given a <var>namespace</var>, <var>localName</var>, and
 
 <hr>
 
-<p><a href="#concept-element">Elements</a> can have an associated <dfn lt="unique identifier|ID">unique identifier (ID)</dfn> and have an associated <code><a>DOMTokenList</a></code> object. The <code><a>DOMTokenList</a></code> object's associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> is <code>class</code> and its associated ordered set of tokens is called the <a href="#concept-element">element</a>'s <dfn lt="class|classes">classes</dfn>.
+An <a href="#concept-element">element</a> can have an associated <dfn export for=Element id=concept-id lt="ID">unique identifier (ID)</dfn>.
 
-<p class="note">Note: Historically <a href="#concept-element">elements</a> could have multiple identifiers e.g. by using the HTML <code>id</code> <a href="#concept-attribute">attribute</a> and a DTD. This specification makes <a>ID</a> a concept of the DOM and allows for only one per <a href="#concept-element">element</a>, given by an <a href="#named-attribute"><code>id</code> attribute</a>.
+<p class=note>Historically <a href="#concept-element">elements</a> could have multiple identifiers e.g., by using
+the HTML <code>id</code> <a href="#named-attribute">attribute</a> and a DTD. This specification makes <a for=Element>ID</a>
+a concept of the DOM and allows for only one per <a href="#concept-element">element</a>, given by an
+<a href="#named-attribute"><code>id</code> attribute</a>.
 
-<p>Either when an <a href="#concept-element">element</a> is created that <a>has</a> an <a href="#named-attribute"><code>id</code> attribute</a> whose <a href="#attribute-value">value</a> is not the empty string or when an <a href="#concept-element" title="concept-element">element</a>'s <a href="#named-attribute"><code>id</code> attribute</a> is <a href="#attribute-is-set">set</a> to a <a href="#attribute-value">value</a> other than the empty string, set the <a href="#concept-element">element</a>'s <a>ID</a> to the new <a href="#attribute-value">value</a>.
+<p>Use these <a>attribute change steps</a> to update an <a href="#concept-element">element</a>'s
+<a for=Element>ID</a>:
 
-<p>When an <a href="#concept-element">element</a>'s <a href="#named-attribute"><code>id</code> attribute</a> is <a href="#attribute-is-removed">removed</a> or <a href="#attribute-is-set">set</a> to the empty string, unset the <a href="#concept-element">element</a>'s <a>ID</a>.
+<ol>
+ <li><p>If the given attribute's <var>localName</var> is <code>id</code>, <var>namespace</var> is null, and
+ <var>value</var> is null or the empty string, then unset <var>element</var>'s
+ <a for=Element>ID</a>.
 
-<p>Either when an <a href="#concept-element">element</a> is created that <a>has</a> a <a href="#named-attribute"><code>class</code> attribute</a> or when an <a href="#concept-element">element</a>'s <a href="#named-attribute" ><code>class</code> attribute</a> is <a href="#attribute-is-set">set</a>, set the <a href="#concept-element">element</a>'s <a>classes</a> to the new <a href="#attribute-value">value</a>, <a>parsed</a>.
+ <li><p>Otherwise, if <var>localName</var> is <code>id</code>, <var>namespace</var> is null, then
+ set <var>element</var>'s <a for=Element>ID</a> to <var>value</var>.
+</ol>
 
-<p>When an <a href="#concept-element">element</a>'s <a href="#named-attribute"><code>class</code> attribute</a> is <a href="#attribute-is-removed">removed</a>, set the <a href="#concept-element">element</a>'s <a>classes</a> to the empty set.
-
-<p class="note">Note: While this specification defines user agent processing requirements for <code>id</code> and <code>class</code> <a href="#concept-attribute">attributes</a> on any <a href="#concept-element">element</a>, it makes no claims as to whether using them is conforming or not.
+<p class="note no-backref">While this specification defines requirements for <code>class</code> and
+ <code>id</code> <a href="#named-attribute">attributes</a> on any <a href="#concept-element">element</a>, it makes no
+claims as to whether using them is conforming or not.
 
 <hr>
 
