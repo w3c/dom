@@ -679,7 +679,8 @@ interface Range {
   much sense, since insertBefore() works fine to move a node to its current
   position, and other browsers disagree, so the spec follows the majority.
   -->
- <li><p>If <var>range</var>'s <a>start node</a> is either a <code><a>ProcessingInstruction</a></code> or <code><a>Comment</a></code> <a>node</a>, or a <code><a>Text</a></code> <a>node</a> whose <a>parent</a> is null, <a>throw</a> an "<code><a>HierarchyRequestError</a></code>". [[!WEBIDL]]
+ <li><p>If <var>range</var>'s <a>start node</a> is a {{ProcessingInstruction}} or {{Comment}} <a href="#concept-node">node</a>, is a {{Text}} <a href="#concept-node">node</a> whose <a>parent</a> is null,
+ or is <var>node</var>, then <a>throw</a> an "<code><a>HierarchyRequestError</a></code>".
 
  <!--
  Behavior for Text node with null parent:
