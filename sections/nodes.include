@@ -1779,6 +1779,9 @@ interface Document : Node {
   [NewObject] Node importNode(Node node, optional boolean deep = false);
   Node adoptNode(Node node);
 
+  [NewObject] Attr createAttribute(DOMString localName);
+  [NewObject] Attr createAttributeNS(DOMString? namespace, DOMString qualifiedName);
+
   [NewObject] Event createEvent(DOMString interface);
 
   [NewObject] Range createRange();
@@ -2091,6 +2094,35 @@ invoked, must run these steps:
  <li><p><a>Adopt</a> <var>node</var> into the <a>context object</a>.
 
  <li><p>Return <var>node</var>.
+</ol>
+
+<hr>
+
+The <dfn method for=Document><code>createAttribute(<var>localName</var>)</code></dfn> method, when
+invoked, must run these steps:
+
+<ol>
+ <li><p>If <var>localName</var> does not match the <code><a href="https://www.w3.org/TR/xml/#NT-Name">Name</a></code> production in XML,
+ then <a>throw</a> an {{InvalidCharacterError}}.
+
+ <li>If the <a>context object</a> is an <a>HTML document</a>, then set <var>localName</var> to
+ <var>localName</var> in <a>ASCII lowercase</a>.
+
+ <li>Return a new <a>attribute</a> whose <a href="#attr-local-name">local name</a> is <var>localName</var> and
+ <a>node document</a> is <a>context object</a>.
+</ol>
+
+The
+<dfn method for=Document><code>createAttributeNS(<var>namespace</var>, <var>qualifiedName</var>)</code></dfn>
+method, when invoked, must run these steps:
+
+<ol>
+ <li><p>Let <var>namespace</var>, <var>prefix</var>, and <var>localName</var> be the result of
+ passing <var>namespace</var> and <var>qualifiedName</var> to <a>validate and extract</a>.
+
+ <li><p>Return a new <a>attribute</a> whose <a href="#attr-namespace">namespace</a> is <var>namespace</var>,
+ <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>, <a href="#attribute-local-name">local name</a> is
+ <var>localName</var>, and <a>node document</a> is <a>context object</a>.
 </ol>
 
 <hr>
