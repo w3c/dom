@@ -28,6 +28,7 @@ url: https://www.w3.org/TR/WebIDL-1/#idl-DOMException;
     text: InUseAttributeError; type: dfn
     text: InvalidStateError; type: dfn
     text: SyntaxError; type: dfn
+    text: TypeError; type: dfn
     text: InvalidModificationError; type: dfn
     text: NamespaceError; type: dfn
     text: InvalidAccessError; type: dfn
@@ -55,6 +56,7 @@ url: https://www.w3.org/TR/xml-names/#NT-QName; type: dfn; spec: xmlns;
     text: QName
 urlPrefix: https://infra.spec.whatwg.org/#; spec: encoding;
     text: ASCII whitespace; url: ascii-whitespace; type: dfn
+    text: ASCII lowercase; url: ascii-lowercase; type: dfn
 urlPrefix: https://www.w3.org/TR/encoding/#; spec: encoding;
     text: utf-8; url: utf-8; type: dfn
     text: encoding; url: encoding; type: dfn
