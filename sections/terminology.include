@@ -122,14 +122,11 @@ either with <var>replacement</var> and remove all other instances.
   <li>Return <var>result</var>.</li>
 </ol>
 
-<p>To <dfn>skip ASCII whitespace</dfn> means to
-<a>collect a code point sequence</a> of
-<a>ASCII whitespace</a> and discard the
-return value.
+<p>To <dfn>skip ASCII whitespace</dfn> means to <a>collect a code point sequence</a> of
+<a>ASCII whitespace</a> and discard the return value.
 
-<p>The <dfn>ordered set serializer</dfn> takes a
-<var>set</var> and returns the concatenation of the strings in
-<var>set</var>, separated from each other by U+0020.
+<p>The <dfn>ordered set serializer</dfn> takes a <var>set</var> and returns the concatenation of the strings in
+<var>set</var>, separated from each other by U+0020, if <var>set</var> is non-empty.
 
 <h3 id="terminology-selectors">Selectors</h3>
 <!--

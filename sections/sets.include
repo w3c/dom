@@ -1,7 +1,7 @@
 <section>
 <h2 id="sets">Sets</h2>
 
-<p class="note">Note: Yes, the name <code>{{DOMTokenList}}</code> is unfortunate legacy mishap.
+<p class="note">Note: Yes, the name <code>{{DOMTokenList}}</code> is an unfortunate legacy mishap.
 
 
 <h3 id="sets-interface-domtokenlist">Interface <code>{{DOMTokenList}}</code></h3>
@@ -64,31 +64,31 @@ interface DOMTokenList {
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="add()">add(<var>tokens</var>&hellip;)</a></code>
  <dd>
   <p>Adds all arguments passed, except those already present.
-  <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
+  <p>Throws a <code><a>SyntaxError</a></code> if one of the arguments is the empty string.
+  <p>Throws an <code><a>InvalidCharacterError</a></code> if one of the arguments contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="remove()">remove(<var>tokens</var>&hellip;)</a></code>
  <dd>
   <p>Removes arguments passed, if they are present.
-  <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
+  <p>Throws a <code><a>SyntaxError</a></code> if one of the arguments is the empty string.
+  <p>Throws an <code><a>InvalidCharacterError</a></code> if one of the arguments contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . <a method for=DOMTokenList lt="toggle()">toggle(<var>token</var> [, <var>force</var>])</a></code>
  <dd>
   <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it's present and adding it if it's not. If <var>force</var> is true, adds <var>token</var> (same as <code><a>add()</a></code>).  If <var>force</var> is false, removes <var>token</var> (same as <code><a>remove()</a></code>). <p>Returns true if <var>token</var> is now present, and false otherwise.
-  <p>Throws a "<code><a>SyntaxError</a></code>" if <var>token</var> is empty.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if <var>token</var> contains any spaces.
+  <p>Throws a <code><a>SyntaxError</a></code> if <var>token</var> is empty.
+  <p>Throws an <code><a>InvalidCharacterError</a></code> if <var>token</var> contains any spaces.
 
  <dt><code><var>tokenlist</var> . {{DOMTokenList/replace(token, newToken)}}</code>
  <dd>
   <p>Replaces <var>token</var> with <var>newToken</var>.
-  <p>Throws a "<code><a>SyntaxError</a></code>" if one of the arguments is the empty string.
-  <p>Throws an "<code><a>InvalidCharacterError</a></code>" if one of the arguments contains any <a>ASCII whitespace</a>.
+  <p>Throws a <code><a>SyntaxError</a></code> if one of the arguments is the empty string.
+  <p>Throws an <code><a>InvalidCharacterError</a></code> if one of the arguments contains any <a>ASCII whitespace</a>.
 
  <dt><code><var>tokenlist</var> . {{DOMTokenList/supports(token)}}</code>
  <dd>
   <p>Returns true if <var>token</var> is in the associated attribute’s supported tokens. Returns false otherwise.
-  <p>Throws a "<code><a>TypeError</a></code>" if the associated attribute has no supported tokens defined.
+  <p>Throws a <code><a>TypeError</a></code> if the associated attribute has no supported tokens defined.
 
  <dt><code><var>tokenlist</var> . {{DOMTokenList/value}}</code>
  <dd>
@@ -98,7 +98,7 @@ interface DOMTokenList {
 
 <div>
 
-<p>The <dfn attribute id="domtokenlist-length" for=DOMTokenList><code>length</code></dfn> attribute's getter must return the number of tokens in the <a>token set</a>.
+<p>The <dfn attribute id="domtokenlist-length" for=DOMTokenList><code>length</code></dfn> attribute's getter must return the number of tokens in the <a>context object</a>'s <a>token set</a>.
 
 <p>The object's <a>supported property indices</a> are the numbers in the range zero to the number of tokens in <a>token set</a> minus one, unless <a>token set</a> is  empty, in which case there are no <a>supported property indices</a>.
 
@@ -107,7 +107,7 @@ interface DOMTokenList {
 <ol>
  <li><p>If <var>index</var> is equal to or greater than the number of tokens in <a>token set</a>, then return null.
 
- <li><p>Return the <var>index</var>th token in <a>token set</a>.
+ <li><p>Return the <var>index</var>th token in the <a>context object</a>'s <a>token set</a>.
 </ol>
 
 <p>The <dfn method for=DOMTokenList id="set-contains-func"><code>contains(<var>token</var>)</code></dfn> method, when invoked, must return true if <var>token</var> is in <a>token set</a>,
@@ -119,9 +119,9 @@ and false otherwise.
  <li><p>For each <var>token</var> in <var>tokens</var>:
 
  <ol>
-  <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
+  <li><p>If <var>token</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
-  <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+  <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>.
  </ol>
 
  <li><p>For each <var>token</var> in <var>tokens</var>, append <var>token</var> to <a>token set</a>.
@@ -135,9 +135,9 @@ and false otherwise.
  <li><p>For each <var>token</var> in <var>tokens</var>:
 
  <ol>
-  <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
+  <li><p>If <var>token</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
-  <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+  <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
  </ol>
 
  <li><p>For each <var>token</var> in <var>tokens</var>, remove <var>token</var> from <a>token set</a>.
@@ -148,9 +148,9 @@ and false otherwise.
 <p>The <dfn method for=DOMTokenList><code>toggle(<var>token</var>, <var>force</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
+ <li><p>If <var>token</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
- <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+ <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li><p>Let <var>result</var> be false.
 
@@ -175,9 +175,9 @@ and false otherwise.
 method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>token</var> is the empty string, then <a>throw</a> a "<code><a>SyntaxError</a></code>".
+ <li><p>If <var>token</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
- <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+ <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li><p><a href="#ordered-set-replace">Replace</a> <var>token</var> in <a>token set</a> with <var>newToken</var>.
 
@@ -187,7 +187,7 @@ method, when invoked, must run these steps:
 <p>The <dfn method for=DOMTokenList id="set-supports-func"><code>supports(<var>token</var>)</code></dfn>
 method, when invoked, must return the result of running <a>validation steps</a> for the given <var>token</var>.
 
-<p>The <dfn attribute for=DOMTokenList id="domtokenlist-value"><code>value</code></dfn> attribute's getter must return the result of running <a>serialize steps</a> for <a>token set</a>.
+<p>The <dfn attribute for=DOMTokenList id="domtokenlist-value"><code>value</code></dfn> attribute's getter must return the result of running <a>context object</a>'s <a>serialize steps</a> for <a>token set</a>.
 
 <p>Setting the {{DOMTokenList/value}} attribute must run the <a>ordered set parser</a> for the given value and set <a>token set</a> to the result.
 

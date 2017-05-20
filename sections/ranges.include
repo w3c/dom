@@ -155,7 +155,7 @@ interface Range {
 
 </dl>
 
-<p>The <dfn constructor for=Range><code>Range()</code></dfn> constructor must return a new <a href="#concept-range">range</a> with (global object's associated <a href="#concept-document">document</a>, 0) as its <a>start</a> and <a>end</a>.
+<p>The <dfn constructor for=Range><code>Range()</code></dfn> constructor must return a new <a href="#concept-range">range</a> with (<a>current global object</a>'s <a>associated <code>Document</code></a>, 0) as its <a>start</a> and <a>end</a>.
 
 <hr>
 
@@ -207,9 +207,9 @@ interface Range {
 <p>To <dfn lt="set the start|set the end">set the start or end</dfn> of a <var>range</var> to a <a>boundary point</a> (<var>node</var>, <var>offset</var>), run these steps:
 
 <ol>
-  <li>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  <li>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
-  <li>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an "<code>IndexSizeError</code>". [[!WEBIDL]]
+  <li>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an <code><a>IndexSizeError</a></code>.
 
   <li>Let <var>bp</var> be the <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
@@ -241,7 +241,7 @@ interface Range {
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   3. <a>Set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a>).
 
@@ -252,7 +252,7 @@ interface Range {
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   3. <a>Set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a> plus one).
 
@@ -263,7 +263,7 @@ interface Range {
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   3. <a>Set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a>).
 
@@ -274,7 +274,7 @@ interface Range {
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   3. <a>Set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>parent</var>, <var>node</var>'s <a>index</a> plus one).
 
@@ -287,7 +287,7 @@ interface Range {
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
-  2. If <var>parent</var> is null, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  2. If <var>parent</var> is null, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   3. Let <var>index</var> be <var>node</var>'s <a>index</a>.
 
@@ -302,7 +302,7 @@ interface Range {
 <p>The <dfn method for=Range><code>selectNodeContents(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
-  1. If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+  1. If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
   2. Let <var>length</var> be the <a>length</a> of <var>node</var>.
 
@@ -323,8 +323,8 @@ interface Range {
    <li><code>{{Range/END_TO_END}}</code>, and
    <li><code>{{Range/END_TO_START}}</code>,
   </ul>
-  <p><a>throw</a> a "<code>NotSupportedError</code>". [[!WEBIDL]]
- <li><p>If <a>context object</a>'s <a href="#range-root">root</a> is not the same as <var>sourceRange</var>'s <a href="#range-root">root</a>, <a>throw</a> a "<code>WrongDocumentError</code>". [[!WEBIDL]]
+  <p><a>throw</a> a <code>NotSupportedError</code>.
+ <li><p>If <a>context object</a>'s <a href="#range-root">root</a> is not the same as <var>sourceRange</var>'s <a href="#range-root">root</a>, <a>throw</a> a <code>WrongDocumentError</code>.
 
  <li>
   <p>If <var>how</var> is:
@@ -453,7 +453,7 @@ interface Range {
  <li><p>Let <var>contained children</var> be a list of all <a>children</a> of <var>common ancestor</var> that are <a>contained</a> in <var>range</var>, in <a>tree order</a>.
 
  <li>
-  <p>If any member of <var>contained children</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+  <p>If any member of <var>contained children</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
   <!-- Firefox 4.0 actually removes the non-DocumentType nodes before
   throwing the exception. Opera 11.00 removes the DocumentType too, and
   doesn't throw. I go with IE9 and Chrome 12 dev, which don't remove any
@@ -595,7 +595,7 @@ interface Range {
  <li><p>Let <var>contained children</var> be a list of all <a>children</a> of <var>common ancestor</var> that are <a>contained</a> in <var>range</var>, in <a>tree order</a>.
 
  <li>
-  <p>If any member of <var>contained children</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+  <p>If any member of <var>contained children</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
   <p class="note">Note: We do not have to worry about the first or last partially contained node, because a <a href="#concept-doctype">doctype</a> can never be
   partially contained. It cannot be a boundary point of a range, and it
@@ -669,7 +669,7 @@ interface Range {
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn method for=Range><code>cloneContents()</code></dfn> method, when invoked, must return the result of <a href="#concept-range-clone">cloning</a> <a>context object</a>.
+<p>The <dfn method for=Range><code>cloneContents()</code></dfn> method, when invoked, must return the result of <a href="#concept-range-clone">cloning the contents</a> of <a>context object</a>.
 
 <p>To <dfn lt="range insert">insert</dfn> a <a href="#concept-node">node</a> <var>node</var> into a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
@@ -680,7 +680,7 @@ interface Range {
   position, and other browsers disagree, so the spec follows the majority.
   -->
  <li><p>If <var>range</var>'s <a>start node</a> is a {{ProcessingInstruction}} or {{Comment}} <a href="#concept-node">node</a>, is a {{Text}} <a href="#concept-node">node</a> whose <a>parent</a> is null,
- or is <var>node</var>, then <a>throw</a> an "<code><a>HierarchyRequestError</a></code>".
+ or is <var>node</var>, then <a>throw</a> an <code><a>HierarchyRequestError</a></code>.
 
  <!--
  Behavior for Text node with null parent:
@@ -769,13 +769,13 @@ check first thing, which matches everyone but Firefox.
 -->
 
 <ol>
- <li><p>If a non-<code>{{Text}}</code> <a href="#concept-node">node</a> is <a>partially contained</a> in the <a>context object</a>, <a>throw</a> an "<code><a>InvalidStateError</a></code>". [[!WEBIDL]]
+ <li><p>If a non-<code>{{Text}}</code> <a href="#concept-node">node</a> is <a>partially contained</a> in the <a>context object</a>, <a>throw</a> an <code><a>InvalidStateError</a></code>.
  <!-- Makes some sense: otherwise we'd clone a bunch of containers, which is
  unexpected. -->
  <!-- XXX Could we rephrase this condition to be more algorithmic and less
  declarative?-->
 
- <li><p>If <var>newParent</var> is a <code>{{Document}}</code>, <code>{{DocumentType}}</code>, or <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+ <li><p>If <var>newParent</var> is a <code>{{Document}}</code>, <code>{{DocumentType}}</code>, or <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
  <!-- But for Comment, Text, and ProcessingInstruction, we just fall through
  and throw a HIERARCHY_REQUEST_ERR when we try appendChild(). This makes
  absolutely no sense, but it's what DOM 2 Range specifies, and it's what
@@ -842,7 +842,7 @@ check first thing, which matches everyone but Firefox.
  <!-- This happens even if the offset is negative or too large, or if the node
  is a doctype, in both Firefox 9.0a2 and Chrome 16 dev. -->
 
- <li><p>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+ <li><p>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
 
  <li><p>If (<var>node</var>, <var>offset</var>) is <a>before</a> <a>start</a> or <a>after</a> <a>end</a>, return false.
 
@@ -855,15 +855,15 @@ check first thing, which matches everyone but Firefox.
 and Opera Next 12.00 alpha all do. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, <a>throw</a> a "<code>WrongDocumentError</code>". [[!WEBIDL]]
+ <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, <a>throw</a> a <code>WrongDocumentError</code>.
  <!-- Opera Next 12.00 alpha seems to return -1 in this case.  The spec matches
  Firefox 12.0a1 and Chrome 17 dev. -->
 
- <li><p>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an "<code>InvalidNodeTypeError</code>". [[!WEBIDL]]
+ <li><p>If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
  <!-- This matches Chrome 17 dev instead of Firefox 12.0a1 and Opera Next 12.00 alpha, which don't throw and seem to just ignore the offset instead.  See
  comment for isPointInRange(). -->
 
- <li><p>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an "<code><a>IndexSizeError</a></code>". [[!WEBIDL]]
+ <li><p>If <var>offset</var> is greater than <var>node</var>'s <a>length</a>, <a>throw</a> an <code><a>IndexSizeError</a></code>.
  <!-- This matches Chrome 17 dev instead of Firefox 12.0a1 and Opera Next 12.00
  alpha, which don't throw.  See comment for isPointInRange(). -->
 
@@ -903,7 +903,7 @@ Firefox 12.0a1. -->
 
 <hr>
 
-<p>The <dfn export for=Range id="range-stringifier">stringifier</dfn> must run these steps:
+<p>The <dfn export for=Range id="dom-range-stringifier">stringification behavior</dfn> must run these steps:
 
 <ol>
  <li><p>Let <var>s</var> be the empty string.
