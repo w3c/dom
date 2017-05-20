@@ -9,7 +9,8 @@
 
 <p>To illustrate, consider this HTML document:
 
-<pre class='example'><code>&lt;!DOCTYPE html&gt;
+<pre class='example'>
+<code>&lt;!DOCTYPE html&gt;
 &lt;html class=e&gt;
  &lt;head&gt;&lt;title&gt;Aliens?&lt;/title&gt;&lt;/head&gt;
  &lt;body&gt;Why yes.&lt;/body&gt;
@@ -103,18 +104,18 @@
 
 <ol>
  <li><p>If <var>parent</var> is not a <code>{{Document}}</code>, <code>{{DocumentFragment}}</code>, or <code>{{Element}}</code> <a href="#concept-node">node</a>,
- <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If <var>node</var> is a <a>host-including inclusive ancestor</a> of <var>parent</var>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If <var>node</var> is a <a>host-including inclusive ancestor</a> of <var>parent</var>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If <var>child</var> is not null and its <a>parent</a> is not <var>parent</var>, <a>throw</a> a "<code><a>NotFoundError</a></code>".
+ <li><p>If <var>child</var> is not null and its <a>parent</a> is not <var>parent</var>, <a>throw</a> a <code><a>NotFoundError</a></code>.
 
- <li><p>If <var>node</var> is not a <code>{{DocumentFragment}}</code>, <code>{{DocumentType}}</code>, <code>{{Element}}</code>, <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If <var>node</var> is not a <code>{{DocumentFragment}}</code>, <code>{{DocumentType}}</code>, <code>{{Element}}</code>, <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If either <var>node</var> is a <code>{{Text}}</code> <a href="#concept-node">node</a> and <var>parent</var> is a <a href="#concept-document">document</a>, or <var>node</var> is a <a href="#concept-doctype">doctype</a> and <var>parent</var> is not a <a href="#concept-document">document</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If either <var>node</var> is a <code>{{Text}}</code> <a href="#concept-node">node</a> and <var>parent</var> is a <a href="#concept-document">document</a>, or <var>node</var> is a <a href="#concept-doctype">doctype</a> and <var>parent</var> is not a <a href="#concept-document">document</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
  <li>
-  <p>If <var>parent</var> is a <a href="#concept-document">document</a>, and any of the statements below, switched on <var>node</var>, are true, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+  <p>If <var>parent</var> is a <a href="#concept-document">document</a>, and any of the statements below, switched on <var>node</var>, are true, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
   <dl class="switch">
    <dt><code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>
@@ -164,7 +165,7 @@
  <li><p>Let <var>nodes</var> be <var>node</var>'s <a>children</a> if <var>node</var> is a <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, and a list containing solely <var>node</var> otherwise.
 
  <li><p>If <var>node</var> is a <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a href="#node-remove">remove</a> its <a>children</a> with the <i>suppress observers flag</i> set.
-  <p>If <var>node</var> is a <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a>queue a mutation record</a> of "<code>childList</code>" for <var>node</var> with removedNodes <var>nodes</var>.
+ <li><p>If <var>node</var> is a <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a>queue a mutation record</a> of "<code>childList</code>" for <var>node</var> with removedNodes <var>nodes</var>.
 
   <p class="note">Note: This step intentionally does not pay attention to the <i>suppress observers flag</i>.
  <li>
@@ -186,18 +187,18 @@
 <p>To <dfn id="node-replace" for="node">replace</dfn> a <var>child</var> with <var>node</var> within a <var>parent</var>, run these steps:
 
 <ol>
- <li><p>If <var>parent</var> is not a {{Document}}, {{DocumentFragment}}, or {{Element}} <a href="#concept-node">node</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If <var>parent</var> is not a {{Document}}, {{DocumentFragment}}, or {{Element}} <a href="#concept-node">node</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If <var>node</var> is a <a>host-including inclusive ancestor</a> of <var>parent</var>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If <var>node</var> is a <a>host-including inclusive ancestor</a> of <var>parent</var>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If <var>child</var>'s <a>parent</a> is not <var>parent</var>, <a>throw</a> a "<code><a>NotFoundError</a></code>".
+ <li><p>If <var>child</var>'s <a>parent</a> is not <var>parent</var>, <a>throw</a> a <code><a>NotFoundError</a></code>.
 
- <li><p>If <var>node</var> is not a {{DocumentFragment}}, {{DocumentType}}, {{Element}}, {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>, <a>throw</a> a "{{HierarchyRequestError}}".
+ <li><p>If <var>node</var> is not a {{DocumentFragment}}, {{DocumentType}}, {{Element}}, {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
- <li><p>If either <var>node</var> is a {{Text}} <a href="#concept-node">node</a> and <var>parent</var> is a <a href="#concept-document">document</a>, or <var>node</var> is a <a href="#concept-doctype">doctype</a> and <var>parent</var> is not a <a href="#concept-document">document</a>, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+ <li><p>If either <var>node</var> is a {{Text}} <a href="#concept-node">node</a> and <var>parent</var> is a <a href="#concept-document">document</a>, or <var>node</var> is a <a href="#concept-doctype">doctype</a> and <var>parent</var> is not a <a href="#concept-document">document</a>, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
  <li>
-  <p>If <var>parent</var> is a <a href="#concept-document">document</a>, and any of the statements below, switched on <var>node</var>, are true, <a>throw</a> a "<code><a>HierarchyRequestError</a></code>".
+  <p>If <var>parent</var> is a <a href="#concept-document">document</a>, and any of the statements below, switched on <var>node</var>, are true, <a>throw</a> a <code><a>HierarchyRequestError</a></code>.
 
   <dl class="switch">
    <dt>{{DocumentFragment}} <a href="#concept-node">node</a>
@@ -268,7 +269,7 @@
 <p>To <dfn>pre-remove</dfn> a <var>child</var> from a <var>parent</var>, run these steps:</p>
 
 <ol>
- <li><p>If <var>child</var>'s <a>parent</a> is not <var>parent</var>, <a>throw</a> a "<code><a>NotFoundError</a></code>".
+ <li><p>If <var>child</var>'s <a>parent</a> is not <var>parent</var>, <a>throw</a> a <code><a>NotFoundError</a></code>.
 
  <li><p><a href="#node-remove">Remove</a> <var>child</var> from <var>parent</var>.
 
@@ -391,7 +392,7 @@ Element implements ParentNode;
   Inserts <var>nodes</var> before the  <a href="#tree-first-child">first child</a> of
   <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
 
-  <a>Throws</a> a <a>HierarchyRequestError</a> if the constraints of the <a>node tree</a> are violated.
+  <a>Throws</a> a <code><a>HierarchyRequestError</a></code> if the constraints of the <a>node tree</a> are violated.
   <!-- "NotFoundError" is impossible -->
 
  <dt><code><var>node</var> . {{ParentNode/append(nodes)}}
@@ -436,7 +437,7 @@ must run these steps:
  <li><p>Let <var>node</var> be the result of <a>converting nodes into a node</a> given
  <var>nodes</var> and <a>context object</a>'s <a>node document</a>.
 
- <li><p><a href="#node-append">append</a> <var>node</var> to <a>context object</a>.
+ <li><p><a href="#node-append">Append</a> <var>node</var> to <a>context object</a>.
 </ol>
 
 <p>The <dfn method for=ParentNode><code>querySelector(<var>selectors</var>)</code></dfn> method, when invoked, must return the first result of running <a>scope-match a selectors string</a> <var>selectors</var> against the <a>context object</a>, and null if the result is an empty list otherwise.
@@ -492,17 +493,19 @@ CharacterData implements ChildNode;
  <dd>
   Inserts <var>nodes</var> just before <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
 
-  <a>Throws</a> a {{HierarchyRequestError}} if the constraints of the <a>node tree</a> are violated.
+  <a>Throws</a> a <code><a>HierarchyRequestError</a></code> if the constraints of the <a>node tree</a> are violated.
 
  <dt><code><var>node</var> . {{ChildNode/after(nodes)}}</code>
  <dd>
   Inserts <var>nodes</var> just after <var>node</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
 
-  <a>Throws</a> a {{HierarchyRequestError}} if the constraints of the <a>node tree</a> are violated.
+  <a>Throws</a> a <code><a>HierarchyRequestError</a></code> if the constraints of the <a>node tree</a> are violated.
 
  <dt><code><var>node</var> . {{ChildNode/replaceWith(nodes)}}</code>
  <dd>
   Replaces <var>node</var> with <var>nodes</var>, while replacing strings in <var>nodes</var> with equivalent {{Text}} <a>nodes</a>.
+
+  <a>Throws</a> a <code><a>HierarchyRequestError</a></code> if the constraints of the <a>node tree</a> are violated.
 
  <dt><code><var>node</var> . {{ChildNode/remove()}}</code>
  <dd><p>Removes <var>node</var>.
@@ -614,7 +617,7 @@ interface NodeList {
 
 <p>The <dfn attribute id="nodelist-length" for=NodeList><code>length</code></dfn> attribute's getter must return the number of nodes <a>represented by the collection</a>.
 
-<p>The <dfn method id="nodelist-item-func" for=NodeList><code>item(<var>index</var>)</code></dfn> method, when invoked, must return the <var>index</var>th node in the <a>collection</a>. If there is no <var>index</var>th node in the <a>collection</a>, then the method, when invoked, must return null.
+<p>The <dfn method id="nodelist-item-func" for=NodeList><code>item(<var>index</var>)</code></dfn> method, when invoked, must return the <var>index</var>th node in the <a>collection</a>. If there is no <var>index</var>th node in the <a>collection</a>, then the method must return null.
 
 </div>
 
@@ -775,25 +778,26 @@ dictionary MutationObserverInit {
   <p>The <var>options</var> argument allows for setting mutation observation options via object members. These are the object members that can be used:
 
   <dl>
-   <dt><code>childList</code>
+   <dt>{{MutationObserverInit/childList}}
    <dd><p>Set to true if mutations to <var>target</var>'s <a>children</a> are to be observed.
 
-   <dt><code>attributes</code>
-   <dd><p>Set to true if mutations to <var>target</var>'s <a href="#concept-attribute">attributes</a> are to be observed. Can be omitted if <code>attributeOldValue</code> and/or <code>attributeFilter</code> is specified.
+   <dt>{{MutationObserverInit/attributes}}
+   <dd><p>Set to true if mutations to <var>target</var>'s <a href="#concept-attribute">attributes</a> are to be observed. Can be omitted if {{MutationObserverInit/attributeOldValue}} and/or {{MutationObserverInit/attributeFilter}} is specified.
 
-   <dt><code>characterData</code> <dd><p>Set to true if mutations to <var>target</var>'s <a href="#cd-data">data</a> are to be observed. Can be omitted if <code>characterDataOldValue</code> is specified.
+   <dt>{{MutationObserverInit/characterData
+   <dd><p>Set to true if mutations to <var>target</var>'s <a href="#cd-data">data</a> are to be observed. Can be omitted if {{MutationObserverInit/characterDataOldValue}} is specified.
 
-   <dt><code>subtree</code>
+   <dt>{{MutationObserverInit/subtree}}
    <dd><p>Set to true if mutations to not just <var>target</var>, but also <var>target</var>'s <a>descendants</a> are to be observed.
 
-   <dt><code>attributeOldValue</code>
-   <dd><p>Set to true if <code>attributes</code> is true or omitted and <var>target</var>'s <a href="#concept-attribute">attribute</a> <a href="#attribute-value">value</a> before the mutation needs to be recorded.
+   <dt>{{MutationObserverInit/attributeOldValue}}
+   <dd><p>Set to true if {{MutationObserverInit/attributes}} is true or omitted and <var>target</var>'s <a href="#concept-attribute">attribute</a> <a href="#attribute-value">value</a> before the mutation needs to be recorded.
 
-   <dt><code>characterDataOldValue</code>
-   <dd><p>Set to true if <code>characterData</code> is set to true or omitted and <var>target</var>'s <a href="#cd-data">data</a> before the mutation needs to be recorded.
+   <dt>{{MutationObserverInit/characterDataOldValue}}
+   <dd><p>Set to true if {{MutationObserverInit/characterData}} is set to true or omitted and <var>target</var>'s <a href="#cd-data">data</a> before the mutation needs to be recorded.
 
-   <dt><code>attributeFilter</code>
-   <dd><p>Set to a list of <a href="#concept-attribute">attribute</a> <a href="#attribute-local-name">local names</a> (without <a href="#attribute-namespace">namespace</a>) if not all <a href="#concept-attribute">attribute</a> mutations need to be observed and <code>attributes</code> is true or omitted.
+   <dt>{{MutationObserverInit/attributeFilter}}
+   <dd><p>Set to a list of <a href="#concept-attribute">attribute</a> <a href="#attribute-local-name">local names</a> (without <a href="#attribute-namespace">namespace</a>) if not all <a href="#concept-attribute">attribute</a> mutations need to be observed and {{MutationObserverInit/attributes}} is true or omitted.
   </dl>
 
  <dt><code><var>observer</var> . {{MutationObserver/disconnect()}}</code>
@@ -808,17 +812,17 @@ dictionary MutationObserverInit {
 <p>The <dfn method for=MutationObserver><code>observe(<var>target</var>, <var>options</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If either <var>options</var>' <code>attributeOldValue</code> or <code>attributeFilter</code> is present and <var>options</var>' <code>attributes</code> is omitted, set <var>options</var>' <code>attributes</code> to true.
+ <li><p>If either <var>options</var>' {{MutationObserverInit/attributeOldValue}} or {{MutationObserverInit/attributeFilter}} is present and <var>options</var>' {{MutationObserverInit/attributes}} is omitted, set <var>options</var>' {{MutationObserverInit/attributes}} to true.
 
- <li><p>If <var>options</var>' <code>characterDataOldValue</code> is present and <var>options</var>' <code>characterData</code> is omitted, set <var>options</var>' <code>characterData</code> to true.
+ <li><p>If <var>options</var>' {{MutationObserverInit/characterDataOldValue}} is present and <var>options</var>' {{MutationObserverInit/characterData}} is omitted, set <var>options</var>' {{MutationObserverInit/characterData}} to true.
 
- <li><p>If none of <var>options</var>' <code>childList</code>, <code>attributes</code>, and <code>characterData</code> is true, <a>throw</a> a <code>TypeError</code>.
+ <li><p>If none of <var>options</var>' {{MutationObserverInit/childList}}, {{MutationObserverInit/attributes}}, and {{MutationObserverInit/characterData}} is true, <a>throw</a> a <code><a>TypeError</a></code>.
 
- <li><p>If <var>options</var>' <code>attributeOldValue</code> is true and <var>options</var>' <code>attributes</code> is false, <a>throw</a> a JavaScript <code>TypeError</code>.
+ <li><p>If <var>options</var>' {{MutationObserverInit/attributeOldValue}} is true and <var>options</var>' {{MutationObserverInit/attributes}} is false, <a>throw</a> a JavaScript <code><a>TypeError</a></code>.
 
- <li><p>If <var>options</var>' <code>attributeFilter</code> is present and <var>options</var>' <code>attributes</code> is false, <a>throw</a> a JavaScript <code>TypeError</code>.
+ <li><p>If <var>options</var>' {{MutationObserverInit/attributeFilter}} is present and <var>options</var>' {{MutationObserverInit/attributes}} is false, <a>throw</a> a JavaScript <code><a>TypeError</a></code>.
 
- <li><p>If <var>options</var>' <code>characterDataOldValue</code> is true and <var>options</var>' <code>characterData</code> is false, <a>throw</a> a JavaScript <code>TypeError</code>.
+ <li><p>If <var>options</var>' {{MutationObserverInit/characterDataOldValue}} is true and <var>options</var>' {{MutationObserverInit/characterData}} is false, <a>throw</a> a JavaScript <code><a>TypeError</a></code>.
 
  <li>
   <p>For each <a>registered observer</a> <var>registered</var> in <var>target</var>'s list of <a>registered observers</a> whose <b>observer</b> is the <a>context object</a>:
@@ -906,8 +910,10 @@ interface MutationRecord {
   [SameObject] readonly attribute Node target;
   [SameObject] readonly attribute NodeList addedNodes;
   [SameObject] readonly attribute NodeList removedNodes;
+
   readonly attribute Node? previousSibling;
   readonly attribute Node? nextSibling;
+
   readonly attribute DOMString? attributeName;
   readonly attribute DOMString? attributeNamespace;
   readonly attribute DOMString? oldValue;
@@ -983,8 +989,8 @@ interface Node : EventTarget {
   readonly attribute Node? previousSibling;
   readonly attribute Node? nextSibling;
 
-           attribute DOMString? nodeValue;
-           attribute DOMString? textContent;
+  attribute DOMString? nodeValue;
+  attribute DOMString? textContent;
   void normalize();
 
   [NewObject] Node cloneNode(optional boolean deep = false);
@@ -1131,8 +1137,8 @@ interface Node : EventTarget {
  <li>
   <p>If <var>prefix</var> is not null, run these substeps:
   <ol>
-   <li><p>If <var title>prefix</var> does not match the <code>Name</code> production in XML, <span title=concept-throw>throw</span> an "<code>InvalidCharacterError</code>".
-   <li><p>If <var title>prefix</var> does not match the <code>NCName</code> production in Namespaces in XML, <span>throw</span> a "<code>NamespaceError</code>".
+   <li><p>If <var title>prefix</var> does not match the <code>Name</code> production in XML, <span title=concept-throw>throw</span> an <code><a>InvalidCharacterError</a></code>.
+   <li><p>If <var title>prefix</var> does not match the <code>NCName</code> production in Namespaces in XML, <span>throw</span> a <code><a>NamespaceError</a></code>.
   </ol>
  <li><p>Actually this does not match any browser. Let's try to drop it instead.
 </ol>- ->
@@ -1848,7 +1854,7 @@ interface XMLDocument : Document {};
 
 A <a href="#concept-document">document</a> is said to be in <dfn export id=concept-document-no-quirks>no-quirks mode</dfn> if its <a for=Document>mode</a> is "<code>no-quirks</code>", <dfn export id=concept-document-quirks>quirks mode</dfn> if its <a for=Document>mode</a> is "<code>quirks</code>", and <dfn export id=concept-document-limited-quirks>limited-quirks mode</dfn> if its <a for=Document>mode</a> is "<code>limited-quirks</code>".
 
-<div class="note no-backref"> <p>The <a for=Document>mode</a> is only ever changed from the default for <a href="#concept-document">documents</a> created by the <a>HTML parser</a> based on the presence, absence, or value of the DOCTYPE string, and by a new <a>browsing context</a> (initial "<code>about:blank</code>"). [[!HTML]]
+<div class="note no-backref"> <p>The <a for=Document>mode</a> is only ever changed from the default for <a href="#concept-document">documents</a> created by the <a>HTML parser</a> based on the presence, absence, or value of the DOCTYPE string, and by a new <a>browsing context</a> (initial "<code>about:blank</code>"). [[!HTML51]]
 
 <p><a>No-quirks mode</a> was originally known as "standards mode" and <a>limited-quirks mode</a> was once known as "almost standards mode". They have been renamed because their details are now defined by standards. (And because Ian Hickson vetoed their original names on the basis that they are nonsensical.)</div>
 
@@ -1968,9 +1974,9 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
  <dd>
   <p>Returns an <a href="#concept-element">element</a> with <a href="#element-namespace">namespace</a> <var>namespace</var>. Its <a href="#element-namespace-prefix">namespace prefix</a> will be everything before "<code>:</code>" (U+003E) in <var>qualifiedName</var> or null. Its <a href="#element-local-name">local name</a> will be everything after "<code>:</code>" (U+003E) in <var>qualifiedName</var> or <var>qualifiedName</var>.
 
-  <p>If <var>localName</var> does not match the <code><a type>Name</a></code> production an "<code><a>InvalidCharacterError</a></code>" will be thrown.
+  <p>If <var>localName</var> does not match the <code><a type>Name</a></code> production an <code><a>InvalidCharacterError</a></code> will be thrown.
 
-  <p>If one of the following conditions is true a "<code><a>NamespaceError</a></code>" will be thrown:
+  <p>If one of the following conditions is true a <code><a>NamespaceError</a></code> will be thrown:
 
   <ul>
    <li><var>localName</var> does not match the <code><a type>QName</a></code> production.
@@ -1995,8 +2001,8 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
  <dt><var ignore>processingInstruction</var> = <var>document</var> . {{Document/createProcessingInstruction(target, data)}}
  <dd>
   <p>Returns a {{ProcessingInstruction}} <a href="#concept-node">node</a> whose <a href="#pi-target">target</a> is <var>target</var> and <a href="#cd-data">data</a> is <var>data</var>.
-  <p>If <var>target</var> does not match the <code><a type>Name</a></code> production an "<code><a>InvalidCharacterError</a></code>" will be thrown.
-  <p>If <var>data</var> contains "<code>?&gt;</code>" an "<code><a>InvalidCharacterError</a></code>" will be thrown.
+  <p>If <var>target</var> does not match the <code><a type>Name</a></code> production an <code><a>InvalidCharacterError</a></code> will be thrown.
+  <p>If <var>data</var> contains "<code>?&gt;</code>" an <code><a>InvalidCharacterError</a></code> will be thrown.
 </dl>
 
 <p>The <dfn>element interface</dfn> for any <var>name</var> and <var>namespace</var> is <code>{{Element}}</code>, unless stated otherwise.
@@ -2006,7 +2012,7 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 <p>The <dfn method for=Document><code>createElement(<var>localName</var>)</code></dfn> method, when invoked, must run the these steps:
 
 <ol>
- <li><p>If <var>localName</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+ <li><p>If <var>localName</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li><p>If the <a>context object</a> is an <a>HTML document</a>, let <var>localName</var> be <a>converted to ASCII lowercase</a>.
 
@@ -2044,10 +2050,10 @@ invoked, must run these steps:
 
 <ol>
  <li><p>If <a>context object</a> is an <a>HTML document</a>, then <a>throw</a> a
- {{NotSupportedError}}.
+ <code><a>NotSupportedError</a></code>.
 
  <li><p>If <var>data</var> contains the string "<code>]]></code>", then <a>throw</a> an
- {{InvalidCharacterError}}.
+ <code><a>InvalidCharacterError</a></code>.
 
  <li><p>Return a new {{CDATASection}} <a href="#concept-node">node</a> with its <a href="#cd-data">data</a> set to <var>data</var> and
  <a href="#node-document">node document</a> set to the <a>context object</a>.
@@ -2059,9 +2065,9 @@ invoked, must run these steps:
 <p>The <dfn method for=Document><code>createProcessingInstruction(<var>target</var>, <var>data</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>target</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>". <!-- DOM3 does not check for "xml" -->
+ <li><p>If <var>target</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an <code><a>InvalidCharacterError</a></code>. <!-- DOM3 does not check for "xml" -->
 
- <li><p>If <var>data</var> contains the string "<code>?&gt;</code>", <a>throw</a> an "<code><a>InvalidCharacterError</a></code>". <!-- Gecko does this. -->
+ <li><p>If <var>data</var> contains the string "<code>?&gt;</code>", <a>throw</a> an <code><a>InvalidCharacterError</a></code>. <!-- Gecko does this. -->
 
  <li><p>Return a new <code>{{ProcessingInstruction}}</code> <a href="#concept-node">node</a>, with <a href="#pi-target">target</a> set to <var>target</var>, <a href="#cd-data">data</a> set to <var>data</var>, and <a>node document</a> set to the <a>context object</a>.
 </ol>
@@ -2076,20 +2082,20 @@ invoked, must run these steps:
  <dd>
   <p>Returns a copy of <var>node</var>. If <var>deep</var> is true, the copy also includes the <var>node</var>'s <a>descendants</a>.
 
-  <p>If <var>node</var> is a <a href="#concept-document">document</a> throws a "<code><a>NotSupportedError</a></code>".
+  <p>If <var>node</var> is a <a href="#concept-document">document</a> throws a <code><a>NotSupportedError</a></code>.
 
  <dt><var ignore>node</var> = <var>document</var> . <code><a>adoptNode(<var>node</var>)</a></code>
 
  <dd>
   <p>Moves <var>node</var> from another <a href="#concept-document">document</a> and returns it.
 
-  <p>If <var>node</var> is a <a href="#concept-document">document</a> throws a "<code><a>NotSupportedError</a></code>".
+  <p>If <var>node</var> is a <a href="#concept-document">document</a> throws a <code><a>NotSupportedError</a></code>.
 </dl>
 
 <p>The <dfn method for=Document><code>importNode(<var>node</var>, <var>deep</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>node</var> is a <a href="#concept-document">document</a>, <a>throw</a> a "<code><a>NotSupportedError</a></code>".
+ <li><p>If <var>node</var> is a <a href="#concept-document">document</a>, <a>throw</a> a <code><a>NotSupportedError</a></code>.
 
  <li><p>Return a <a href="#node-clone">clone</a> of <var>node</var>, with <a>context object</a> and the <i>clone children flag</i> set if <var>deep</var> is true.
 </ol>
@@ -2127,7 +2133,7 @@ invoked, must run these steps:
 <p>The <dfn method for=Document><code>adoptNode(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>node</var> is a <a href="#concept-document">document</a>, <a>throw</a> a "<code><a>NotSupportedError</a></code>".
+ <li><p>If <var>node</var> is a <a href="#concept-document">document</a>, <a>throw</a> a <code><a>NotSupportedError</a></code>.
 
  <li><p><a>Adopt</a> <var>node</var> into the <a>context object</a>.
 
@@ -2141,7 +2147,7 @@ invoked, must run these steps:
 
 <ol>
  <li><p>If <var>localName</var> does not match the <code><a type>Name</a></code> production in XML,
- then <a>throw</a> an {{InvalidCharacterError}}.
+ then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li>If the <a>context object</a> is an <a>HTML document</a>, then set <var>localName</var> to
  <var>localName</var> in <a>ASCII lowercase</a>.
@@ -2192,11 +2198,11 @@ method, when invoked, must run these steps:
     <tr><td>"<code>uievents</code>"<td><code><a>UIEvent</a></code><td> [[UIEVENTS]]
   </table></li>
 
- <li><p>If <var>constructor</var> is null, <a>throw</a> a {{NotSupportedError}}.
+ <li><p>If <var>constructor</var> is null, <a>throw</a> a <code><a>NotSupportedError</a></code>.
 
  <li>
   <p>If the interface indicated by <var>constructor</var> is not exposed on the <a>relevant global
-  object</a> of the <a>context object</a>, then <a>throw</a> a {{NotSupportedError}}.
+  object</a> of the <a>context object</a>, then <a>throw</a> a <code><a>NotSupportedError</a></code>.
 
   <p class=note>Typically user agents disable support for touch events in some configurations, in
   which case this clause would be triggered for the interface <a>TouchEvent</a>.
@@ -2262,7 +2268,7 @@ interface DOMImplementation {
  <dt><code><var ignore>doctype</var> = <var>document</var> . {{Document/implementation}} . {{DOMImplementation/createDocumentType(qualifiedName, publicId, systemId)}}
 
  <dd>
-  <p>Returns a <a href="#concept-doctype">doctype</a>, with the given <var>qualifiedName</var>, <var>publicId</var>, and <var>systemId</var>. If <var>qualifiedName</var> does not match the <code><a type>Name</a></code> production, an "<code><a>InvalidCharacterError</a></code>" is thrown, and if it does not match the <code><a type>QName</a></code> production, a "<code><a>NamespaceError</a></code>" is thrown.
+  <p>Returns a <a href="#concept-doctype">doctype</a>, with the given <var>qualifiedName</var>, <var>publicId</var>, and <var>systemId</var>. If <var>qualifiedName</var> does not match the <code><a type>Name</a></code> production, an <code><a>InvalidCharacterError</a></code> is thrown, and if it does not match the <code><a type>QName</a></code> production, a <code><a>NamespaceError</a></code> is thrown.
 
  <dt><code><var ignore>doc</var> = <var>document</var> . {{Document/implementation}} . <a method for=DOMImplementation lt=createDocument()>createDocument(<var>namespace</var>, <var>qualifiedName</var> [, <var>doctype</var> = null])</a></code>
 
@@ -2282,8 +2288,8 @@ interface DOMImplementation {
 <p>The <dfn method for=DOMImplementation><code>createDocumentType(<var>qualifiedName</var>, <var>publicId</var>, <var>systemId</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>qualifiedName</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
- <li><p>If <var>qualifiedName</var> does not match the <code><a type>QName</a></code> production, <a>throw</a> a "<code><a>NamespaceError</a></code>".
+ <li><p><a>Validate</a> <var>qualifiedName</var>.
+
  <li><p>Return a new <a href="#concept-doctype">doctype</a>, with <var>qualifiedName</var> as its <a href="#doctype-name">name</a>, <var>publicId</var> as its <a>public ID</a>, and <var>systemId</var> as its <a>system ID</a>, and with its <a>node document</a> set to the associated <a href="#concept-document">document</a> of the <a>context object</a>.
 </ol>
 <p class="note">Note: No check is performed that <var>publicId</var> matches the <code>PublicChar</code> production or that <var>systemId</var> does not contain both a '<code>"</code>' and "<code>'</code>".
@@ -2330,9 +2336,9 @@ interface DOMImplementation {
 
  <li><p>Create a <a href="#concept-doctype">doctype</a>, with "<code>html</code>" as its <a href="#doctype-name">name</a> and with its <a>node document</a> set to <var>doc</var>. <a href="#node-append">append</a> the newly created node to <var>doc</var>.
 
- <li><p>Create an <code>html</code> element in the <a>HTML namespace</a>, and <a href="#node-append">append</a> it to <var>doc</var>.
+ <li><p>Create a <code>html</code> element in the <a>HTML namespace</a>, and <a href="#node-append">append</a> it to <var>doc</var>.
 
- <li><p>Create a <code>head</code> element in the <a>HTML namespace</a>, and  <a href="#node-append">append</a> it to the <code>html</code> element created in the previous step.
+ <li><p>Create a <code>head</code> element in the <a>HTML namespace</a>, and <a href="#node-append">append</a> it to the <code>html</code> element created in the previous step.
 
  <li>
   <p>If the <var>title</var> argument is not omitted:
@@ -2376,7 +2382,7 @@ interface DocumentFragment : Node {
  <dd><p>Returns a new <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>.
 </dl>
 
-<p>The <dfn constructor for=DocumentFragment><code>DocumentFragment()</code></dfn> constructor must return a new <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a> whose <a>node document</a> is the global object's associated <a href="#concept-document">document</a>.
+<p>The <dfn constructor for=DocumentFragment><code>DocumentFragment()</code></dfn> constructor must return a new <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a> whose <a>node document</a> is <a>current global object</a>'s <a>associated <code>Document</code></a>.
 
 <h3 id="nodes-interface-documenttype">Interface <code>{{DocumentType}}</code></h3>
 
@@ -2395,11 +2401,11 @@ interface DocumentType : Node {
 
 <p>When a <a href="#concept-doctype">doctype</a> is created, its <a href="#doctype-name">name</a> is always given. Unless explicitly given when a <a href="#concept-doctype">doctype</a> is created, its <a>public ID</a> and <a>system ID</a> are the empty string.
 
-<p>The <dfn attribute for=DocumentType id="documenttype-name"><code>name</code></dfn> attribute's getter must return the <a href="#doctype-name">name</a>.
+<p>The <dfn attribute for=DocumentType id="documenttype-name"><code>name</code></dfn> attribute's getter must return the <a>context object</a>'s <a href="#doctype-name">name</a>.
 
-<p>The <dfn attribute for=DocumentType><code>publicId</code></dfn> attribute's getter must return the <a>public ID</a>.
+<p>The <dfn attribute for=DocumentType><code>publicId</code></dfn> attribute's getter must return the <a>context object</a>'s <a>public ID</a>.
 
-<p>The <dfn attribute for=DocumentType><code>systemId</code></dfn> attribute's getter must return the <a>system ID</a>.
+<p>The <dfn attribute for=DocumentType><code>systemId</code></dfn> attribute's getter must return the <a>context object</a>'s <a>system ID</a>.
 
 <h3 id="nodes-interface-element">Interface <code>{{Element}}</code></h3>
 <pre class='idl'>
@@ -2448,7 +2454,7 @@ interface Element : Node {
 
 <p><a href="#concept-element">Elements</a> have an associated <dfn id="element-namespace" for="element">namespace</dfn>, <dfn id="element-namespace-prefix" for="element">namespace prefix</dfn>, and <dfn id="element-local-name" for="element">local name</dfn>. When an <a href="#concept-element">element</a> is created, its <a href="#element-local-name">local name</a> is always given. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a href="#element-namespace">namespace</a> and <a href="#element-namespace-prefix">namespace prefix</a> are null.
 
-<p>An <a href="#concept-element">element</a>'s <a>qualified name</a> is its <a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
+<p>An <a href="#concept-element">element</a>'s <dfn id="element-qualified-name" for=Element>qualified name</dfn> is its <a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
 <a href="#element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its <a href="#element-local-name">local name</a>.
 
 <p><a href="#concept-element">Elements</a> also have an <dfn export id="concept-element-attribute-list" for=Element>attribute list</dfn>, which is a list exposed through a {{NamedNodeMap}}. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a for=Element>attribute list</a> is empty. An <a href="#concept-element">element</a> <dfn>has</dfn> an <a href="#concept-attribute">attribute</a> <var>A</var> if <var>A</var> is in its <a
@@ -2457,6 +2463,8 @@ for=Element>attribute list</a>.
 This and <a lt="other applicable specifications">other specifications</a> may define
 <dfn>attribute change steps</dfn> for <a href="#concept-element">elements</a>. The algorithm is passed <var>element</var>, <var>localName</var>,
 <var>oldValue</var>, <var>value</var>, and <var>namespace</var>.
+
+<hr>
 
 To <dfn export id=concept-element-attributes-replace lt="replace an attribute">replace</dfn> an
 <a href="#concept-attribute">attribute</a> <var>oldAttr</var> by an <a href="#concept-attribute">attribute</a> <var>newAttr</var>
@@ -2524,7 +2532,7 @@ To <dfn id="element-attributes-set-by-attr">set an attribute</dfn> given an
 
 <ol>
  <li><p>If <var>attr</var>'s <a href="#concept-element">element</a> is neither null nor <var>element</var>,
- <a>throw</a> an {{InUseAttributeError}}.
+ <a>throw</a> an <code><a>InUseAttributeError</a></code>.
 
  <li><p>Let <var>oldAttr</var> be the result of
  <a lt="get an attribute by namespace and local name">getting an attribute</a> given
@@ -2683,7 +2691,8 @@ claims as to whether using them is conforming or not.
  <dd><p>Returns the <a href="#element-local-name">local name</a>.
 
  <dt><var ignore>qualifiedName</var> = <var>element</var> . {{Element/tagName}}
- <dd><p>If <a href="#element-namespace-prefix">namespace prefix</a> is not null, returns the concatenation of <a href="#element-namespace-prefix">namespace prefix</a>, "<code>:</code>", and <a href="#element-local-name">local name</a>. Otherwise it returns the <a href="#element-local-name">local name</a>. (The return value is uppercased in an <a>HTML document</a>.)
+ <dd>Returns the <a href="#element-qualified-name" for=Element>qualified name</a>. (The return value is uppercased in an
+ <a>HTML document</a>.)
 </dl>
 
 <p>The <dfn attribute for=Element id="element-namespaceuri"><code>namespaceURI</code></dfn> attribute's getter must return the <a>context object</a>'s <a href="#element-namespace">namespace</a>.
@@ -2694,11 +2703,11 @@ claims as to whether using them is conforming or not.
 
 <p>The <dfn attribute for=Element><code>tagName</code></dfn> attribute's getter must run these steps:
 <ol>
- <li><p>If <a>context object</a>'s <a href="#element-namespace-prefix">namespace prefix</a> is not null, let <var>qualified name</var> be its <a href="#element-namespace-prefix">namespace prefix</a>, followed by a "<code>:</code>" (U+003A), followed by its <a href="#element-local-name">local name</a>. Otherwise, let <var>qualified name</var> be its <a href="#element-local-name">local name</a>.
+ <li><p>Let <var>qualifiedName</var> be <a>context object</a>'s <a for=Element>qualified name</a>.
 
  <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>qualified name</var> be <a>converted to ASCII uppercase</a>.
 
- <li><p>Return <var>qualified name</var>.
+ <li><p>Return <var>qualifiedName</var>.
 </ol>
 
 <hr>
@@ -2751,7 +2760,7 @@ true otherwise.
 <p>The <dfn method for=Element><code>setAttribute(<var>qualifiedName</var>, <var>value</var>)</code></dfn> method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>name</var> does not match the <code><a type>QName</a></code> production in XML, <a>throw</a> an "<code><a>InvalidCharacterError</a></code>".
+ <li><p>If <var>name</var> does not match the <code><a type>QName</a></code> production in XML, <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>qualifiedName</var> be <a>converted to ASCII lowercase</a>.
 
@@ -2814,7 +2823,7 @@ method, when invoked, must run these steps:
 <ol>
  <li>Let <var>s</var> be the result of <a>parse a selector</a> from <var>selectors</var>. [[!SELECTORS4]]
 
- <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
+ <li>If <var>s</var> is failure, <a>throw</a> a <code><a>SyntaxError</a></code>.
 
  <li>Let <var>elements</var> be <a>context object</a>'s <a>inclusive ancestors</a> that are <a href="#concept-element">elements</a>, in reverse <a>tree order</a>.
 
@@ -2829,7 +2838,7 @@ The <dfn method for=Element><code>matches(<var>selectors</var>)</code></dfn> and
 <ol>
  <li>Let <var>s</var> be the result of <a>parse a selector</a> from <var>selectors</var>. [[!SELECTORS4]]
 
- <li>If <var>s</var> is failure, <a>throw</a> a {{SyntaxError}}.
+ <li>If <var>s</var> is failure, <a>throw</a> a <code><a>SyntaxError</a></code>.
 
  <li>Return true if the result of <a>match a selector against an element</a>, using <var>s</var>, <var>element</var>, and <a>:scope element</a> <a>context object</a>, returns success, and false otherwise. [[!SELECTORS4]]
 </ol>
@@ -2850,7 +2859,7 @@ when invoked, must return the result of <a href="#element-attributes-set-by-attr
 
 <ol>
  <li><p>If <a>context object</a>'s <a for=Element>attribute list</a> doesn't contain <var>attr</var>,
- <a for=Element>attribute list</a>, <a>throw</a> a {{NotFoundError}}.
+ <a for=Element>attribute list</a>, <a>throw</a> a <code><a>NotFoundError</a></code>.
 
  <li><p><a href="#element-attributes-remove-by-name">Remove</a> <var>attr</var> from <a>context object</a>.
 
@@ -2895,7 +2904,7 @@ when invoked, must return the result of <a href="#element-attributes-set-by-attr
   <var>element</var>'s <a for=tree>next sibling</a>. Rethrow any exceptions.
 
  <dt>Otherwise</dt>
- <dd><p>Throw a "<code><a>SyntaxError</a></code>".
+ <dd><p>Throw a <code><a>SyntaxError</a></code>.
 </dl>
 
 <p>The
@@ -2922,11 +2931,14 @@ method, when invoked, must run these steps:
 [Exposed=Window, LegacyUnenumerableNamedProperties]
 interface NamedNodeMap {
   readonly attribute unsigned long length;
+
   getter Attr? item(unsigned long index);
   getter Attr? getNamedItem(DOMString qualifiedName);
   Attr? getNamedItemNS(DOMString? namespace, DOMString localName);
+
   Attr? setNamedItem(Attr attr);
   Attr? setNamedItemNS(Attr attr);
+
   Attr removeNamedItem(DOMString qualifiedName);
   Attr removeNamedItemNS(DOMString? namespace, DOMString localName);
 };
@@ -2938,11 +2950,11 @@ A {{NamedNodeMap}} has an associated <dfn export id=concept-namednodemap-element
 A {{NamedNodeMap}} object's <dfn export id=concept-namednodemap-attribute for=NamedNodeMap>attribute list</dfn> is its
 <a href="#concept-namednodemap-element">element</a>'s <a for=Element>attribute list</a>.
 
-<hr>
-
 A {{NamedNodeMap}} object's <a>supported property indices</a> are the numbers in the range zero to the number of <a href="#concept-attribute">attributes</a> in its
 <a href="#concept-namednodemap-attribute">attribute list</a> map minus one, unless the <a href="#concept-namednodemap-attribute">attribute list</a> is empty, in which case
 there are no <a>supported property indices</a>.
+
+<hr>
 
 <p>The <dfn attribute for=NamedNodeMap><code>length</code></dfn> attribute's getter must return
 the number of <a href="#concept-attribute">attributes</a> in the <a for=NamedNodeMap>attribute list</a>.
@@ -3002,7 +3014,7 @@ methods, when invoked, must return the result of <a lt="set an attribute">settin
  <li><p>Let <var>attr</var> be the result of  <a lt="remove an attribute by name">removing an attribute</a> given
  <var>qualifiedName</var> and <a for=NamedNodeMap>element</a>.
 
- <li><p>If <var>attr</var> is null, then <a>throw</a> a {{NotFoundError}}.
+ <li><p>If <var>attr</var> is null, then <a>throw</a> a <code><a>NotFoundError</a></code>.
 
  <li><p>Return <var>attr</var>.
 </ol>
@@ -3015,7 +3027,7 @@ method, when invoked, must run these steps:
  <a lt="remove an attribute by namespace and local name">removing an attribute</a> given
  <var>namespace</var>, <var>localName</var>, and <a for=NamedNodeMap>element</a>.
 
- <li><p>If <var>attr</var> is null, then <a>throw</a> a {{NotFoundError}}.
+ <li><p>If <var>attr</var> is null, then <a>throw</a> a <code><a>NotFoundError</a></code>.
 
  <li><p>Return <var>attr</var>.
 </ol>
@@ -3089,6 +3101,7 @@ string <var>value</var>, run these steps:
 interface CharacterData : Node {
   [TreatNullAs=EmptyString] attribute DOMString data;
   readonly attribute unsigned long length;
+
   DOMString substringData(unsigned long offset, unsigned long count);
   void appendData(DOMString data);
   void insertData(unsigned long offset, DOMString data);
@@ -3106,7 +3119,7 @@ interface CharacterData : Node {
 <ol>
  <li><p>Let <var>length</var> be <var>node</var>'s <code><a href="#characterdata-length">length</a></code> attribute value.
 
- <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an "<code><a>IndexSizeError</a></code>".
+ <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an <code><a>IndexSizeError</a></code>.
 
  <li><p>If <var>offset</var> plus <var>count</var> is greater than <var>length</var> let <var>count</var> be <var>length</var> minus <var>offset</var>.
 
@@ -3132,12 +3145,14 @@ interface CharacterData : Node {
 <ol>
  <li><p>Let <var>length</var> be <var>node</var>'s <a href="#node-length">length</a>.
 
- <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an "<code><a>IndexSizeError</a></code>".
+ <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an <code><a>IndexSizeError</a></code>.
 
  <li><p>If <var>offset</var> plus <var>count</var> is greater than <var>length</var>, return a string whose value is the <a>code units</a> from the <var>offset</var><sup>th</sup> <a>code unit</a> to the end of <var>node</var>'s <a href="#cd-data">data</a>, and then terminate these steps.
 
  <li><p>Return a string whose value is the <a>code units</a> from the <var>offset</var><sup>th</sup> <a>code unit</a> to the <var>offset</var>+<var>count</var><sup>th</sup> <a>code unit</a> in <var>node</var>'s <a href="#cd-data">data</a>.
 </ol>
+
+<hr>
 
 <p>The <dfn attribute id="characterdata-data" for=CharacterData><code>data</code></dfn> attribute's getter must return <a href="#cd-data">data</a>, and on setting, must <a>replace data</a> with node <a>context object</a> offset 0, count <a>context object</a>'s <a href="#node-length">length</a>, and data new value.
 
@@ -3177,6 +3192,9 @@ interface Text : CharacterData {
 if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>node</var>'s
 <a for=tree>next sibling</a> <a>exclusive <code>Text</code> node</a>, if any, and its
 <a>contiguous exclusive <code>Text</code> nodes</a>, avoiding any duplicates.
+
+<hr>
+
 <dl>
  <dt><code><var ignore>text</var> = new <a href="#documentfragment">Text</a>([<var>data</var> = ""])</code>
  <dd><p>Returns a new <code>{{Text}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
@@ -3188,14 +3206,16 @@ if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>no
  <dd><p>Returns the combined <a href="#cd-data">data</a> of all direct <code>{{Text}}</code> <a href="#concept-node">node</a> <a>siblings</a>.
 </dl>
 
-<p>The <dfn constructor for=Text><code>Text(<var>data</var>)</code></dfn> constructor must return a new <code>{{Text}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var> and <a>node document</a> is the global object's associated <a href="#concept-document">document</a>.
+<p>The <dfn constructor for=Text><code>Text(<var>data</var>)</code></dfn> constructor, when invoked, must return a new <code>{{Text}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var> and <a>node document</a> is the global object's associated <a href="#concept-document">document</a>.
+
+<hr>
 
 <p>To <dfn>split</dfn> a <code>{{Text}}</code> <a href="#concept-node">node</a> <var>node</var> with offset <var>offset</var>, run these steps:
 
 <ol>
  <li><p>Let <var>length</var> be <var>node</var>'s <a href="#node-length">length</a>.
 
- <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an "<code><a>IndexSizeError</a></code>".
+ <li><p>If <var>offset</var> is greater than <var>length</var>, <a>throw</a> an <code><a>IndexSizeError</a></code>.
 
  <li><p>Let <var>count</var> be <var>length</var> minus <var>offset</var>.
 
@@ -3227,15 +3247,6 @@ if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>no
   </ol>
 
  <li><p><a>Replace data</a> with node <var>node</var>, offset <var>offset</var>, count <var>count</var>, and data the empty string.
-
- <li>
-  <p>If <var>parent</var> is null, run these substeps:</p>
-
-  <ol>
-   <li><p>For each <a href="#concept-range">range</a> whose <a>start node</a> is <var>node</var> and <a>start offset</a> is greater than <var>offset</var>, set its <a>start offset</a> to <var>offset</var>.
-
-   <li><p>For each <a href="#concept-range">range</a> whose <a>end node</a> is <var>node</var> and <a>end offset</a> is greater than <var>offset</var>, set its <a>end offset</a> to <var>offset</var>.
-  </ol>
 
  <li><p>Return <var>new node</var>.
 </ol>
@@ -3280,5 +3291,5 @@ interface Comment : CharacterData {
  <dd><p>Returns a new <code>{{Comment}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var>.
 </dl>
 
-<p>The <dfn constructor for=Comment><code>Comment(<var>data</var>)</code></dfn> constructor must return a new <code>{{Comment}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var> and <a>node document</a> is the global object's associated <a href="#concept-document">document</a>.
+<p>The <dfn constructor for=Comment><code>Comment(<var>data</var>)</code></dfn> constructor, when invoked, must return a new <code>{{Comment}}</code> <a href="#concept-node">node</a> whose <a href="#cd-data">data</a> is <var>data</var> and <a>node document</a> is <a>current global object</a>'s <a>associated <code>Document</code></a>.
 </section>

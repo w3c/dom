@@ -76,12 +76,14 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: unit of related similar-origin browsing contexts; url: browsers.html#unit-of-related-similar-origin-browsing-contexts; type: dfn
     text: Unicode serialization; url: browsers.html#unicode-serialization; type: dfn
     text: HashChangeEvent; url: browsers.html#the-hashchangeevent-interface; type: dfn
+    text: associated document; url:browsers.html#document-associated-with-a-window; type: dfn
     text: template; url: semantics-scripting.html#the-template-element; type: dfn
     text: relevant global object; url: webappapis.html#relevant-global-object; type:dfn
     text: Queue; url: webappapis.html#queue-a-microtask; type: dfn
     text: script; url: semantics-scripting.html#the-script-element; type: dfn
     text: input; url: sec-forms.html#the-input-element; type: dfn
     text: document base URL; url: infrastructure.html#document-base-url; type: dfn
+    text: current global object; url:webappapis.html#current-global-object; type: dfn
 urlPrefix: https://www.w3.org/TR/WebIDL-1/#; spec: WEBIDL1
     text: dictionary member; url: dfn-dictionary-member; type: dfn
     text: identifier; url: dfn-identifier; type: dfn
