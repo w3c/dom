@@ -1628,7 +1628,7 @@ steps for each <a>descendant</a> <a>exclusive <code>Text</code> node</a> <var>no
 <ol>
  <li><p>If <var>element</var>'s <a href="#element-namespace">namespace</a> is <var>namespace</var> and its <a href="#element-namespace-prefix">namespace prefix</a> is not null, then return its <a href="#element-namespace-prefix">namespace prefix</a>.
 
- <li><p>If, <var>element</var> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#attribute-value">value</a> is <var>namespace</var>, then return <var>element</var>'s first such <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
+ <li><p>If <var>element</var> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#attribute-value">value</a> is <var>namespace</var>, then return <var>element</var>'s first such <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
 
  <li><p>If <var>element</var>'s <a>parent element</a> is not null, then return the result of running <a>locate a namespace prefix</a> on that <a href="#concept-element">element</a> using <var>namespace</var>. <li><p>Return null.
 
@@ -2218,13 +2218,13 @@ method, when invoked, must run these steps:
  <li><p>Return <var>event</var>.
 </ol>
 
-<p class="note">Note: <a>Event</a> constructors can be used instead.
+<p class="note">Note: <a>Event</a> constructors ought to be used instead.
 
 <hr>
 
 <p>The <dfn method for=Document><code>createRange()</code></dfn> method, when invoked, must return a new <a href="#concept-range">range</a> with (<a>context object</a>, 0) as its <a>start</a> and <a>end</a>.
 
-<p class="note">Note: The <code><a>Range()</a></code> constructor can be used instead.
+<p class="note">Note: The <code><a>Range()</a></code> constructor ought to be used instead.
 
 <hr>
 
@@ -2232,7 +2232,7 @@ method, when invoked, must run these steps:
 
 <ol>
  <li><p>Create a <code>{{NodeIterator}}</code> object.
- <li><p>Set <a href="#traversal-root">root</a> and initialize the <code>{{NodeIterator/referenceNode}}</code> attribute to the <var>root</var> argument.
+ <li><p>Set <a href="#traversal-root">root</a> to <var>root</var> and initialize the <code>{{NodeIterator/referenceNode}}</code> attribute to the <var>root</var> argument.
  <li><p>Initialize the <code>{{NodeIterator/pointerBeforeReferenceNode}}</code> attribute to true.
  <li><p>Set <a href="#traversal-whattoshow">whatToShow</a> to the <var>whatToShow</var> argument.
  <li><p>Set <a href="#traversal-filter" title="traversal-filter">filter</a> to <var>filter</var>.
@@ -2243,7 +2243,7 @@ method, when invoked, must run these steps:
 
 <ol>
  <li><p>Create a <code>{{TreeWalker}}</code> object.
- <li><p>Set <a href="#traversal-root" title="traversal-root">root</a> and initialize the <code>{{TreeWalker/currentNode}}</code> attribute to the <var>root</var> argument.
+ <li><p>Set <a href="#traversal-root" title="traversal-root">root</a> to <var>root</var> and initialize the <code>{{TreeWalker/currentNode}}</code> attribute to the <var>root</var> argument.
  <li><p>Set <a href="#traversal-whattoshow">whatToShow</a> to the <var>whatToShow</var> argument.
  <li><p>Set <a href="#traversal-filter" title="traversal-filter">filter</a> to <var>filter</var>.
  <li><p>Return the newly created <code>{{TreeWalker}}</code> object.
