@@ -1,10 +1,58 @@
 <section>
 <h2 id="historical">Historical</h2>
-This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version
-is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>.
+<p>This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>.
 
-<h3 id="historical-changes-wd2-fpwd">Changes between this draft and the 
-<a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.
+<h3 id="historical-changes-wd3-wd2">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></h3>
+
+<dl>
+  <dt><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a>
+  <dd>added <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and</dd>
+  <dd>imported realm from ES standard to ensure security</dd>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a>
+  <dd>define token set for <code>DOMTokenList</code>, and</dd>
+  <dd>define <code>supports()</code> for <code>DOMTokenList</code>, and</dd>
+  <dd>updated the <code>normalize()</code> method of <code>DOMTokenList</code> to avoid duplication</dd>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/d00874005cb8ccd8c692ff4e0d743d3b507e9b3e">Throw an error if the event constructor isn't exposed</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/47f92af56e0891e075eab36c9d0b1839c8255a27">Throw an <code>HierarchyRequestError</code> if range’s start node is node</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/5fcf4553d0e551c4e0c7cdf83b24a4d4bdd44199">Add createAttribute()/createAttributeNS() to Document</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/9f2cb403e26e41a68829581298f81ae6d7a639a3">Apply pre-removing steps to mutation algorithms and <code>NodeIterator</code></a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/e96a1d9c34137e6c4bbb957724df6e46bb1f4df1"> Define replaceWith(), after(), before() for ChildNode</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/bea38dada944be8c4ed47c263220ed445153d87c">Calculate the length of CharacterData in the Node level</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Use the declaration of web compability to prevent being exposed in NonElementParentNode and NonDocumentTypeChildNode</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for Element</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/87a356f2dacbdbdf3c39745f61f597a0415a8af8">Bring CDATASection to Node/Traversal</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered set</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/02cb08674b44660056575c07ed61c4fa09291088">Define get/setAttributeNode, get/setAttributeNodeNS, and removeAttributeNode for Element</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/181d2a300490e7391164f28f6266f19241e3be3c"> Define <code>closest()</code>, <code>matches()</code> and <code>webkitMatchesSelector()</code> for Element</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/f39a74823121ae7d310235e4ce1c9036cd898c5d">Clean up the unsupported events in the createEvent interface</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a>
+  </dt>
+  <dt><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Update the HTMLCollection algorithm in node</a>
+  </dt>
+</dl>
+
+<h3 id="historical-changes-wd2-fpwd">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</h3>
 
 <dl>
  <dt><a href="https://github.com/w3c/dom/commit/7be726731a84dedb1ded94647f7e10c83e4ba6b7">Add
@@ -35,9 +83,7 @@ is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 
 </dl>
 
 
-<h3 id="historical-changes-fpwd-dom4">Changes
-between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>
-and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></h3>
+<h3 id="historical-changes-fpwd-dom4">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a> and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></h3>
 
 <dl>
 <dt><a href="https://github.com/w3c/dom/commit/01f4c51e1eab23d5e7812995ef496a02f8d90a06">Use “is” for comparisons</a></dt>

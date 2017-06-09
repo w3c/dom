@@ -3,7 +3,7 @@
 
 <h3 id="ranges-introduction-to-dom-ranges">Introduction to "DOM Ranges"</h3>
 
-  A <code>{{Range}}</code> object (<a href="#concept-range">range</a>) represents a sequence of content within a <a>node tree</a>. Each <a href="#concept-range">range</a> has a <a>start</a> and an <a>end</a> which are <a>boundary points</a>. A <a>boundary point</a> is a tuple consisting of a <a href="#concept-node">node</a> and a non-negative numeric <a>offset</a>. So in other words, a <a href="#concept-range">range</a> represents a piece of content within a <a>node tree</a> between two <a>boundary points</a>.
+  A {{Range}} object (<a href="#concept-range">range</a>) represents a sequence of content within a <a>node tree</a>. Each <a href="#concept-range">range</a> has a <a>start</a> and an <a>end</a> which are <a>boundary points</a>. A <a>boundary point</a> is a tuple consisting of a <a href="#concept-node">node</a> and a non-negative numeric <a>offset</a>. So in other words, a <a href="#concept-range">range</a> represents a piece of content within a <a>node tree</a> between two <a>boundary points</a>.
 
   <a href="#concept-range">Ranges</a> are frequently used in editing for selecting and copying content.
 
@@ -11,12 +11,12 @@
  <li class="t1"><a>Element</a>: <code>p</code>
   <ul>
    <li class="t1"><a>Element</a>: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span>
-   <li class="t3"><code>{{Text}}</code>: <span> CSS 2.1 syndata is </span>
+   <li class="t3">{{Text}}: <span> CSS 2.1 syndata is </span>
    <li class="t1"><a>Element</a>: <code>em</code>
     <ul>
-     <li class="t3"><code>{{Text}}</code>: <span>awesome</span>
+     <li class="t3">{{Text}}: <span>awesome</span>
     </ul>
-   <li class="t3"><code>{{Text}}</code>: <span>!</span>
+   <li class="t3">{{Text}}: <span>!</span>
   </ul>
 </ul>
 <!-- http://w3cmemes.tumblr.com/post/35332222321/css-2-1-syndata-is-awesome -->
@@ -36,7 +36,7 @@ range.setEnd(secondText, 4)
 
 <p class="note">Note: See the <a href="#node-insert">insert</a> and <a href="#node-remove">remove</a> algorithms, the <code><a href="#dom-node-normalize">normalize()</a></code> method, and the <a>replace data</a> and <a>split</a> algorithms for the hairy details.
 
-<h3 id="ranges-interface-range">Interface <code>{{Range}}</code></h3>
+<h3 id="ranges-interface-range">Interface {{Range}}</h3>
 
 <pre class='idl'>
 [Constructor,
@@ -83,7 +83,7 @@ interface Range {
 };
 </pre>
 
-<p><code>{{Range}}</code> objects are simply known as <dfn id="concept-range" lt="range|ranges">ranges</dfn>.
+<p>{{Range}} objects are simply known as <dfn id="concept-range" lt="range|ranges">ranges</dfn>.
 
 <p>A <dfn>boundary point</dfn> is a (<a href="#concept-node">node</a>, <dfn lt="range boundary point offset|boundary point offset|offset">offset</dfn>) tuple, where <a>offset</a> is a non-negative integer.
 
@@ -126,7 +126,7 @@ interface Range {
  <p>Some facts to better understand these definitions:
 
  <ul>
-  <li><p>The content that one would think of as being within the <a href="#concept-range">range</a> consists of all <a>contained</a> <a>nodes</a>, plus possibly some of the contents of the <a>start node</a> and <a>end node</a> if those are <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a>nodes</a>.
+  <li><p>The content that one would think of as being within the <a href="#concept-range">range</a> consists of all <a>contained</a> <a>nodes</a>, plus possibly some of the contents of the <a>start node</a> and <a>end node</a> if those are {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a>nodes</a>.
 
   <li><p>The <a>nodes</a> that are contained in a <a href="#concept-range">range</a> will generally not be contiguous, because the <a>parent</a> of a <a>contained</a> <a href="#concept-node">node</a> will not always be <a>contained</a>.
 
@@ -138,7 +138,7 @@ interface Range {
 
   <li><p>There exists a partially contained <a href="#concept-node">node</a> if and only if the <a>start node</a> and <a>end node</a> are different.
 
-  <li><p>The <code>{{Range/commonAncestorContainer}}</code> attribute value is neither <a>contained</a> nor <a>partially contained</a>.
+  <li><p>The {{Range/commonAncestorContainer}} attribute value is neither <a>contained</a> nor <a>partially contained</a>.
 
   <li>If the <a>start node</a> is an <a>ancestor</a> of the <a>end node</a>, the common <a>inclusive ancestor</a> will be the <a>start node</a>. Exactly one of its <a>children</a> will be <a>partially contained</a>, and a <a>child</a> will be <a>contained</a> if and only if it <a href="#preceding">precedes</a> the <a>partially contained</a> <a>child</a>. If the <a>end node</a> is an <a>ancestor</a> of the <a>start node</a>, the opposite holds.
 
@@ -150,12 +150,12 @@ interface Range {
 
 <dl>
 
-  : <code><var>range</var> = new <a constructor>Range()</a></code>
+  : <var>range</var> = new <a constructor>Range()</a>
   :: Returns a new <a href="#concept-range">range</a>.
 
 </dl>
 
-<p>The <dfn constructor for=Range><code>Range()</code></dfn> constructor must return a new <a href="#concept-range">range</a> with (<a>current global object</a>'s <a>associated <code>Document</code></a>, 0) as its <a>start</a> and <a>end</a>.
+<p>The <dfn constructor for=Range>Range()</dfn> constructor must return a new <a href="#concept-range">range</a> with (<a>current global object</a>'s <a>associated <code>Document</code></a>, 0) as its <a>start</a> and <a>end</a>.
 
 <hr>
 
@@ -181,17 +181,17 @@ interface Range {
 
 </dl>
 
-<p>The <dfn attribute for=Range><code>startContainer</code></dfn> attribute's getter must return the <a>start node</a>.
+<p>The <dfn attribute for=Range>startContainer</dfn> attribute's getter must return the <a>start node</a>.
 
-<p>The <dfn attribute for=Range><code>startOffset</code></dfn> attribute's getter must return the <a>start offset</a>.
+<p>The <dfn attribute for=Range>startOffset</dfn> attribute's getter must return the <a>start offset</a>.
 
-<p>The <dfn attribute for=Range><code>endContainer</code></dfn> attribute's getter must return the <a>end node</a>.
+<p>The <dfn attribute for=Range>endContainer</dfn> attribute's getter must return the <a>end node</a>.
 
-<p>The <dfn attribute for=Range><code>endOffset</code></dfn> attribute's getter must return the <a>end offset</a>.
+<p>The <dfn attribute for=Range>endOffset</dfn> attribute's getter must return the <a>end offset</a>.
 
-<p>The <dfn attribute for=Range><code>collapsed</code></dfn> attribute's getter must return true if <a>start</a> is the same as <a>end</a>, and false otherwise.
+<p>The <dfn attribute for=Range>collapsed</dfn> attribute's getter must return true if <a>start</a> is the same as <a>end</a>, and false otherwise.
 
-<p>The <dfn attribute for=Range><code>commonAncestorContainer</code></dfn> attribute's getter must run these steps:
+<p>The <dfn attribute for=Range>commonAncestorContainer</dfn> attribute's getter must run these steps:
 
 <ol>
   1. Let <var>container</var> be <a>start node</a>.
@@ -232,11 +232,11 @@ interface Range {
 </ol>
 
 <p>The
-<dfn method for=Range><code>setStart(<var>node</var>, <var>offset</var>)</code></dfn> method, when invoked, must <a>set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
+<dfn method for=Range>setStart(<var>node</var>, <var>offset</var>)</dfn> method, when invoked, must <a>set the start</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
-<p>The <dfn method for=Range><code>setEnd(<var>node</var>, <var>offset</var>)</code></dfn> method, when invoked, must <a>set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
+<p>The <dfn method for=Range>setEnd(<var>node</var>, <var>offset</var>)</dfn> method, when invoked, must <a>set the end</a> of the <a>context object</a> to <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
-<p>The <dfn method for=Range><code>setStartBefore(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>setStartBefore(<var>node</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
@@ -247,7 +247,7 @@ interface Range {
 
 </ol>
 
-<p>The <dfn method for=Range><code>setStartAfter(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>setStartAfter(<var>node</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
@@ -258,7 +258,7 @@ interface Range {
 
 </ol>
 
-<p>The <dfn method for=Range><code>setEndBefore(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>setEndBefore(<var>node</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
@@ -269,7 +269,7 @@ interface Range {
 
 </ol>
 
-<p>The <dfn method for=Range><code>setEndAfter(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>setEndAfter(<var>node</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
@@ -280,7 +280,7 @@ interface Range {
 
 </ol>
 
-<p>The <dfn method for=Range><code>collapse(<var>toStart</var>)</code></dfn> method, when invoked, must if <var>toStart</var> is true, set <a>end</a> to <a>start</a>, and set <a>start</a> to <a>end</a> otherwise.
+<p>The <dfn method for=Range>collapse(<var>toStart</var>)</dfn> method, when invoked, must if <var>toStart</var> is true, set <a>end</a> to <a>start</a>, and set <a>start</a> to <a>end</a> otherwise.
 
 <p>To <dfn lt="range select|select">select</dfn> a <a href="#concept-node">node</a> <var>node</var> within a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
@@ -297,9 +297,9 @@ interface Range {
 
 </ol>
 
-<p>The <dfn method for=Range><code>selectNode(<var>node</var>)</code></dfn> method, when invoked, must <a>select</a> <var>node</var> within <a>context object</a>.
+<p>The <dfn method for=Range>selectNode(<var>node</var>)</dfn> method, when invoked, must <a>select</a> <var>node</var> within <a>context object</a>.
 
-<p>The <dfn method for=Range><code>selectNodeContents(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>selectNodeContents(<var>node</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   1. If <var>node</var> is a <a href="#concept-doctype">doctype</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
@@ -314,14 +314,14 @@ interface Range {
 
 <hr>
 
-<p>The <dfn method for=Range><code>compareBoundaryPoints(<var>how</var>, <var>sourceRange</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>compareBoundaryPoints(<var>how</var>, <var>sourceRange</var>)</dfn> method, when invoked, must run these steps:
 
 <ol>
   <li>If <var>how</var> is not one of <ul>
-   <li><code>{{Range/START_TO_START}}</code>,
-   <li><code>{{Range/START_TO_END}}</code>,
-   <li><code>{{Range/END_TO_END}}</code>, and
-   <li><code>{{Range/END_TO_START}}</code>,
+   <li>{{Range/START_TO_START}},
+   <li>{{Range/START_TO_END}},
+   <li>{{Range/END_TO_END}}, and
+   <li>{{Range/END_TO_START}},
   </ul>
   <p><a>throw</a> a <code>NotSupportedError</code>.
  <li><p>If <a>context object</a>'s <a href="#range-root">root</a> is not the same as <var>sourceRange</var>'s <a href="#range-root">root</a>, <a>throw</a> a <code>WrongDocumentError</code>.
@@ -329,22 +329,22 @@ interface Range {
  <li>
   <p>If <var>how</var> is:
   <dl class="switch">
-   <dt><code>{{Range/START_TO_START}}</code>:
+   <dt>{{Range/START_TO_START}}:
    <dd>
     <p>Let <var>this point</var> be the <a>context object</a>'s <a>start</a>.
     <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>start</a>.
 
-   <dt><code>{{Range/START_TO_END}}</code>:
+   <dt>{{Range/START_TO_END}}:
    <dd>
     <p>Let <var>this point</var> be the <a>context object</a>'s <a>end</a>.
     <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>start</a>.
 
-    <dt><code>{{Range/END_TO_END}}</code>:
+    <dt>{{Range/END_TO_END}}:
     <dd>
      <p>Let <var>this point</var> be the <a>context object</a>'s <a>end</a>.
      <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>end</a>.
 
-    <dt><code>{{Range/END_TO_START}}</code>:
+    <dt>{{Range/END_TO_START}}:
     <dd>
      <p>Let <var>this point</var> be the <a>context object</a>'s <a>start</a>.
      <p>Let <var>other point</var> be <var>sourceRange</var>'s <a>end</a>.
@@ -365,7 +365,7 @@ interface Range {
    </dl>
 </ol>
 
-<p>The <dfn method for=Range><code>deleteContents()</code></dfn>method, when invoked, must run these steps:
+<p>The <dfn method for=Range>deleteContents()</dfn>method, when invoked, must run these steps:
 
 <ol>
  <li><p>If <a>start</a> is <a>end</a>, terminate these steps.
@@ -376,7 +376,7 @@ interface Range {
 
  <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be the <a>context object</a>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
- <li><p>If <var>original start node</var> and <var>original end node</var> are the same, and they are a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original end offset</var> minus <var>original start offset</var>, and data the empty string, and then terminate these steps.
+ <li><p>If <var>original start node</var> and <var>original end node</var> are the same, and they are a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original end offset</var> minus <var>original start offset</var>, and data the empty string, and then terminate these steps.
 
  <li><p>Let <var>nodes to remove</var> be a list of all the <a>nodes</a> that are <a>contained</a> in the <a>context object</a>, in <a>tree order</a>, omitting any <a href="#concept-node">node</a> whose <a>parent</a> is also <a>contained</a> in the <a>context object</a>.
 
@@ -396,11 +396,11 @@ interface Range {
     <p class="note">Note: If <var>reference node</var>'s <a>parent</a> were null, it would be the <a href="#range-root">root</a> of the <a>context object</a>, so would be an <a>inclusive ancestor</a> of <var>original end node</var>, and we could not reach this point.
   </ol>
 
- <li><p>If <var>original start node</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>, data the empty string.
+ <li><p>If <var>original start node</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original start node</var>, offset <var>original start offset</var>, count <var>original start node</var>'s <a>length</a> minus <var>original start offset</var>, data the empty string.
 
  <li><p>For each <var>node</var> in <var>nodes to remove</var>, in <a>tree order</a>, <a href="#node-remove">remove</a> <var>node</var> from its <a>parent</a>.
 
- <li><p>If <var>original end node</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original end node</var>, offset 0, count <var>original end offset</var> and data the empty string.
+ <li><p>If <var>original end node</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>, <a>replace data</a> with node <var>original end node</var>, offset 0, count <var>original end offset</var> and data the empty string.
 
  <li><p>Set <a>start</a> and <a>end</a> to (<var>new node</var>, <var>new offset</var>).
 </ol>
@@ -408,7 +408,7 @@ interface Range {
 <p>To <dfn lt="range extract|extract">extract</dfn> a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
 <ol>
- <li><p>Let <var>fragment</var> be a new <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
+ <li><p>Let <var>fragment</var> be a new {{DocumentFragment}} <a href="#concept-node">node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
 
  <li><p>If <var>range</var>'s <a>start</a> is its <a>end</a>, return <var>fragment</var>.
  <!-- This is only really needed when the start and end nodes are
@@ -421,7 +421,7 @@ interface Range {
  <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be <var>range</var>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
  <li>
-  <p>If <var>original start node</var> is <var>original end node</var>, and they are a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>original start node</var> is <var>original end node</var>, and they are a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <ol>
    <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
@@ -481,7 +481,7 @@ interface Range {
   anymore unless we carefully consider how it will have mutated. -->
 
  <li>
-  <p>If <var>first partially contained child</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>first partially contained child</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <p class="note">Note: In this case, <var>first partially contained child</var> is <var>original start node</var>.
 
@@ -513,7 +513,7 @@ interface Range {
  <li><p>For each <var>contained child</var> in <var>contained children</var>, <a href="#node-append">append</a> <var>contained child</var> to <var>fragment</var>.
 
  <li>
-  <p>If <var>last partially contained child</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>last partially contained child</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <p class="note">Note: In this case, <var>last partially contained child</var> is <var>original end node</var>.
 
@@ -547,12 +547,12 @@ interface Range {
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn method for=Range><code>extractContents()</code></dfn> method, when invoked, must return the result of <a>extracting</a> <a>context object</a>.
+<p>The <dfn method for=Range>extractContents()</dfn> method, when invoked, must return the result of <a>extracting</a> <a>context object</a>.
 
 <p>To <dfn id="concept-range-clone" lt="clone the contents of a range">clone the contents</dfn> of a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
 <ol>
- <li><p>Let <var>fragment</var> be a new <code>{{DocumentFragment}}</code> <a >node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
+ <li><p>Let <var>fragment</var> be a new {{DocumentFragment}} <a >node</a> whose <a>node document</a> is <var>range</var>'s <a>start node</a>'s <a>node document</a>.
 
  <li><p>If <var>range</var>'s <a>start</a> is its <a>end</a>, return <var>fragment</var>.
  <!-- This is only really needed when the start and end nodes are
@@ -565,7 +565,7 @@ interface Range {
  <li><p>Let <var>original start node</var>, <var>original start offset</var>, <var>original end node</var>, and <var>original end offset</var> be <var>range</var>'s <a>start node</a>, <a>start offset</a>, <a>end node</a>, and <a>end offset</a>, respectively.
 
  <li>
-  <p>If <var>original start node</var> is <var>original end node</var>, and they are a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>original start node</var> is <var>original end node</var>, and they are a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <ol>
    <li><p>Let <var>clone</var> be a <a>clone</a> of <var>original start node</var>.
@@ -602,7 +602,7 @@ interface Range {
   cannot be the ancestor of anything.
 
  <li>
-  <p>If <var>first partially contained child</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>first partially contained child</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <p class="note">Note: In this case, <var>first partially contained child</var> is <var>original start node</var>.
 
@@ -639,7 +639,7 @@ interface Range {
   </ol>
 
  <li>
-  <p>If <var>last partially contained child</var> is a <code>{{Text}}</code>, <code>{{ProcessingInstruction}}</code>, or <code>{{Comment}}</code> <a href="#concept-node">node</a>:
+  <p>If <var>last partially contained child</var> is a {{Text}}, {{ProcessingInstruction}}, or {{Comment}} <a href="#concept-node">node</a>:
 
   <p class="note">Note: In this case, <var>last partially contained child</var> is <var>original end node</var>.
 
@@ -669,7 +669,7 @@ interface Range {
  <li><p>Return <var>fragment</var>.
 </ol>
 
-<p>The <dfn method for=Range><code>cloneContents()</code></dfn> method, when invoked, must return the result of <a href="#concept-range-clone">cloning the contents</a> of <a>context object</a>.
+<p>The <dfn method for=Range>cloneContents()</dfn> method, when invoked, must return the result of <a href="#concept-range-clone">cloning the contents</a> of <a>context object</a>.
 
 <p>To <dfn lt="range insert">insert</dfn> a <a href="#concept-node">node</a> <var>node</var> into a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
@@ -700,7 +700,7 @@ interface Range {
  -->
  <li><p>Let <var>referenceNode</var> be null.
 
- <li><p>If <var>range</var>'s <a>start node</a> is a <code>{{Text}}</code> <a href="#concept-node">node</a>, set <var>referenceNode</var> to that <code>{{Text}}</code> <a href="#concept-node">node</a>. <!-- This will change when we split it. -->
+ <li><p>If <var>range</var>'s <a>start node</a> is a {{Text}} <a href="#concept-node">node</a>, set <var>referenceNode</var> to that {{Text}} <a href="#concept-node">node</a>. <!-- This will change when we split it. -->
 
  <li><p>Otherwise, set <var>referenceNode</var> to the <a>child</a> of <a>start node</a> whose <a>index</a> is <a>start offset</a>, and null if there is no such <a>child</a>.
 
@@ -716,7 +716,7 @@ interface Range {
  with what all other browsers do. -->
  <li><p><a>Ensure pre-insertion validity</a>of <var>node</var> into <var>parent</var> before <var>referenceNode</var>.
 
- <li><p>If <var>range</var>'s <a>start node</a> is a <code>{{Text}}</code> <a href="#concept-node">node</a>, <a>split</a> it with offset <var>range</var>'s <a>start offset</a>, set <var>referenceNode</var> to the result, and set <var>parent</var> to <var>referenceNode</var>'s <a>parent</a>.
+ <li><p>If <var>range</var>'s <a>start node</a> is a {{Text}} <a href="#concept-node">node</a>, <a>split</a> it with offset <var>range</var>'s <a>start offset</a>, set <var>referenceNode</var> to the result, and set <var>parent</var> to <var>referenceNode</var>'s <a>parent</a>.
 
  <li><p>If <var>node</var> is <var>referenceNode</var>, set <var>referenceNode</var> to its <a>next sibling</a>. <!-- Because we're
  about to remove node from its parent. -->
@@ -746,16 +746,16 @@ interface Range {
  -->
  <li><p>Let <var>newOffset</var> be <var>parent</var>'s <a>length</a> if <var>referenceNode</var> is null, and <var>referenceNode</var>'s <a>index</a> otherwise.
 
- <li><p>Increase <var>newOffset</var> by <var>node</var>'s <a>length</a> if <var>node</var> is a <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, and one otherwise.
+ <li><p>Increase <var>newOffset</var> by <var>node</var>'s <a>length</a> if <var>node</var> is a {{DocumentFragment}} <a href="#concept-node">node</a>, and one otherwise.
 
  <li><p><a>Pre-insert</a> <var>node</var> into <var>parent</var> before <var>referenceNode</var>.
 
  <li><p>If <var>range</var>'s <a>start</a> and <a>end</a> are the same, set <var>range</var>'s <a>end</a> to (<var>parent</var>, <var>newOffset</var>).
 </ol>
 
-<p>The <dfn method for=Range><code>insertNode(<var>node</var>)</code></dfn> method, when invoked, must <a>range insert</a> <var>node</var> into <a>context object</a>.
+<p>The <dfn method for=Range>insertNode(<var>node</var>)</dfn> method, when invoked, must <a>range insert</a> <var>node</var> into <a>context object</a>.
 
-<p>The <dfn method for=Range><code>surroundContents(<var>newParent</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>surroundContents(<var>newParent</var>)</dfn> method, when invoked, must run these steps:
 
 <!--
 IE9 and Chrome 12 dev throw exceptions before doing any DOM mutations in at
@@ -769,13 +769,13 @@ check first thing, which matches everyone but Firefox.
 -->
 
 <ol>
- <li><p>If a non-<code>{{Text}}</code> <a href="#concept-node">node</a> is <a>partially contained</a> in the <a>context object</a>, <a>throw</a> an <code><a>InvalidStateError</a></code>.
+ <li><p>If a non-{{Text}} <a href="#concept-node">node</a> is <a>partially contained</a> in the <a>context object</a>, <a>throw</a> an <code><a>InvalidStateError</a></code>.
  <!-- Makes some sense: otherwise we'd clone a bunch of containers, which is
  unexpected. -->
  <!-- XXX Could we rephrase this condition to be more algorithmic and less
  declarative?-->
 
- <li><p>If <var>newParent</var> is a <code>{{Document}}</code>, <code>{{DocumentType}}</code>, or <code>{{DocumentFragment}}</code> <a href="#concept-node">node</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
+ <li><p>If <var>newParent</var> is a {{Document}}, {{DocumentType}}, or {{DocumentFragment}} <a href="#concept-node">node</a>, <a>throw</a> an <code><a>InvalidNodeTypeError</a></code>.
  <!-- But for Comment, Text, and ProcessingInstruction, we just fall through
  and throw a HIERARCHY_REQUEST_ERR when we try appendChild(). This makes
  absolutely no sense, but it's what DOM 2 Range specifies, and it's what
@@ -815,9 +815,9 @@ check first thing, which matches everyone but Firefox.
  range lies in a single text node). -->
 </ol>
 
-<p>The <dfn method for=Range><code>cloneRange()</code></dfn> method, when invoked, must return a new <a href="#concept-range">range</a> with the same <a>start</a> and <a>end</a> as the <a>context object</a>.
+<p>The <dfn method for=Range>cloneRange()</dfn> method, when invoked, must return a new <a href="#concept-range">range</a> with the same <a>start</a> and <a>end</a> as the <a>context object</a>.
 
-<p>The <dfn method for=Range id="range-detach-func"><code>detach()</code></dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a <code><a href="#concept-range">Range</a></code> object) was removed, but the method itself is preserved for compatibility.</span>
+<p>The <dfn method for=Range id="range-detach-func">detach()</dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a <code><a href="#concept-range">Range</a></code> object) was removed, but the method itself is preserved for compatibility.</span>
 
 <hr>
 
@@ -833,7 +833,7 @@ check first thing, which matches everyone but Firefox.
 
 <div>
 
-<p>The <dfn method for=Range><code>isPointInRange(<var>node</var>, <var>offset</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>isPointInRange(<var>node</var>, <var>offset</var>)</dfn> method, when invoked, must run these steps:
 <!-- Tested October 2011 on Firefox 9.0a2 and Chrome 16 dev.  IE9 and Opera
 11.50 don't support the method. -->
 
@@ -850,7 +850,7 @@ check first thing, which matches everyone but Firefox.
 </ol>
 
 
-<p>The <dfn method for=Range><code>comparePoint(<var>node</var>, <var>offset</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>comparePoint(<var>node</var>, <var>offset</var>)</dfn> method, when invoked, must run these steps:
 <!-- IE9 doesn't support this method at all.  Firefox 12.0a1, Chrome 17 dev,
 and Opera Next 12.00 alpha all do. -->
 
@@ -876,7 +876,7 @@ and Opera Next 12.00 alpha all do. -->
 
 <hr>
 
-<p>The <dfn method for=Range><code>intersectsNode(<var>node</var>)</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=Range>intersectsNode(<var>node</var>)</dfn> method, when invoked, must run these steps:
 <!-- Supported by Chrome 17 dev and Opera Next 12.00 alpha, but not IE9 or
 Firefox 12.0a1. -->
 
@@ -908,11 +908,11 @@ Firefox 12.0a1. -->
 <ol>
  <li><p>Let <var>s</var> be the empty string.
 
- <li><p>If <a>start node</a> is <a>end node</a>, and it is a <code>{{Text}}</code> <a href="#concept-node">node</a>, return the substring of that <code>{{Text}}</code> <a href="#concept-node">node</a>'s <a>data</a> beginning at <a>start offset</a> and ending at <a>end offset</a>.
+ <li><p>If <a>start node</a> is <a>end node</a>, and it is a {{Text}} <a href="#concept-node">node</a>, return the substring of that {{Text}} <a href="#concept-node">node</a>'s <a>data</a> beginning at <a>start offset</a> and ending at <a>end offset</a>.
 
- <li><p>If <a>start node</a> is a <code>{{Text}}</code> <a href="#concept-node">node</a>, append to <var>s</var> the substring of that <a href="#concept-node">node</a>'s <a>data</a> from the <a>start offset</a> until the end.
+ <li><p>If <a>start node</a> is a {{Text}} <a href="#concept-node">node</a>, append to <var>s</var> the substring of that <a href="#concept-node">node</a>'s <a>data</a> from the <a>start offset</a> until the end.
 
- <li><p>Append to <var>s</var> the concatenation, in <a>tree order</a>, of the <a>data</a> of all <code>{{Text}}</code> <a>nodes</a> that are <a>contained</a> in the <a>context object</a>.
+ <li><p>Append to <var>s</var> the concatenation, in <a>tree order</a>, of the <a>data</a> of all {{Text}} <a>nodes</a> that are <a>contained</a> in the <a>context object</a>.
 
  <li><p>If <a>end node</a> is a <code><a href="#concept-node">node</a></code>, append to <var>s</var> the substring of that <a href="#concept-node">node</a>'s <a>data</a> from its start until the <a>end offset</a>.
 
