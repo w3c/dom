@@ -1,14 +1,14 @@
 <section>
 <h2 id="traversal">Traversal</h2>
 
-<code>{{NodeIterator}}</code> and <code>{{TreeWalker}}</code> objects can be used to filter and traverse <a href="#concept-node">node</a> <a>trees</a>.
+{{NodeIterator}} and {{TreeWalker}} objects can be used to filter and traverse <a href="#concept-node">node</a> <a>trees</a>.
 
-Each <code>{{NodeIterator}}</code> and <code>{{TreeWalker}}</code> object also has an associated <dfn id="traversal-root" for="traversal">root</dfn> <a href="#concept-node">node</a>, <dfn id="traversal-whattoshow" for="traversal">whatToShow</dfn> bitmask, and <dfn id="traversal-filter" for="traversal">filter</dfn> callback.
+Each {{NodeIterator}} and {{TreeWalker}} object also has an associated <dfn id="traversal-root" for="traversal">root</dfn> <a href="#concept-node">node</a>, <dfn id="traversal-whattoshow" for="traversal">whatToShow</dfn> bitmask, and <dfn id="traversal-filter" for="traversal">filter</dfn> callback.
 
 To <dfn dfn id="node-filter" for="node">filter</dfn> <var>node</var> run these steps:
 
 <ol>
-  1. Let <var>n</var> be <var>node</var>'s <code>{{Node/nodeType}}</code> attribute value minus 1. 
+  1. Let <var>n</var> be <var>node</var>'s {{Node/nodeType}} attribute value minus 1. 
 
   2. If the <var>n</var><sup>th</sup> bit (where 0 is the least significant bit) of <a href="#traversal-whattoshow">whatToShow</a> is not set, return <code><a>FILTER_SKIP</a></code>.
 
@@ -20,7 +20,7 @@ To <dfn dfn id="node-filter" for="node">filter</dfn> <var>node</var> run these s
 
 </ol>
 
-<h3 id="traversal-interface-nodeiterator">Interface <code>{{NodeIterator}}</code></h3>
+<h3 id="traversal-interface-nodeiterator">Interface {{NodeIterator}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -38,11 +38,11 @@ interface NodeIterator {
 };
 </pre>
 
-<p class="note">Note: <code>{{NodeIterator}}</code> objects can be created using the <code><a>createNodeIterator()</a></code> method.
+<p class="note">Note: {{NodeIterator}} objects can be created using the <code><a>createNodeIterator()</a></code> method.
 
-<p>Each <code>{{NodeIterator}}</code> object has an associated <dfn>iterator collection</dfn>, which is a <a>collection</a> rooted at <a href="#traversal-root">root</a>, whose filter matches any <a href="#concept-node">node</a>.
+<p>Each {{NodeIterator}} object has an associated <dfn>iterator collection</dfn>, which is a <a>collection</a> rooted at <a href="#traversal-root">root</a>, whose filter matches any <a href="#concept-node">node</a>.
 
-<p class="note">Note: As mentioned earlier <code>{{NodeIterator}}</code> objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback as well.
+<p class="note">Note: As mentioned earlier {{NodeIterator}} objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback as well.
 
 The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIterator</var> and <var>toBeRemovedNode</var>, are as followings:
 
@@ -78,20 +78,20 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
 
 <hr>
 
-<p>The <dfn attribute id="iterator-root" for=NodeIterator><code>root</code></dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
+<p>The <dfn attribute id="iterator-root" for=NodeIterator>root</dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
 
-<p>The <dfn attribute for=NodeIterator><code>referenceNode</code></dfn> and <dfn attribute for=NodeIterator><code>pointerBeforeReferenceNode</code></dfn> attributes must return what they were initialized to.</p>
+<p>The <dfn attribute for=NodeIterator>referenceNode</dfn> and <dfn attribute for=NodeIterator>pointerBeforeReferenceNode</dfn> attributes must return what they were initialized to.</p>
 
-<p>The <dfn attribute id="iterator-whattoshow" for=NodeIterator><code>whatToShow</code></dfn> attribute's getter must return <a href="#traversal-whattoshow">whatToShow</a>.
+<p>The <dfn attribute id="iterator-whattoshow" for=NodeIterator>whatToShow</dfn> attribute's getter must return <a href="#traversal-whattoshow">whatToShow</a>.
 
-<p>The <dfn attribute id="iterator-filter" for=NodeIterator><code>filter</code></dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
+<p>The <dfn attribute id="iterator-filter" for=NodeIterator>filter</dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
 <p>To <dfn attribute id="iterator-traverse" for=NodeIterator>traverse</dfn> in direction <var ignore>direction</var> run these steps:
 
 <ol>
- <li><p>Let <var>node</var> be the value of the <code>{{NodeIterator/referenceNode}}</code> attribute.
+ <li><p>Let <var>node</var> be the value of the {{NodeIterator/referenceNode}} attribute.
 
- <li><p>Let <var>before node</var> be the value of the <code>{{NodeIterator/pointerBeforeReferenceNode}}</code> attribute.
+ <li><p>Let <var>before node</var> be the value of the {{NodeIterator/pointerBeforeReferenceNode}} attribute.
 
  <li>
   <p>Run these substeps:
@@ -114,16 +114,16 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
     next step in the overall set of steps.
     <p>Otherwise, run these substeps again.
   </ol>
- <li><p>Set the <code>{{NodeIterator/referenceNode}}</code> attribute to <var>node</var>, set the <code>{{NodeIterator/pointerBeforeReferenceNode}}</code> attribute to <var>before node</var>, and return <var>node</var>.
+ <li><p>Set the {{NodeIterator/referenceNode}} attribute to <var>node</var>, set the {{NodeIterator/pointerBeforeReferenceNode}} attribute to <var>before node</var>, and return <var>node</var>.
 </ol>
 
-<p>The <dfn method id="nodeiterator-nextnode-func" for=NodeIterator><code>nextNode()</code></dfn> method, when invoked, must <a>traverse</a> in direction next.
+<p>The <dfn method id="nodeiterator-nextnode-func" for=NodeIterator>nextNode()</dfn> method, when invoked, must <a>traverse</a> in direction next.
 
-<p>The <dfn method id="nodeiterator-previousnode-func" for=NodeIterator><code>previousNode()</code></dfn> method, when invoked, must <a>traverse</a> in direction previous.
+<p>The <dfn method id="nodeiterator-previousnode-func" for=NodeIterator>previousNode()</dfn> method, when invoked, must <a>traverse</a> in direction previous.
 
-<p>The <dfn method id="traversal-detach-func" for=NodeIterator><code>detach()</code></dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a <code>{{NodeIterator}}</code> object) was removed, but the method itself is preserved for compatibility.</span>
+<p>The <dfn method id="traversal-detach-func" for=NodeIterator>detach()</dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a {{NodeIterator}} object) was removed, but the method itself is preserved for compatibility.</span>
 
-<h3 id="traversal-interface-treewalker">Interface <code>{{TreeWalker}}</code></h3>
+<h3 id="traversal-interface-treewalker">Interface {{TreeWalker}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -143,22 +143,22 @@ interface TreeWalker {
 };
 </pre>
 
-<p class="note">Note: <code>{{TreeWalker}}</code> objects can be created using the <code><a>createTreeWalker()</a></code> method.
+<p class="note">Note: {{TreeWalker}} objects can be created using the <code><a>createTreeWalker()</a></code> method.
 
-<p class="note">Note: As mentioned earlier <code>{{TreeWalker}}</code> objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback.
+<p class="note">Note: As mentioned earlier {{TreeWalker}} objects have an associated <a href="#traversal-root">root</a> <a href="#concept-node">node</a>, <a href="#traversal-whattoshow">whatToShow</a> bitmask, and <a href="#traversal-filter">filter</a> callback.
 
-<p>The <dfn attribute id="treewalker-root" for=TreeWalker><code>root</code></dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
+<p>The <dfn attribute id="treewalker-root" for=TreeWalker>root</dfn> attribute's getter must return <a href="#traversal-root">root</a>.</p>
 
-<p>The <dfn attribute for=TreeWalker id="dom-treewalker-whattoshow" title="dom-TreeWalker-whatToShow"><code>whatToShow</code></dfn> attribute's getter must return <a href="#traversal-whattoshow" title="concept-traversal-whatToShow">whatToShow</a>.
+<p>The <dfn attribute for=TreeWalker id="dom-treewalker-whattoshow" title="dom-TreeWalker-whatToShow">whatToShow</dfn> attribute's getter must return <a href="#traversal-whattoshow" title="concept-traversal-whatToShow">whatToShow</a>.
 
-<p>The <dfn attribute for=TreeWalker id="treewalker-filter"><code>filter</code></dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
+<p>The <dfn attribute for=TreeWalker id="treewalker-filter">filter</dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
-<p>The <dfn attribute for=TreeWalker id="treewalker-currentnode"><code>currentNode</code></dfn> attribute's getter must return what it was initialized to.</p>
+<p>The <dfn attribute for=TreeWalker id="treewalker-currentnode">currentNode</dfn> attribute's getter must return what it was initialized to.</p>
 
-<p>Setting the <code>{{TreeWalker/currentNode}}</code> attribute must set it to the new value.</p>
+<p>Setting the {{TreeWalker/currentNode}} attribute must set it to the new value.</p>
 
 
-<p>The <dfn method for=TreeWalker><code>parentNode()</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=TreeWalker>parentNode()</dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -218,9 +218,9 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<p>The <dfn method for=TreeWalker><code>firstChild()</code></dfn> method, when invoked, must <a>traverse children</a> of type first.
+<p>The <dfn method for=TreeWalker>firstChild()</dfn> method, when invoked, must <a>traverse children</a> of type first.
 
-<p>The <dfn method for=TreeWalker><code>lastChild()</code></dfn> method, when invoked, must <a>traverse children</a> of type last.
+<p>The <dfn method for=TreeWalker>lastChild()</dfn> method, when invoked, must <a>traverse children</a> of type last.
 
 <p>To <dfn>traverse siblings</dfn> of type <var>type</var> run these steps:
 
@@ -260,11 +260,11 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<p>The <dfn method for=TreeWalker><code>nextSibling()</code></dfn> method, when invoked, must <a>traverse siblings</a> of type next.
+<p>The <dfn method for=TreeWalker>nextSibling()</dfn> method, when invoked, must <a>traverse siblings</a> of type next.
 
-<p>The <dfn method for=TreeWalker><code>previousSibling()</code></dfn> method, when invoked, must <a>traverse siblings</a> of type previous.
+<p>The <dfn method for=TreeWalker>previousSibling()</dfn> method, when invoked, must <a>traverse siblings</a> of type previous.
 
-<p>The <dfn method for=TreeWalker><code>previousNode()</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn method for=TreeWalker>previousNode()</dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -300,7 +300,7 @@ interface TreeWalker {
  <li><p>Return null.
 </ol>
 
-<p>The <dfn  method for=TreeWalker id="treewalker-nextnode-func"><code>nextNode()</code></dfn> method, when invoked, must run these steps:
+<p>The <dfn  method for=TreeWalker id="treewalker-nextnode-func">nextNode()</dfn> method, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute.
@@ -335,7 +335,7 @@ interface TreeWalker {
   </ol>
 </ol>
 
-<h3 id="traversal-interface-nodefilter">Interface <code>{{NodeFilter}}</code></h3>
+<h3 id="traversal-interface-nodefilter">Interface {{NodeFilter}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -364,7 +364,7 @@ callback interface NodeFilter {
 };
 </pre>
 
-<p><code>{{NodeFilter}}</code> objects can be used as <a href="#traversal-filter">filter</a> callback and provide
+<p>{{NodeFilter}} objects can be used as <a href="#traversal-filter">filter</a> callback and provide
 constants for the <a href="#traversal-whattoshow">whatToShow</a> bitmask.
 
 <p class="note">Note: It is typically implemented as a JavaScript function.
@@ -372,24 +372,24 @@ constants for the <a href="#traversal-whattoshow">whatToShow</a> bitmask.
 <p>These constants can be used as callback return value:
 
 <ul>
- <li><dfn><code>FILTER_ACCEPT</code></dfn> (1);
- <li><dfn><code>FILTER_REJECT</code></dfn> (2);
- <li><dfn><code>FILTER_SKIP</code></dfn> (3).
+ <li><dfn>FILTER_ACCEPT</dfn> (1);
+ <li><dfn>FILTER_REJECT</dfn> (2);
+ <li><dfn>FILTER_SKIP</dfn> (3).
 </ul>
 
 <p>These constants can be used for the <a href="#traversal-whattoshow">whatToShow</a> bitmask:
 
 <ul>
- <li><dfn><code>SHOW_ALL</code></dfn> (4294967295, FFFFFFFF in hexadecimal);
- <li><dfn><code>SHOW_ELEMENT</code></dfn> (1);
- <li><dfn><code>SHOW_ATTRIBUTE</code></dfn> (2);
- <li><dfn><code>SHOW_TEXT</code></dfn> (4);
- <li><dfn><code>SHOW_CDATA_SECTION</code></dfn> (8);
- <li><dfn><code>SHOW_PROCESSING_INSTRUCTION</code></dfn> (64, 40 in hexadecimal);
- <li><dfn><code>SHOW_COMMENT</code></dfn> (128, 80 in hexadecimal);
- <li><dfn><code>SHOW_DOCUMENT</code></dfn> (256, 100 in hexadecimal);
- <li><dfn><code>SHOW_DOCUMENT_TYPE</code></dfn> (512, 200 in hexadecimal);
- <li><dfn><code>SHOW_DOCUMENT_FRAGMENT</code></dfn> (1024, 400 in hexadecimal).
+ <li><dfn>SHOW_ALL</dfn> (4294967295, FFFFFFFF in hexadecimal);
+ <li><dfn>SHOW_ELEMENT</dfn> (1);
+ <li><dfn>SHOW_ATTRIBUTE</dfn> (2);
+ <li><dfn>SHOW_TEXT</dfn> (4);
+ <li><dfn>SHOW_CDATA_SECTION</dfn> (8);
+ <li><dfn>SHOW_PROCESSING_INSTRUCTION</dfn> (64, 40 in hexadecimal);
+ <li><dfn>SHOW_COMMENT</dfn> (128, 80 in hexadecimal);
+ <li><dfn>SHOW_DOCUMENT</dfn> (256, 100 in hexadecimal);
+ <li><dfn>SHOW_DOCUMENT_TYPE</dfn> (512, 200 in hexadecimal);
+ <li><dfn>SHOW_DOCUMENT_FRAGMENT</dfn> (1024, 400 in hexadecimal).
 </ul>
 
 </section>
