@@ -114,6 +114,9 @@ urlPrefix: https://www.w3.org/TR/DOM-Parsing/
 urlPrefix: https://www.w3.org/TR/cssom-view-1/
     text: getClientRects; url: #dom-element-getclientrects; type: dfn
     text: getBoundingClientRect; url: #dom-element-getboundingclientrect; type: dfn
+urlPrefix: https://w3c.github.io/ServiceWorker/; spec: ServiceWorker
+    text: has ever been evaluated flag; url: #dfn-has-ever-been-evaluated-flag; type: dfn
+    text: script resource; url: #dfn-script-source; type: dfn
 url: http://software.hixie.ch/utilities/js/live-dom-viewer
     text: Live DOM Viewer; type: dfn
 </pre>

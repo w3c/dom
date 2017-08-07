@@ -479,6 +479,16 @@ steps:
 <dfn method for=EventTarget>addEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</dfn>
 method, when invoked, must run these steps:
 <ol>
+  <li><p>If <a>context object</a>'s <a>relevant global object</a> is a {{ServiceWorkerGlobalScope}}
+  object and its associated <a>service worker</a>'s <a for="service worker">script resource</a>'s
+  <a>has ever been evaluated flag</a> is set, then <a>throw</a> a
+  <code>TypeError</code>.
+  [[!SERVICE-WORKERS]]
+
+  <p class="note no-backref">To optimize storing the event types allowed for the service worker and
+  to avoid non-deterministic changes to the event listeners, invocation of the method is allowed
+  only during the very first evaluation of the service worker script.
+
  <li><p>If <var>callback</var> is null, then return.
 
  <li><p>Let <var>capture</var>, <var>passive</var>, and <var>once</var> be the result of
@@ -494,6 +504,11 @@ method, when invoked, must run these steps:
 <p>The
 <dfn method for=EventTarget>removeEventListener(<var>type</var>, <var>callback</var>, <var>options</var>)</dfn> method, when invoked, must run these steps:
 <ol>
+ <li><p>If <a>context object</a>'s <a>relevant global object</a> is a {{ServiceWorkerGlobalScope}}
+ object and its associated <a>service worker</a>'s <a for="service worker">script resource</a>'s
+ <a>has ever been evaluated flag</a> is set, then <a>throw</a> a
+ <code>TypeError</code>. [[!SERVICE-WORKERS]]
+
  <li><p>Let <var>capture</var> be the result of <a>flattening</a> <var>options</var>.
 
  <li><p>If there is an <a>event listener</a> in the associated list of <a>event listeners</a> whose
