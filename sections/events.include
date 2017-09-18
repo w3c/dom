@@ -87,7 +87,7 @@ interface Event {
   readonly attribute boolean defaultPrevented;
 
   [Unforgeable] readonly attribute boolean isTrusted;
-  readonly attribute DOMTimeStamp timeStamp;
+  readonly attribute DOMHighResTimeStamp timeStamp;
 
   void initEvent(DOMString type, optional boolean bubbles, optional boolean cancelable);
 };
@@ -141,7 +141,7 @@ inherits from the <code><a>Event</a></code> interface.</p>
   :: <p>Returns true if <var>event</var> was <a>dispatched</a> by the user agent, and false otherwise.
 
   : <var>event</var> . {{Event/timeStamp}}
-  :: <p>Returns the creation time of <var>event</var> as the number of milliseconds that passed since 00:00:00 UTC on 1 January 1970.
+  :: <p>Returns the <var>event</var>'s timestamp as the number of milliseconds that measured relative to the <a>time origin</a>.
 
 </dl>
 
@@ -209,8 +209,7 @@ initialized to false.
 (as opposed to using <code><a>dispatchEvent()</a></code>). The sole legacy exception is {{HTMLElement/click()}}, which causes
 the user agent to dispatch an <a>event</a> whose {{Event/isTrusted}} attribute is initialized to false.
 
-<p>The <dfn attribute for=Event lt="dom event timeStamp|event timeStamp|timeStamp"><code>timeStamp</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the number of milliseconds that have passed since 00:00:00 UTC on 1 January 1970, ignoring leap seconds.
-<!-- leap seconds are ignored by JavaScript too -->
+<p>The <dfn attribute for=Event><code>timeStamp</code></dfn> attribute must return the value it was initialized to.
 
 <hr>
 
@@ -296,6 +295,8 @@ method, when invoked, must run these steps:
 
   <li><p> Initialize the {{Event/type}} attribute to the <var>type</var> argument.
 
+  <li><p> Initialize <var>event</var>'s {{Event/timeStamp}} attribute to a {{DOMHighResTimeStamp}} representing the high resolution time from the <a>time origin</a> to the occurrence of the call to the <var>event</var>'s <a>constructor</a>.
+
   <li><p> If there is an <var>eventInitDict</var> argument then for each <a>dictionary member</a> present, find the attribute on <a>event</a> whose <a>identifier</a> matches the key of the <a>dictionary member</a> and then set the attribute to the value of that <a>dictionary member</a>.
 
   <li><p> Return the <a>event</a>.
@@ -322,6 +323,9 @@ it, and optionally given a <a>Realm</a> <var>realm</var>, run these steps:</p>
  attribute on <var>event</var> whose <a spec=webidl>identifier</a> matches the key of the
  <a>dictionary member</a> and then set the attribute to the default value of that
  <a>dictionary member</a>.
+
+ <li><p>Set <var>event</var>'s {{Event/timeStamp}} attribute to a {{DOMHighResTimeStamp}}
+ representing the high resolution time from the <a>time origin</a> to the occurrence that the event is signaling.
 
  <li><p>Initialize <var>event</var>'s {{Event/isTrusted}} attribute to true.
 

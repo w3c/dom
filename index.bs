@@ -119,6 +119,9 @@ urlPrefix: https://w3c.github.io/ServiceWorker/; spec: ServiceWorker
     text: script resource; url: #dfn-script-source; type: dfn
 url: http://software.hixie.ch/utilities/js/live-dom-viewer
     text: Live DOM Viewer; type: dfn
+urlPrefix: https://w3c.github.io/hr-time/#; spec: HR-TIME
+    text: DOMHighResTimeStamp; urlPrefix: dom-; type: typedef
+    text: time origin; type: dfn
 </pre>
 
 <style>
