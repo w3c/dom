@@ -117,9 +117,9 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
  <li><p>Set the {{NodeIterator/referenceNode}} attribute to <var>node</var>, set the {{NodeIterator/pointerBeforeReferenceNode}} attribute to <var>before node</var>, and return <var>node</var>.
 </ol>
 
-<p>The <dfn method id="nodeiterator-nextnode-func" for=NodeIterator>nextNode()</dfn> method, when invoked, must <a>traverse</a> in direction next.
+<p>The <dfn method id="nodeiterator-nextnode-func" for=NodeIterator>nextNode()</dfn> method, when invoked, must return the result of <a href="#iterator-traverse">traversing</a> in direction next.
 
-<p>The <dfn method id="nodeiterator-previousnode-func" for=NodeIterator>previousNode()</dfn> method, when invoked, must <a>traverse</a> in direction previous.
+<p>The <dfn method id="nodeiterator-previousnode-func" for=NodeIterator>previousNode()</dfn> method, when invoked, must return the result of <a href="#iterator-traverse">traversing</a> in direction previous.
 
 <p>The <dfn method id="traversal-detach-func" for=NodeIterator>detach()</dfn> method, when invoked, must do nothing. <span class="note">Note: Its functionality (disabling a {{NodeIterator}} object) was removed, but the method itself is preserved for compatibility.</span>
 
