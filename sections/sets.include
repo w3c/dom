@@ -7,6 +7,7 @@
 <h3 id="interface-domtokenlist">Interface {{DOMTokenList}}</h3>
 
 <pre class='idl'>
+[Exposed=Window]
 interface DOMTokenList {
   readonly attribute unsigned long length;
   getter DOMString? item(unsigned long index);
