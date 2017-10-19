@@ -325,6 +325,12 @@ it, and optionally given a <a>Realm</a> <var>realm</var>, run these steps:</p>
 
  <li><p>Return <var>event</var>.
 </ol>
+
+<p class="note no-backref"><a>Create an event</a> is meant to be used by other specifications
+which need to separately <a href="#concept-event-create">create</a> and <a>dispatch</a> events,
+instead of simply <a href="#concept-event-fire">firing</a> them. It ensures the event's attributes
+are initialized to the correct defaults.
+
 <h3 id="events-defining-event-interfaces">Defining event interfaces</h3>
 
 In general, when defining a new interface that inherits from <code><a>Event</a></code> please always ask feedback from the WHATWG or the
@@ -620,6 +626,53 @@ for discussion).
   </ol>
  </li>
 </ol>
+
+<h3 id="firing-events">Firing events</h3>
+
+<p>To <dfn export id=concept-event-fire>fire an event</dfn> named <var>e</var> at <var>target</var>,
+optionally using an <var>eventConstructor</var>, with a description of how IDL attributes are to be
+initialized, and a <var>legacy target override flag</var>, run these steps:
+
+<ol>
+ <li><p>If <var>eventConstructor</var> is not given, then let <var>eventConstructor</var> be
+ {{Event}}.
+
+ <li><p>Let <var>event</var> be the result of <a>creating an event</a> given
+ <var>eventConstructor</var>, in the <a>relevant Realm</a> of <var>target</var>.
+
+ <li><p>Initialize <var>event</var>'s {{Event/type}} attribute to <var>e</var>.
+
+ <li>
+  <p>Initialize any other IDL attributes of <var>event</var> as described in the invocation of this
+  algorithm.
+
+  <p class="note">This also allows for the {{Event/isTrusted}} attribute to be set to false.
+
+ <li><p>Return the result of <a>dispatching</a> <var>event</var> at <var>target</var>, with
+ <var>legacy target override flag</var> set if set.
+</ol>
+
+<p class="note no-backref">Fire in the context of DOM is short for
+<a lt="create an event">creating</a>, initializing, and <a>dispatching</a> an <a>event</a>.
+<a>Fire an event</a> makes that process easier to write down.
+
+<div class="example no-backref" id=firing-events-example>
+ <p>If the <a>event</a> needs its {{Event/bubbles}} or {{Event/cancelable}} attribute initialized,
+ one could write "<a>fire an event</a> named <code>submit</code> at <var>target</var> with its
+ {{Event/cancelable}} attribute initialized to true".
+
+ <p>Or, when a custom constructor is needed, "<a>fire an event</a> named <code>click</code> at
+ <var>target</var> using {{MouseEvent}} with its {{UIEvent/detail}} attribute initialized to 1".
+
+ <p>Occasionally the return value is important:
+
+ <ol>
+  <li><p>Let <var>doAction</var> be the result of <a lt="fire an event">firing an event</a> named
+  <code>like</code> at <var>target</var>.
+
+  <li><p>If <var>doAction</var> is true, then &hellip;
+ </ol>
+</div>
 
 <h3 id="action-versus-occurance">Action versus occurrence</h3>
 
