@@ -4,10 +4,11 @@ Shortname: dom41
 Level: 1
 Status: ED
 ED: https://w3c.github.io/dom/
+TR: https://www.w3.org/TR/dom/
 Group: webplatform
 Editor: Yongsheng Zhu, Alibaba, yongsheng.zys@alibaba-inc.com
 Repository: https://github.com/w3c/dom
-Mailing List: https://www-dom@w3.org
+Mailing List: www-dom@w3.org
 Mailing List Archives: https://lists.w3.org/Archives/Public/www-dom/
 Test Suite: https://w3c-test.org/dom/
 Abstract: DOM defines a platform-neutral model for events and node trees.
