@@ -79,6 +79,7 @@ urlPrefix: https://www.w3.org/TR/html51/; spec: HTML51;
     text: associated document; url:browsers.html#document-associated-with-a-window; type: dfn
     text: template; url: semantics-scripting.html#the-template-element; type: dfn
     text: relevant global object; url: webappapis.html#relevant-global-object; type:dfn
+    text: relevant realm; url: webappapis.html#concept-relevant-realm; type:dfn
     text: Queue; url: webappapis.html#queue-a-microtask; type: dfn
     text: script; url: semantics-scripting.html#the-script-element; type: dfn
     text: input; url: sec-forms.html#the-input-element; type: dfn
