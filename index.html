@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version ba473502a120361710488ab9b7f538b47858631e" name="generator">
   <link href="https://www.w3.org/TR/dom/" rel="canonical">
-  <meta content="c18f6aa3c5c6ff9fbbf02c1d222bcdf57e5f6b6c" name="document-revision">
+  <meta content="c4d71ab7c9fd0bcdab44a785ae1a226118a71c89" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -5969,84 +5969,122 @@ and false otherwise. </p>
     <h2 class="heading settled" data-level="8" id="historical"><span class="secno">8. </span><span class="content">Historical</span><a class="self-link" href="#historical"></a></h2>
     <p>This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>. </p>
     <h3 class="heading settled" data-level="8.1" id="historical-changes-wd3-wd2"><span class="secno">8.1. </span><span class="content">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></span><a class="self-link" href="#historical-changes-wd3-wd2"></a></h3>
-    <dl>
-     <dt><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a> 
-     <dd>added <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and
-     <dd>imported realm from ES standard to ensure security
-     <dt><a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a> 
-     <dd>define token set for <code>DOMTokenList</code>, and
-     <dd>define <code>supports()</code> for <code>DOMTokenList</code>, and
-     <dd>updated the <code>normalize()</code> method of <code>DOMTokenList</code> to avoid duplication
-     <dt><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/d00874005cb8ccd8c692ff4e0d743d3b507e9b3e">Throw an error if the event constructor isn’t exposed</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/47f92af56e0891e075eab36c9d0b1839c8255a27">Throw an <code>HierarchyRequestError</code> if range’s start node is node</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/5fcf4553d0e551c4e0c7cdf83b24a4d4bdd44199">Add createAttribute()/createAttributeNS() to Document</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/9f2cb403e26e41a68829581298f81ae6d7a639a3">Apply pre-removing steps to mutation algorithms and <code>NodeIterator</code></a> 
-     <dt><a href="https://github.com/w3c/dom/commit/e96a1d9c34137e6c4bbb957724df6e46bb1f4df1"> Define replaceWith(), after(), before() for ChildNode</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/bea38dada944be8c4ed47c263220ed445153d87c">Calculate the length of CharacterData in the Node level</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Use the declaration of web compability to prevent being exposed in NonElementParentNode and NonDocumentTypeChildNode</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for Element</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/87a356f2dacbdbdf3c39745f61f597a0415a8af8">Bring CDATASection to Node/Traversal</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered set</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/02cb08674b44660056575c07ed61c4fa09291088">Define get/setAttributeNode, get/setAttributeNodeNS, and removeAttributeNode for Element</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/181d2a300490e7391164f28f6266f19241e3be3c"> Define <code>closest()</code>, <code>matches()</code> and <code>webkitMatchesSelector()</code> for Element</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/f39a74823121ae7d310235e4ce1c9036cd898c5d">Clean up the unsupported events in the createEvent interface</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a> 
-     <dt><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Update the HTMLCollection algorithm in node</a> 
-    </dl>
+    <ul>
+     <li><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a>
+      <ul>
+       <li>added <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and 
+       <li>imported realm from ES standard to ensure security 
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a>
+      <ul>
+       <li>define token set for <code>DOMTokenList</code>, and 
+       <li>define <code>supports()</code> for <code>DOMTokenList</code>, and 
+       <li>updated the <code>normalize()</code> method of <code>DOMTokenList</code> to avoid duplication 
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a>
+     <li><a href="https://github.com/w3c/dom/commit/d00874005cb8ccd8c692ff4e0d743d3b507e9b3e">Throw an error if the event constructor isn’t exposed</a>
+     <li><a href="https://github.com/w3c/dom/commit/47f92af56e0891e075eab36c9d0b1839c8255a27">Throw an <code>HierarchyRequestError</code> if range’s start node is node</a>
+     <li><a href="https://github.com/w3c/dom/commit/5fcf4553d0e551c4e0c7cdf83b24a4d4bdd44199">Add createAttribute()/createAttributeNS() to Document</a>
+     <li><a href="https://github.com/w3c/dom/commit/9f2cb403e26e41a68829581298f81ae6d7a639a3">Apply pre-removing steps to mutation algorithms and NodeIterator</a>
+     <li><a href="https://github.com/w3c/dom/commit/e96a1d9c34137e6c4bbb957724df6e46bb1f4df1">Define replaceWith(), after(), before() for ChildNode</a>
+     <li><a href="https://github.com/w3c/dom/commit/bea38dada944be8c4ed47c263220ed445153d87c">Calculate the length of CharacterData in the Node level</a>
+     <li><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Use the declaration of web compability to prevent being exposed in NonElementParentNode and NonDocumentTypeChildNode</a>
+     <li><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for Element</a>
+     <li><a href="https://github.com/w3c/dom/commit/87a356f2dacbdbdf3c39745f61f597a0415a8af8">Bring CDATASection to Node/Traversal</a>
+     <li><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered set</a>
+     <li><a href="https://github.com/w3c/dom/commit/02cb08674b44660056575c07ed61c4fa09291088">Define get/setAttributeNode, get/setAttributeNodeNS, and removeAttributeNode for Element</a>
+     <li><a href="https://github.com/w3c/dom/commit/181d2a300490e7391164f28f6266f19241e3be3c">Define closest(), matches() and webkitMatchesSelector() for Element</a>
+     <li><a href="https://github.com/w3c/dom/commit/f39a74823121ae7d310235e4ce1c9036cd898c5d">Clean up the unsupported events in the createEvent interface</a>
+     <li><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a>
+     <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a>
+     <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Update the HTMLCollection algorithm in node</a>
+    </ul>
     <h3 class="heading settled" data-level="8.2" id="historical-changes-wd2-fpwd"><span class="secno">8.2. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</span><a class="self-link" href="#historical-changes-wd2-fpwd"></a></h3>
-    <dl>
-     <dt><a href="https://github.com/w3c/dom/commit/7be726731a84dedb1ded94647f7e10c83e4ba6b7">Add <code>insertAdjacentElement()</code> and insertAdjacentText() methods</a>
-     <dt><a href="https://github.com/w3c/dom/commit/b805c03b4a70c400dde052dc6461c0bcda2966a5">Add
+    <ul>
+     <li><a href="https://github.com/w3c/dom/commit/7be726731a84dedb1ded94647f7e10c83e4ba6b7">Add <code>insertAdjacentElement()</code> and <code>insertAdjacentText()</code> methods</a>
+     <li><a href="https://github.com/w3c/dom/commit/b805c03b4a70c400dde052dc6461c0bcda2966a5">Add
    event types from other specifications to createEvent()</a>
-     <dt><a href="https://github.com/w3c/dom/commit/e7db2549d0ab5378ac74daaca5a9c16390b464d6">Remove <code>XMLDocument.prototype.load</code></a>
-     <dd>This is not implemented widely and has long been deprecated
-     <dt><a href="https://github.com/w3c/dom/commit/281b5ae90accaa93304b1938cf254430691525d6">Set
+     <li>
+      <a href="https://github.com/w3c/dom/commit/e7db2549d0ab5378ac74daaca5a9c16390b464d6">Remove <code>XMLDocument.prototype.load</code></a> 
+      <ul>
+       <li>This is not implemented widely and has long been deprecated
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/281b5ae90accaa93304b1938cf254430691525d6">Set
    a document’s content-type for createDocument based on namespace</a>
-     <dt><a href="https://github.com/w3c/dom/commit/08c82ac31169f149e2779ecc2a78b55c0f06eb9e">Add
+     <li><a href="https://github.com/w3c/dom/commit/08c82ac31169f149e2779ecc2a78b55c0f06eb9e">Add
    getters and setters</a>
-     <dt><a href="https://github.com/w3c/dom/commit/c9410eac91a48183e066ff94ededc537dbb68867">Add <code>NamedNodeMap</code></a>
-     <dt><a href="https://github.com/w3c/dom/commit/7f175df0dd5741446761aa9419711ebdedf5a6db">Queue
+     <li><a href="https://github.com/w3c/dom/commit/c9410eac91a48183e066ff94ededc537dbb68867">Add <code>NamedNodeMap</code></a>
+     <li><a href="https://github.com/w3c/dom/commit/7f175df0dd5741446761aa9419711ebdedf5a6db">Queue
    a mutation record after all operations</a>
-     <dt><a href="https://github.com/w3c/dom/commit/0bff94f552f69866c7cdeecfef2d6928920a0918">Improve
-   node replacement specification</a>
-     <dd>Do not record removal when a node is replaced by itself…
-     <dt><a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine 
-   adopting a node for a document.</a>
-     <dd>Only do it if <code>document</code> changes, and
-     <dd>Apply recursively to dependents
-     <dt><a href="https://github.com/w3c/dom/commit/41e708c42a7fb56eb07a8523a29b06cc49eae415">Make <code>attr</code> inherit from node</a>
-     <dd>(again)
-    </dl>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/0bff94f552f69866c7cdeecfef2d6928920a0918">Improve
+   node replacement specification</a> 
+      <ul>
+       <li>Do not record removal when a node is replaced by itself…
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine 
+   adopting a node for a document.</a> 
+      <ul>
+       <li>Only do it if <code>document</code> changes, and
+       <li>Apply recursively to dependents
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/41e708c42a7fb56eb07a8523a29b06cc49eae415">Make <code>attr</code> inherit from node</a> 
+      <ul>
+       <li>(again)
+      </ul>
+    </ul>
     <h3 class="heading settled" data-level="8.3" id="historical-changes-fpwd-dom4"><span class="secno">8.3. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a> and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></span><a class="self-link" href="#historical-changes-fpwd-dom4"></a></h3>
-    <dl>
-     <dt><a href="https://github.com/w3c/dom/commit/01f4c51e1eab23d5e7812995ef496a02f8d90a06">Use “is” for comparisons</a>
-     <dt><a href="https://github.com/w3c/dom/commit/397eada03e09c7a5d7b27378c7f11d831d797172">Add <code>.NodeName</code> for interface Attr</a>
-     <dd><code>.nodeName</code> is still being used. It’s an alias of .name attribute.
-     <dt><a href="https://github.com/w3c/dom/commit/25afbdea45e0b3bbd6dda61bd7b2f867fb1dea44">Update the IDL for the Node interface;</a>
-     <dd>The attributes related to base URL are not optional and should be type of USVString instead of DOMString.
+    <ul>
+     <li><a href="https://github.com/w3c/dom/commit/01f4c51e1eab23d5e7812995ef496a02f8d90a06">Use “is” for comparisons</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/397eada03e09c7a5d7b27378c7f11d831d797172">Add <code>.NodeName</code> for interface Attr</a> 
+      <ul>
+       <li><code>.nodeName</code> is still being used. It’s an alias of .name attribute.
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/25afbdea45e0b3bbd6dda61bd7b2f867fb1dea44">Update the IDL for the Node interface;</a> 
+      <ul>
+       <li>The attributes related to base URL are not optional and should be type of USVString instead of DOMString.
   Use the normalized name by following the HTML spec.
-     <dt><a href="https://github.com/w3c/dom/commit/707c94714df9a74e9ccc9e17b5a12b897a92fe79">Update the description for the HTMLCollection interface</a>
-     <dt><a href="https://github.com/w3c/dom/commit/26e6a3b1bd8563e0371ed3786cca233110393816">Add two clarifications for "Mutation observers"</a>
-     <dt><a href="https://github.com/w3c/dom/commit/03c6378748ab9d2307752b81766020890e2a1ba5">Clarify the <code>isTrusted</code> attribute;</a>
-     <dd>Add a note for <code>Event.isTrusted</code> to clarify that mouse click event generated by a user is trusted
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/707c94714df9a74e9ccc9e17b5a12b897a92fe79">Update the description for the HTMLCollection interface</a>
+     <li><a href="https://github.com/w3c/dom/commit/26e6a3b1bd8563e0371ed3786cca233110393816">Add two clarifications for "Mutation observers"</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/03c6378748ab9d2307752b81766020890e2a1ba5">Clarify the <code>isTrusted</code> attribute;</a> 
+      <ul>
+       <li>Add a note for <code>Event.isTrusted</code> to clarify that mouse click event generated by a user is trusted
   though historically its <code>isTrusted</code> attribute is initialized to <code>false</code>
-     <dt><a href="https://github.com/w3c/dom/commit/b6a58b36f5702969beaa3786156288f24da37173">Update the steps for <code>qualifiedName()</code> method and the way to validate a qualifiedName.</a>
-     <dd>Add Qualified name definition for Element and Attr.
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/b6a58b36f5702969beaa3786156288f24da37173">Update the steps for <code>qualifiedName()</code> method and the way to validate a qualifiedName.</a> 
+      <ul>
+       <li>Add Qualified name definition for Element and Attr.
   There are several attribute related methods of Interface Element to use name instead of qualified name.
   Moreover, combine and refine some duplicated functions into one procedure, like 'get an attribute by name',
-  'remove an attribute by name', etc
-     <dt><a href="https://github.com/w3c/dom/commit/bc1b3cad6e02154a7f3923915a067b4ee3c6e10f">Update the algorithm of the <code>nodeType</code> attribute.</a>
-     <dd>Cleanup <code>nodeType</code> and <code>nodeName</code> getter attribute’s description. Also change <code>nodeType</code>’s list style to be similar to <code>nodeName</code>
-     <dt><a href="https://github.com/w3c/dom/commit/e6560c08c20228ecbf70682cbee3276dc0fb3d40">Always queue mutation records after mutations</a>
-     <dd>Queuing of mutation records looks inconsistent. To replace a child with node within a parent,
+  'remove an attribute by name', etc.
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/bc1b3cad6e02154a7f3923915a067b4ee3c6e10f">Update the algorithm of the <code>nodeType</code> attribute.</a> 
+      <ul>
+       <li>Cleanup <code>nodeType</code> and <code>nodeName</code> getter attribute’s description. Also change <code>nodeType</code>’s list style to be similar to <code>nodeName</code>
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/e6560c08c20228ecbf70682cbee3276dc0fb3d40">Always queue mutation records after mutations</a> 
+      <ul>
+       <li>Queuing of mutation records looks inconsistent. To replace a child with node within a parent,
   the mutation record should be queued after the removal of <code>child</code> and insertion of <code>node</code>
-     <dt><a href="https://github.com/w3c/dom/commit/eb8190173bd1a174b651872708b708395fea5ef3">Remove the <code>unenumable</code> keyword</a>
-     <dd>For compatibility with <cite>WEBIDL</cite>
-      <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a> 
-    </dl>
+      </ul>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/eb8190173bd1a174b651872708b708395fea5ef3">Remove the <code>unenumable</code> keyword</a> 
+      <ul>
+       <li>For compatibility with <cite>WEBIDL</cite> <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>
+      </ul>
+    </ul>
     <h3 class="heading settled" data-level="8.4" id="historical-DOM-spec-history"><span class="secno">8.4. </span><span class="content">DOM Specification History</span><a class="self-link" href="#historical-DOM-spec-history"></a></h3>
      The W3C produced the first Working Draft of a "Document Object Model Specification" in October 1997, and a year later a version 1.0 Recommendation. 
     <p>Between 2000 and 2003 a set of Recommendations collectively forming DOM 2.0 was published, and in 2004 a set of DOM 3.0 Recommendations were published.</p>
