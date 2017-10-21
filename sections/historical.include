@@ -34,6 +34,11 @@
   <li><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a></li>
   <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a></li>
   <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Update the HTMLCollection algorithm in node</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/65c0a42894bbb175f4a71959689bc73d3a35a29e">Introduce firing an event</a><ul>
+    <li>Use the relevant realm of the event target when firing an event</li>
+    <li>Also note the difference between firing and dispatching an event</li>
+    </ul>
+    </li>
 </ul>  
 
 <h3 id="historical-changes-wd2-fpwd">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</h3>
