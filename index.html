@@ -1176,10 +1176,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version ba473502a120361710488ab9b7f538b47858631e" name="generator">
+  <meta content="Bikeshed version 0d6a1c7475b7bb2485f411c7e73d9990fd0cfef5" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="7ff1d6d9eca394e55b0bd241b9e490ad82a372ac" name="document-revision">
+  <meta content="8168746324295013d5f4d3f2408615327c6070d8" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1440,17 +1439,22 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
 .highlight .vi { color: #0077aa } /* Name.Variable.Instance */
 .highlight .il { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
+  <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD" rel="stylesheet" type="text/css">
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-10-20">20 October 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">W3C Working Draft, <time class="dt-updated" datetime="2017-10-20">20 October 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
-     <dd><a class="u-url" href="https://w3c.github.io/dom/">https://w3c.github.io/dom/</a>
+     <dd><a class="u-url" href="https://www.w3.org/TR/2017/WD-dom41-20171020/">https://www.w3.org/TR/2017/WD-dom41-20171020/</a>
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/dom41/">https://www.w3.org/TR/dom41/</a>
+     <dt>Latest version of DOM:
+     <dd><a href="https://www.w3.org/TR/dom/">https://www.w3.org/TR/dom/</a>
+        <dt>Editor's Draft:
+     <dd><a href="https://w3c.github.io/dom/">https://w3c.github.io/dom/</a>
      <dt>Previous Versions:
      <dd><a href="https://www.w3.org/TR/2017/WD-dom41-20170609/" rel="prev">https://www.w3.org/TR/2017/WD-dom41-20170609/</a>
      <dt>Feedback:
@@ -1460,11 +1464,11 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dt>Issue Tracking:
      <dd><a href="https://github.com/w3c/dom/issues/">GitHub</a>
      <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:yongsheng.zys@alibaba-inc.com">Yongsheng Zhu</a> (<span class="p-org org">Alibaba</span>)
+     <dd class="editor p-author h-card vcard" data-editor-id="94359"><a class="p-name fn u-email email" href="mailto:yongsheng.zys@alibaba-inc.com">Yongsheng Zhu</a> (<span class="p-org org">Alibaba</span>)
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1474,16 +1478,14 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
    <p> <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em> </p>
-   <p> This document was published by the <a href="https://www.w3.org/WebPlatform/WG/">Web Platform Working Group</a> as an Editors Draft. This document is intended to become a W3C Recommendation. </p>
+   <p> This document was published by the <a href="https://www.w3.org/WebPlatform/WG/">Web Platform Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. </p>
    <p></p>
    <p>This document is the Second Public Working Draft of an update to the DOM 4 Recommendation.
 
 The goals of this revision are to update the W3C’s DOM specification to cover what is interoperably implemented as a core part of the Web Platform.</p>
    <p></p>
    <p> Feedback and comments on this specification are welcome, please send them to <a href="mailto:public-webapps@w3.org?subject=%5Bdom41%5D">public-webapps@w3.org</a> (<a href="mailto:public-webapps@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-webapps/">archives</a>) with <code>[dom41]</code> at the start of your email’s subject. </p>
-   <p> Publication as an Editors Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may
-    be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
-    this document as other than work in progress. </p>
+   <p> Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress. </p>
    <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/83482/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
    <p>This document is governed by the <a href="https://www.w3.org/2017/Process-20170301/" id="w3c_process_revision">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>. </p>
   </div>
@@ -2020,7 +2022,7 @@ it, and optionally given a <a data-link-type="dfn" href="https://tc39.github.io/
       <p>Let <var>defaultEventInitDict</var> be the result of <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value">converting</a> the JavaScript value undefined to the dictionary
  type accepted by <var>eventInterface</var>’s constructor. (This dictionary type will either be <code class="idl"><a data-link-type="idl" href="#dictdef-eventinit" id="ref-for-dictdef-eventinit②">EventInit</a></code> or a dictionary that inherits from it.) </p>
      <li>For each <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member" id="ref-for-dfn-dictionary-member③">dictionary member</a> present in <var>defaultEventInitDict</var>, find the
- attribute on <var>event</var> whose <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-identifier" id="ref-for-dfn-identifier①">identifier</a> matches the key of the <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member" id="ref-for-dfn-dictionary-member④">dictionary member</a> and then set the attribute to the default value of that <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member" id="ref-for-dfn-dictionary-member⑤">dictionary member</a>. 
+ attribute on <var>event</var> whose <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL/#dfn-identifier" id="ref-for-dfn-identifier①">identifier</a> matches the key of the <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member" id="ref-for-dfn-dictionary-member④">dictionary member</a> and then set the attribute to the default value of that <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member" id="ref-for-dfn-dictionary-member⑤">dictionary member</a>. 
      <li>
       <p>Initialize <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-istrusted" id="ref-for-dom-event-dom-event-istrusted⑤">isTrusted</a></code> attribute to true. </p>
      <li>
@@ -6040,7 +6042,7 @@ and false otherwise. </p>
        <li>(again)
       </ul>
     </ul>
-    <h3 class="heading settled" data-level="8.3" id="historical-changes-fpwd-dom4"><span class="secno">8.3. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a> and the <a href="http://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></span><a class="self-link" href="#historical-changes-fpwd-dom4"></a></h3>
+    <h3 class="heading settled" data-level="8.3" id="historical-changes-fpwd-dom4"><span class="secno">8.3. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2015/REC-dom-20151119/">DOM 4 Recommendation</a></span><a class="self-link" href="#historical-changes-fpwd-dom4"></a></h3>
     <ul>
      <li><a href="https://github.com/w3c/dom/commit/01f4c51e1eab23d5e7812995ef496a02f8d90a06">Use “is” for comparisons</a>
      <li>
@@ -7244,7 +7246,7 @@ and false otherwise. </p>
      <li><a href="https://heycam.github.io/webidl/#Unscopable">Unscopable</a>
      <li><a href="https://heycam.github.io/webidl/#idl-boolean">boolean</a>
      <li><a href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value">converted to an idl value</a>
-     <li><a href="https://heycam.github.io/webidl/#dfn-identifier">identifier</a>
+     <li><a href="https://www.w3.org/TR/WebIDL/#dfn-identifier">identifier</a>
      <li><a href="https://heycam.github.io/webidl/#idl-short">short</a>
      <li><a href="https://heycam.github.io/webidl/#idl-unsigned-long">unsigned long</a>
      <li><a href="https://heycam.github.io/webidl/#idl-unsigned-short">unsigned short</a>
