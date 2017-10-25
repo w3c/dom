@@ -98,6 +98,19 @@
 
 <p>A <a href="#concept-node">node</a> is considered <dfn>empty</dfn> if its <a href="#node-length">length</a> is zero.
 
+<h4 id="nodes-document-tree">Document tree</h4>
+A <dfn concept>document tree</dfn> is a <a>node tree</a> whose <a href="#tree-root">root</a> is a <a href="#concept-document">document</a>.
+
+The <dfn element>document element</dfn> of a <a href="#concept-document">document</a> is the <a href="#concept-element">element</a> whose <a>parent</a> is that <a href="#concept-document">document</a> if it exists, and null otherwise.
+
+<p class="note">Per the <a>node tree</a> constraints, there can be only one such <a href="#concept-element">element</a>. </p>
+
+An <a href="#concept-element">element</a> is <dfn>in a document tree</dfn> if its <a href="#tree-root">root</a> is a <a href="#concept-document">document</a>.
+
+An <a href="#concept-element">element</a> is <dfn>in a document</dfn> if it is <a>in a document tree</a>.
+
+<p class="note">It's NOT suggested to use the term <a>in a document</a>, as it may cause confusion with the term <a href="https://www.w3.org/TR/shadow-dom/#concept-shadow-tree">in a shadow tree</a>.</p>
+
 <h4 id="mutation-algorithms">Mutation algorithms</h4>
 
 <p>To <dfn>ensure pre-insertion validity</dfn> of a <var>node</var> into a <var>parent</var> before a <var>child</var>, run these steps:
@@ -2628,8 +2641,6 @@ claims as to whether using them is conforming or not.
 <p>The <dfn>document element</dfn> of a <a href="#concept-document">document</a> is the <a href="#concept-element">element</a> whose <a>parent</a> is that <a href="#concept-document">document</a>, if it exists, and null otherwise.
 
 <p class="note">Note: Per the <a>node tree</a> constraints, there can only be one such <a href="#concept-element">element</a>.
-
-<p>When an <a href="#concept-element">element</a> or one of its <a>ancestors</a> is the <a>document element</a>, it is <dfn>in a document</dfn>.
 
 <hr>
 
