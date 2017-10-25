@@ -99,7 +99,7 @@
 <p>A <a href="#concept-node">node</a> is considered <dfn>empty</dfn> if its <a href="#node-length">length</a> is zero.
 
 <h4 id="nodes-document-tree">Document tree</h4>
-A <dfn concept>document tree</dfn> is a <a>node tree</a> whose <a href="#tree-root">root</a> is a <a href="#concept-document">document</a>.
+A <dfn>document tree</dfn> is a <a>node tree</a> whose <a href="#tree-root">root</a> is a <a href="#concept-document">document</a>.
 
 The <dfn element>document element</dfn> of a <a href="#concept-document">document</a> is the <a href="#concept-element">element</a> whose <a>parent</a> is that <a href="#concept-document">document</a> if it exists, and null otherwise.
 
