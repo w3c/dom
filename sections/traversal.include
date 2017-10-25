@@ -8,7 +8,7 @@ Each {{NodeIterator}} and {{TreeWalker}} object also has an associated <dfn id="
 To <dfn dfn id="node-filter" for="node">filter</dfn> <var>node</var> run these steps:
 
 <ol>
-  1. Let <var>n</var> be <var>node</var>'s {{Node/nodeType}} attribute value minus 1. 
+  1. Let <var>n</var> be <var>node</var>'s <code>{{Node/nodeType}}</code> attribute value minus 1.
 
   2. If the <var>n</var><sup>th</sup> bit (where 0 is the least significant bit) of <a href="#traversal-whattoshow">whatToShow</a> is not set, return <code><a>FILTER_SKIP</a></code>.
 
@@ -70,7 +70,7 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
   </ol>
 
  <li><p>Set <var>nodeIterator</var>'s {{NodeIterator/referenceNode}} attribute to
- <var>toBeRemovedNode</var>'s <a for=tree>parent</a>, if <var>toBeRemovedNode</var>'s
+ <var>toBeRemovedNode</var>'s <a>parent</a>, if <var>toBeRemovedNode</var>'s
  <a>previous sibling</a> is null, and to the <a>inclusive descendant</a> of
  <var>toBeRemovedNode</var>'s <a>previous sibling</a> that appears last in <a>tree order</a>
  otherwise.
