@@ -1346,6 +1346,8 @@ Each <a>node</a> has an associated <dfn export for=Node id=concept-node-document
 
 <p class="note">Note: A <a href="#concept-node">node</a>'s <a>node document</a> can be changed by the <a>adopt</a> algorithm.
 
+<p>A <a>node</a>'s <a>get the parent</a> algorithm, given an <var>event</var>, returns the <a>node</a>'s <a>assigned slot</a>, if <a>node</a> is <a>assigned</a>, and <a>node</a>'s <a>parent</a> otherwise.
+
 <hr>
 
 <dl>
