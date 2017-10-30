@@ -89,7 +89,7 @@ interface Range {
 
 <p class="note">Note: Generally speaking, a <a>boundary point</a>'s <a>offset</a> will be between zero and the <a>boundary point</a>'s <a href="#concept-node">node</a> <a>length</a>, inclusive. Algorithms that modify a <a>tree</a> (in particular the <a href="#node-insert">insert</a>, <a href="#node-remove">remove</a>, <a>replace data</a>, and <a>split</a> algorithms) also modify <a href="#concept-range">ranges</a> associated with that <a>tree</a>.
 
-<p>If the two <a>nodes</a> of <a>boundary points</a> (<var>node A</var>, <var>offset A</var>) and (<var>node B</var>, <var>offset B</var>) have the same <a href="#tree-root">root</a>, the <dfn lt="range boundary point position|boundary point position|position">position</dfn> of the first relative to the second is either <dfn lt="range boundary point before|boundary point before|before">before</dfn>, <dfn lt="range boundary point equal|boundary point equal|equal">equal</dfn>, or <dfn lt="range boundary point after|boundary point after|after">after</dfn>, as returned by the following algorithm:
+<p>If the two <a>nodes</a> of <a>boundary points</a> (<var>node A</var>, <var>offset A</var>) and (<var>node B</var>, <var>offset B</var>) have the same <a href="#concept-tree-root">root</a>, the <dfn lt="range boundary point position|boundary point position|position">position</dfn> of the first relative to the second is either <dfn lt="range boundary point before|boundary point before|before">before</dfn>, <dfn lt="range boundary point equal|boundary point equal|equal">equal</dfn>, or <dfn lt="range boundary point after|boundary point after|after">after</dfn>, as returned by the following algorithm:
 
 <ol>
   <li>If <var>node A</var> is the same as <var>node B</var>, return <a>equal</a> if <var>offset A</var> is the same as <var>offset B</var>, <a>before</a> if <var>offset A</var> is less than <var>offset B</var>, and <a>after</a> if <var>offset A</var> is greater than <var>offset B</var>.
@@ -115,10 +115,10 @@ interface Range {
 
 <p>For convenience, <dfn lt="range start node|start node">start node</dfn> is <a>start</a>'s <a href="#concept-node">node</a>, <dfn>start offset</dfn> is <a>start</a>'s <a>offset</a>, <dfn lt="range end node|end node">end node</dfn> is <a>end</a>'s <a href="#concept-node">node</a>, and <dfn>end offset</dfn> is <a>end</a>'s <a>offset</a>.
 
-<p>The <dfn id="range-root" for="range">root of a range</dfn> is the <a href="#tree-root">root</a> of its <a>start node</a>.
+<p>The <dfn id="range-root" for="range">root of a range</dfn> is the <a href="#concept-tree-root">root</a> of its <a>start node</a>.
 <!-- start and end have an identical root -->
 
-<p>A <a href="#concept-node">node</a> <var>node</var> is <dfn>contained</dfn> in a <a href="#concept-range">range</a> <var>range</var> if <var>node</var>'s <a href="#tree-root">root</a> is the same as <var>range</var>'s <a href="#range-root">root</a>, and (<var>node</var>, 0) is <a>after</a> <var>range</var>'s <a>start</a>, and (<var>node</var>, <a>length</a> of <var>node</var>) is <a>before</a> <var>range</var>'s <a>end</a>.
+<p>A <a href="#concept-node">node</a> <var>node</var> is <dfn>contained</dfn> in a <a href="#concept-range">range</a> <var>range</var> if <var>node</var>'s <a href="#concept-tree-root">root</a> is the same as <var>range</var>'s <a href="#range-root">root</a>, and (<var>node</var>, 0) is <a>after</a> <var>range</var>'s <a>start</a>, and (<var>node</var>, <a>length</a> of <var>node</var>) is <a>before</a> <var>range</var>'s <a>end</a>.
 
 <p>A <a href="#concept-node">node</a> is <dfn>partially contained</dfn> in a <a href="#concept-range">range</a> if it is an <a>inclusive ancestor</a> of the <a href="#concept-range">range</a>'s <a>start node</a> but not its <a>end node</a>, or vice versa.
 
@@ -217,14 +217,14 @@ interface Range {
   <dt>If these steps were invoked as "set the start"
    <dd>
     <ol>
-     <li><p>If <var>bp</var> is <a>after</a> the <var>range</var>'s <a>end</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#tree-root">root</a>, set <var>range</var>'s <a>end</a> to <var>bp</var>.
+     <li><p>If <var>bp</var> is <a>after</a> the <var>range</var>'s <a>end</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#concept-tree-root">root</a>, set <var>range</var>'s <a>end</a> to <var>bp</var>.
 
      <li><p>Set <var>range</var>'s <a>start</a> to <var>bp</var>.
     </ol>
    <dt>If these steps were invoked as "set the end"
    <dd>
     <ol>
-     <li><p>If <var>bp</var> is <a>before</a> the <var>range</var>'s <a>start</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#tree-root">root</a>, set <var>range</var>'s <a>start</a> to <var>bp</var>.
+     <li><p>If <var>bp</var> is <a>before</a> the <var>range</var>'s <a>start</a>, or if <var>range</var>'s <a href="#range-root">root</a> is not equal to <var>node</var>'s <a href="#concept-tree-root">root</a>, set <var>range</var>'s <a>start</a> to <var>bp</var>.
 
      <li><p>Set <var>range</var>'s <a>end</a> to <var>bp</var>.
     </ol>
@@ -282,8 +282,9 @@ interface Range {
 
 <p>The <dfn method for=Range>collapse(<var>toStart</var>)</dfn> method, when invoked, must if <var>toStart</var> is true, set <a>end</a> to <a>start</a>, and set <a>start</a> to <a>end</a> otherwise.
 
-<p>To <dfn lt="range select|select">select</dfn> a <a href="#concept-node">node</a> <var>node</var> within a <a href="#concept-range">range</a> <var>range</var>, run these steps:
 
+<p>To <dfn export id=concept-range-select for=Range>select</dfn> a <a>node</a> <var>node</var> within a <a>range</a> <var>range</var>, run these steps:
+    
 <ol>
   1. Let <var>parent</var> be <var>node</var>'s <a>parent</a>.
 
@@ -838,7 +839,7 @@ check first thing, which matches everyone but Firefox.
 11.50 don't support the method. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
+ <li><p>If <var>node</var>'s <a href="#concept-tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
  <!-- This happens even if the offset is negative or too large, or if the node
  is a doctype, in both Firefox 9.0a2 and Chrome 16 dev. -->
 
@@ -855,7 +856,7 @@ check first thing, which matches everyone but Firefox.
 and Opera Next 12.00 alpha all do. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, <a>throw</a> a <code>WrongDocumentError</code>.
+ <li><p>If <var>node</var>'s <a href="#concept-tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, <a>throw</a> a <code>WrongDocumentError</code>.
  <!-- Opera Next 12.00 alpha seems to return -1 in this case.  The spec matches
  Firefox 12.0a1 and Chrome 17 dev. -->
 
@@ -881,7 +882,7 @@ and Opera Next 12.00 alpha all do. -->
 Firefox 12.0a1. -->
 
 <ol>
- <li><p>If <var>node</var>'s <a href="#tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
+ <li><p>If <var>node</var>'s <a href="#concept-tree-root">root</a> is different from the <a>context object</a>'s <a href="#range-root">root</a>, return false.
  <!-- It seems like for doctypes, Opera Next 12.00 alpha throws
  InvalidNodeTypeError instead of returning false.  The spec follows Chrome
  17 dev. -->

@@ -98,9 +98,9 @@ dictionary EventInit {
 };
 </pre>
 
-<p>An {{Event}} object allows for signaling that
-something has occurred. e.g. that an image has completed downloading. It is
-represented by the <code><a>Event</a></code> interface or an interface that
+<p>An {{Event}} object is simply named an <dfn export id=concept-event>event</dfn>.
+It allows for signaling that something has occurred, e.g., that an image has completed downloading.
+It is represented by the <code><a>Event</a></code> interface or an interface that
 inherits from the <code><a>Event</a></code> interface.</p>
 
 <dl>
@@ -145,9 +145,9 @@ inherits from the <code><a>Event</a></code> interface.</p>
 
 </dl>
 
-<p>The <dfn attribute for=Event lt="dom event type|event type|type"><code>type</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the empty string.
+<p>The <dfn attribute for=Event><code>type</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be initialized to the empty string.
 
-<p>The <dfn attribute for=Event lt="dom event target|event target|target"><code>target</code></dfn> attribute's getter and <dfn attribute for=Event lt="dom event currentTarget|event currentTarget|currentTarget"><code>currentTarget</code></dfn> attribute's getter must return the values they were initialized to. When an <a>event</a> is created the attributes must be initialized to null.
+<p>The <dfn attribute for=Event><code>target</code></dfn> attribute's getter and <dfn attribute for=Event><code>currentTarget</code></dfn> attribute's getter must return the values they were initialized to. When an <a>event</a> is created the attributes must be initialized to null.
 
 <p>The <dfn attribute for=Event lt="dom event eventPhase|event eventPhase|eventPhase"><code>eventPhase</code></dfn> attribute's getter must return the value it was initialized to, which must be one of the following:</p>
 <dl>
@@ -188,7 +188,7 @@ if <a>context object</a>'s <a>stop propagation flag</a> is set, and false otherw
 
 <p>The <dfn method for=Event><code>stopImmediatePropagation()</code></dfn> method must set both the <a>stop propagation flag</a> and <a>stop immediate propagation flag</a>.
 
-<p>The <dfn attribute for=Event lt="dom event bubble|event bubble|bubble|dom event bubbles|event bubbles|bubbles"><code>bubbles</code></dfn> and <dfn attribute for=Event lt="dom event cancelable|event cancelable|cancelable"><code>cancelable</code></dfn> attributes must return the values they were initialized to.
+The <dfn attribute for=Event><code>bubbles</code></dfn> and <dfn attribute for=Event><code>cancelable</code></dfn> attributes must return the values they were initialized to.
 
 <p>The <dfn method for=Event><code>preventDefault()</code></dfn> method, when invoked, must set the
 <a>canceled flag</a> if the {{Event/cancelable}} attribute value is true and the
@@ -202,7 +202,7 @@ debugging.
 
 <hr>
 
-<p>The <dfn attribute for=Event lt="dom event isTrusted|event isTrusted|isTrusted"><code>isTrusted</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be
+<p>The <dfn attribute for=Event><code>isTrusted</code></dfn> attribute's getter must return the value it was initialized to. When an <a>event</a> is created the attribute must be
 initialized to false.
 
 <p class="note">Note: {{Event/isTrusted}} is a convenience that indicates whether an <a>event</a> is <a>dispatched</a> by the user agent
@@ -214,7 +214,9 @@ the user agent to dispatch an <a>event</a> whose {{Event/isTrusted}} attribute i
 
 <hr>
 
-<p>To <dfn lt="dom event initialize|event initialize|initialize|initialized|initializes">initialize</dfn> an <var>event</var>, with <var>type</var>, <var>bubbles</var>, and <var>cancelable</var>, run these steps:
+To <dfn export for=Event id=concept-event-initialize>initialize</dfn> an
+<var>event</var>, with <var>type</var>,
+<var>bubbles</var>, and <var>cancelable</var>, run these steps:
 
 <ol>
   1. Set the <a>initialized flag</a>.

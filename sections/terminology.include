@@ -3,40 +3,41 @@
 
   The term <dfn lt="context object|context objects">context object</dfn> means the object on which the algorithm, attribute getter, attribute setter, or method being discussed was called. When the <a>context object</a> is unambiguous, the term can be omitted.
 
-<h3 id="terminology-trees">Trees</h3>
-<p>A <dfn>tree</dfn> is a finite hierarchical tree structure. In
-<dfn>tree order</dfn> is preorder, depth-first
+<h3 id=trees>Trees</h3>
+<p>A <dfn export id=concept-tree>tree</dfn> is a finite hierarchical tree structure. In
+<dfn export id=concept-tree-order>tree order</dfn> is preorder, depth-first
 traversal of a <a>tree</a>.
 <!-- http://en.wikipedia.org/wiki/Tree_traversal#Depth-first_Traversal -->
 
-<p>An object that <dfn lt="tree participate|tree participates|participate">participates</dfn> in
-a <a>tree</a> has a
-<dfn lt="tree parent|tree parents|parent|parents">parent</dfn>, which is either another object
+<p>An object that
+<dfn export for=tree id=concept-tree-participate lt="participate|participate in a tree|participates in a tree">participates</dfn>
+in a <a>tree</a> has a
+<dfn export for=tree id=concept-tree-parent>parent</dfn>, which is either another object
 or null, and an ordered list of zero or more
 <dfn lt="tree child|tree children|child|children">child</dfn> objects. An object <var>A</var> whose
 <a>parent</a> is object <var>B</var> is a
 <a>child</a> of <var>B</var>.
 
-<p>The <dfn id="tree-root" for="tree">root</dfn> of an object is itself, if its
+<p>The <dfn export for=tree id=concept-tree-root>root</dfn> of an object is itself, if its
 <a>parent</a> is null, or else it is the
-<a href="#tree-root">root</a> of its
+<a href="#concept-tree-root">root</a> of its
 <a>parent</a>.
 
 <p>An object <var>A</var> is called a
-<dfn lt="tree descendant|tree descendants|descendant|descendants">descendant</dfn> of an object
+<dfn export for=tree id=concept-tree-descendant>descendant</dfn> of an object
 <var>B</var>, if either <var>A</var> is a
-<a>child</a> of <var>B</var> or
-<var>A</var> is a <a>child</a> of an
+<a for=tree>child</a> of <var>B</var> or
+<var>A</var> is a <a for=tree>child</a> of an
 object <var ignore>C</var> that is a
 <a>descendant</a> of <var>B</var>.
 
 <p>An
-<dfn lt="tree inclusive descendant|tree inclusive descendants|inclusive descendant|inclusive descendants">inclusive descendant</dfn> is
+<dfn export for=tree id=concept-tree-inclusive-descendant>inclusive descendant</dfn> is
 an object or one of its
 <a>descendants</a>.
 
 <p>An object <var>A</var> is called an
-<dfn lt="tree ancestor|tree ancestors|ancestor|ancestors">ancestor</dfn> of an object <var>B</var> if and only if <var>B</var> is a
+<dfn export for=tree id=concept-tree-ancestor>ancestor</dfn> of an object <var>B</var> if and only if <var>B</var> is a
 <a>descendant</a> of
 <var>A</var>.
 
@@ -62,16 +63,16 @@ same <a>tree</a> and <var>A</var> comes
 after <var>B</var> in
 <a>tree order</a>.
 
-<p>The <dfn lt="tree first child|first child">first child</dfn> of an object is its first <a>child</a> or null if it has no <a>children</a>.
+<p>The <dfn export for=tree id=concept-tree-first-child>first child</dfn> of an object is its first <a for=tree>child</a> or null if it has no <a>children</a>.
 
-<p>The <dfn lt="tree last child|last child">last child</dfn> of an object is
-its last <a>child</a> or null if it has no <a>children</a>.
+<p>The <dfn export for=tree id=concept-tree-last-child>last child</dfn> of an object is
+its last <a for=tree>child</a> or null if it has no <a>children</a>.
 
-<p>The <dfn id="tree-previous-sibling" lt="tree previous sibling|previous sibling" for="tree">previous sibling</dfn> of an object is its first <a>preceding</a> <a>sibling</a> or null if it has no <a>preceding</a> <a>sibling</a>.
+<p>The <dfn export for=tree id=concept-tree-previous-sibling>previous sibling</dfn> of an object is its first <a>preceding</a> <a>sibling</a> or null if it has no <a>preceding</a> <a>sibling</a>.
 
-<p>The <dfn id="tree-next-sibling" lt="tree next sibling|next sibling" for="tree">next sibling</dfn> of an object is its first <a>following</a> <a>sibling</a> or null if it has no <a>following</a> <a>sibling</a>.
+<p>The <dfn export for=tree id=concept-tree-next-sibling>next sibling</dfn> of an object is its first <a>following</a> <a>sibling</a> or null if it has no <a>following</a> <a>sibling</a>.
 
-<p>The <dfn lt="tree index|index">index</dfn> of an object is its number of <a>preceding</a> <a>siblings</a>.
+<p>The <dfn export for=tree id=concept-tree-index>index</dfn> of an object is its number of <a>preceding</a> <a>siblings</a>.
 
 <h3 id="terminology-strings">Strings</h3>
 

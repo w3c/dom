@@ -86,7 +86,7 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
 
 <p>The <dfn attribute id="iterator-filter" for=NodeIterator>filter</dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
-<p>To <dfn attribute id="iterator-traverse" for=NodeIterator>traverse</dfn> in direction <var ignore>direction</var> run these steps:
+<p>To <dfn export id=concept-nodeiterator-traverse for=NodeIterator>traverse</dfn> in direction <var>direction</var> run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the {{NodeIterator/referenceNode}} attribute.
@@ -205,7 +205,7 @@ interface TreeWalker {
     <p>Repeat these substeps:
 
     <ol>
-     <li><p>Let <var>sibling</var> be <var>node</var>'s <a href="#tree-next-sibling">next sibling</a> if <var>type</var> is first, and <var>node</var>'s <a href="#tree-previous-sibling">previous sibling</a> if <var>type</var> is last.
+     <li><p>Let <var>sibling</var> be <var>node</var>'s <a href="#concept-tree-next-sibling">next sibling</a> if <var>type</var> is first, and <var>node</var>'s <a href="#concept-tree-previous-sibling">previous sibling</a> if <var>type</var> is last.
 
      <li><p>If <var>sibling</var> is not null, set <var>node</var> to <var>sibling</var> and goto <a>Main</a>.
 
@@ -233,7 +233,7 @@ interface TreeWalker {
   <p>Run these substeps:
 
   <ol>
-   <li><p>Let <var>sibling</var> be <var>node</var>'s <a href="#tree-next-sibling">next sibling</a> if <var>type</var> is next, and <var>node</var>'s <a href="#tree-previous-sibling">previous sibling</a> if <var>type</var> is previous.
+   <li><p>Let <var>sibling</var> be <var>node</var>'s <a href="#concept-tree-next-sibling">next sibling</a> if <var>type</var> is next, and <var>node</var>'s <a href="#concept-tree-previous-sibling">previous sibling</a> if <var>type</var> is previous.
 
    <li>
     <p>While <var>sibling</var> is not null, run these subsubsteps:
@@ -247,7 +247,7 @@ interface TreeWalker {
 
      <li><p>Set <var>sibling</var> to <var>node</var>'s <a>first child</a> if <var>type</var> is next, and <var>node</var>'s <a>last child</a> if <var>type</var> is previous.
 
-     <li><p>If <var>result</var> is <code><a>FILTER_REJECT</a></code> or <var>sibling</var> is null, then set <var>sibling</var> to <var>node</var>'s <a href="#tree-next-sibling">next sibling</a> if <var>type</var> is next, and <var>node</var>'s <a href="#tree-previous-sibling">previous sibling</a> if <var>type</var> is previous.
+     <li><p>If <var>result</var> is <code><a>FILTER_REJECT</a></code> or <var>sibling</var> is null, then set <var>sibling</var> to <var>node</var>'s <a href="#concept-tree-next-sibling">next sibling</a> if <var>type</var> is next, and <var>node</var>'s <a href="#concept-tree-previous-sibling">previous sibling</a> if <var>type</var> is previous.
     </ol>
 
    <li><p>Set <var>node</var> to its <a>parent</a>.
@@ -273,7 +273,7 @@ interface TreeWalker {
   <p>While <var>node</var> is not <a href="#traversal-root">root</a>, run these substeps:
 
   <ol>
-   <li><p>Let <var>sibling</var> be the <a href="#tree-previous-sibling">previous sibling</a> of <var>node</var>.
+   <li><p>Let <var>sibling</var> be the <a href="#concept-tree-previous-sibling">previous sibling</a> of <var>node</var>.
 
    <li>
     <p>While <var>sibling</var> is not null, run these subsubsteps:
@@ -287,7 +287,7 @@ interface TreeWalker {
 
      <li><p>If <var>result</var> is <code><a>FILTER_ACCEPT</a></code>, then set the <code><a href="#treewalker-currentnode">currentNode</a></code> attribute to <var>node</var> and return <var>node</var>.
 
-     <li><p>Set <var>sibling</var> to the <a href="#tree-previous-sibling">previous sibling</a> of <var>node</var>.
+     <li><p>Set <var>sibling</var> to the <a href="#concept-tree-previous-sibling">previous sibling</a> of <var>node</var>.
     </ol>
 
    <li><p>If <var>node</var> is <a href="#traversal-root">root</a> or <var>node</var>'s <a>parent</a> is null, return null.

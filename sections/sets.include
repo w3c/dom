@@ -187,7 +187,7 @@ method, when invoked, must run these steps:
 <p>The <dfn method for=DOMTokenList id="set-supports-func">supports(<var>token</var>)</dfn>
 method, when invoked, must return the result of running <a>validation steps</a> for the given <var>token</var>.
 
-<p>The <dfn attribute for=DOMTokenList id="domtokenlist-value">value</dfn> attribute's getter must return the result of running <a>context object</a>'s <a>serialize steps</a> for <a>token set</a>.
+<p>The <dfn attribute for=DOMTokenList>value</dfn> attribute's getter must return the result of running <a>context object</a>'s <a>serialize steps</a> for <a>token set</a>.
 
 <p>Setting the {{DOMTokenList/value}} attribute must run the <a>ordered set parser</a> for the given value and set <a>token set</a> to the result.
 
