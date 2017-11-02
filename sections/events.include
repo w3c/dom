@@ -534,7 +534,7 @@ for discussion).
 
 <h3 id="events-dispatching-events">Dispatching events</h3>
 
-<p>To <dfn>dispatch</dfn> an <var>event</var> to a <var>target</var>, with an optional <var>legacy target override flag</var>, and an optional <var>legacyOutputDidListenersThrowFlag</var>, run these steps:
+<p>To <dfn export id=concept-event-dispatch>dispatch</dfn> an <var>event</var> to a <var>target</var>, with an optional <var>legacy target override flag</var>, and an optional <var>legacyOutputDidListenersThrowFlag</var>, run these steps:
 
 <ol>
   <li>Set <var>event</var>'s <a>dispatch flag</a>.
