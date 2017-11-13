@@ -7,7 +7,7 @@ ED: https://w3c.github.io/dom/
 TR: https://www.w3.org/TR/dom41/
 Previous Version: https://www.w3.org/TR/2017/WD-dom41-20171031/
 Group: webplatform
-Editor: Yongsheng Zhu, Alibaba, yongsheng.zys@alibaba-inc.com
+Editor: Yongsheng Zhu, Alibaba, yongsheng.zys@alibaba-inc.com, w3cid 94359
 Repository: https://github.com/w3c/dom
 Mailing List: www-dom@w3.org
 Mailing List Archives: https://lists.w3.org/Archives/Public/www-dom/
