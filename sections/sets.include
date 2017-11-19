@@ -44,7 +44,13 @@ interface DOMTokenList {
  <li>Return false.
 </ol>
 
-<p>A {{DOMTokenList}} object's <dfn>update steps</dfn> are to <a>set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
+<p>A <code>{{DOMTokenList}}</code> object's <dfn>update steps</dfn> are:
+
+<ol>
+ <li>If the associated <a href="#concept-element">element</a> does not have an associated <a href="#concept-attribute">attribute</a> and <a>token set</a> is empty, then return.
+
+ <li><a>Set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
+</ol>
 
 <p>A {{DOMTokenList}} object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a href="#concept-element">element</a> and the associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a>.
 
@@ -153,39 +159,41 @@ and false otherwise.
 
  <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
- <li><p>Let <var>result</var> be false.
-
  <li>
   <p>If <var>token</var> is in <a>token set</a>, then:
 
   <ol>
-   <li><p>If <var>force</var> is either not given or is false, then remove <var>token</var> from <a>token set</a>.
+   <li><p>If <var>force</var> is either not given or is false, then remove <var>token</var> from <a>token set</a>, run the <a>update steps</a> and return false.
 
-   <li><p>Otherwise, set <var>result</var> to true.
+   <li><p>Otherwise, return true.
   </ol>
 
  <li>
-  <p>Otherwise, if <var>force</var> is either not given or is true, append <var>token</var> to <a>token set</a> and set <var>result</var> to true.
+  <p>Otherwise, if <var>force</var> is either not given or is true, append <var>token</var> to <a>token set</a>, run the <a>update steps</a> and return true.
 
- <li><p>Run the <a>update steps</a>.
-
- <li>Return <var>result</var>.
+ <li>Return false.
 </ol>
 
-<p>The <dfn method for=DOMTokenList id="set-replace-func">replace(<var>token</var>, <var>newToken</var>)</dfn>
+<p class="note">The <a>update steps</a> are not always run for {{DOMTokenList/toggle()}} for web compatibility.
+
+<p>The <dfn method for=DOMTokenList id="set-replace-func"><code>replace(<var>token</var>, <var>newToken</var>)</code></dfn>
 method, when invoked, must run these steps:
 
 <ol>
- <li><p>If <var>token</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
+ <li><p>If either <var>token</var> or <var>newToken</a> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
- <li><p>If <var>token</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
+ <li><p>If either <var>token</var> or <var>newToken</a>  contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
+
+ <li><p>If <var>token</var> is not in <a>token set</a>, then return.
 
  <li><p><a href="#ordered-set-replace">Replace</a> <var>token</var> in <a>token set</a> with <var>newToken</var>.
 
  <li><p>Run the <a>update steps</a>.
 </ol>
 
-<p>The <dfn method for=DOMTokenList id="set-supports-func">supports(<var>token</var>)</dfn>
+<p class="note">The <a>update steps</a> are not always run for {{DOMTokenList/replace()}} for web compatibility.
+
+<p>The <dfn method for=DOMTokenList id="set-supports-func"><code>supports(<var>token</var>)</code></dfn>
 method, when invoked, must return the result of running <a>validation steps</a> for the given <var>token</var>.
 
 <p>The <dfn attribute for=DOMTokenList>value</dfn> attribute's getter must return the result of running <a>context object</a>'s <a>serialize steps</a> for <a>token set</a>.
