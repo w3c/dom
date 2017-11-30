@@ -4,7 +4,7 @@
 <p class="note">Note: Yes, the name {{DOMTokenList}} is an unfortunate legacy mishap.
 
 
-<h3 id="sets-interface-domtokenlist">Interface {{DOMTokenList}}</h3>
+<h3 id="interface-domtokenlist">Interface {{DOMTokenList}}</h3>
 
 <pre class='idl'>
 interface DOMTokenList {

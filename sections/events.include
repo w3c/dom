@@ -1,7 +1,7 @@
 <section>
-<h2 id="events">Events</h2>
+<h2 id=events>Events</h2>
 
-<h3 id="events-introduction-to-dom-events">Introduction to "DOM Events"</h3>
+<h3 id=introduction-to-dom-events>Introduction to "DOM Events"</h3>
 
 <p>Throughout the web platform <a>events</a> are <a>dispatched</a> to objects to signal an occurrence, such as network activity or user interaction. These objects implement the {{EventTarget}} interface and can therefore add <a>event listeners</a> to observe <a>events</a> by calling <a>addEventListener()</a>:
 
@@ -61,7 +61,7 @@ if(obj.dispatchEvent(event)) {
 
 <p>The <code>debug</code> function will be invoked twice. Each time the <a>event</a>'s <code><a>target</a></code> attribute value will be the <code>span</code> <a href="#concept-element">element</a>. The first time {{Event/currentTarget}} attribute's value will be the <a href="#concept-document">document</a>, the second time the <code>body</code> <a href="#concept-element">element</a>. {{Event/eventPhase}} attribute's value switches from {{Event/CAPTURING_PHASE}} to {{Event/BUBBLING_PHASE}}. If an <a>event listener</a> was registered for the <code>span</code> <a href="#concept-element">element</a>, {{Event/eventPhase}} attribute's value would have been {{Event/AT_TARGET}}.
 
-<h3 id="events-interface-event">Interface <code><a>Event</a></code></h3>
+<h3 id=interface-event>Interface {{Event}}</h3>
 <pre class='idl'>
 [Constructor(DOMString type, optional EventInit eventInitDict),
  Exposed=(Window,Worker)]
@@ -242,7 +242,7 @@ method, when invoked, must run these steps:
 
 <p class="note">Note: As <a>events</a> have constructors <code><a>initEvent()</a></code> is superfluous. However, it has to be supported for legacy content.
 
-<h3 id="events-interface-customevent">Interface {{CustomEvent}}</h3>
+<h3 id=interface-customevent>Interface {{CustomEvent}}</h3>
 
 <pre class="idl">
 [Constructor(DOMString type, optional CustomEventInit eventInitDict),
@@ -285,7 +285,7 @@ method, when invoked, must run these steps:
 
 </ol>
 
-<h3 id="events-constructing-events">Constructing events</h3>
+<h3 id=constructing-events>Constructing events</h3>
 
 <p>When a <dfn lt="dom event constructor|event constructor|constructor|constructors">constructor</dfn> of the <code><a>Event</a></code> interface, or of an interface that inherits from the <code><a>Event</a></code> interface, is invoked, these steps must be run:
 
@@ -333,14 +333,14 @@ which need to separately <a href="#concept-event-create">create</a> and <a>dispa
 instead of simply <a href="#concept-event-fire">firing</a> them. It ensures the event's attributes
 are initialized to the correct defaults.
 
-<h3 id="events-defining-event-interfaces">Defining event interfaces</h3>
+<h3 id=defining-event-interfaces>Defining event interfaces</h3>
 
 In general, when defining a new interface that inherits from <code><a>Event</a></code> please always ask feedback from the WHATWG or the
 W3C www-dom@w3.org mailing list.
 
 The {{CustomEvent}} interface can be used as starting point. However, do not introduce any <code>init<var ignore>*</var>Event()</code> methods as they are redundant with constructors. Interfaces that inherit from the <code><a>Event</a></code> interface that have such a method only have it for historical reasons.
 
-<h3 id="events-interface-eventtarget">Interface {{EventTarget}}</h3>
+<h3 id=interface-eventtarget>Interface {{EventTarget}}</h3>
 
 <pre class="idl">
 [Exposed=(Window,Worker)]
@@ -532,7 +532,7 @@ property of the event being dispatched.
 <a href="https://lists.w3.org/Archives/Public/public-script-coord/">public-script-coord@w3.org</a>
 for discussion).
 
-<h3 id="events-dispatching-events">Dispatching events</h3>
+<h3 id=dispatching-events>Dispatching events</h3>
 
 <p>To <dfn export id=concept-event-dispatch>dispatch</dfn> an <var>event</var> to a <var>target</var>, with an optional <var>legacy target override flag</var>, and an optional <var>legacyOutputDidListenersThrowFlag</var>, run these steps:
 

@@ -1,7 +1,7 @@
 <section>
 <h2 id="nodes">Nodes</h2>
 
-<h3 id="nodes-introduction-to-the-dom">Introduction to "The DOM"</h3>
+<h3 id=introduction-to-the-dom>Introduction to "The DOM"</h3>
 
 <p>In its original sense, "The DOM" is an API for accessing and manipulating documents (in particular, HTML and XML documents). In this specification, the term "document" is used for any markup-based resource, ranging from short static documents to long essays or reports with rich multimedia, as well as to fully-fledged interactive applications.
 
@@ -53,7 +53,7 @@
 
 <p class="note">Note: The most excellent <a>Live DOM Viewer</a> can be used to explore this matter in more detail.
 
-<h3 id="nodes-node-tree">Node tree</h3>
+<h3 id=node-trees>Node tree</h3>
 <p>Objects implementing the {{Document}}, {{DocumentFragment}}, {{DocumentType}}, {{Element}}, {{Text}}, {{ProcessingInstruction}}, or {{Comment}} interface (simply called <dfn id="concept-node" lt="node|nodes">nodes</dfn>) <a>participate</a> in a <a>tree</a>, simply named the <dfn>node tree</dfn>.
 
 <p>A <a>node tree</a> is constrained as follows, expressed as a relationship between the type of <a href="#concept-node">node</a> and its allowed <a>children</a>:

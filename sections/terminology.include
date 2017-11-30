@@ -90,7 +90,7 @@ its last <a for=tree>child</a> or null if it has no <a>children</a>.
 <var>pattern</var>'s length leaves the two strings as matches of each
 other.
 
-<h3 id="terminology-ordered-sets">Ordered sets</h3>
+<h3 id="ordered-sets">Ordered sets</h3>
 <p>An <dfn>ordered set</dfn> is a list that it must not contain the same item twice.</p>
 <p>The <dfn>ordered set parser</dfn> takes a string <var>input</var> and then runs these steps:</p>
 <ol>
@@ -129,7 +129,7 @@ either with <var>replacement</var> and remove all other instances.
 <p>The <dfn>ordered set serializer</dfn> takes a <var>set</var> and returns the concatenation of the strings in
 <var>set</var>, separated from each other by U+0020, if <var>set</var> is non-empty.
 
-<h3 id="terminology-selectors">Selectors</h3>
+<h3 id=selectors>Selectors</h3>
 <!--
 To <dfn export>match a relative selectors string</dfn> <var>relativeSelectors</var>
 against a <var>set</var>, run these steps:
@@ -163,7 +163,7 @@ against a <var>set</var>, run these steps:
 <p class=note>Support for namespaces within selectors is not planned and will not be
 added.
 
-<h3 id="terminology-namespaces">Namespaces</h3>
+<h3 id=namespaces>Namespaces</h3>
 
 To <dfn export>validate</dfn> a <var>qualifiedName</var>, run these steps:
 

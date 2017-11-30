@@ -1,7 +1,7 @@
 <section>
 <h2 id="ranges">Ranges</h2>
 
-<h3 id="ranges-introduction-to-dom-ranges">Introduction to "DOM Ranges"</h3>
+<h3 id=introduction-to-dom-ranges>Introduction to "DOM Ranges"</h3>
 
   A {{Range}} object (<a href="#concept-range">range</a>) represents a sequence of content within a <a>node tree</a>. Each <a href="#concept-range">range</a> has a <a>start</a> and an <a>end</a> which are <a>boundary points</a>. A <a>boundary point</a> is a tuple consisting of a <a href="#concept-node">node</a> and a non-negative numeric <a>offset</a>. So in other words, a <a href="#concept-range">range</a> represents a piece of content within a <a>node tree</a> between two <a>boundary points</a>.
 
