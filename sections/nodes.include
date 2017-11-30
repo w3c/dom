@@ -658,7 +658,7 @@ interface HTMLCollection {
    <li><p>If <var>element</var> has an <a>ID</a> which is not in <var>result</var>, append
    <var>element</var>'s <a>ID</a> to <var>result</var>.
 
-   <li><p>If <var>element</var> is in the <a>HTML namespace</a> and <a>has</a> a <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is neither the empty string nor is in <var>result</var>, append <var>element</var>'s <a href="#named-attribute"><code>name</code> attribute</a> <a href="#attribute-value">value</a> to <var>result</var>.
+   <li><p>If <var>element</var> is in the <a>HTML namespace</a> and <a>has</a> a <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#concept-attribute-value">value</a> is neither the empty string nor is in <var>result</var>, append <var>element</var>'s <a href="#named-attribute"><code>name</code> attribute</a> <a href="#concept-attribute-value">value</a> to <var>result</var>.
   </ol>
  <li><p>Return <var>result</var>.
 </ol>
@@ -671,7 +671,7 @@ interface HTMLCollection {
   <ul>
    <li>it has an <a>ID</a> which is <var>key</var>;
    <li>it is in the <a>HTML namespace</a> and <a>has</a> a
-   <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#attribute-value">value</a> is <var>key</var>;
+   <a href="#named-attribute"><code>name</code> attribute</a> whose <a href="#concept-attribute-value">value</a> is <var>key</var>;
   </ul>
   <p>or null if there is no such <a href="#concept-element">element</a>.
 </ol>
@@ -777,13 +777,13 @@ dictionary MutationObserverInit {
    <dd><p>Set to true if mutations to not just <var>target</var>, but also <var>target</var>'s <a>descendants</a> are to be observed.
 
    <dt>{{MutationObserverInit/attributeOldValue}}
-   <dd><p>Set to true if {{MutationObserverInit/attributes}} is true or omitted and <var>target</var>'s <a href="#concept-attribute">attribute</a> <a href="#attribute-value">value</a> before the mutation needs to be recorded.
+   <dd><p>Set to true if {{MutationObserverInit/attributes}} is true or omitted and <var>target</var>'s <a href="#concept-attribute">attribute</a> <a href="#concept-attribute-value">value</a> before the mutation needs to be recorded.
 
    <dt>{{MutationObserverInit/characterDataOldValue}}
    <dd><p>Set to true if {{MutationObserverInit/characterData}} is set to true or omitted and <var>target</var>'s <a href="#concept-cd-data">data</a> before the mutation needs to be recorded.
 
    <dt>{{MutationObserverInit/attributeFilter}}
-   <dd><p>Set to a list of <a href="#concept-attribute">attribute</a> <a href="#attribute-local-name">local names</a> (without <a href="#attribute-namespace">namespace</a>) if not all <a href="#concept-attribute">attribute</a> mutations need to be observed and {{MutationObserverInit/attributes}} is true or omitted.
+   <dd><p>Set to a list of <a href="#concept-attribute">attribute</a> <a href="#concept-attribute-local-name">local names</a> (without <a href="#concept-attribute-namespace">namespace</a>) if not all <a href="#concept-attribute">attribute</a> mutations need to be observed and {{MutationObserverInit/attributes}} is true or omitted.
   </dl>
 
  <dt><var>observer</var> . {{MutationObserver/disconnect()}}
@@ -922,13 +922,13 @@ interface MutationRecord {
  <dd><p>Return the <a href="#concept-tree-previous-sibling">previous</a> and <a href="#concept-tree-next-sibling">next sibling</a> respectively of the added or removed <a>nodes</a>, and null otherwise.
 
  <dt><var>record</var> . {{MutationRecord/attributeName}}
- <dd><p>Returns the <a href="#attribute-local-name">local name</a> of the changed <a href="#concept-attribute">attribute</a>, and null otherwise.
+ <dd><p>Returns the <a href="#concept-attribute-local-name">local name</a> of the changed <a href="#concept-attribute">attribute</a>, and null otherwise.
 
  <dt><var>record</var> . {{MutationRecord/attributeNamespace}}
- <dd><p>Returns the <a href="#attribute-namespace">namespace</a> of the changed <a href="#concept-attribute">attribute</a>, and null otherwise.
+ <dd><p>Returns the <a href="#concept-attribute-namespace">namespace</a> of the changed <a href="#concept-attribute">attribute</a>, and null otherwise.
 
  <dt><var>record</var> . {{MutationRecord/oldValue}}
- <dd><p>The return value depends on <code><a href="#mutationrecord-type">type</a></code>. For "<code>attributes</code>", it is the <a href="#attribute-value">value</a> of the changed <a href="#concept-attribute">attribute</a> before the change. For "<code>characterData</code>", it is the <a href="#concept-cd-data">data</a> of the changed <a href="#concept-node">node</a> before the change. For "<code>childList</code>", it is null.
+ <dd><p>The return value depends on <code><a href="#mutationrecord-type">type</a></code>. For "<code>attributes</code>", it is the <a href="#concept-attribute-value">value</a> of the changed <a href="#concept-attribute">attribute</a> before the change. For "<code>characterData</code>", it is the <a href="#concept-cd-data">data</a> of the changed <a href="#concept-node">node</a> before the change. For "<code>childList</code>", it is null.
 </dl>
 
 <p>The <dfn attribute id="mutationrecord-type" for=MutationRecord><code>type</code></dfn> attribute's getter and <dfn attribute id="mutationrecord-target" for=MutationRecord>target</dfn> attribute's getter must return the values they were initialized to.
@@ -1240,7 +1240,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 
 <dl class="switch">
  <dt>{{Attr}}
- <dd><p><a>context object</a>'s <a href="#attribute-value">value</a>.
+ <dd><p><a>context object</a>'s <a href="#concept-attribute-value">value</a>.
 
  <dt>{{Text}}
  <dt>{{Comment}}
@@ -1274,7 +1274,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
  <dd><p>The concatenation of <a href="#concept-cd-data">data</a> of all the {{Text}} <a href="#concept-node">node</a> <a>descendants</a> of the <a>context object</a>, in <a>tree order</a>.
 
  <dt>{{Attr}}
- <dd><p><a>context object</a>'s <a href="#attribute-value">value</a>.
+ <dd><p><a>context object</a>'s <a href="#concept-attribute-value">value</a>.
 
  <dt>{{Text}}
  <dt>{{ProcessingInstruction}}
@@ -1377,8 +1377,8 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 
   <ol>
    <li>let <var>copy</var> be a <a lt="nodes">node</a> that implements the same interfaces as <var>node</var>.
-   <li><p>Set <var>copy</var>'s <a href="#element-local-name">local name</a>, <a href="#element-namespace">namespace</a>,
-   <a href="#element-namespace-prefix">namespace prefix</a>, to those of <var>node</var>.
+   <li><p>Set <var>copy</var>'s <a href="#concept-element-local-name">local name</a>, <a href="#concept-element-namespace">namespace</a>,
+   <a href="#concept-element-namespace-prefix">namespace prefix</a>, to those of <var>node</var>.
    <li>
     <p>For each <var>attribute</var> in <var>node</var>'s
     <a for=Element>attribute list</a>, in order, run these substeps:
@@ -1409,7 +1409,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
    <a>system ID</a>, to those of <var>node</var>.
 
    <dt>{{Attr}}
-   <dd><p>Set <var>copy</var>'s <a href="#attribute-namespace">namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>, to those of <var>node</var>.
+   <dd><p>Set <var>copy</var>'s <a href="#concept-attribute-namespace">namespace</a>, <a href="#concept-attribute-namespace-prefix">namespace prefix</a>, <a href="#concept-attribute-local-name">local name</a>, and <a href="#concept-attribute-value">value</a>, to those of <var>node</var>.
 
    <dt>{{Text}}
    <dt>{{Comment}}
@@ -1448,10 +1448,10 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 
    <dt>{{Element}}
    <dd>
-    <p>Its <a href="#element-namespace">namespace</a>, <a href="#element-namespace-prefix">namespace prefix</a>, <a href="#element-local-name">local name</a>, and its number of <a href="#concept-attribute">attributes</a> in its <a for=Element>attribute list</a>.
+    <p>Its <a href="#concept-element-namespace">namespace</a>, <a href="#concept-element-namespace-prefix">namespace prefix</a>, <a href="#concept-element-local-name">local name</a>, and its number of <a href="#concept-attribute">attributes</a> in its <a for=Element>attribute list</a>.
 
    <dt>{{Attr}}
-   <dd><p>Its <a href="#attribute-namespace">namespace</a>, <a href="#attribute-local-name">local name</a>, and <a href="#attribute-value">value</a>.
+   <dd><p>Its <a href="#concept-attribute-namespace">namespace</a>, <a href="#concept-attribute-local-name">local name</a>, and <a href="#concept-attribute-value">value</a>.
 
 
    <dt>{{ProcessingInstruction}}
@@ -1596,9 +1596,9 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 <p>To <dfn>locate a namespace prefix</dfn> for an <var>element</var> using <var>namespace</var>, run these steps:
 
 <ol>
- <li><p>If <var>element</var>'s <a href="#element-namespace">namespace</a> is <var>namespace</var> and its <a href="#element-namespace-prefix">namespace prefix</a> is not null, then return its <a href="#element-namespace-prefix">namespace prefix</a>.
+ <li><p>If <var>element</var>'s <a href="#concept-element-namespace">namespace</a> is <var>namespace</var> and its <a href="#concept-element-namespace-prefix">namespace prefix</a> is not null, then return its <a href="#concept-element-namespace-prefix">namespace prefix</a>.
 
- <li><p>If <var>element</var> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#attribute-value">value</a> is <var>namespace</var>, then return <var>element</var>'s first such <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
+ <li><p>If <var>element</var> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <a href="#concept-attribute-value">value</a> is <var>namespace</var>, then return <var>element</var>'s first such <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a>.
 
  <li><p>If <var>element</var>'s <a>parent element</a> is not null, then return the result of running <a>locate a namespace prefix</a> on that <a href="#concept-element">element</a> using <var>namespace</var>. <li><p>Return null.
 
@@ -1610,14 +1610,14 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
  <dt>{{Element}}
  <dd>
   <ol>
-   <li><p>If its <a href="#element-namespace">namespace</a> is not null and its <a href="#element-namespace-prefix">namespace prefix</a> is <var>prefix</var>, then return <a href="#element-namespace">namespace</a>.
+   <li><p>If its <a href="#concept-element-namespace">namespace</a> is not null and its <a href="#concept-element-namespace-prefix">namespace prefix</a> is <var>prefix</var>, then return <a href="#concept-element-namespace">namespace</a>.
 
-   <li><p>If it <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a>
-   is the <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>", and
-   <a href="#attribute-local-name">local name</a> is <var>prefix</var>, or if <var>prefix</var> is null and it
-   <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is the
-   <a>XMLNS namespace</a>, <a href="#attribute-namespace-prefix">namespace prefix</a> is null, and <a href="#attribute-local-name">
-   local name</a> is "<code>xmlns</code>", then return its <a href="#attribute-value">value</a> if it is not the empty string,
+   <li><p>If it <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace">namespace</a>
+   is the <a>XMLNS namespace</a>, <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>", and
+   <a href="#concept-attribute-local-name">local name</a> is <var>prefix</var>, or if <var>prefix</var> is null and it
+   <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace">namespace</a> is the
+   <a>XMLNS namespace</a>, <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is null, and <a href="#concept-attribute-local-name">
+   local name</a> is "<code>xmlns</code>", then return its <a href="#concept-attribute-value">value</a> if it is not the empty string,
    and null otherwise.
 
    <li><p>If its <a>parent element</a> is null, then return null.
@@ -1675,8 +1675,8 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
    <dd><p>Return null.
 
    <dt>{{Attr}}
-   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a href="#attribute-element">element</a>,
-   if its <a href="#attribute-element">element</a> is non-null, and null otherwise.
+   <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a href="#concept-attribute-element">element</a>,
+   if its <a href="#concept-attribute-element">element</a> is non-null, and null otherwise.
 
    <dt>Any other node
    <dd><p>Return the result of <a lt="locate a namespace prefix">locating a namespace prefix</a> for its <a>parent element</a>, if its <a>parent element</a> is non-null, and null otherwise.
@@ -1719,12 +1719,12 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
   <p>Otherwise, if <var>root</var>'s <a>node document</a> is an <a>HTML document</a>, return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches the following <a>descendant</a> <a>elements</a>:
 
   <ul>
-   <li>Whose <a href="#element-namespace">namespace</a> is the <a>HTML namespace</a> and whose <a href="#element-local-name">local name</a> is <var>localName</var> <a>converted to ASCII lowercase</a>.
+   <li>Whose <a href="#concept-element-namespace">namespace</a> is the <a>HTML namespace</a> and whose <a href="#concept-element-local-name">local name</a> is <var>localName</var> <a>converted to ASCII lowercase</a>.
 
-   <li>Whose <a href="#element-namespace">namespace</a> is <em>not</em> the <a>HTML namespace</a> and whose <a href="#element-local-name">local name</a> is <var>localName</var>.
+   <li>Whose <a href="#concept-element-namespace">namespace</a> is <em>not</em> the <a>HTML namespace</a> and whose <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
   </ul>
 
- <li><p>Otherwise, return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#element-local-name">local name</a> is <var>localName</var>.
+ <li><p>Otherwise, return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
 </ol>
 
 <p>When invoked with the same argument, and as long as <var>root</var>'s <a>node document</a>'s <a for=Document>type</a> has not changed,
@@ -1738,11 +1738,11 @@ the same {{HTMLCollection}} object may be returned as returned by an earlier cal
 
  <li><p>If both <var>namespace</var> and <var>localName</var> are "<code>*</code>" (U+002A), return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a>.
 
- <li><p>Otherwise, if <var>namespace</var> is "<code>*</code>" (U+002A), return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#element-local-name">local name</a> is <var>localName</var>.
+ <li><p>Otherwise, if <var>namespace</var> is "<code>*</code>" (U+002A), return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
 
- <li><p>Otherwise, if <var>localName</var> is "<code>*</code>" (U+002A), return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#element-namespace">namespace</a> is <var>namespace</var>.
+ <li><p>Otherwise, if <var>localName</var> is "<code>*</code>" (U+002A), return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#concept-element-namespace">namespace</a> is <var>namespace</var>.
 
- <li><p>Otherwise, return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#element-namespace">namespace</a> is <var>namespace</var> and <a href="#element-local-name">local name</a> is <var>localName</var>.
+ <li><p>Otherwise, return a {{HTMLCollection}} rooted at <var>root</var>, whose filter matches <a>descendant</a> <a>elements</a> whose <a href="#concept-element-namespace">namespace</a> is <var>namespace</var> and <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
 </ol>
 
 <p>When invoked with the same arguments, the same {{HTMLCollection}} object may be returned as returned by an earlier call.
@@ -1885,18 +1885,18 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
  <dd>
   <p>If <var>localName</var> is "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a>.
 
-  <p>Otherwise, returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#element-local-name">local name</a> is <var>localName</var>. (Matches case-insensitively against <a>elements</a> in the <a>HTML namespace</a> within an <a>HTML document</a>.)
+  <p>Otherwise, returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#concept-element-local-name">local name</a> is <var>localName</var>. (Matches case-insensitively against <a>elements</a> in the <a>HTML namespace</a> within an <a>HTML document</a>.)
 
  <dt><var ignore>collection</var> = <var>document</var> . {{Document/getElementsByTagNameNS(namespace, localName)}}
 
  <dd>
   <p>If <var>namespace</var> and <var>localName</var> are "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a>.
 
-  <p>If only <var>namespace</var> is "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#element-local-name">local name</a> is <var>localName</var>.
+  <p>If only <var>namespace</var> is "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
 
-  <p>If only <var>localName</var> is "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#element-namespace">namespace</a> is <var>namespace</var>.
+  <p>If only <var>localName</var> is "<code>*</code>" returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#concept-element-namespace">namespace</a> is <var>namespace</var>.
 
-  <p>Otherwise, returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#element-namespace">namespace</a> is <var>namespace</var> and <a href="#element-local-name">local name</a> is <var>localName</var>.
+  <p>Otherwise, returns a {{HTMLCollection}} of all <a>descendant</a> <a>elements</a> whose <a href="#concept-element-namespace">namespace</a> is <var>namespace</var> and <a href="#concept-element-local-name">local name</a> is <var>localName</var>.
 
  <dt><var ignore>collection</var> = <var>document</var> . {{Document/getElementsByClassName(classNames)}}
  <dt><var ignore>collection</var> = <var>element</var> . {{Element/getElementsByClassName(classNames)}}
@@ -1936,14 +1936,14 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 <dl>
  <dt><var ignore>element</var> = <var>document</var> . {{Document/createElement(localName)}}
  <dd>
-  <p>Returns an <a href="#concept-element">element</a> in the <a>HTML namespace</a> [see <a href='https://www.w3.org/Bugs/Public/show_bug.cgi?id=19431'>bug 19431</a>] with <var>localName</var> as <a href="#element-local-name">local name</a>. (In an <a>HTML document</a> <var>localName</var> is lowercased.)
+  <p>Returns an <a href="#concept-element">element</a> in the <a>HTML namespace</a> [see <a href='https://www.w3.org/Bugs/Public/show_bug.cgi?id=19431'>bug 19431</a>] with <var>localName</var> as <a href="#concept-element-local-name">local name</a>. (In an <a>HTML document</a> <var>localName</var> is lowercased.)
 
  <dt><var ignore>element</var> = <var>document</var> . {{Document/createElement(localName)}}
 
  <dt><var ignore>element</var> = <var>document</var> . {{Document/createElementNS(namespace, qualifiedName)}}
 
  <dd>
-  <p>Returns an <a href="#concept-element">element</a> with <a href="#element-namespace">namespace</a> <var>namespace</var>. Its <a href="#element-namespace-prefix">namespace prefix</a> will be everything before "<code>:</code>" (U+003E) in <var>qualifiedName</var> or null. Its <a href="#element-local-name">local name</a> will be everything after "<code>:</code>" (U+003E) in <var>qualifiedName</var> or <var>qualifiedName</var>.
+  <p>Returns an <a href="#concept-element">element</a> with <a href="#concept-element-namespace">namespace</a> <var>namespace</var>. Its <a href="#concept-element-namespace-prefix">namespace prefix</a> will be everything before "<code>:</code>" (U+003E) in <var>qualifiedName</var> or null. Its <a href="#concept-element-local-name">local name</a> will be everything after "<code>:</code>" (U+003E) in <var>qualifiedName</var> or <var>qualifiedName</var>.
 
   <p>If <var>localName</var> does not match the <code><a type>Name</a></code> production an <code><a>InvalidCharacterError</a></code> will be thrown.
 
@@ -1951,10 +1951,10 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
   <ul>
    <li><var>localName</var> does not match the <code><a type>QName</a></code> production.
-   <li><a href="#element-namespace-prefix">Namespace prefix</a> is not null and <var>namespace</var> is the empty string.
-   <li><a href="#element-namespace-prefix">Namespace prefix</a> is "<code>xml</code>" and <var>namespace</var> is not the <a>XML namespace</a>.
-   <li><var>qualifiedName</var> or <a href="#element-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <var>namespace</var> is not the <a>XMLNS namespace</a>.
-   <li><var>namespace</var> is the <a>XMLNS namespace</a> and neither <var>qualifiedName</var> nor <a href="#element-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>".
+   <li><a href="#concept-element-namespace-prefix">Namespace prefix</a> is not null and <var>namespace</var> is the empty string.
+   <li><a href="#concept-element-namespace-prefix">Namespace prefix</a> is "<code>xml</code>" and <var>namespace</var> is not the <a>XML namespace</a>.
+   <li><var>qualifiedName</var> or <a href="#concept-element-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>" and <var>namespace</var> is not the <a>XMLNS namespace</a>.
+   <li><var>namespace</var> is the <a>XMLNS namespace</a> and neither <var>qualifiedName</var> nor <a href="#concept-element-namespace-prefix">namespace prefix</a> is "<code>xmlns</code>".
   </ul>
 
  <dt><var ignore>documentFragment</var> = <var>document</var> . {{Document/createDocumentFragment()}}
@@ -1989,7 +1989,7 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
  <li><p>Let <var>interface</var> be the <a>element interface</a> for <var>localName</var> and the <a>HTML namespace</a>.
 
- <li><p>Return a new <a href="#concept-element">element</a> that implements <var>interface</var>, with no attributes, <a href="#element-namespace">namespace</a> set to the <a>HTML namespace</a> [see <a href='https://www.w3.org/Bugs/Public/show_bug.cgi?id=19431'>bug 19431</a>], <a href="#element-local-name">local name</a> set to <var>localName</var>, and <a>node document</a> set to the <a>context object</a>.
+ <li><p>Return a new <a href="#concept-element">element</a> that implements <var>interface</var>, with no attributes, <a href="#concept-element-namespace">namespace</a> set to the <a>HTML namespace</a> [see <a href='https://www.w3.org/Bugs/Public/show_bug.cgi?id=19431'>bug 19431</a>], <a href="#concept-element-local-name">local name</a> set to <var>localName</var>, and <a>node document</a> set to the <a>context object</a>.
 </ol>
 
 <p>The <dfn method for=Document>createElementNS(<var>namespace</var>, <var>qualifiedName</var>)</dfn> method, when invoked, must run these steps:
@@ -2004,9 +2004,9 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
  <li><p>Return a new <a href="#concept-element" title="concept-element">element</a> that implements <var>interface</var>,
  with no attributes,
- <a href="#element-namespace" title="element-namespace">namespace</a> set to <var>namespace</var>,
- <a href="#element-namespace-prefix" title="element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>,
- <a href="#element-local-name" title="element-local-name">local name</a> set to <var>localName</var>, and
+ <a href="#concept-element-namespace" title="element-namespace">namespace</a> set to <var>namespace</var>,
+ <a href="#concept-element-namespace-prefix" title="element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>,
+ <a href="#concept-element-local-name" title="element-local-name">local name</a> set to <var>localName</var>, and
  <a href="#concept-node-document" title="node-document">node document</a> set to the <a href="#context-object">context object</a>.
 </ol>
 
@@ -2127,7 +2127,7 @@ invoked, must run these steps:
  <li>If the <a>context object</a> is an <a>HTML document</a>, then set <var>localName</var> to
  <var>localName</var> in <a>ASCII lowercase</a>.
 
- <li>Return a new <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>localName</var> and
+ <li>Return a new <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-local-name">local name</a> is <var>localName</var> and
  <a>node document</a> is <a>context object</a>.
 </ol>
 
@@ -2138,8 +2138,8 @@ method, when invoked, must run these steps:
  <li><p>Let <var>namespace</var>, <var>prefix</var>, and <var>localName</var> be the result of
  passing <var>namespace</var> and <var>qualifiedName</var> to <a>validate and extract</a>.
 
- <li><p>Return a new <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var>,
- <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>, <a href="#attribute-local-name">local name</a> is
+ <li><p>Return a new <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace">namespace</a> is <var>namespace</var>,
+ <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>, <a href="#concept-attribute-local-name">local name</a> is
  <var>localName</var>, and <a>node document</a> is <a>context object</a>.
 </ol>
 
@@ -2248,7 +2248,7 @@ interface DOMImplementation {
  <dt><var ignore>doc</var> = <var>document</var> . {{Document/implementation}} . <a method for=DOMImplementation lt=createDocument()>createDocument(<var>namespace</var>, <var>qualifiedName</var> [, <var>doctype</var> = null])</a></code>
 
  <dd>
-  <p>Returns an {{XMLDocument}} [see <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=22960">bug 22960</a>], with a <a>document element</a> whose <a href="#element-local-name">local name</a> is <var>qualifiedName</var> and whose <a href="#element-namespace">namespace</a> is <var>namespace</var> (unless <var>qualifiedName</var> is the empty string), and with <var>doctype</var>, if it is given, as its <a href="#concept-doctype">doctype</a>.
+  <p>Returns an {{XMLDocument}} [see <a href="https://www.w3.org/Bugs/Public/show_bug.cgi?id=22960">bug 22960</a>], with a <a>document element</a> whose <a href="#concept-element-local-name">local name</a> is <var>qualifiedName</var> and whose <a href="#concept-element-namespace">namespace</a> is <var>namespace</var> (unless <var>qualifiedName</var> is the empty string), and with <var>doctype</var>, if it is given, as its <a href="#concept-doctype">doctype</a>.
 
   <p>This method throws the same exceptions as the {{Document/createElementNS()}} method, when invoked with the same arguments.
 
@@ -2427,10 +2427,10 @@ interface Element : Node {
 
 <p>{{Element}} <a>nodes</a> are simply known as <dfn id="concept-element" lt="element|elements">elements</dfn>.</p>
 
-<p><a href="#concept-element">Elements</a> have an associated <dfn id="element-namespace" for="element">namespace</dfn>, <dfn id="element-namespace-prefix" for="element">namespace prefix</dfn>, and <dfn id="element-local-name" for="element">local name</dfn>. When an <a href="#concept-element">element</a> is created, its <a href="#element-local-name">local name</a> is always given. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a href="#element-namespace">namespace</a> and <a href="#element-namespace-prefix">namespace prefix</a> are null.
+<p><a for=/>Elements</a> have an associated <dfn export id=concept-element-namespace for=Element>namespace</dfn>, <dfn export id=concept-element-namespace-prefix for=Element>namespace prefix</dfn>, and <dfn export id=concept-element-local-name for=Element>local name</dfn>. When an <a for=/>element</a> is created, its <a href="#concept-element-local-name">local name</a> is always given. Unless explicitly given when an <a for=/>element</a> is created, its <a href="#concept-element-namespace">namespace</a> and <a href="#concept-element-namespace-prefix">namespace prefix</a> are null.
 
-<p>An <a href="#concept-element">element</a>'s <dfn id="element-qualified-name" for=Element>qualified name</dfn> is its <a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
-<a href="#element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its <a href="#element-local-name">local name</a>.
+<p>An <a href="#concept-element">element</a>'s <dfn id="element-qualified-name" for=Element>qualified name</dfn> is its <a href="#concept-element-local-name">local name</a> if its <a href="#concept-element-namespace-prefix">namespace prefix</a> is null, or its
+<a href="#concept-element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its <a href="#concept-element-local-name">local name</a>.
 
 <p><a href="#concept-element">Elements</a> also have an <dfn export id="concept-element-attribute-list" for=Element>attribute list</dfn>, which is a list exposed through a {{NamedNodeMap}}. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a for=Element>attribute list</a> is empty. An <a href="#concept-element">element</a> <dfn>has</dfn> an <a href="#concept-attribute">attribute</a> <var>A</var> if <var>A</var> is in its <a
 for=Element>attribute list</a>.
@@ -2447,13 +2447,13 @@ in an <a href="#concept-element">element</a> <var>element</var>, run these steps
 
 <ol>
  <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var>
- with name <var>oldAttr</var>'s <a href="#attribute-local-name">local name</a>,
- namespace <var>oldAttr</var>'s <a href="#attribute-namespace">namespace</a>,
- and oldValue <var>oldAttr</var>'s <a href="#attribute-value">value</a>.
+ with name <var>oldAttr</var>'s <a href="#concept-attribute-local-name">local name</a>,
+ namespace <var>oldAttr</var>'s <a href="#concept-attribute-namespace">namespace</a>,
+ and oldValue <var>oldAttr</var>'s <a href="#concept-attribute-value">value</a>.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>oldAttr</var>'s
- <a href="#attribute-local-name">local name</a>, <var>oldAttr</var>'s <a href="#attribute-value">value</a>, <var>newAttr</var>'s
- <a href="#attribute-value">value</a>, and <var>oldAttr</var>'s <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>oldAttr</var>'s <a href="#concept-attribute-value">value</a>, <var>newAttr</var>'s
+ <a href="#concept-attribute-value">value</a>, and <var>oldAttr</var>'s <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Replace <var>oldAttr</var> by <var>newAttr</var> in the <var>element</var>'s <a for=Element>attribute list</a>.
 
@@ -2483,9 +2483,9 @@ run these steps:
 
  <li>Return the <a href="#concept-attribute">attribute</a> in
  <var>element</var>'s <a for=Element>attribute list</a>
- whose <a href="#attribute-namespace">namespace</a> is
+ whose <a href="#concept-attribute-namespace">namespace</a> is
  <var>namespace</var> and
- <a href="#attribute-local-name">local name</a> is
+ <a href="#concept-attribute-local-name">local name</a> is
  <var>localName</var>, if any, and null otherwise.
 </ol>
 
@@ -2511,7 +2511,7 @@ To <dfn id="element-attributes-set-by-attr">set an attribute</dfn> given an
 
  <li><p>Let <var>oldAttr</var> be the result of
  <a lt="get an attribute by namespace and local name">getting an attribute</a> given
- <var>attr</var>'s <a href="#attribute-namespace">namespace</a>, <var>attr</var>'s <a href="#attribute-local-name">local name</a>, and
+ <var>attr</var>'s <a href="#concept-attribute-namespace">namespace</a>, <var>attr</var>'s <a href="#concept-attribute-local-name">local name</a>, and
  <var>element</var>.
 
  <li><p>If <var>oldAttr</var> is <var>attr</var>, return <var>attr</var>.
@@ -2538,9 +2538,9 @@ an optional <var>namespace</var>, run these steps:
  <a href="#element-attributes-get-by-namespace">getting an attribute</a> given
  <var>namespace</var>, <var>localName</var>, and <var>element</var>.
 
- <li>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is
- <var>namespace</var>, <a href="#attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>,
- <a href="#attribute-local-name">local name</a> is <var>localName</var>, <a href="#attribute-value">value</a> is <var>value</var>, and
+ <li>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace">namespace</a> is
+ <var>namespace</var>, <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is <var>prefix</var>,
+ <a href="#concept-attribute-local-name">local name</a> is <var>localName</var>, <a href="#concept-attribute-value">value</a> is <var>value</var>, and
  <a href="#concept-node-document">node document</a> is <var>element</var>'s <a href="#concept-node-document">node document</a>, then
  <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to <var>element</var>, and then
  terminate these steps.
@@ -2553,23 +2553,23 @@ an optional <var>namespace</var>, run these steps:
 <p>To <dfn>change</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var> to <var>value</var>, run these steps:
 
 <ol>
- <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue <var>attribute</var>'s <a href="#attribute-value">value</a>.
+ <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#concept-attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>, and oldValue <var>attribute</var>'s <a href="#concept-attribute-value">value</a>.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and
- <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and
+ <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>.
 
- <li><p>Set <var>attribute</var>'s <a href="#attribute-value">value</a> to <var>value</var>.
+ <li><p>Set <var>attribute</var>'s <a href="#concept-attribute-value">value</a> to <var>value</var>.
 </ol>
 
 <p>To <dfn id="element-append" lt="append an attribute">append</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> to an <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
 <ol>
- <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue null.
+ <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#concept-attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>, and oldValue null.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and
- <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and
+ <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Append the <var>attribute</var> to the <var>element</var>'s <a for=Element>attribute list</a>.
 
@@ -2579,11 +2579,11 @@ an optional <var>namespace</var>, run these steps:
 <p>To <dfn id="element-attributes-remove" for="element-attributes">remove</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var>, run these steps:
 
 <ol>
- <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>, and oldValue <var>attribute</var>'s <a href="#attribute-value">value</a>.
+ <li><p><a>Queue a mutation record</a> of "<code>attributes</code>" for <var>element</var> with name <var>attribute</var>'s <a href="#concept-attribute-local-name">local name</a>, namespace <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>, and oldValue <var>attribute</var>'s <a href="#concept-attribute-value">value</a>.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and
- <var>attribute</var>'s <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and
+ <var>attribute</var>'s <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Remove <var>attribute</var> from the <var>element</var>'s <a for=Element>attribute list</a>.
 
@@ -2657,24 +2657,24 @@ claims as to whether using them is conforming or not.
 
 <dl>
  <dt><var ignore>namespace</var> = <var>element</var> . {{Element/namespaceURI}}
- <dd><p>Returns the <a href="#element-namespace">namespace</a>.
+ <dd><p>Returns the <a href="#concept-element-namespace">namespace</a>.
 
  <dt><var ignore>prefix</var> = <var>element</var> . {{Element/prefix}}
- <dd><p>Returns the <a href="#element-namespace-prefix">namespace prefix</a>.
+ <dd><p>Returns the <a href="#concept-element-namespace-prefix">namespace prefix</a>.
 
  <dt><var ignore>localName</var> = <var>element</var> . {{Element/localName}}
- <dd><p>Returns the <a href="#element-local-name">local name</a>.
+ <dd><p>Returns the <a href="#concept-element-local-name">local name</a>.
 
  <dt><var ignore>qualifiedName</var> = <var>element</var> . {{Element/tagName}}
  <dd>Returns the <a href="#element-qualified-name" for=Element>qualified name</a>. (The return value is uppercased in an
  <a>HTML document</a>.)
 </dl>
 
-<p>The <dfn attribute for=Element id="element-namespaceuri">namespaceURI</dfn> attribute's getter must return the <a>context object</a>'s <a href="#element-namespace">namespace</a>.
+<p>The <dfn attribute for=Element id="element-namespaceuri">namespaceURI</dfn> attribute's getter must return the <a>context object</a>'s <a href="#concept-element-namespace">namespace</a>.
 
-<p>The <dfn attribute for=Element id="element-prefix">prefix</dfn> attribute's getter must return the <a>context object</a>'s <a href="#element-namespace-prefix">namespace prefix</a>.
+<p>The <dfn attribute for=Element id="element-prefix">prefix</dfn> attribute's getter must return the <a>context object</a>'s <a href="#concept-element-namespace-prefix">namespace prefix</a>.
 
-<p>The <dfn attribute for=Element id="element-localname">localName</dfn> attribute's getter must return the <a>context object</a>'s <a href="#element-local-name">local name</a>.
+<p>The <dfn attribute for=Element id="element-localname">localName</dfn> attribute's getter must return the <a>context object</a>'s <a href="#concept-element-local-name">local name</a>.
 
 <p>The <dfn attribute for=Element>tagName</dfn> attribute's getter must run these steps:
 <ol>
@@ -2722,7 +2722,7 @@ true otherwise.
 
  <li><p>If <var>attr</var> is null, return null.
 
- <li><p>Return <var>attr</var>'s <a href="#attribute-value">value</a>.
+ <li><p>Return <var>attr</var>'s <a href="#concept-attribute-value">value</a>.
 </ol>
 
 <p>The <dfn method for=Element>getAttributeNS(<var>namespace</var>, <var>localName</var>)</dfn> method, when invoked, must return the following steps:
@@ -2741,7 +2741,7 @@ true otherwise.
 
  <li><p>Let <var>attribute</var> be the first <a href="#concept-attribute">attribute</a> in the <a>context object</a>'s <a for=Element>attribute list</a> whose <a href="#attribute-name">name</a> is <var>qualifiedName</var>, or null if there is no such <a href="#concept-attribute">attribute</a>.
 
- <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>qualifiedName</var>, <a href="#attribute-value">value</a> is <var>value</var>,
+ <li><p>If <var>attribute</var> is null, create an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-local-name">local name</a> is <var>qualifiedName</var>, <a href="#concept-attribute-value">value</a> is <var>value</var>,
 and <a href="#concept-node-document">node document</a> is <a>context object</a>'s <a href="#concept-node-document">node document</a>,
  and then <a href="#element-append">append</a> this <a href="#concept-attribute">attribute</a> to the <a>context object</a> and terminate these steps.
 
@@ -2779,7 +2779,7 @@ method, when invoked, must <a lt="remove an attribute by name">remove an attribu
 <ol>
  <li><p>If <var>namespace</var> is the empty string, set it to null.
 
- <li><p>Return true if the <a>context object</a> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-namespace">namespace</a> is <var>namespace</var> and <a href="#attribute-local-name">local name</a> is <var>localName</var>, and false otherwise.
+ <li><p>Return true if the <a>context object</a> <a>has</a> an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-namespace">namespace</a> is <var>namespace</var> and <a href="#concept-attribute-local-name">local name</a> is <var>localName</var>, and false otherwise.
 </ol>
 
 <hr>
@@ -3026,46 +3026,46 @@ interface Attr : Node {
 
 <p>{{Attr}} <a href="#concept-node">nodes</a> are simply known as <dfn id="concept-attribute" for="attribute">attributes</dfn>. They are sometimes referred to as <em>content attributes</em> to avoid confusion with IDL attributes.
 
-<p><a href="#concept-attribute">Attributes</a> have a <dfn id="attribute-namespace" for="attribute">namespace</dfn> (null or a non-empty string), <dfn id="attribute-namespace-prefix" for="attribute">namespace prefix</dfn> (null or a non-empty string), <dfn id="attribute-local-name" for="attribute">local name</dfn> (a non-empty string), <dfn id="attribute-name" for="attribute">name</dfn> (a non-empty string), <dfn id="attribute-value" for="attribute">value</dfn> (a string), and <dfn id="attribute-element" for="attribute">element</dfn> (null or an <a href="#concept-element">element</a>).
+<a>Attributes</a> have a <dfn export id=concept-attribute-namespace for=Attr>namespace</dfn> (null or a non-empty string), <dfn export id=concept-attribute-namespace-prefix for=Attr>namespace prefix</dfn> (null or a non-empty string), <dfn export id=concept-attribute-local-name for=Attr>local name</dfn> (a non-empty string), <dfn id="attribute-name" for="attribute">name</dfn> (a non-empty string), <dfn export id=concept-attribute-value for=Attr>value</dfn> (a string), and <dfn export id=concept-attribute-element for=Attr>element</dfn> (null or an <a for="/">element</a>).
 
 <p class="note">Note: If designed today they would just have a name and value.
 
 <p>An <a href="#concept-attribute">attribute</a>'s
 <dfn id="attribute-qualified-name">qualified name</dfn> is its
-<a href="#attribute-local-name">local name</a> if its <a href="#attribute-namespace-prefix">namespace prefix</a> is null, and its
-<a href="#attribute-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its
-<a href="#attribute-local-name">local name</a>, otherwise.
+<a href="#concept-attribute-local-name">local name</a> if its <a href="#concept-attribute-namespace-prefix">namespace prefix</a> is null, and its
+<a href="#concept-attribute-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its
+<a href="#concept-attribute-local-name">local name</a>, otherwise.
 
-<p>When an <a href="#concept-attribute">attribute</a> is created, its <a href="#attribute-local-name">local name</a> and <a href="#attribute-value">value</a> are always given. Unless explicitly given when an <a href="#concept-attribute">attribute</a> is created, its <a href="#attribute-name">name</a> is identical to its <a href="#attribute-local-name">local name</a>, and its <a href="#attribute-namespace">namespace</a> and <a href="#attribute-namespace-prefix">namespace prefix</a> are null.
+<p>When an <a href="#concept-attribute">attribute</a> is created, its <a href="#concept-attribute-local-name">local name</a> and <a href="#concept-attribute-value">value</a> are always given. Unless explicitly given when an <a href="#concept-attribute">attribute</a> is created, its <a href="#attribute-name">name</a> is identical to its <a href="#concept-attribute-local-name">local name</a>, and its <a href="#concept-attribute-namespace">namespace</a> and <a href="#concept-attribute-namespace-prefix">namespace prefix</a> are null.
 
-<p>An <dfn id="named-attribute"><var>A</var> attribute</dfn> is an <a href="#concept-attribute">attribute</a> whose <a href="#attribute-local-name">local name</a> is <var>A</var> and whose <a href="#attribute-namespace">namespace</a> and <a href="#attribute-namespace-prefix">namespace prefix</a> are null.
+<p>An <dfn id="named-attribute"><var>A</var> attribute</dfn> is an <a href="#concept-attribute">attribute</a> whose <a href="#concept-attribute-local-name">local name</a> is <var>A</var> and whose <a href="#concept-attribute-namespace">namespace</a> and <a href="#concept-attribute-namespace-prefix">namespace prefix</a> are null.
 
-<p>The <dfn attribute for=Attr>namespaceURI</dfn> attribute's getter must return the <a href="#attribute-namespace">namespace</a>.
+<p>The <dfn attribute for=Attr>namespaceURI</dfn> attribute's getter must return the <a href="#concept-attribute-namespace">namespace</a>.
 
-<p>The <dfn attribute for=Attr>prefix</dfn> attribute's getter must return the <a href="#attribute-namespace-prefix">namespace prefix</a>.
+<p>The <dfn attribute for=Attr>prefix</dfn> attribute's getter must return the <a href="#concept-attribute-namespace-prefix">namespace prefix</a>.
 
-<p>The <dfn attribute for=Attr>localName</dfn> attribute's getter must return the <a href="#attribute-local-name">local name</a>.
+<p>The <dfn attribute for=Attr>localName</dfn> attribute's getter must return the <a href="#concept-attribute-local-name">local name</a>.
 
 <p>The <dfn attribute for=Attr>name</dfn> attribute's getter and <dfn attribute id="attr-nodename" for=Attr><code>nodeName</code></dfn> attribute's getter must return the <a href="#attribute-name">name</a>.
 
-<p>The <dfn attribute for=Attr>value</dfn> attribute's getter must both return the <a href="#attribute-value">value</a>.
+<p>The <dfn attribute for=Attr>value</dfn> attribute's getter must both return the <a href="#concept-attribute-value">value</a>.
 
 <p>To <dfn>set an existing attribute value</dfn>, given an <a href="#concept-attribute">attribute</a> <var>attribute</var> and
 string <var>value</var>, run these steps:
 
 <ol>
- <li>If <var>attribute</var>'s <a href="#attribute-element">element</a> is null, then set <var>attribute</var>'s
- <a href="#attribute-value">value</a> to <var>value</var>.
+ <li>If <var>attribute</var>'s <a href="#concept-attribute-element">element</a> is null, then set <var>attribute</var>'s
+ <a href="#concept-attribute-value">value</a> to <var>value</var>.
 
  <li>Otherwise, <a>change</a> <var>attribute</var> from
- <var>attribute</var>'s <a href="#attribute-element">element</a> to <var>value</var>.
+ <var>attribute</var>'s <a href="#concept-attribute-element">element</a> to <var>value</var>.
 </ol>
 
 <p>The {{Attr/value}} attribute's setter must <a>set an existing attribute value</a> with
 <a>context object</a> and the given value.
 
 <p>The <dfn attribute for="Attr">ownerElement</dfn> attribute's getter must return
-<a>context object</a>'s <a href="#attribute-element">element</a>.
+<a>context object</a>'s <a href="#concept-attribute-element">element</a>.
 
 <p>The <dfn attribute for="Attr">specified</dfn> attribute's getter must return true.
 

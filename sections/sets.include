@@ -27,14 +27,14 @@ interface DOMTokenList {
 
 <p>A {{DOMTokenList}} object has an associated of <dfn>token set</dfn> (an <a>ordered set</a>), which is initially empty.
 
-<p>A {{DOMTokenList}} object also has an associated <a href="#concept-element">element</a> and an <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
+<p>A {{DOMTokenList}} object also has an associated <a href="#concept-element">element</a> and an <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a>.
 
-<p><a>Specifications</a> may define <dfn>supported tokens</dfn> for a {{DOMTokenList}}'s associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
+<a lt="Other applicable specifications">Specifications</a> may define <dfn export for=Node id=concept-supported-tokens>supported tokens</dfn> for a {{DOMTokenList}}'s associated <a>attribute</a>'s <a for=Attr>local name</a>.
 
 <p>A {{DOMTokenList}} object's <dfn>validation steps</dfn> for a given <var>token</var> are:
 
 <ol>
- <li>If the associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> does not define <a>supported tokens</a>, then <a>throw</a> a "<code><a>TypeError</a></code>".
+ <li>If the associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a> does not define <a>supported tokens</a>, then <a>throw</a> a "<code><a>TypeError</a></code>".
 
  <li>Let <var>lowercase token</var> be a copy of <var>token</var>, in <a>ASCII lowercase</a>.
 
@@ -43,9 +43,9 @@ interface DOMTokenList {
  <li>Return false.
 </ol>
 
-<p>A {{DOMTokenList}} object's <dfn>update steps</dfn> are to <a>set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
+<p>A {{DOMTokenList}} object's <dfn>update steps</dfn> are to <a>set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
 
-<p>A {{DOMTokenList}} object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a href="#concept-element">element</a> and the associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a>.
+<p>A {{DOMTokenList}} object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a href="#concept-element">element</a> and the associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a>.
 
 <dl>
  <dt><var>tokenlist</var> . {{DOMTokenList/length}}
