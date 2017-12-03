@@ -49,7 +49,7 @@ interface DOMTokenList {
 <ol>
  <li>If the associated <a href="#concept-element">element</a> does not have an associated <a href="#concept-attribute">attribute</a> and <a>token set</a> is empty, then return.
 
- <li><a>Set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
+ <li><a>Set an attribute value</a> for the associated <a href="#concept-element">element</a> using associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a> and the result of running the <a>ordered set serializer</a> for <a>token set</a>.
 </ol>
 
 <p>A {{DOMTokenList}} object's <dfn>serialize steps</dfn> are to return the result of running <a>get an attribute value</a> given the associated <a href="#concept-element">element</a> and the associated <a href="#concept-attribute">attribute</a>'s <a href="#concept-attribute-local-name">local name</a>.

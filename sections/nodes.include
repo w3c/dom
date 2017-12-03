@@ -391,7 +391,7 @@ steps:
  <li><p>Return <var>node</var>.
 </ol>
 
-<p><a>Specifications</a> may define <dfn>insertion steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>newNode</var>, as indicated in the <a href="#node-insert">insert</a> algorithm below.
+<p><a lt="Other applicable specifications">Specifications</a> may define <dfn>insertion steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>newNode</var>, as indicated in the <a href="#node-insert">insert</a> algorithm below.
 
 <p>To <dfn id="node-insert" for="node">insert</dfn> a <var>node</var> into a <var>parent</var> before a <var>child</var> with an optional <i>suppress observers flag</i>, run these steps:
 
@@ -1109,7 +1109,7 @@ dictionary MutationObserverInit {
    <dd><p>Set to true if mutations to <var>target</var>'s <a href="#concept-attribute">attributes</a> are to be observed. Can be omitted if {{MutationObserverInit/attributeOldValue}} and/or {{MutationObserverInit/attributeFilter}} is specified.
 
    <dt>{{MutationObserverInit/characterData}}
-   <dd><p>Set to true if mutations to <var>target</var>'s <a href="#cd-data">data</a> are to be observed. Can be omitted if {{MutationObserverInit/characterDataOldValue}} is specified.
+   <dd><p>Set to true if mutations to <var>target</var>'s <a href="#concept-cd-data">data</a> are to be observed. Can be omitted if {{MutationObserverInit/characterDataOldValue}} is specified.
 
    <dt>{{MutationObserverInit/subtree}}
    <dd><p>Set to true if mutations to not just <var>target</var>, but also <var>target</var>'s <a>descendants</a> are to be observed.
@@ -1471,7 +1471,7 @@ Each <a>node</a> has an associated <dfn export for=Node id=concept-node-document
 
 <p>The <dfn>localName</dfn> attribute's getter must return the local name that is associated with the node, if it has one, and null otherwise.-->
 
-<p>The <dfn attribute for=Node>nodeName</a> attribute's getter must return the first matching statement, switching on the <a href="#context-object">context object</a>:
+<p>The <dfn attribute for=Node>nodeName</dfn> attribute's getter must return the first matching statement, switching on the <a href="#context-object">context object</a>:
 
 <dl class="switch">
  <dt>{{Element}}
@@ -1655,7 +1655,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 
 <dl>
  <dt><code><var>node</var> . {{Node/normalize()}}</code>
- <dd><p>Removes <a>empty</a> <a>exclusive <code>Text</code> nodes</a> and concatenates the <a href="#cd-data">data</a> of remaining <a>contiguous exclusive <code>Text</code> nodes</a> into the first of their <a>nodes</a>.
+ <dd><p>Removes <a>empty</a> <a>exclusive <code>Text</code> nodes</a> and concatenates the <a href="#concept-cd-data">data</a> of remaining <a>contiguous exclusive <code>Text</code> nodes</a> into the first of their <a>nodes</a>.
 </dl>
 
 <p>The <dfn method for=Node>normalize()</dfn> method, when invoked, must run these steps for each <a>descendant</a> <a>exclusive <code>Text</code> node</a> <var>node</var> of <a>context object</a>:
@@ -1727,8 +1727,8 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 
   <ol>
    <li>let <var>copy</var> be a <a lt="nodes">node</a> that implements the same interfaces as <var>node</var>.
-   <li><p>Set <var>copy</var>'s <a href="#element-local-name">local name</a>, <a href="#element-namespace">namespace</a>,
-   <a href="#element-namespace-prefix">namespace prefix</a>, to those of <var>node</var>.  The <var>synchronous custom elements flag</var> should be unset.
+   <li><p>Set <var>copy</var>'s <a href="#concept-element-local-name">local name</a>, <a href="#concept-element-namespace">namespace</a>,
+   <a href="#concept-element-namespace-prefix">namespace prefix</a>, to those of <var>node</var>.  The <var>synchronous custom elements flag</var> should be unset.
    <li>
     <p>For each <var>attribute</var> in <var>node</var>'s
     <a for=Element>attribute list</a>, in order, run these substeps:
@@ -1791,7 +1791,7 @@ invoked, must run these steps:
  <li><p>If <a>context object</a> is a <a href="#concept-shadow-root">shadow root</a>, then <a>throw</a> a
  <code><a>NotSupportedError</a></code>.
 
- <li><p>Return a <a href="#node-clone">clone</a> of the <a>context object</a>, with the
+ <li><p>Return a <a href="#concept-node-clone">clone</a> of the <a>context object</a>, with the
  <i>clone children flag</i> set if <var>deep</var> is true.
 </ol>
 
@@ -1881,14 +1881,14 @@ invoked, must run these steps:
  <li><p>Let <var>attr1</var> and <var>attr2</var> be null.
 
  <li><p>If <var>node1</var> is an <a href="#concept-attribute">attribute</a>, then set <var>attr1</var> to <var>node1</var>
- and <var>node1</var> to <var>attr1</var>'s <a href="#attribute-element">element</a>.
+ and <var>node1</var> to <var>attr1</var>'s <a href="#concept-attribute-element">element</a>.
 
  <li>
   <p>If <var>node2</var> is an <a href="#concept-attribute">attribute</a>, then:
 
   <ol>
    <li><p>Set <var>attr2</var> to <var>node2</var> and <var>node2</var> to <var>attr2</var>'s
-   <a href="#attribute-element">element</a>.
+   <a href="#concept-attribute-element">element</a>.
 
    <li>
     <p>If <var>attr1</var> and <var>node1</var> are non-null, and <var>node2</var> is
@@ -1999,9 +1999,9 @@ invoked, must run these steps:
  <dt>{{Attr}}
  <dd>
   <ol>
-   <li><p>If its <a href="#attribute-element">element</a> is null, then return null.
+   <li><p>If its <a href="#concept-attribute-element">element</a> is null, then return null.
 
-   <li><p>Return the result of running <a>locate a namespace</a> on its <a href="#attribute-element">element</a>
+   <li><p>Return the result of running <a>locate a namespace</a> on its <a href="#concept-attribute-element">element</a>
    using <var>prefix</var>.
   </ol>
 
@@ -2178,10 +2178,10 @@ dictionary ElementCreationOptions {
 
 <p>{{Document}} <a>nodes</a> are simply known as <dfn id="concept-document" for="concept" lt="document|documents">documents</dfn>.
 
-<p>Each <a href="#concept-document">document</a> has an associated <dfn export id="concept-document-encoding" for=Document>encoding</dfn> (an <a spec=encoding>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>), <dfn export for=Document id=concept-document-origin>origin</dfn> (an <a spec=HTML51>origin</a>),
+<p>Each <a href="#concept-document">document</a> has an associated <dfn export id="concept-document-encoding" for=Document>encoding</dfn> (an <a spec=W3ENCODING>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>), <dfn export for=Document id=concept-document-origin>origin</dfn> (an <a spec=HTML51>origin</a>),
 <dfn export for=Document id=concept-document-type>type</dfn> ("<code>xml</code>" or "<code>html</code>"), and <dfn export for=Document id=concept-document-mode>mode</dfn> ("<code>no-quirks</code>", "<code>quirks</code>", or "<code>limited-quirks</code>"). [[!ENCODING]] [[!URL]] [[!HTML51]]
 
-<p>Unless stated otherwise, a <a href="#concept-document">document</a>'s <a href="#concept-document-encoding">encoding</a> is the <a>utf-8</a> <a spec=encoding>encoding</a>, its <a for=Document>content type</a> is "<code>application/xml</code>", its <a href="#concept-document-url" for=Document>URL</a> is "<code>about:blank</code>", <a for=Document>origin</a> is an <code><a>opaque origin</a></code>, <a for=Document>type</a> is "<code>xml</code>", and its <a for=Document>mode</a> is "<code>no-quirks</code>".
+<p>Unless stated otherwise, a <a href="#concept-document">document</a>'s <a href="#concept-document-encoding">encoding</a> is the <a>utf-8</a> <a spec=W3ENCODING>encoding</a>, its <a for=Document>content type</a> is "<code>application/xml</code>", its <a href="#concept-document-url" for=Document>URL</a> is "<code>about:blank</code>", <a for=Document>origin</a> is an <code><a>opaque origin</a></code>, <a for=Document>type</a> is "<code>xml</code>", and its <a for=Document>mode</a> is "<code>no-quirks</code>".
 
 <p>A <a href="#concept-document">document</a> is said to be an <dfn export>XML document</dfn> if its <a for=Document>type</a> is "<code>xml</code>", and an <dfn>HTML document</dfn> otherwise. Whether a <a href="#concept-document">document</a> is an <a>HTML document</a> or an <a>XML document</a> affects the behavior of certain APIs.
 
@@ -2293,9 +2293,9 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
   &lt;/div&gt;
  </code></pre>
 
- <p>A call to <code>document.getElementById('example').getElementsByClassName('aaa')</code> would return a {{HTMLCollection}} with the two paragraphs <code>p1</code> and <code>p2</code> in it.
+ <p>A call to <code>document.getElementById("example").getElementsByClassName("aaa")</code> would return a {{HTMLCollection}} with the two paragraphs <code>p1</code> and <code>p2</code> in it.
 
- <p>A call to <code>getElementsByClassName('ccc bbb')</code> would only return one node, however, namely <code>p3</code>. A call to <code>document.getElementById('example').getElementsByClassName('bbb  ccc ')</code> would return the same thing.
+ <p>A call to <code>getElementsByClassName('ccc bbb')</code> would only return one node, however, namely <code>p3</code>. A call to <code>document.getElementById("example").getElementsByClassName('bbb  ccc ')</code> would return the same thing.
 <p>A call to <code>getElementsByClassName('aaa,bbb')</code> would return no nodes; none of the elements above are in the <code>aaa,bbb</code> class.  </div> <hr>
 
 <dl>
@@ -2348,7 +2348,7 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
 <p class="note">Note: The HTML Standard will e.g. define that for <code>html</code> and the <a>HTML namespace</a>, the <code>HTMLHtmlElement</code> interface is used. [[!HTML5]
 
-<p>The <dfn method for=Document>createElement(<var>localName</var>, <var>option</var>)</dfn> method, when invoked, must run the these steps:
+<p>The <dfn method for=Document>createElement(<var>localName</var>, <var>options</var>)</dfn> method, when invoked, must run the these steps:
 
 <ol>
  <li><p>If <var>localName</var> does not match the <code><a type>Name</a></code> production, <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
@@ -2376,10 +2376,10 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
  <li><p>Return a new <a href="#concept-element" title="concept-element">element</a> that implements <var>interface</var>,
  with no attributes,
- <a href="#element-namespace" title="element-namespace">namespace</a> set to <var>namespace</var>,
- <a href="#element-namespace-prefix" title="element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>,
- <a href="#element-local-name" title="element-local-name">local name</a> set to <var>localName</var>, and
- <a href="#node-document" title="node-document">node document</a> set to the <a href="#context-object">context object</a>.
+ <a href="#concept-element-namespace" title="element-namespace">namespace</a> set to <var>namespace</var>,
+ <a href="#concept-element-namespace-prefix" title="element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>,
+ <a href="#concept-element-local-name" title="element-local-name">local name</a> set to <var>localName</var>, and
+ <a href="#concept-node-document" title="node-document">node document</a> set to the <a href="#context-object">context object</a>.
 
  <li>If <var>is</var> is non-null, then <a>set an attribute</a> for <var>element</var> using "<code>is</code>" and <var>is</var>.
 
@@ -2753,7 +2753,7 @@ interface DocumentType : Node {
 };
 </pre>
 
-<p>{{DocumentType}} <a>nodes</a> are simply known as <dfn id="concept-doctype" for="concept">doctypes</dfn>.
+<p>{{DocumentType}} <a>nodes</a> are simply known as <dfn id="concept-doctype">doctypes</dfn>.
 
 <p><a href="#concept-doctype">Doctypes</a> have an associated <dfn id="doctype-name">name</dfn>, <dfn>public ID</dfn>, and <dfn>system ID</dfn>.
 
@@ -2911,7 +2911,7 @@ dictionary ShadowRootInit {
 
 <p>{{Element}} <a>nodes</a> are simply known as <dfn id="concept-element" lt="element|elements">elements</dfn>.</p>
 
-<p><a href="#concept-element">Elements</a> have an associated <dfn id="element-namespace" for="element">namespace</dfn>, <dfn id="element-namespace-prefix" for="element">namespace prefix</dfn>, <dfn id="element-local-name" for="element">local name</dfn>, <dfn export id=concept-element-custom-element-state for=Element>custom element state</dfn>, <dfn export id=concept-element-custom-element-definition for=Element>custom element definition</dfn>, and <dfn id=concept-element-is-value for=Element><code>is</code> value</dfn>. When an <a href="#concept-element">element</a> is <a lt="create an element">created</a>, all of these values are initialized.
+<p><a href="#concept-element">Elements</a> have an associated <dfn id="concept-element-namespace" for="element">namespace</dfn>, <dfn id="concept-element-namespace-prefix" for="element">namespace prefix</dfn>, <dfn id="concept-element-local-name" for="element">local name</dfn>, <dfn export id=concept-element-custom-element-state for=Element>custom element state</dfn>, <dfn export id=concept-element-custom-element-definition for=Element>custom element definition</dfn>, and <dfn id=concept-element-is-value for=Element><code>is</code> value</dfn>. When an <a href="#concept-element">element</a> is <a lt="create an element">created</a>, all of these values are initialized.
 
 <p>An <a for=/>element</a>'s <a>custom element state</a> is one of "<code>undefined</code>", "<code>failed</code>", "<code>uncustomized</code>", or "<code>custom</code>". An <a for=/>element</a> whose <a>custom element state</a> is "<code>uncustomized</code>" or "<code>custom</code>" is said to be <dfn export id=concept-element-defined for=Element>defined</dfn>. An <a for=/>element</a> whose <a>custom element state</a> is "<code>custom</code>" is said to be <dfn export id=concept-element-custom for=Element>custom</dfn>.
 
@@ -2954,8 +2954,8 @@ dictionary ShadowRootInit {
 <dfn id="element-shadow-root" for="element">shadow root</dfn> (null or a
 <a href="#concept-shadow-root">shadow root</a>). Null unless otherwise stated.
 
-<p>An <a href="#concept-element">element</a>'s <dfn id="element-qualified-name" for=Element>qualified name</dfn> is its <a href="#element-local-name">local name</a> if its <a href="#element-namespace-prefix">namespace prefix</a> is null, or its
-<a href="#element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its <a href="#element-local-name">local name</a>.
+<p>An <a href="#concept-element">element</a>'s <dfn id="element-qualified-name" for=Element>qualified name</dfn> is its <a href="#concept-element-local-name">local name</a> if its <a href="#concept-element-namespace-prefix">namespace prefix</a> is null, or its
+<a href="#concept-element-namespace-prefix">namespace prefix</a>, followed by "<code>:</code>", followed by its <a href="#concept-element-local-name">local name</a>.
 
 <p><a href="#concept-element">Elements</a> also have an <dfn export id="concept-element-attribute-list" for=Element>attribute list</dfn>, which is a list exposed through a {{NamedNodeMap}}. Unless explicitly given when an <a href="#concept-element">element</a> is created, its <a for=Element>attribute list</a> is empty. An <a href="#concept-element">element</a> <dfn>has</dfn> an <a href="#concept-attribute">attribute</a> <var>A</var> if <var>A</var> is in its <a
 for=Element>attribute list</a>.
@@ -2989,8 +2989,8 @@ given a <var>document</var>, <var>prefix</var>, <var>localName</var>, <var>names
    <a>HTML namespace</a>.
 
    <li><p>Set <var>result</var> to a new <a for=/>element</a> that implements <var>interface</var>,
-   with no attributes, <a href="#element-namespace">namespace</a> set to the <a>HTML namespace</a>,
-   <a href="#element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#element-local-name">local name</a> set
+   with no attributes, <a href="#concept-element-namespace">namespace</a> set to the <a>HTML namespace</a>,
+   <a href="#concept-element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#concept-element-local-name">local name</a> set
    to <var>localName</var>, <a>custom element state</a> set to "<code>undefined</code>",
    <a>custom element definition</a> set to null, <a><code>is</code> value</a> set to <var>is</var>,
    and <a>node document</a> set to <var>document</var>.
@@ -3014,7 +3014,7 @@ given a <var>document</var>, <var>prefix</var>, <var>localName</var>, <var>names
      <li><p>Let <var>C</var> be <var>definition</var>'s
      <a for="custom element definition">constructor</a>.
 
-     <li><p>Set <var>result</var> to <a abstract-op>Construct</a>(<var>C</var>). Rethrow any
+     <li><p>Set <var>result</var> to <a href="https://heycam.github.io/webidl/#construct-a-callback-function">Construct</a>(<var>C</var>). Rethrow any
      exceptions.
 
      <li>
@@ -3044,13 +3044,13 @@ given a <var>document</var>, <var>prefix</var>, <var>localName</var>, <var>names
      <li><p>If <var>result</var>'s <a>node document</a> is not <var>document</var>, <a>throw</a> a
      {{NotSupportedError}} exception.
 
-     <li><p>If <var>result</var>'s <a href="#element-namespace">namespace</a> is not the <a>HTML namespace</a>,
+     <li><p>If <var>result</var>'s <a href="#concept-element-namespace">namespace</a> is not the <a>HTML namespace</a>,
      <a>throw</a> a {{NotSupportedError}} exception.
 
-     <li><p>If <var>result</var>'s <a href="#element-local-name">local name</a> is not equal to
+     <li><p>If <var>result</var>'s <a href="#concept-element-local-name">local name</a> is not equal to
      <var>localName</var>, <a>throw</a> a {{NotSupportedError}} exception.
 
-     <li><p>Set <var>result</var>'s <a href="#element-namespace-prefix">namespace prefix</a> to <var>prefix</var>.
+     <li><p>Set <var>result</var>'s <a href="#concept-element-namespace-prefix">namespace prefix</a> to <var>prefix</var>.
     </ol>
    </li>
 
@@ -3059,8 +3059,8 @@ given a <var>document</var>, <var>prefix</var>, <var>localName</var>, <var>names
 
     <ol>
      <li><p>Set <var>result</var> to a new <a for=/>element</a> that implements the {{HTMLElement}}
-     interface, with no attributes, <a href="#element-namespace">namespace</a> set to the <a>HTML namespace</a>,
-     <a href="#element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#element-local-name">local name</a> set
+     interface, with no attributes, <a href="#concept-element-namespace">namespace</a> set to the <a>HTML namespace</a>,
+     <a href="#concept-element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#concept-element-local-name">local name</a> set
      to <var>localName</var>, <a>custom element state</a> set to "<code>undefined</code>",
      <a>custom element definition</a> set to null, <a><code>is</code> value</a> set to null, and
      <a>node document</a> set to <var>document</var>.
@@ -3080,13 +3080,13 @@ given a <var>document</var>, <var>prefix</var>, <var>localName</var>, <var>names
    <var>namespace</var>.
 
    <li><p>Set <var>result</var> to a new <a for=/>element</a> that implements <var>interface</var>,
-   with no attributes, <a href="#element-namespace">namespace</a> set to <var>namespace</var>,
-   <a href="#element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#element-local-name">local name</a> set
+   with no attributes, <a href="#concept-element-namespace">namespace</a> set to <var>namespace</var>,
+   <a href="#concept-element-namespace-prefix">namespace prefix</a> set to <var>prefix</var>, <a href="#concept-element-local-name">local name</a> set
    to <var>localName</var>, <a>custom element state</a> set to "<code>uncustomized</code>",
    <a>custom element definition</a> set to null, <a><code>is</code> value</a> set to <var>is</var>,
    and <a>node document</a> set to <var>document</var>.
 
-   <li><p>If <var>document</var> has a <a lt=concept-document-bc>browsing context</a>, and
+   <li><p>If <var>document</var> has a <a>browsing context</a>, and
    <var>namespace</var> is the <a>HTML namespace</a>, and either <var>localName</var> is a
    <a>valid custom element name</a> or <var>is</var> is is non-null, set <var>result</var>'s
    <a>custom element state</a> to "<code>undefined</code>".
@@ -3112,14 +3112,14 @@ in an <a href="#concept-element">element</a> <var>element</var>, run these steps
 
  <li><p>If <var>element</var> is <a>custom</a>, then <a>enqueue a custom element callback reaction</a> with <var>element</var>,
  callback name "<code>attributeChangedCallback</code>", and an argument list containing <var>oldAttr</var>'s
- <a href="#attribute-local-name">local name</a>, <var>oldAttr</var>'s <a href="#attribute-value">value</a>, <var>newAttr</var>'s <a href="#attribute-value">value</a>,
- and <var>oldAttr</var>'s <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>oldAttr</var>'s <a href="#concept-attribute-value">value</a>, <var>newAttr</var>'s <a href="#concept-attribute-value">value</a>,
+ and <var>oldAttr</var>'s <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Replace <var>oldAttr</var> by <var>newAttr</var> in the <var>element</var>'s <a for=Element>attribute list</a>.
 
- <li><p>Set <var>oldAttr</var>'s <a href="#attribute-element">element</a> to null.
+ <li><p>Set <var>oldAttr</var>'s <a href="#concept-attribute-element">element</a> to null.
 
- <li><p>Set <var>newAttr</var>'s <a href="#attribute-element">element</a> to <var>element</var>.
+ <li><p>Set <var>newAttr</var>'s <a href="#concept-attribute-element">element</a> to <var>element</var>.
 </ol>
 
 To <dfn id="element-attributes-get-by-name">get an attribute by name</dfn> given a
@@ -3159,14 +3159,14 @@ run these steps:
 
  <li><p>If <var>attr</var> is null, then return the empty string.</p></li>
 
- <li><p>Return <var>attr</var>'s <a href="#attribute-value">value</a>.</p></li>
+ <li><p>Return <var>attr</var>'s <a href="#concept-attribute-value">value</a>.</p></li>
 </ol>
 
 To <dfn id="element-attributes-set-by-attr">set an attribute</dfn> given an
 <var>attr</var> and <var>element</var>, run these steps:
 
 <ol>
- <li><p>If <var>attr</var>'s <a href="#attribute-element">element</a> is neither null nor <var>element</var>,
+ <li><p>If <var>attr</var>'s <a href="#concept-attribute-element">element</a> is neither null nor <var>element</var>,
  <a>throw</a> an <code><a>InUseAttributeError</a></code>.
 
  <li><p>Let <var>oldAttr</var> be the result of
@@ -3217,8 +3217,8 @@ an optional <var>namespace</var>, run these steps:
 
  <li><p>If <var>element</var> is <a>custom</a>, then <a>enqueue a custom element callback reaction</a> with <var>element</var>,
  callback name "<code>attributeChangedCallback</code>", and an argument list containing <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, <var>value</var>, and <var>attribute</var>'s
- <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and <var>attribute</var>'s
+ <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
  <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and
@@ -3234,8 +3234,8 @@ an optional <var>namespace</var>, run these steps:
 
  <li><p>If <var>element</var> is <a>custom</a>, then <a>enqueue a custom element callback reaction</a> with <var>element</var>,
  callback name "<code>attributeChangedCallback</code>", and an argument list containing <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, null, <var>attribute</var>'s <a href="#attribute-value">value</a>, and <var>attribute</var>'s
- <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, null, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, and <var>attribute</var>'s
+ <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Run the <a>attribute change steps</a> with <var>element</var>, <var>attribute</var>'s
  <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, <var>value</var>, and
@@ -3243,7 +3243,7 @@ an optional <var>namespace</var>, run these steps:
 
  <li><p>Append the <var>attribute</var> to the <var>element</var>'s <a for=Element>attribute list</a>.
 
- <li>Set <var>attribute</var>'s <a href="#attribute-element">element</a> to <var>element</var>.
+ <li>Set <var>attribute</var>'s <a href="#concept-attribute-element">element</a> to <var>element</var>.
 </ol>
 
 <p>To <dfn id="element-attributes-remove" for="element-attributes">remove</dfn> an <a href="#concept-attribute">attribute</a> <var>attribute</var> from an <a href="#concept-element">element</a> <var>element</var>, run these steps:
@@ -3257,12 +3257,12 @@ an optional <var>namespace</var>, run these steps:
 
  <li><p>If <var>element</var> is <a>custom</a>, then <a>enqueue a custom element callback reaction</a> with <var>element</var>,
  callback name "<code>attributeChangedCallback</code>", and an argument list containing <var>attribute</var>'s
- <a href="#attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#attribute-value">value</a>, null, and <var>attribute</var>'s
- <a href="#attribute-namespace">namespace</a>.
+ <a href="#concept-attribute-local-name">local name</a>, <var>attribute</var>'s <a href="#concept-attribute-value">value</a>, null, and <var>attribute</var>'s
+ <a href="#concept-attribute-namespace">namespace</a>.
 
  <li><p>Remove <var>attribute</var> from the <var>element</var>'s <a for=Element>attribute list</a>.
 
- <li>Set <var>attribute</var>'s <a href="#attribute-element">element</a> to null.
+ <li>Set <var>attribute</var>'s <a href="#concept-attribute-element">element</a> to null.
 </ol>
 
 <p>To <dfn export id=concept-element-attributes-remove-by-name>remove an attribute by name</dfn>
@@ -3351,7 +3351,7 @@ claims as to whether using them is conforming or not.
 <ol>
  <li><p>Let <var>qualifiedName</var> be <a>context object</a>'s <a for=Element>qualified name</a>.
 
- <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>qualified name</var> be <a>converted to ASCII uppercase</a>.
+ <li><p>If the <a>context object</a> is in the <a>HTML namespace</a> and its <a>node document</a> is an <a>HTML document</a>, let <var>qualifiedName</var> be <a>converted to ASCII uppercase</a>.
 
  <li><p>Return <var>qualifiedName</var>.
 </ol>
@@ -3469,10 +3469,10 @@ method, when invoked, must <a lt="remove an attribute by name">remove an attribu
 invoked, must run these steps:
 
 <ol>
- <li><p>If <a>context object</a>'s <a href="#element-namespace">namespace</a> is <em>not</em> the
+ <li><p>If <a>context object</a>'s <a href="#concept-element-namespace">namespace</a> is <em>not</em> the
  <a>HTML namespace</a>, then <a>throw</a> a <code><a>NotSupportedError</a></code>.
 
- <li><p>If <a>context object</a>'s <a href="#element-local-name">local name</a> is <em>not</em> a
+ <li><p>If <a>context object</a>'s <a href="#concept-element-local-name">local name</a> is <em>not</em> a
  <a>valid custom element name</a>,
  "<code>article</code>",
  "<code>aside</code>",
@@ -3600,7 +3600,7 @@ when invoked, must return the result of <a href="#element-attributes-set-by-attr
 
  <dt>"<code>afterbegin</code>"
  <dd><p>Return the result of <a>pre-inserting</a> <var>node</var> into <var>element</var> before
- <var>element</var>'s <a href="#tree-first-child">first child</a>. Rethrow any exceptions.
+ <var>element</var>'s <a href="#concept-tree-first-child">first child</a>. Rethrow any exceptions.
 
  <dt>"<code>beforeend</code>"
  <dd><p>Return the result of <a>pre-inserting</a> <var>node</var> into <var>element</var> before null.

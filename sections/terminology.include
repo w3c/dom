@@ -20,8 +20,8 @@ or null, and an ordered list of zero or more
 
 <p>The <dfn export for=tree id=concept-tree-root>root</dfn> of an object is itself, if its
 <a>parent</a> is null, or else it is the
-<a href="#tree-root">root</a> of its
-<a>parent</a>. The <a href="#tree-root">root</a> of a <a>tree</a> is any object
+<a href="#concept-tree-root">root</a> of its
+<a>parent</a>. The <a href="#concept-tree-root">root</a> of a <a>tree</a> is any object
 <a>participating</a> in that<a>tree</a> whose <a>parent</a> is null.
 
 <p>An object <var>A</var> is called a
