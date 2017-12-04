@@ -180,9 +180,9 @@ and false otherwise.
 method, when invoked, must run these steps:
 
 <ol>
- <li><p>If either <var>token</var> or <var>newToken</a> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
+ <li><p>If either <var>token</var> or <var>newToken</var> is the empty string, then <a>throw</a> a <code><a>SyntaxError</a></code>.
 
- <li><p>If either <var>token</var> or <var>newToken</a>  contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
+ <li><p>If either <var>token</var> or <var>newToken</var>  contains any <a>ASCII whitespace</a>, then <a>throw</a> an <code><a>InvalidCharacterError</a></code>.
 
  <li><p>If <var>token</var> is not in <a>token set</a>, then return.
 

@@ -86,7 +86,7 @@ The <dfn><code>NodeIterator</code> pre-removing steps</dfn> given a <var>nodeIte
 
 <p>The <dfn attribute id="iterator-filter" for=NodeIterator>filter</dfn> attribute's getter must return <a href="#traversal-filter">filter</a>.
 
-<p>To <dfn export id=concept-nodeiterator-traverse for=NodeIterator>traverse</dfn> in direction <var>direction</var> run these steps:
+<p>To <dfn export id=concept-nodeiterator-traverse for=NodeIterator>traverse</dfn> in direction <var ignore>direction</var> run these steps:
 
 <ol>
  <li><p>Let <var>node</var> be the value of the {{NodeIterator/referenceNode}} attribute.

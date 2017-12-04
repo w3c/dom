@@ -2176,7 +2176,7 @@ dictionary ElementCreationOptions {
 };
 </pre>
 
-<p>{{Document}} <a>nodes</a> are simply known as <dfn id="concept-document" for="concept" lt="document|documents">documents</dfn>.
+<p>{{Document}} <a>nodes</a> are simply known as <dfn id="concept-document" lt="document|documents">documents</dfn>.
 
 <p>Each <a href="#concept-document">document</a> has an associated <dfn export id="concept-document-encoding" for=Document>encoding</dfn> (an <a spec=W3ENCODING>encoding</a>), <dfn export for=Document id=concept-document-content-type>content type</dfn> (a string), <dfn export for=Document id=concept-document-url>URL</dfn> (a <a spec=url>URL</a>), <dfn export for=Document id=concept-document-origin>origin</dfn> (an <a spec=HTML51>origin</a>),
 <dfn export for=Document id=concept-document-type>type</dfn> ("<code>xml</code>" or "<code>html</code>"), and <dfn export for=Document id=concept-document-mode>mode</dfn> ("<code>no-quirks</code>", "<code>quirks</code>", or "<code>limited-quirks</code>"). [[!ENCODING]] [[!URL]] [[!HTML51]]
@@ -3759,7 +3759,7 @@ interface Attr : Node {
 };
 </pre>
 
-<p>{{Attr}} <a href="#concept-node">nodes</a> are simply known as <dfn id="concept-attribute" for="attribute">attributes</dfn>. They are sometimes referred to as <em>content attributes</em> to avoid confusion with IDL attributes.
+<p>{{Attr}} <a href="#concept-node">nodes</a> are simply known as <dfn id="concept-attribute">attributes</dfn>. They are sometimes referred to as <em>content attributes</em> to avoid confusion with IDL attributes.
 
 <a>Attributes</a> have a <dfn export id=concept-attribute-namespace for=Attr>namespace</dfn> (null or a non-empty string), <dfn export id=concept-attribute-namespace-prefix for=Attr>namespace prefix</dfn> (null or a non-empty string), <dfn export id=concept-attribute-local-name for=Attr>local name</dfn> (a non-empty string), <dfn id="attribute-name" for="attribute">name</dfn> (a non-empty string), <dfn export id=concept-attribute-value for=Attr>value</dfn> (a string), and <dfn export id=concept-attribute-element for=Attr>element</dfn> (null or an <a for="/">element</a>).
 
