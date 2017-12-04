@@ -656,7 +656,7 @@ for discussion).
  <li>
   <p>For each <var>tuple</var> in <var>event</var>'s <a for=Event>path</a>, in reverse order:
   <ol>
-   <li><p>Set <var>event</var>'s {{Event//target}} attribute to the <b>target</b> of the last tuple in <var>event</var>'s <a for=Event>path</a>, that is either <var>tuple</var> or preceding <var>tuple</var>, whose <b>target</b> is non-null.
+   <li><p>Set <var>event</var>'s {{Event/target}} attribute to the <b>target</b> of the last tuple in <var>event</var>'s <a for=Event>path</a>, that is either <var>tuple</var> or preceding <var>tuple</var>, whose <b>target</b> is non-null.
 
    <li><p>Set <var>event</var>'s <a>relatedTarget</a> to <var>tuple</var>'s <b>relatedTarget</b>.
 
@@ -668,7 +668,7 @@ for discussion).
  <li>
   <p>For each <var>tuple</var> in <var>event</var>'s <a for=Event>path</a>, in order:
   <ol>
-   <li><p>Set <var>event</var>'s {{Event//target}} attribute to the <b>target</b> of the last tuple in <var>event</var>'s <a for=Event>path</a>, that is either <var>tuple</var> or preceding <var>tuple</var>, whose <b>target</b> is non-null.
+   <li><p>Set <var>event</var>'s {{Event/target}} attribute to the <b>target</b> of the last tuple in <var>event</var>'s <a for=Event>path</a>, that is either <var>tuple</var> or preceding <var>tuple</var>, whose <b>target</b> is non-null.
 
    <li><p>Set <var>event</var>'s <a>relatedTarget</a> to <var>tuple</var>'s <b>relatedTarget</b>.
 
