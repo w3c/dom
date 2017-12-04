@@ -64,6 +64,8 @@ urlPrefix: https://www.w3.org/TR/xml-names/#NT-
 urlPrefix: https://infra.spec.whatwg.org/#; spec: infra;
     text: ASCII whitespace; url: ascii-whitespace; type: dfn
     text: ASCII lowercase; url: ascii-lowercase; type: dfn
+urlPrefix: https://url.spec.whatwg.org/#; spec: url;
+    text: url; url: concept-url; type: dfn
 urlPrefix: https://www.w3.org/TR/encoding/#; spec: W3ENCODING;
     text: utf-8; url: utf-8; type: dfn
     text: encoding; url: encoding; type: dfn
@@ -101,6 +103,8 @@ urlPrefix: https://www.w3.org/TR/uievents/
     text: KeyboardEvent; url: #keyboardevent-keyboardevent; type: dfn
     text: MouseEvent; url: #mouseevent; type: dfn
     text: UIEvent; url: #uievent-uievent; type: dfn
+url: https://www.w3.org/TR/selectors-api/
+    text: evaluate a selector; url: #evaluate-a-selector; type: dfn
 urlPrefix: https://www.w3.org/TR/touch-events/
     text: TouchEvent; url: #touchevent-interface; type: dfn
 urlPrefix: https://www.w3.org/TR/webmessaging/
@@ -114,8 +118,14 @@ urlPrefix: https://www.w3.org/TR/DOM-Parsing/
 urlPrefix: https://www.w3.org/TR/cssom-view-1/
     text: getClientRects; url: #dom-element-getclientrects; type: dfn
     text: getBoundingClientRect; url: #dom-element-getboundingclientrect; type: dfn
+urlPrefix: https://w3c.github.io/ServiceWorker/; spec: ServiceWorker
+    text: has ever been evaluated flag; url: #dfn-has-ever-been-evaluated-flag; type: dfn
+    text: script resource; url: #dfn-script-source; type: dfn
 url: http://software.hixie.ch/utilities/js/live-dom-viewer
     text: Live DOM Viewer; type: dfn
+urlPrefix: https://w3c.github.io/hr-time/#; spec: HR-TIME
+    text: DOMHighResTimeStamp; urlPrefix: dom-; type: typedef
+    text: time origin; type: dfn
 </pre>
 
 <style>

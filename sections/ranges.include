@@ -8,11 +8,11 @@
   <a href="#concept-range">Ranges</a> are frequently used in editing for selecting and copying content.
 
 <ul class="domTree">
- <li class="t1"><a>Element</a>: <code>p</code>
+ <li class="t1">{{Element}}: <code>p</code>
   <ul>
-   <li class="t1"><a>Element</a>: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span>
-   <li class="t3">{{Text}}: <span> CSS 2.1 syndata is </span>
-   <li class="t1"><a>Element</a>: <code>em</code>
+   <li class="t1">{{Element}}: <code>img</code> <span class="t2"><code>src</code>="<code>insanity-wolf</code>"</span> <span><code>alt</code>="<code>Little-endian BOM; decode as big-endian!</code>"</span>
+   <li class="t3"><code>{{Text}}</code>: <span> CSS 2.1 syndata is </span>
+   <li class="t1">{{Element}}: <code>em</code>
     <ul>
      <li class="t3">{{Text}}: <span>awesome</span>
     </ul>
@@ -213,7 +213,7 @@ interface Range {
 
   <li>Let <var>bp</var> be the <a>boundary point</a> (<var>node</var>, <var>offset</var>).
 
-  <li><dl class="switch"> 
+  <li><dl class="switch">
   <dt>If these steps were invoked as "set the start"
    <dd>
     <ol>
