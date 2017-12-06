@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 9b7c5fcba4e4901bfd8c4c36c6ce8b0937060911" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="fb084f95919807dd08daff900e6fe7dfb7429ec2" name="document-revision">
+  <meta content="052141750e68f3830e44df60349827bdd9b9d982" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-05">5 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-06">6 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -6606,6 +6606,32 @@ and false otherwise. </p>
        <li>Use the relevant realm of the event target when firing an event
        <li>Also note the difference between firing and dispatching an event
       </ul>
+     <li><a href="https://github.com/w3c/dom/commit/f08095f95bfc1db9f23a0ab684338d0644222c08">Change add/removeEventListener for service worker</a>
+     <li><a href="https://github.com/w3c/dom/commit/5fee45e711dc2309abc8b53f1220c732b909646e">Make Event’s timeStamp use DOMHighResTimeStamp</a>
+     <li><a href="https://github.com/w3c/dom/commit/c1c5d4a41f481b8d7c364a1a10054d935feafd8a">Add [Exposed=Window] to MutationObserver and DOMTokenList</a>
+     <li><a href="https://github.com/w3c/dom/commit/a2e98f88d9c6253074b66927a2cd72fd7fb0f96c">Return the result of traversing</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/fcd248e63a2b399b21ca00fffaa94206cd74a059">Add support for custom elements</a>
+      <ul>
+       <li>This is the first part of upstreaming custom elements into the DOM and
+        HTML Standards, instead of having them be in a separate spec that is
+        essentially a bunch of monkeypatches. The second part will be
+        upstreaming the remaining portions into HTML.
+      </ul>
+     <li>
+      Add Shadow DOM support:
+      <ul>
+       <li><a href="https://github.com/w3c/dom/commit/757f604d75e81bf98b0d80743fae21aa393ab8c9">Modification in section Nodes</a>
+       <li><a href="https://github.com/w3c/dom/commit/4f4dca9e84bab6332f7a6c52b4196d69354f58eb">Modification in section Events</a>
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/1b2803a2b2ee664bc5be23987951e94eca213d56">Clear event’s target when dispatch ends at a shadow root</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/77186b541f93c8eb7ead2ef25c7ad32273812c83">Integrate changes against DOMTokenList</a>
+      <ul>
+       <li><code>DOMTokenList</code> should not add empty attributes
+       <li>The update steps are not always run for toggle and replace methods for web compatibility.
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/60127de64bdc2aed9fc1dd84e0aa0efa8ff69ead">Set the stage for preventing double custom element constructor calls</a>
     </ul>
     <h3 class="heading settled" data-level="8.2" id="historical-changes-wd2-fpwd"><span class="secno">8.2. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</span><a class="self-link" href="#historical-changes-wd2-fpwd"></a></h3>
     <ul>
