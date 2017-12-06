@@ -38,7 +38,31 @@
     <li>Use the relevant realm of the event target when firing an event</li>
     <li>Also note the difference between firing and dispatching an event</li>
     </ul>
-    </li>
+  </li>
+  <li><a href="https://github.com/w3c/dom/commit/f08095f95bfc1db9f23a0ab684338d0644222c08">Change add/removeEventListener for service worker</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/5fee45e711dc2309abc8b53f1220c732b909646e">Make Event's timeStamp use DOMHighResTimeStamp</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/c1c5d4a41f481b8d7c364a1a10054d935feafd8a">Add [Exposed=Window] to MutationObserver and DOMTokenList</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/a2e98f88d9c6253074b66927a2cd72fd7fb0f96c">Return the result of traversing</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/fcd248e63a2b399b21ca00fffaa94206cd74a059">Add support for custom elements</a><ul>
+    <li>This is the first part of upstreaming custom elements into the DOM and
+        HTML Standards, instead of having them be in a separate spec that is
+        essentially a bunch of monkeypatches. The second part will be
+        upstreaming the remaining portions into HTML.</li>
+    </ul>
+  </li>
+  <li>Add Shadow DOM support:<ul>
+      <li><a href="https://github.com/w3c/dom/commit/757f604d75e81bf98b0d80743fae21aa393ab8c9">Modification in section Nodes</a></li>
+      <li><a href="https://github.com/w3c/dom/commit/4f4dca9e84bab6332f7a6c52b4196d69354f58eb">Modification in section Events</a></li>
+      </ul>
+  </li>
+  <li><a href="https://github.com/w3c/dom/commit/1b2803a2b2ee664bc5be23987951e94eca213d56">Clear event's target when dispatch ends at a shadow root</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/77186b541f93c8eb7ead2ef25c7ad32273812c83">Integrate changes against DOMTokenList</a><ul>
+    <li><code>DOMTokenList</code> should not add empty attributes</li>
+    <li>The update steps are not always run for toggle and replace methods for web compatibility.</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/w3c/dom/commit/60127de64bdc2aed9fc1dd84e0aa0efa8ff69ead">Set the stage for preventing double custom element constructor calls</a></li>
+  
 </ul>  
 
 <h3 id="historical-changes-wd2-fpwd">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</h3>
