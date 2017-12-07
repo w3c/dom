@@ -5,7 +5,7 @@ Level: 1
 Status: ED
 ED: https://w3c.github.io/dom/
 TR: https://www.w3.org/TR/dom41/
-Previous Version: https://www.w3.org/TR/2017/WD-dom41-20171031/
+Previous Version: https://www.w3.org/TR/2017/WD-dom41-20171102/
 Group: webplatform
 Editor: Yongsheng Zhu, Alibaba, yongsheng.zys@alibaba-inc.com, w3cid 94359
 Repository: https://github.com/w3c/dom

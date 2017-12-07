@@ -178,7 +178,7 @@ algorithm below.
 <ol>
  <li><p>Let <var>composedPath</var> be a new empty list.
 
- <li><p>Let <var>currentTarget</var> be <a>context object</a>'s <code for=Event>currentTarget</code> attribute value.
+ <li><p>Let <var>currentTarget</var> be <a>context object</a>'s {{Event/currentTarget}} attribute value.
 
  <li>
   <p>For each <var>tuple</var> in <a>context object</a>'s <a for=Event>path</a>:
