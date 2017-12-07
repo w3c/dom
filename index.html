@@ -1177,9 +1177,9 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 9b7c5fcba4e4901bfd8c4c36c6ce8b0937060911" name="generator">
+  <meta content="Bikeshed version 549748cf00f6303618e14a7868fb2ecd5725161f" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="052141750e68f3830e44df60349827bdd9b9d982" name="document-revision">
+  <meta content="5683b2817d7f4d19a7d53b7af0aa3beadba9bcec" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-06">6 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-07">7 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1452,7 +1452,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/dom41/">https://www.w3.org/TR/dom41/</a>
      <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2017/WD-dom41-20171031/" rel="prev">https://www.w3.org/TR/2017/WD-dom41-20171031/</a>
+     <dd><a href="https://www.w3.org/TR/2017/WD-dom41-20171102/" rel="prev">https://www.w3.org/TR/2017/WD-dom41-20171102/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:www-dom@w3.org?subject=%5Bdom41%5D%20YOUR%20TOPIC%20HERE">www-dom@w3.org</a> with subject line “<kbd>[dom41] <i data-lt="">… message topic …</i></kbd>” (<a href="https://lists.w3.org/Archives/Public/www-dom/" rel="discussion">archives</a>)</span>
      <dt>Test Suite:
@@ -1484,7 +1484,7 @@ The goals of this revision are to update the W3C’s DOM specification to cover 
    <p> Publication as an Editors Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may
     be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
     this document as other than work in progress. </p>
-   <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/83482/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
+   <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/83482/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
    <p>This document is governed by the <a href="https://www.w3.org/2017/Process-20170301/" id="w3c_process_revision">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>. </p>
   </div>
   <div data-fill-with="at-risk"></div>
@@ -1922,7 +1922,7 @@ The algorithm is passed <var>event</var>, as indicated in the <a data-link-type=
      <li>
       <p>Let <var>composedPath</var> be a new empty list. </p>
      <li>
-      <p>Let <var>currentTarget</var> be <a data-link-type="dfn" href="#context-object" id="ref-for-context-object①">context object</a>’s <code for="Event">currentTarget</code> attribute value. </p>
+      <p>Let <var>currentTarget</var> be <a data-link-type="dfn" href="#context-object" id="ref-for-context-object①">context object</a>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget④">currentTarget</a></code> attribute value. </p>
      <li>
       <p>For each <var>tuple</var> in <a data-link-type="dfn" href="#context-object" id="ref-for-context-object②">context object</a>’s <a data-link-type="dfn" href="#event-path" id="ref-for-event-path③">path</a>: </p>
       <ol>
@@ -2290,7 +2290,7 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
      <li>
       <p>If <code class="idl"><a data-link-type="idl" href="#dom-event-target" id="ref-for-dom-event-target⑤">target</a></code>'s <a data-link-type="dfn" href="#concept-tree-root" id="ref-for-concept-tree-root③">root</a> is a <a data-link-type="dfn" href="#concept-shadow-root" id="ref-for-concept-shadow-root②">shadow root</a>, then set <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-target" id="ref-for-dom-event-target⑥">target</a></code> attribute to null. </p>
      <li>
-      <p>Set <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget④">currentTarget</a></code> attribute to null. </p>
+      <p>Set <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑤">currentTarget</a></code> attribute to null. </p>
      <li>
       <p>Set <var>event</var>’s <a data-link-type="dfn" href="#event-path" id="ref-for-event-path①②">path</a> to the empty list. </p>
      <li>Return false if <var>event</var>’s <a data-link-type="dfn" href="#canceled-flag" id="ref-for-canceled-flag③">canceled flag</a> is set, and true otherwise. 
@@ -2300,7 +2300,7 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
      <li>
       <p>If <var>event</var>’s <a data-link-type="dfn" href="#stop-propagation-flag" id="ref-for-stop-propagation-flag⑤">stop propagation flag</a> is set, then return. </p>
      <li>Let <var>listeners</var> be a copy of the <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener③⓪">event listeners</a> associated with the <var>object</var>. 
-     <li>Initialize <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑤">currentTarget</a></code> attribute to the <var>object</var>. 
+     <li>Initialize <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑥">currentTarget</a></code> attribute to the <var>object</var>. 
      <li>
       For each <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener③①">event listener</a> in <var>listeners</var>, whose <a href="#event-listener-removed" id="ref-for-event-listener-removed①">removed</a> is false: 
       <ol>
@@ -2317,7 +2317,7 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
        <li>
         <p>If <var>listener</var>’s <a href="#event-listener-passive" id="ref-for-event-listener-passive①">passive</a> is true, then set <var>event</var>’s <a data-link-type="dfn" href="#in-passive-listener-flag" id="ref-for-in-passive-listener-flag①">in passive listener flag</a>. </p>
        <li>
-        <p>Call <var>listener</var>’s <b>callback</b>’s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑥">currentTarget</a></code> attribute value as <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value">callback this value</a>. If this throws any exception, <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception">report the exception</a>. </p>
+        <p>Call <var>listener</var>’s <b>callback</b>’s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑦">currentTarget</a></code> attribute value as <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value">callback this value</a>. If this throws any exception, <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception">report the exception</a>. </p>
         <ol>
          <li>
           <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception①">Report the exception</a>. </p>
@@ -9010,8 +9010,8 @@ and false otherwise. </p>
    <b><a href="#dom-event-currenttarget">#dom-event-currenttarget</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-event-currenttarget">3.1. Introduction to "DOM Events"</a>
-    <li><a href="#ref-for-dom-event-currenttarget①">3.2. Interface Event</a> <a href="#ref-for-dom-event-currenttarget②">(2)</a> <a href="#ref-for-dom-event-currenttarget③">(3)</a>
-    <li><a href="#ref-for-dom-event-currenttarget④">3.8. Dispatching events</a> <a href="#ref-for-dom-event-currenttarget⑤">(2)</a> <a href="#ref-for-dom-event-currenttarget⑥">(3)</a>
+    <li><a href="#ref-for-dom-event-currenttarget①">3.2. Interface Event</a> <a href="#ref-for-dom-event-currenttarget②">(2)</a> <a href="#ref-for-dom-event-currenttarget③">(3)</a> <a href="#ref-for-dom-event-currenttarget④">(4)</a>
+    <li><a href="#ref-for-dom-event-currenttarget⑤">3.8. Dispatching events</a> <a href="#ref-for-dom-event-currenttarget⑥">(2)</a> <a href="#ref-for-dom-event-currenttarget⑦">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-event-composedpath">
