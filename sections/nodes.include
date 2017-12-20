@@ -96,9 +96,9 @@
  <dd><p>Its number of <a>children</a>.
 </dl>
 
-<p>A <a href="#concept-node">node</a> is considered <dfn>empty</dfn> if its <a href="#node-length">length</a> is zero.
+<p>A <a>node</a> is considered <dfn>empty</dfn> if its <a>length</a> is zero.
 
-<h4 id="nodes-document-trees">Document tree</h4>
+<h4 id=document-trees>Document tree</h4>
 
 <p>A <dfn export id=concept-document-tree>document tree</dfn> is a <a>node tree</a> whose
 <a for=tree>root</a> is a <a href="#concept-document">document</a>.
@@ -116,7 +116,7 @@
 <p><span class="note">Note: The term <a>in a document</a> is no longer supposed to be used. It indicates that
 the standard using it has not been updated to account for <a>shadow trees</a>.</span>
 
-<h4 id="nodes-shadow-trees">Shadow tree</h4>
+<h4 id=shadow-trees>Shadow tree</h4>
 
 <p>A <dfn export id=concept-shadow-tree>shadow tree</dfn> is a <a>node tree</a> whose
 <a for=tree>root</a> is a <a href="#concept-shadow-root">shadow root</a>.
@@ -132,7 +132,7 @@ itself.</p>
 <p id=in-a-shadow-including-document>An <a for=/>element</a> is <dfn export>connected</dfn> if its
 <a>shadow-including root</a> is a <a href="#concept-document">document</a>.
 
-<h5 id="nodes-shadow-tree-slots">Slots</h5>
+<h5 id=shadow-tree-slots>Slots</h5>
 
 <p>A <a>shadow tree</a> contains zero or more <a for=/>elements</a> that are
 <dfn export id=concept-slot lt=slot>slots</dfn>.</p>
@@ -171,7 +171,7 @@ otherwise it is the empty string.</p>
 <p>A <a>slot</a> has an associated <dfn export for=slot>assigned nodes</dfn> (a list of
 <a>slotables</a>). Unless stated otherwise it is empty.</p>
 
-<h5 id="nodes-light-tree-slotables">Slotables</h5>
+<h5 id=light-tree-slotables>Slotables</h5>
 
 <p>{{Element}} and {{Text}} <a>nodes</a> are
 <dfn export id=concept-slotable lt=slotable>slotables</dfn>.</p>
@@ -210,7 +210,7 @@ otherwise it is the empty string.</p>
 <a>slot</a>). Unless stated otherwise it is null. A <a>slotable</a> is
 <dfn export for=slotable>assigned</dfn> if its <a>assigned slot</a> is non-null.</p>
 
-<h5 id="nodes-finding-slots-and-slotables">Finding slots and slotables</h5>
+<h5 id=finding-slots-and-slotables>Finding slots and slotables</h5>
 
 <p>To <dfn export lt="find a slot|finding a slot">find a slot</dfn> for a given <a>slotable</a>
 <var>slotable</var> and an optional <i>open flag</i> (unset unless stated otherwise), run these
@@ -298,7 +298,7 @@ for a given <a>slot</a> <var>slot</var>, run these steps:</p>
  <li><p>Return <var>result</var>.</p></li>
 </ol>
 
-<h5 id="nodes-assigning-slotables-and-slots">Assigning slotables and slots</h5>
+<h5 id=assigning-slotables-and-slots>Assigning slotables and slots</h5>
 
 <p>To <dfn noexport>assign slotables</dfn> for a <a>slot</a> <var>slot</var>, run these steps:
 
@@ -327,7 +327,7 @@ steps:
  <li><p>If <var>slot</var> is non-null, then run <a>assign slotables</a> for <var>slot</var>.
 </ol>
 
-<h5 id="nodes-signaling-slot-change">Signaling slot change</h5>
+<h5 id=signaling-slot-change>Signaling slot change</h5>
 
 <p>Each <a>unit of related similar-origin browsing contexts</a> has a
 <dfn export>signal slot list</dfn> (a list of <a>slots</a>). Unless stated otherwise it is empty.
@@ -1007,7 +1007,7 @@ interface HTMLCollection {
 
 </div>
 
-<h3 id="nodes-mutation-observers">Mutation observers</h3>
+<h3 id=mutation-observers>Mutation observers</h3>
 <p>Each <a>unit of related similar-origin browsing contexts</a> has a <dfn>mutation observer compound microtask queued flag</dfn>, which is initially unset,
 and an associated list of {{MutationObserver}} objects, which is initially empty.
 
@@ -1281,7 +1281,7 @@ interface MutationRecord {
 
 <p><a>Registered observers</a> in a <a href="#concept-node">node</a>'s list of <a>registered observers</a> have a weak reference to the <a href="#concept-node">node</a>.
 
-<h3 id="nodes-interface-node">Interface {{Node}}</h3>
+<h3 id=interface-node>Interface {{Node}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -2123,7 +2123,7 @@ the same {{HTMLCollection}} object may be returned as returned by an earlier cal
 
 <p>When invoked with the same argument, the same {{HTMLCollection}} object may be returned as returned by an earlier call.
 
-<h3 id="nodes-interface-document">Interface {{Document}}</h3>
+<h3 id=interface-document>Interface {{Document}}</h3>
 
 <pre class='idl'>
 [Constructor,
@@ -2720,7 +2720,7 @@ interface DOMImplementation {
 
 </div>
 
-<h3 id="nodes-interface-documentfragment">Interface {{DocumentFragment}}</h3>
+<h3 id=interface-documentfragment>Interface {{DocumentFragment}}</h3>
 
 <pre class='idl'>
 [Constructor,
@@ -2742,7 +2742,7 @@ interface DocumentFragment : Node {
 
 <p>The <dfn constructor for=DocumentFragment>DocumentFragment()</dfn> constructor must return a new {{DocumentFragment}} <a href="#concept-node">node</a> whose <a>node document</a> is <a>current global object</a>'s <a>associated <code>Document</code></a>.
 
-<h3 id="nodes-interface-documenttype">Interface {{DocumentType}}</h3>
+<h3 id=interface-documenttype>Interface {{DocumentType}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -2765,7 +2765,7 @@ interface DocumentType : Node {
 
 <p>The <dfn attribute for=DocumentType><code>systemId</code></dfn> attribute's getter must return the <a>context object</a>'s <a>system ID</a>.
 
-<h3 id="nodes-interface-shadowroot">Interface {{ShadowRoot}}</h3>
+<h3 id=interface-shadowroot>Interface {{ShadowRoot}}</h3>
 
 <pre class=idl>
 [Exposed=Window]
@@ -2859,7 +2859,8 @@ is an object or one of its <a>shadow-including ancestors</a>.
 
 <hr>
 
-<h3 id="nodes-interface-element">Interface <code>{{Element}}</code></h3>
+<h3 id=interface-element>Interface <code>{{Element}}</code></h3>
+
 <pre class='idl'>
 [Exposed=Window]
 interface Element : Node {
@@ -3804,7 +3805,7 @@ string <var>value</var>, run these steps:
 
 <p>The <dfn attribute for="Attr">specified</dfn> attribute's getter must return true.
 
-<h3 id="nodes-interface-characterdata">Interface {{CharacterData}}</h3>
+<h3 id=interface-characterdata>Interface {{CharacterData}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -3878,7 +3879,7 @@ interface CharacterData : Node {
 
 <p>The <dfn method for=CharacterData><code>replaceData(<var>offset</var>, <var>count</var>, <var>data</var>)</code></dfn> method, when invoked, must <a>replace data</a> with node <a>context object</a>, offset <var>offset</var>, count <var>count</var>, and data <var>data</var>.
 
-<h3 id="nodes-interface-text">Interface {{Text}}</h3>
+<h3 id=interface-text>Interface {{Text}}</h3>
 
 <pre class='idl'>
 [Constructor(optional DOMString data = ""),
@@ -3970,7 +3971,7 @@ if any, and its <a>contiguous exclusive <code>Text</code> nodes</a>, and <var>no
 interface CDATASection : Text {
 };</pre>
 
-<h3 id="nodes-interface-processinginstruction">Interface {{ProcessingInstruction}}</h3>
+<h3 id=interface-processinginstruction>Interface {{ProcessingInstruction}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
@@ -3985,7 +3986,7 @@ have an associated <dfn export id=concept-pi-target for=ProcessingInstruction>ta
 
 The <dfn attribute for=ProcessingInstruction>target</dfn> attribute must return the <a for=ProcessingInstruction>target</a>.
 
-<h3 id="nodes-interface-comment">Interface {{Comment}}</h3>
+<h3 id=interface-comment>Interface {{Comment}}</h3>
 
 <pre class='idl'>
 [Constructor(optional DOMString data = ""),
