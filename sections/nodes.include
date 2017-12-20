@@ -2859,7 +2859,7 @@ is an object or one of its <a>shadow-including ancestors</a>.
 
 <hr>
 
-<h3 id=interface-element>Interface <code>{{Element}}</code></h3>
+<h3 id=interface-element>Interface {{Element}}</h3>
 
 <pre class='idl'>
 [Exposed=Window]
