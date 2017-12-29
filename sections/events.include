@@ -662,7 +662,7 @@ for discussion).
 
    <li><p>Run the <a>retargeting steps</a> with <var>event</var>.
 
-   <li><p>If <var>tuple</var>'s <b>target</b> is null, then <a>invoke</a> <var>tuple</var>'s <b>item</b> with <var>event</var>.
+   <li><p>If <var>tuple</var>'s <b>target</b> is null, then <a>invoke</a> <var>tuple</var>'s <b>item</b> with <var>event</var> and <var>legacyOutputDidListenersThrowFlag</var> if given.
   </ol>
 
  <li>
@@ -678,10 +678,10 @@ for discussion).
 
    <li><p>Otherwise, set <var>event</var>'s {{Event/eventPhase}} attribute to {{Event/BUBBLING_PHASE}}.
 
-   <li><p>If either <var>event</var>'s {{Event/eventPhase}} attribute is {{Event/BUBBLING_PHASE}} and <var>event</var>'s {{Event/bubbles}} attribute is true or <var>event</var>'s {{Event/eventPhase}} attribute is {{Event/AT_TARGET}}, then <a>invoke</a> <var>tuple</var>'s <b>item</b> with <var>event</var>.
+   <li><p>If either <var>event</var>'s {{Event/eventPhase}} attribute is {{Event/BUBBLING_PHASE}} and <var>event</var>'s {{Event/bubbles}} attribute is true or <var>event</var>'s {{Event/eventPhase}} attribute is {{Event/AT_TARGET}}, then <a>invoke</a> <var>tuple</var>'s <b>item</b> with <var>event</var> and <var>legacyOutputDidListenersThrowFlag</var> if given.
   </ol>
 
- <li><p>Unset <var>event</var>'s <a>dispatch flag</a>.
+ <li><p>Unset <var>event</var>'s <a>dispatch flag</a>, <a>stop propagation flag</a> and <a>stop immediate propagation flag</a>.
 
  <li><p>Set <var>event</var>'s {{Event/eventPhase}} attribute to {{Event/NONE}}.
 
@@ -696,7 +696,7 @@ for discussion).
 </ol>
 
 
-<p>To <dfn lt="listener invoke|event listener invoke|invoke|invokes|invoked">invoke</dfn> an <var>object</var> with <var>event</var> and optional legacyOutputDidListenersThrowFlag, run these steps:</p>
+<p>To <dfn lt="listener invoke|event listener invoke|invoke|invokes|invoked">invoke</dfn> an <var>object</var> with <var>event</var> and optional <var>legacyOutputDidListenersThrowFlag</var>, run these steps:</p>
 <ol>
   <li><p>If <var>event</var>'s <a>stop propagation flag</a> is set, then return.
   <li>Let <var>listeners</var> be a copy of the <a>event listeners</a> associated with the <var>object</var>.
@@ -710,7 +710,7 @@ for discussion).
    <li><p>If <var>event</var>'s {{Event/eventPhase}} attribute value is {{Event/BUBBLING_PHASE}} and <var>listener</var>'s <b>capture</b> is true, terminate these substeps (and run them for the next <a>event listener</a>).
    <li><p>If <var>listener</var>'s <a href="#event-listener-once">once</a> is true, then remove <var>listener</var> from    <var>object</var>'s associated list of <a>event listeners</a>.
    <li><p>If <var>listener</var>'s <a href="#event-listener-passive">passive</a> is true, then set <var>event</var>'s <a>in passive listener flag</a>.
-   <li><p>Call <var>listener</var>'s <b>callback</b>'s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>'s {{Event/currentTarget}} attribute value as <a>callback this value</a>. If this throws any exception, <a>report the exception</a>.
+   <li><p>Call <var>listener</var>'s <b>callback</b>'s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>'s {{Event/currentTarget}} attribute value as <a>callback this value</a>. If this throws any exception, then:
     <ol>
      <li><p><a>Report the exception</a>.
 
