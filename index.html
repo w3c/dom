@@ -1177,9 +1177,9 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 684b7af5acf2630a118f6d3ab3978cfc3d7e431f" name="generator">
+  <meta content="Bikeshed version bbd6a9c4064dd454886bb3e0c74f0a19865c3c74" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="27ad7e3350ee763cf54726b38cef45c24e840c86" name="document-revision">
+  <meta content="11ff0ea6627637f0efe4429bbb663abf6ae825c3" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-20">20 December 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-12-29">29 December 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2265,7 +2265,7 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
        <li>
         <p>Run the <a data-link-type="dfn" href="#event-retargeting-steps" id="ref-for-event-retargeting-steps">retargeting steps</a> with <var>event</var>. </p>
        <li>
-        <p>If <var>tuple</var>’s <b>target</b> is null, then <a data-link-type="dfn" href="#listener-invoke" id="ref-for-listener-invoke">invoke</a> <var>tuple</var>’s <b>item</b> with <var>event</var>. </p>
+        <p>If <var>tuple</var>’s <b>target</b> is null, then <a data-link-type="dfn" href="#listener-invoke" id="ref-for-listener-invoke">invoke</a> <var>tuple</var>’s <b>item</b> with <var>event</var> and <var>legacyOutputDidListenersThrowFlag</var> if given. </p>
       </ol>
      <li>
       <p>For each <var>tuple</var> in <var>event</var>’s <a data-link-type="dfn" href="#event-path" id="ref-for-event-path①⓪">path</a>, in order: </p>
@@ -2281,10 +2281,10 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
        <li>
         <p>Otherwise, set <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase⑨">eventPhase</a></code> attribute to <code class="idl"><a data-link-type="idl" href="#dom-event-bubbling_phase" id="ref-for-dom-event-bubbling_phase④">BUBBLING_PHASE</a></code>. </p>
        <li>
-        <p>If either <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase①⓪">eventPhase</a></code> attribute is <code class="idl"><a data-link-type="idl" href="#dom-event-bubbling_phase" id="ref-for-dom-event-bubbling_phase⑤">BUBBLING_PHASE</a></code> and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-bubbles" id="ref-for-dom-event-bubbles⑤">bubbles</a></code> attribute is true or <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase①①">eventPhase</a></code> attribute is <code class="idl"><a data-link-type="idl" href="#dom-event-at_target" id="ref-for-dom-event-at_target⑤">AT_TARGET</a></code>, then <a data-link-type="dfn" href="#listener-invoke" id="ref-for-listener-invoke①">invoke</a> <var>tuple</var>’s <b>item</b> with <var>event</var>. </p>
+        <p>If either <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase①⓪">eventPhase</a></code> attribute is <code class="idl"><a data-link-type="idl" href="#dom-event-bubbling_phase" id="ref-for-dom-event-bubbling_phase⑤">BUBBLING_PHASE</a></code> and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-bubbles" id="ref-for-dom-event-bubbles⑤">bubbles</a></code> attribute is true or <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase①①">eventPhase</a></code> attribute is <code class="idl"><a data-link-type="idl" href="#dom-event-at_target" id="ref-for-dom-event-at_target⑤">AT_TARGET</a></code>, then <a data-link-type="dfn" href="#listener-invoke" id="ref-for-listener-invoke①">invoke</a> <var>tuple</var>’s <b>item</b> with <var>event</var> and <var>legacyOutputDidListenersThrowFlag</var> if given. </p>
       </ol>
      <li>
-      <p>Unset <var>event</var>’s <a data-link-type="dfn" href="#dispatch-flag" id="ref-for-dispatch-flag④">dispatch flag</a>. </p>
+      <p>Unset <var>event</var>’s <a data-link-type="dfn" href="#dispatch-flag" id="ref-for-dispatch-flag④">dispatch flag</a>, <a data-link-type="dfn" href="#stop-propagation-flag" id="ref-for-stop-propagation-flag⑤">stop propagation flag</a> and <a data-link-type="dfn" href="#stop-immediate-propagation-flag" id="ref-for-stop-immediate-propagation-flag②">stop immediate propagation flag</a>. </p>
      <li>
       <p>Set <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-dom-event-eventphase" id="ref-for-dom-event-dom-event-eventphase①②">eventPhase</a></code> attribute to <code class="idl"><a data-link-type="idl" href="#dom-event-none" id="ref-for-dom-event-none③">NONE</a></code>. </p>
      <li>
@@ -2295,10 +2295,10 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
       <p>Set <var>event</var>’s <a data-link-type="dfn" href="#event-path" id="ref-for-event-path①②">path</a> to the empty list. </p>
      <li>Return false if <var>event</var>’s <a data-link-type="dfn" href="#canceled-flag" id="ref-for-canceled-flag③">canceled flag</a> is set, and true otherwise. 
     </ol>
-    <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="listener invoke|event listener invoke|invoke|invokes|invoked" data-noexport="" id="listener-invoke">invoke</dfn> an <var>object</var> with <var>event</var> and optional legacyOutputDidListenersThrowFlag, run these steps:</p>
+    <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="listener invoke|event listener invoke|invoke|invokes|invoked" data-noexport="" id="listener-invoke">invoke</dfn> an <var>object</var> with <var>event</var> and optional <var>legacyOutputDidListenersThrowFlag</var>, run these steps:</p>
     <ol>
      <li>
-      <p>If <var>event</var>’s <a data-link-type="dfn" href="#stop-propagation-flag" id="ref-for-stop-propagation-flag⑤">stop propagation flag</a> is set, then return. </p>
+      <p>If <var>event</var>’s <a data-link-type="dfn" href="#stop-propagation-flag" id="ref-for-stop-propagation-flag⑥">stop propagation flag</a> is set, then return. </p>
      <li>Let <var>listeners</var> be a copy of the <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener③⓪">event listeners</a> associated with the <var>object</var>. 
      <li>Initialize <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑥">currentTarget</a></code> attribute to the <var>object</var>. 
      <li>
@@ -2317,10 +2317,10 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
        <li>
         <p>If <var>listener</var>’s <a href="#event-listener-passive" id="ref-for-event-listener-passive①">passive</a> is true, then set <var>event</var>’s <a data-link-type="dfn" href="#in-passive-listener-flag" id="ref-for-in-passive-listener-flag①">in passive listener flag</a>. </p>
        <li>
-        <p>Call <var>listener</var>’s <b>callback</b>’s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑦">currentTarget</a></code> attribute value as <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value">callback this value</a>. If this throws any exception, <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception">report the exception</a>. </p>
+        <p>Call <var>listener</var>’s <b>callback</b>’s <code>handleEvent</code>, with the event passed to this algorithm as the first argument and <var>event</var>’s <code class="idl"><a data-link-type="idl" href="#dom-event-currenttarget" id="ref-for-dom-event-currenttarget⑦">currentTarget</a></code> attribute value as <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value">callback this value</a>. If this throws any exception, then: </p>
         <ol>
          <li>
-          <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception①">Report the exception</a>. </p>
+          <p><a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception">Report the exception</a>. </p>
          <li>
           <p>Set <var>legacyOutputDidListenersThrowFlag</var> if given. </p>
           <p class="note" role="note">The <var>legacyOutputDidListenersThrowFlag</var> is only used by Indexed
@@ -2329,7 +2329,7 @@ of non-<code class="idl"><a data-link-type="idl" href="#dom-addeventlisteneropti
        <li>
         <p>Unset <var>event</var>’s <a data-link-type="dfn" href="#in-passive-listener-flag" id="ref-for-in-passive-listener-flag②">in passive listener flag</a>. </p>
        <li>
-        <p>If <var>event</var>’s <a data-link-type="dfn" href="#stop-immediate-propagation-flag" id="ref-for-stop-immediate-propagation-flag②">stop immediate propagation flag</a> is set, then return <var>found</var>. </p>
+        <p>If <var>event</var>’s <a data-link-type="dfn" href="#stop-immediate-propagation-flag" id="ref-for-stop-immediate-propagation-flag③">stop immediate propagation flag</a> is set, then return <var>found</var>. </p>
       </ol>
     </ol>
     <h3 class="heading settled" data-level="3.9" id="firing-events"><span class="secno">3.9. </span><span class="content">Firing events</span><a class="self-link" href="#firing-events"></a></h3>
@@ -3179,7 +3179,7 @@ and an associated list of <code class="idl"><a data-link-type="idl" href="#mutat
        <li>
         <p>Remove all <a data-link-type="dfn" href="#transient-registered-observer" id="ref-for-transient-registered-observer①">transient registered observers</a> whose <b>observer</b> is <var>mo</var>. </p>
        <li>
-        <p>If <var>queue</var> is non-empty, call <var>mo</var>’s <a href="#concept-mo-callback" id="ref-for-concept-mo-callback">callback</a> with <var>queue</var> as first argument, and <var>mo</var> (itself) as second argument and <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value①">callback this value</a>. If this throws an exception, <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception②">report the exception</a>. </p>
+        <p>If <var>queue</var> is non-empty, call <var>mo</var>’s <a href="#concept-mo-callback" id="ref-for-concept-mo-callback">callback</a> with <var>queue</var> as first argument, and <var>mo</var> (itself) as second argument and <a data-link-type="dfn" href="https://www.w3.org/TR/WebIDL-1/#dfn-callback-this-value" id="ref-for-dfn-callback-this-value①">callback this value</a>. If this throws an exception, <a data-link-type="dfn" href="https://www.w3.org/TR/html51/webappapis.html#report-the-exception" id="ref-for-report-the-exception①">report the exception</a>. </p>
       </ol>
      <li>
       <p>For each <a data-link-type="dfn" href="#concept-slot" id="ref-for-concept-slot①⑨">slot</a> <var>slot</var> in <var>signalList</var>, in order, <a data-link-type="dfn" href="#concept-event-fire" id="ref-for-concept-event-fire④">fire an event</a> named <code>slotchange</code>, with its <code class="idl"><a data-link-type="idl" href="#dom-event-bubbles" id="ref-for-dom-event-bubbles⑦">bubbles</a></code> attribute set to
@@ -9067,14 +9067,14 @@ and false otherwise. </p>
    <b><a href="#stop-propagation-flag">#stop-propagation-flag</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-stop-propagation-flag">3.2. Interface Event</a> <a href="#ref-for-stop-propagation-flag①">(2)</a> <a href="#ref-for-stop-propagation-flag②">(3)</a> <a href="#ref-for-stop-propagation-flag③">(4)</a> <a href="#ref-for-stop-propagation-flag④">(5)</a>
-    <li><a href="#ref-for-stop-propagation-flag⑤">3.8. Dispatching events</a>
+    <li><a href="#ref-for-stop-propagation-flag⑤">3.8. Dispatching events</a> <a href="#ref-for-stop-propagation-flag⑥">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="stop-immediate-propagation-flag">
    <b><a href="#stop-immediate-propagation-flag">#stop-immediate-propagation-flag</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-stop-immediate-propagation-flag">3.2. Interface Event</a> <a href="#ref-for-stop-immediate-propagation-flag①">(2)</a>
-    <li><a href="#ref-for-stop-immediate-propagation-flag②">3.8. Dispatching events</a>
+    <li><a href="#ref-for-stop-immediate-propagation-flag②">3.8. Dispatching events</a> <a href="#ref-for-stop-immediate-propagation-flag③">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="canceled-flag">
