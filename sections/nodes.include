@@ -1607,7 +1607,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 </dl>
 
 <p>The <dfn attribute for=Node><code>textContent</code></dfn> attribute's getter must return the following, switching on <a>context object</a>:
-  
+
 <dl class="switch">
  <dt>{{DocumentFragment}}
  <dt>{{Element}}
@@ -1713,7 +1713,7 @@ The <dfn attribute for=Node>baseURI</dfn> attribute's getter must return <a>node
 <div>
 
 <a lt="Other applicable specifications">Specifications</a> may define <dfn export id=concept-node-clone-ext>cloning steps</dfn> for all or some <a>nodes</a>. The algorithm is passed <var>copy</var>, <var>node</var>, <var>document</var>, and an optional <i>clone children flag</i>, as indicated in the <a lt="clone a node">clone</a> algorithm.
-    
+
 <p class="note">Note: HTML defines <a>cloning steps</a> for <code><a>script</a></code> and <code><a>input</a></code> elements. SVG ought to do the same for its <code>script</code> elements, but does not call this out at the moment.
 
 
@@ -2872,6 +2872,7 @@ interface Element : Node {
            attribute DOMString id;
            attribute DOMString className;
   [SameObject] readonly attribute DOMTokenList classList;
+           attribute DOMString slot;
 
   boolean hasAttributes();
   [SameObject] readonly attribute NamedNodeMap attributes;
@@ -3373,10 +3374,16 @@ claims as to whether using them is conforming or not.
 
 <p>The <dfn attribute for=Element><code>id</code></dfn> attribute must <a for=Attr>reflect</a> the "<code>id</code>" content attribute.
 
-<p>The <dfn attribute for=Element><code>className</code></dfn> attribute must <a for=Attr>reflect</a> the "<code>class</code>" content attribute.    
+<p>The <dfn attribute for=Element><code>className</code></dfn> attribute must <a for=Attr>reflect</a> the "<code>class</code>" content attribute.
 
 <p>The <dfn attribute for=Element><code>classList</code></dfn> attribute's getter must return the associated <code>{{DOMTokenList}}</code> object representing the <a>context object</a>'s <a>classes</a>.
 The <a>token set</a>of this particular {{DOMTokenList}} object are also known as the <a for="/">element</a>'s <dfn export for=Element id="concept-class" lt="class">classes</dfn>.
+
+<p>The <dfn attribute for=Element><code>slot</code></dfn> attribute must <a>reflect</a> the
+ "<code>slot</code>" content attribute.
+
+<p class="note"><code>id</code>, <code>class</code>, and <code>slot</code> are effectively
+ superglobal attributes as they can appear on any element, regardless of that element's namespace.</p>
 
 <hr>
 
