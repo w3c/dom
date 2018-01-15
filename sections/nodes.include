@@ -682,8 +682,8 @@ interface ParentNode {
   readonly attribute Element? lastElementChild;
   readonly attribute unsigned long childElementCount;
 
-  [Unscopable] void prepend((Node or DOMString)... nodes);
-  [Unscopable] void append((Node or DOMString)... nodes);
+  [CEReactions, Unscopable] void prepend((Node or DOMString)... nodes);
+  [CEReactions, Unscopable] void append((Node or DOMString)... nodes);
 
   Element? querySelector(DOMString selectors);
   [NewObject] NodeList querySelectorAll(DOMString selectors);
@@ -789,10 +789,10 @@ CharacterData implements NonDocumentTypeChildNode;
 [NoInterfaceObject,
  Exposed=Window]
 interface ChildNode {
-  [Unscopable] void before((Node or DOMString)... nodes);
-  [Unscopable] void after((Node or DOMString)... nodes);
-  [Unscopable] void replaceWith((Node or DOMString)... nodes);
-  [Unscopable] void remove();
+  [CEReactions, Unscopable] void before((Node or DOMString)... nodes);
+  [CEReactions, Unscopable] void after((Node or DOMString)... nodes);
+  [CEReactions, Unscopable] void replaceWith((Node or DOMString)... nodes);
+  [CEReactions, Unscopable] void remove();
 };
 DocumentType implements ChildNode;
 Element implements ChildNode;
@@ -1313,11 +1313,11 @@ interface Node : EventTarget {
   readonly attribute Node? previousSibling;
   readonly attribute Node? nextSibling;
 
-  attribute DOMString? nodeValue;
-  attribute DOMString? textContent;
-  void normalize();
+  [CEReactions] attribute DOMString? nodeValue;
+  [CEReactions] attribute DOMString? textContent;
+  [CEReactions] void normalize();
 
-  [NewObject] Node cloneNode(optional boolean deep = false);
+  [CEReactions, NewObject] Node cloneNode(optional boolean deep = false);
   boolean isEqualNode(Node? other);
 
   const unsigned short DOCUMENT_POSITION_DISCONNECTED = 0x01;
@@ -1333,10 +1333,10 @@ interface Node : EventTarget {
   DOMString? lookupNamespaceURI(DOMString? prefix);
   boolean isDefaultNamespace(DOMString? namespace);
 
-  Node insertBefore(Node node, Node? child);
-  Node appendChild(Node node);
-  Node replaceChild(Node node, Node child);
-  Node removeChild(Node child);
+  [CEReactions] Node insertBefore(Node node, Node? child);
+  [CEReactions] Node appendChild(Node node);
+  [CEReactions] Node replaceChild(Node node, Node child);
+  [CEReactions] Node removeChild(Node child);
 };
 </pre>
 
@@ -2145,16 +2145,16 @@ interface Document : Node {
   HTMLCollection getElementsByTagNameNS(DOMString? namespace, DOMString localName);
   HTMLCollection getElementsByClassName(DOMString classNames);
 
-  [NewObject] Element createElement(DOMString localName, optional ElementCreationOptions options);
-  [NewObject] Element createElementNS(DOMString? namespace, DOMString qualifiedName, optional ElementCreationOptions options);
+  [CEReactions, NewObject] Element createElement(DOMString localName, optional ElementCreationOptions options);
+  [CEReactions, NewObject] Element createElementNS(DOMString? namespace, DOMString qualifiedName, optional ElementCreationOptions options);
   [NewObject] DocumentFragment createDocumentFragment();
   [NewObject] Text createTextNode(DOMString data);
   [NewObject] CDATASection createCDATASection(DOMString data);
   [NewObject] Comment createComment(DOMString data);
   [NewObject] ProcessingInstruction createProcessingInstruction(DOMString target, DOMString data);
 
-  [NewObject] Node importNode(Node node, optional boolean deep = false);
-  Node adoptNode(Node node);
+  [CEReactions, NewObject] Node importNode(Node node, optional boolean deep = false);
+  [CEReactions] Node adoptNode(Node node);
 
   [NewObject] Attr createAttribute(DOMString localName);
   [NewObject] Attr createAttributeNS(DOMString? namespace, DOMString qualifiedName);
@@ -2874,27 +2874,27 @@ interface Element : Node {
   readonly attribute DOMString localName;
   readonly attribute DOMString tagName;
 
-           attribute DOMString id;
-           attribute DOMString className;
+  [CEReactions] attribute DOMString id;
+  [CEReactions] attribute DOMString className;
   [SameObject] readonly attribute DOMTokenList classList;
-           attribute DOMString slot;
+  [CEReactions, Unscopable] attribute DOMString slot;
 
   boolean hasAttributes();
   [SameObject] readonly attribute NamedNodeMap attributes;
   DOMString? getAttribute(DOMString qualifiedName);
   DOMString? getAttributeNS(DOMString? namespace, DOMString localName);
-  void setAttribute(DOMString qualifiedName, DOMString value);
-  void setAttributeNS(DOMString? namespace, DOMString qualifiedName, DOMString value);
-  void removeAttribute(DOMString qualifiedName);
-  void removeAttributeNS(DOMString? namespace, DOMString localName);
+  [CEReactions] void setAttribute(DOMString qualifiedName, DOMString value);
+  [CEReactions] void setAttributeNS(DOMString? namespace, DOMString qualifiedName, DOMString value);
+  [CEReactions] void removeAttribute(DOMString qualifiedName);
+  [CEReactions] void removeAttributeNS(DOMString? namespace, DOMString localName);
   boolean hasAttribute(DOMString qualifiedName);
   boolean hasAttributeNS(DOMString? namespace, DOMString localName);
 
   Attr? getAttributeNode(DOMString qualifiedName);
   Attr? getAttributeNodeNS(DOMString? namespace, DOMString localName);
-  Attr? setAttributeNode(Attr attr);
-  Attr? setAttributeNodeNS(Attr attr);
-  Attr removeAttributeNode(Attr attr);
+  [CEReactions] Attr? setAttributeNode(Attr attr);
+  [CEReactions] Attr? setAttributeNodeNS(Attr attr);
+  [CEReactions] Attr removeAttributeNode(Attr attr);
 
   ShadowRoot attachShadow(ShadowRootInit init);
   readonly attribute ShadowRoot? shadowRoot;
@@ -2907,7 +2907,7 @@ interface Element : Node {
   HTMLCollection getElementsByTagNameNS(DOMString? namespace, DOMString localName);
   HTMLCollection getElementsByClassName(DOMString classNames);
 
-  Element? insertAdjacentElement(DOMString where, Element element); // historical
+  [CEReactions] Element? insertAdjacentElement(DOMString where, Element element); // historical
   void insertAdjacentText(DOMString where, DOMString data); // historical
 };
 
@@ -3676,11 +3676,11 @@ interface NamedNodeMap {
   getter Attr? getNamedItem(DOMString qualifiedName);
   Attr? getNamedItemNS(DOMString? namespace, DOMString localName);
 
-  Attr? setNamedItem(Attr attr);
-  Attr? setNamedItemNS(Attr attr);
+  [CEReactions] Attr? setNamedItem(Attr attr);
+  [CEReactions] Attr? setNamedItemNS(Attr attr);
 
-  Attr removeNamedItem(DOMString qualifiedName);
-  Attr removeNamedItemNS(DOMString? namespace, DOMString localName);
+  [CEReactions] Attr removeNamedItem(DOMString qualifiedName);
+  [CEReactions] Attr removeNamedItemNS(DOMString? namespace, DOMString localName);
 };
 </pre>
 
@@ -3781,7 +3781,7 @@ interface Attr : Node {
   readonly attribute DOMString localName;
   readonly attribute DOMString name;
   readonly attribute DOMString nodeName; // for legacy use, alias of .name
-           attribute DOMString value;
+  [CEReactions] attribute DOMString value;
 
   readonly attribute Element? ownerElement;
 
