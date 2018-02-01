@@ -62,6 +62,20 @@
     </ul>
   </li>
   <li><a href="https://github.com/w3c/dom/commit/60127de64bdc2aed9fc1dd84e0aa0efa8ff69ead">Set the stage for preventing double custom element constructor calls</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/11ff0ea6627637f0efe4429bbb663abf6ae825c3">dispatch event with optional legacyOutputDidListenersThrowFlag</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/2f1ba2e51e169d0b0d97b5dbc34c4b4d5db3a0a7">Define special dispatch behavior for click events</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/2a11cd1b4c74c076d024aabf0b5283c01dabc4a0">Shadow: define the slot IDL attribute on Element</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/b55c6f5e43caa16c7b790d7c3a082600d1ece700">Changes to "create an element"</a><ul>
+      <li>swap prefix, localName arguments of create an element to make
+      description consistent;</li>
+      <li>change the namespace to match implementations</li>
+      <li>createElement add a case when context object is HTML document</li>
+      <li>mark elements in browsing-context-less documents as "undefined";</li>
+      <li>clarify that the namespace check in "create an element" is redundant</li>
+      <li>change createElement to report exceptions instead of rethrowing</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/w3c/dom/commit/7d40f67406f66ff3616a8e53b37be1515d10aa1d">Add <code>[CEReactions]</code> annotations to mutating methods</a></li>
   
 </ul>  
 
