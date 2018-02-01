@@ -1177,9 +1177,9 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version d1c8ac9ac0bb0f0e970e3942633cfb7d2f7e12e6" name="generator">
+  <meta content="Bikeshed version 1760a0346ebf3096d8d47b818b15ffcad41e99a0" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="7d40f67406f66ff3616a8e53b37be1515d10aa1d" name="document-revision">
+  <meta content="67072cb017502597090936e4d3bfa548e22027ce" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-01-16">16 January 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-02-01">1 February 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1452,7 +1452,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/dom41/">https://www.w3.org/TR/dom41/</a>
      <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2017/WD-dom41-20171102/" rel="prev">https://www.w3.org/TR/2017/WD-dom41-20171102/</a>
+     <dd><a href="https://www.w3.org/TR/2017/WD-dom41-20171207/" rel="prev">https://www.w3.org/TR/2017/WD-dom41-20171207/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:www-dom@w3.org?subject=%5Bdom41%5D%20YOUR%20TOPIC%20HERE">www-dom@w3.org</a> with subject line “<kbd>[dom41] <i data-lt="">… message topic …</i></kbd>” (<a href="https://lists.w3.org/Archives/Public/www-dom/" rel="discussion">archives</a>)</span>
      <dt>Test Suite:
@@ -6679,6 +6679,21 @@ and false otherwise. </p>
        <li>The update steps are not always run for toggle and replace methods for web compatibility.
       </ul>
      <li><a href="https://github.com/w3c/dom/commit/60127de64bdc2aed9fc1dd84e0aa0efa8ff69ead">Set the stage for preventing double custom element constructor calls</a>
+     <li><a href="https://github.com/w3c/dom/commit/11ff0ea6627637f0efe4429bbb663abf6ae825c3">dispatch event with optional legacyOutputDidListenersThrowFlag</a>
+     <li><a href="https://github.com/w3c/dom/commit/2f1ba2e51e169d0b0d97b5dbc34c4b4d5db3a0a7">Define special dispatch behavior for click events</a>
+     <li><a href="https://github.com/w3c/dom/commit/2a11cd1b4c74c076d024aabf0b5283c01dabc4a0">Shadow: define the slot IDL attribute on Element</a>
+     <li>
+      <a href="https://github.com/w3c/dom/commit/b55c6f5e43caa16c7b790d7c3a082600d1ece700">Changes to "create an element"</a>
+      <ul>
+       <li>swap prefix, localName arguments of create an element to make
+      description consistent;
+       <li>change the namespace to match implementations
+       <li>createElement add a case when context object is HTML document
+       <li>mark elements in browsing-context-less documents as "undefined";
+       <li>clarify that the namespace check in "create an element" is redundant
+       <li>change createElement to report exceptions instead of rethrowing
+      </ul>
+     <li><a href="https://github.com/w3c/dom/commit/7d40f67406f66ff3616a8e53b37be1515d10aa1d">Add <code>[CEReactions]</code> annotations to mutating methods</a>
     </ul>
     <h3 class="heading settled" data-level="8.2" id="historical-changes-wd2-fpwd"><span class="secno">8.2. </span><span class="content">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</span><a class="self-link" href="#historical-changes-wd2-fpwd"></a></h3>
     <ul>
