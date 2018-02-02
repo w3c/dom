@@ -57,4 +57,4 @@ No.
 [3.16 Does this specification have a "Security Considerations" and "Privacy Considerations" section?]: https://w3ctag.github.io/security-questionnaire/#considerations
 [3.17 Does this specification allow downgrading default security characteristics?]: https://w3ctag.github.io/security-questionnaire/#relaxed-sop
 
-[W3C DOM 4.1]: https://w3c.github.io/sensors/
+[W3C DOM 4.1]: https://w3c.github.io/dom/
