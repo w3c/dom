@@ -2,7 +2,11 @@
 
 ## [3.1 Does this specification deal with personally-identifiable information?]
 
+No.
+
 ## [3.2 Does this specification deal with high-value data?]
+
+No.
 
 ## [3.3 Does this specification introduce new state for an origin that persists across browsing sessions?]
 
