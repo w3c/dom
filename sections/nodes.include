@@ -2348,7 +2348,7 @@ A <a href="#concept-document">document</a> is said to be in <dfn export id=conce
 
 <p>The <dfn export id=concept-element-interface>element interface</dfn> for any <var>name</var> and <var>namespace</var> is {{Element}}, unless stated otherwise.
 
-<p class="note">Note: The HTML Standard will e.g. define that for <code>html</code> and the <a>HTML namespace</a>, the <code>HTMLHtmlElement</code> interface is used. [[!HTML5]
+<p class="note">Note: The HTML Standard will e.g. define that for <code>html</code> and the <a>HTML namespace</a>, the <code>HTMLHtmlElement</code> interface is used. [[!HTML51]]
 
 <p>The <dfn method for=Document>createElement(<var>localName</var>, <var>options</var>)</dfn> method, when invoked, must run the these steps:
 
