@@ -14,7 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/www-dom/
 Test Suite: https://w3c-test.org/dom/
 Abstract: DOM defines a platform-neutral model for events and node trees.
 Ignored Terms: EmptyString
-Status Text: This document is the Second Public Working Draft of an update to the DOM 4 Recommendation.
+Status Text: This document is a Working Draft of an update to the DOM 4 Recommendation.
   The goals of this revision are to update the W3C's DOM specification to cover what is interoperably implemented as a core part of the Web Platform.
 </pre>
 
