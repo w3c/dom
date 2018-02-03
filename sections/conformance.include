@@ -36,7 +36,7 @@ out of memory, or to work around platform-specific limitations.
 required for conforming IDL fragments, as described in the Web IDL
 specification. [[!WEBIDL]]
 
-  Some of the terms used in this specification are defined in <a spec=W3ENCODING>Encoding</a>, <cite>Selectors</cite>, <cite>WEBIDL</cite>,
+  Some of the terms used in this specification are defined in <cite>Encoding</cite>, <cite>Selectors</cite>, <cite>Web IDL</cite>,
 <cite>XML</cite>, and <cite>Namespaces in XML</cite>. [[!ENCODING]][[!SELECTORS4]][[!WEBIDL]][[!XML]][[!XML-NAMES]]
 
 <h3 id="conformance-extensibility">Extensibility</h3>
