@@ -2,9 +2,12 @@
 <h2 class="no-num" id="acknowledgements">Acknowledgements</h2>
 
   Very many people that have contributed to earlier versions of DOM, to the WHATWG's
-  version, and to making DOM implementations more interoperable, over many years.
+  version, and to making DOM implementations more interoperable, over many years. 
+  Some portions of this document are derived from "<a href="https://dom.spec.whatwg.org>DOM Living Standard</a>",
+  which is copyright © 2018 WHATWG (Apple, Google, Mozilla, Microsoft),
+  under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-  Some contributions are are acknowledged in particular specification versions and implementations,
+  Some contributions are acknowledged in particular specification versions and implementations,
   some are not. Without all of them this specification would be much poorer.
 
   For specific contributions to this version, thanks are due to:
@@ -14,6 +17,7 @@
   Hao Chen "horkychen",
   Hongbo Min "hmin",
   Honghao Jin "jinhoward",
+  Maciej Stachowiak,
   Rick Byers,
   Philippe Le Hégaret,
   Shouqun Liu "shouqun",
