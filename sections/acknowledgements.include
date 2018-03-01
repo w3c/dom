@@ -3,7 +3,7 @@
 
   Very many people that have contributed to earlier versions of DOM, to the WHATWG's
   version, and to making DOM implementations more interoperable, over many years. 
-  Some portions of this document are derived from "<a href="https://dom.spec.whatwg.org>DOM Living Standard</a>",
+  Some portions of this document are derived from <a href="https://dom.spec.whatwg.org">DOM Living Standard</a>,
   which is copyright © 2018 WHATWG (Apple, Google, Mozilla, Microsoft),
   under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
