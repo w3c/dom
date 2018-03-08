@@ -64,7 +64,7 @@ No.
 
 ## [3.16 Does this specification have a "Security Considerations" and "Privacy Considerations" section?]
 
-No for the moment. But we can add one if necessary.
+Yes.
 
 ## [3.17 Does this specification allow downgrading default security characteristics?]
 

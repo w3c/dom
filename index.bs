@@ -189,6 +189,10 @@ path: sections/sets.include
 </pre>
 
 <pre class="include">
+path: sections/security-and-privacy.include
+</pre>
+    
+<pre class="include">
 path: sections/historical.include
 </pre>
 
