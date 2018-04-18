@@ -1177,9 +1177,9 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 5afc3ab5248efd53ff0fd6d61ad878a3dc5a357a" name="generator">
+  <meta content="Bikeshed version 80294e12a0320826cbf4ded0dfff03de21c3a3d7" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="54e0386f6a5d7d45043d78e176e2d0db3cb05ec2" name="document-revision">
+  <meta content="c0c29b1d0aafa5eb63d725ece11996913d29055b" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-03-08">8 March 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-18">18 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1723,8 +1723,8 @@ other. </p>
     <p>To <dfn class="dfn-paneled" data-dfn-for="ordered set" data-dfn-type="dfn" data-export="" id="ordered-set-replace">replace</dfn> within an <a data-link-type="dfn" href="#ordered-set" id="ref-for-ordered-set">ordered set</a> <var>set</var>, given <var>item</var> and <var>replacement</var>,
 if <var>item</var> or <var>replacement</var> is in <var>set</var>, then replace the first instance of
 either with <var>replacement</var> and remove all other instances. </p>
-    <div class="example" id="example-256d6219">
-     <a class="self-link" href="#example-256d6219"></a> 
+    <div class="example" id="example-bfd6e430">
+     <a class="self-link" href="#example-bfd6e430"></a> 
      <p><a href="#ordered-set-replace" id="ref-for-ordered-set-replace">Replacing</a> "a" with "c" within the <a data-link-type="dfn" href="#ordered-set" id="ref-for-ordered-set①">ordered set</a> « "a", "b", "c" » gives « "c", "b" ».
  Within « "c", "b", "a" » it gives « "c", "b" » as well. </p>
     </div>
@@ -1783,7 +1783,7 @@ run these steps:</p>
     <h2 class="heading settled" data-level="3" id="events"><span class="secno">3. </span><span class="content">Events</span><a class="self-link" href="#events"></a></h2>
     <h3 class="heading settled" data-level="3.1" id="introduction-to-dom-events"><span class="secno">3.1. </span><span class="content">Introduction to "DOM Events"</span><a class="self-link" href="#introduction-to-dom-events"></a></h3>
     <p>Throughout the web platform <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event">events</a> are <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch">dispatched</a> to objects to signal an occurrence, such as network activity or user interaction. These objects implement the <code class="idl"><a data-link-type="idl" href="#eventtarget" id="ref-for-eventtarget">EventTarget</a></code> interface and can therefore add <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener">event listeners</a> to observe <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①">events</a> by calling <a data-link-type="functionish" href="#dom-eventtarget-addeventlistener" id="ref-for-dom-eventtarget-addeventlistener">addEventListener()</a>: </p>
-<pre class="example" id="example-55f52292"><a class="self-link" href="#example-55f52292"></a><code>obj.addEventListener("load", imgFetched)
+<pre class="example" id="example-0df508cf"><a class="self-link" href="#example-0df508cf"></a><code>obj.addEventListener("load", imgFetched)
 function imgFetched(ev) {
   // great success
   …
@@ -1792,20 +1792,20 @@ function imgFetched(ev) {
     <p><a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event②">Events</a> are objects too and implement the <code><a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event③">Event</a></code> interface (or a derived interface). In the example above <var>ev</var> is the <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event④">event</a>. It is passed as argument to <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener②">event listener</a>’s <b>callback</b> (typically a JavaScript Function as shown above). </p>
     <p><a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener③">Event listeners</a> key off the <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event⑤">event</a>’s <code class="idl"><a data-link-type="idl" href="#dom-event-type" id="ref-for-dom-event-type">type</a></code> attribute value ("<code>load</code>" in the above example). The <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event⑥">event</a>’s <code><a data-link-type="dfn" href="#concept-pi-target" id="ref-for-concept-pi-target">target</a></code> attribute value returns the object to which the <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event⑦">event</a> was <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch①">dispatched</a> (<var>obj</var> above).</p>
     <p>Now while typically <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event⑧">events</a> are <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch②">dispatched</a> by the user agent as the result of user interaction or the completion of some task, applications can <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch③">dispatch</a> <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event⑨">events</a> themselves, commonly known as synthetic events: </p>
-<pre class="example" id="example-dbbc3b4f"><a class="self-link" href="#example-dbbc3b4f"></a><code>// add an appropriate event listener
+<pre class="example" id="example-1eb53ae0"><a class="self-link" href="#example-1eb53ae0"></a><code>// add an appropriate event listener
 obj.addEventListener("cat", function(e) { process(e.detail) })
 
 // create and dispatch the event
 var event = new CustomEvent("cat", {"detail":{"hazcheeseburger":true}})
 obj.dispatchEvent(event)</code></pre>
     <p>Apart from signaling, <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①⓪">events</a> are sometimes also used to let an application control what happens next in an operation. For instance as part of form submission an <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①①">event</a> whose <code class="idl"><a data-link-type="idl" href="#dom-event-type" id="ref-for-dom-event-type①">type</a></code> attribute value is "<code>submit</code>" is <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch④">dispatched</a>. If this <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①②">event</a>’s <code><a data-link-type="functionish" href="#dom-event-preventdefault" id="ref-for-dom-event-preventdefault">preventDefault()</a></code> method is invoked, form submission will be terminated. Applications who wish to make use of this functionality through <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①③">events</a> <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch⑤">dispatched</a> by the application (synthetic events) can make use of the return value of the <code><a data-link-type="functionish" href="#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent">dispatchEvent()</a></code> method: </p>
-<pre class="example" id="example-5788eea6"><a class="self-link" href="#example-5788eea6"></a><code>if(obj.dispatchEvent(event)) {
+<pre class="example" id="example-0967d2b8"><a class="self-link" href="#example-0967d2b8"></a><code>if(obj.dispatchEvent(event)) {
   // event was not canceled, time for some magic
   …
 }</code></pre>
     <p>When an <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①④">event</a> is <a data-link-type="dfn" href="#concept-event-dispatch" id="ref-for-concept-event-dispatch⑥">dispatched</a> to an object that <a data-link-type="dfn" href="#concept-tree-participate" id="ref-for-concept-tree-participate①">participates</a> in a <a data-link-type="dfn" href="#concept-tree" id="ref-for-concept-tree⑥">tree</a> (e.g. an <a href="#concept-element" id="ref-for-concept-element">element</a>), it can reach <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener④">event listeners</a> on that object’s <a data-link-type="dfn" href="#concept-tree-ancestor" id="ref-for-concept-tree-ancestor①">ancestors</a> too. First all object’s <a data-link-type="dfn" href="#concept-tree-ancestor" id="ref-for-concept-tree-ancestor②">ancestor</a> <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener⑤">event listeners</a> whose <b>capture</b> variable is set to true are invoked, in <a data-link-type="dfn" href="#concept-tree-order" id="ref-for-concept-tree-order②">tree order</a>. Second, object’s own <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener⑥">event listeners</a> are invoked. And finally, and only if <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①⑤">event</a>’s <code class="idl"><a data-link-type="idl" href="#dom-event-bubbles" id="ref-for-dom-event-bubbles">bubbles</a></code> attribute value is true, object’s <a data-link-type="dfn" href="#concept-tree-ancestor" id="ref-for-concept-tree-ancestor③">ancestor</a> <a data-link-type="dfn" href="#concept-event-listener" id="ref-for-concept-event-listener⑦">event listeners</a> are invoked again, but now in reverse <a data-link-type="dfn" href="#concept-tree-order" id="ref-for-concept-tree-order③">tree order</a>. </p>
     <p>Lets look at an example of how <a data-link-type="dfn" href="#concept-event" id="ref-for-concept-event①⑥">events</a> work in a <a data-link-type="dfn" href="#concept-tree" id="ref-for-concept-tree⑦">tree</a>: </p>
-<pre class="example" id="example-7785e129"><a class="self-link" href="#example-7785e129"></a><code>&lt;!doctype html>&lt;html>
+<pre class="example" id="example-07fa6903"><a class="self-link" href="#example-07fa6903"></a><code>&lt;!doctype html>&lt;html>
  &lt;head>
   &lt;title>Boring example&lt;/title>
  &lt;/head>
@@ -2408,7 +2408,7 @@ can only be used to influence an ongoing one. </p>
     <p>In its original sense, "The DOM" is an API for accessing and manipulating documents (in particular, HTML and XML documents). In this specification, the term "document" is used for any markup-based resource, ranging from short static documents to long essays or reports with rich multimedia, as well as to fully-fledged interactive applications. </p>
     <p>These documents are presented as a <a data-link-type="dfn" href="#node-tree" id="ref-for-node-tree">node tree</a>. Some of the <a data-link-type="dfn" href="#concept-node" id="ref-for-concept-node⑧">nodes</a> in the <a data-link-type="dfn" href="#concept-tree" id="ref-for-concept-tree①②">tree</a> can have <a data-link-type="dfn" href="#tree-child" id="ref-for-tree-child③">children</a>, while others are always leaves. </p>
     <p>To illustrate, consider this HTML document: </p>
-<pre class="example" id="example-53cc7e86"><a class="self-link" href="#example-53cc7e86"></a><code>&lt;!DOCTYPE html>
+<pre class="example" id="example-4c192229"><a class="self-link" href="#example-4c192229"></a><code>&lt;!DOCTYPE html>
 &lt;html class=e>
  &lt;head>&lt;title>Aliens?&lt;/title>&lt;/head>
  &lt;body>Why yes.&lt;/body>
@@ -4191,8 +4191,8 @@ the same <code class="idl"><a data-link-type="idl" href="#htmlcollection" id="re
     <p class="note" role="note">Note: Thus, in an <a data-link-type="dfn" href="#html-document" id="ref-for-html-document③">HTML document</a>, <code>document.getElementsByTagName("FOO")</code> will match <code>FOO</code> elements that are not in the <a data-link-type="dfn" href="#html-namespace" id="ref-for-html-namespace⑤">HTML namespace</a>, and <code>foo</code> elements that are in the <a data-link-type="dfn" href="#html-namespace" id="ref-for-html-namespace⑥">HTML namespace</a>, but not <code>FOO</code> elements that are in the <a data-link-type="dfn" href="#html-namespace" id="ref-for-html-namespace⑦">HTML namespace</a>. </p>
     <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="method" data-export="" id="dom-document-getelementsbytagnamens"><code>getElementsByTagNameNS(<var>namespace</var>, <var>localName</var>)</code></dfn> method, when invoked, must return the <a data-link-type="dfn" href="#list-of-elements-with-namespace-namespace-and-local-name-localname" id="ref-for-list-of-elements-with-namespace-namespace-and-local-name-localname">list of elements with namespace <var>namespace</var> and local name <var>localName</var></a> for the <a data-link-type="dfn" href="#context-object" id="ref-for-context-object⑨②">context object</a>. </p>
     <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="method" data-export="" id="dom-document-getelementsbyclassname"><code>getElementsByClassName(<var>classNames</var>)</code></dfn> method, when invoked, must return the <a data-link-type="dfn" href="#list-of-elements-with-class-names-classnames" id="ref-for-list-of-elements-with-class-names-classnames">list of elements with class names <var>classNames</var></a> for the <a data-link-type="dfn" href="#context-object" id="ref-for-context-object⑨③">context object</a>. </p>
-    <div class="example" id="example-e44e42a5">
-     <a class="self-link" href="#example-e44e42a5"></a> 
+    <div class="example" id="example-d9a05986">
+     <a class="self-link" href="#example-d9a05986"></a> 
      <p>Given the following XHTML fragment: </p>
 <pre><code class="lang-html highlight"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"example"</span><span class="p">></span>
  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"p1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"aaa bbb"</span><span class="p">/></span>
@@ -4711,8 +4711,8 @@ object’s <a data-link-type="dfn" href="#concept-tree-root" id="ref-for-concept
     <p><a href="#concept-element" id="ref-for-concept-element⑧⑧">Elements</a> have an associated <dfn class="dfn-paneled" data-dfn-for="element" data-dfn-type="dfn" data-noexport="" id="concept-element-namespace">namespace</dfn>, <dfn class="dfn-paneled" data-dfn-for="element" data-dfn-type="dfn" data-noexport="" id="concept-element-namespace-prefix">namespace prefix</dfn>, <dfn class="dfn-paneled" data-dfn-for="element" data-dfn-type="dfn" data-noexport="" id="concept-element-local-name">local name</dfn>, <dfn class="dfn-paneled" data-dfn-for="Element" data-dfn-type="dfn" data-export="" id="concept-element-custom-element-state">custom element state</dfn>, <dfn class="dfn-paneled" data-dfn-for="Element" data-dfn-type="dfn" data-export="" id="concept-element-custom-element-definition">custom element definition</dfn>, and <dfn class="dfn-paneled" data-dfn-for="Element" data-dfn-type="dfn" data-noexport="" id="concept-element-is-value"><code>is</code> value</dfn>. When an <a href="#concept-element" id="ref-for-concept-element⑧⑨">element</a> is <a data-link-type="dfn" href="#concept-create-element" id="ref-for-concept-create-element②">created</a>, all of these values are initialized. </p>
     <p>An <a data-link-type="dfn" href="#concept-element" id="ref-for-concept-element②⑧">element</a>’s <a data-link-type="dfn" href="#concept-element-custom-element-state" id="ref-for-concept-element-custom-element-state">custom element state</a> is one of "<code>undefined</code>", "<code>failed</code>", "<code>uncustomized</code>", or "<code>custom</code>". An <a data-link-type="dfn" href="#concept-element" id="ref-for-concept-element②⑨">element</a> whose <a data-link-type="dfn" href="#concept-element-custom-element-state" id="ref-for-concept-element-custom-element-state①">custom element state</a> is "<code>uncustomized</code>" or "<code>custom</code>" is said to be <dfn class="dfn-paneled" data-dfn-for="Element" data-dfn-type="dfn" data-export="" id="concept-element-defined">defined</dfn>. An <a data-link-type="dfn" href="#concept-element" id="ref-for-concept-element③⓪">element</a> whose <a data-link-type="dfn" href="#concept-element-custom-element-state" id="ref-for-concept-element-custom-element-state②">custom element state</a> is "<code>custom</code>" is said to be <dfn class="dfn-paneled" data-dfn-for="Element" data-dfn-type="dfn" data-export="" id="concept-element-custom">custom</dfn>. </p>
     <p class="note" role="note">Whether or not an element is <a data-link-type="dfn" href="#concept-element-defined" id="ref-for-concept-element-defined">defined</a> is used to determine the behavior of the <a class="css" data-link-type="maybe" href="https://html.spec.whatwg.org/multipage/semantics-other.html#selector-defined" id="ref-for-selector-defined">:defined</a> pseudo-class. Whether or not an element is <a data-link-type="dfn" href="#concept-element-custom" id="ref-for-concept-element-custom⑤">custom</a> is used to determine the behavior of the <a href="#mutation-algorithms">mutation algorithms</a>. The "<code>failed</code>" state is used to ensure that if a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-constructor" id="ref-for-custom-element-constructor">custom element constructor</a> fails to execute correctly the first time, it is not executed again by an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/custom-elements.html#concept-upgrade-an-element" id="ref-for-concept-upgrade-an-element①">upgrade</a>. </p>
-    <div class="example" id="example-c5b21302">
-     <a class="self-link" href="#example-c5b21302"></a> 
+    <div class="example" id="example-162b3aec">
+     <a class="self-link" href="#example-162b3aec"></a> 
      <p>The following code illustrates elements in each of these four states:</p>
 <pre><code class="lang-html highlight"><span class="cp">&lt;!DOCTYPE html></span>
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">></span>
@@ -5481,7 +5481,7 @@ if any, and its <a data-link-type="dfn" href="#contiguous-exclusive-text-nodes" 
       </ul>
     </ul>
     <p>In the <a data-link-type="dfn" href="#node-tree" id="ref-for-node-tree①⑧">node tree</a> above, a <a href="#concept-range" id="ref-for-concept-range②③">range</a> can be used to represent the sequence “syndata is awes”. Assuming <var>p</var> is assigned to the <code>p</code> <a href="#concept-element" id="ref-for-concept-element①①⓪">element</a>, and <var>em</var> to the <code>em</code> <a href="#concept-element" id="ref-for-concept-element①①①">element</a>, this would be done as follows: </p>
-<pre class="example" id="example-629cb590"><a class="self-link" href="#example-629cb590"></a><code>var range = new Range(),    firstText = p.childNodes[1],
+<pre class="example" id="example-4ae54422"><a class="self-link" href="#example-4ae54422"></a><code>var range = new Range(),    firstText = p.childNodes[1],
     secondText = em.firstChild
 range.setStart(firstText, 9) // do not forget the leading space
 range.setEnd(secondText, 4)
@@ -6625,8 +6625,11 @@ and false otherwise. </p>
      <li>
       <a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a>
       <ul>
-       <li>added <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and 
-       <li>imported realm from ES standard to ensure security 
+       <li>add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and
+       <li>import realm from ES standard to ensure security, and
+       <li>add <code>legacyOutputDidListenersThrowFlag</code> for IDB, and
+       <li>add <code>Event</code>’s <code>cancelBubble</code> attribute, and
+       <li>add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events.
       </ul>
      <li>
       <a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a>
@@ -6724,7 +6727,7 @@ and false otherwise. </p>
        <li>Do not record removal when a node is replaced by itself…
       </ul>
      <li>
-      <a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine 
+      <a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine
    adopting a node for a document.</a> 
       <ul>
        <li>Only do it if <code>document</code> changes, and
@@ -6904,9 +6907,9 @@ and false otherwise. </p>
    <li>
     attributes
     <ul>
-     <li><a href="#dom-mutationobserverinit-attributes">dict-member for MutationObserverInit</a><span>, in §4.3.1</span>
      <li><a href="#element-attributes">attribute for Element</a><span>, in §4.9</span>
      <li><a href="#concept-attribute">definition of</a><span>, in §4.9.2</span>
+     <li><a href="#dom-mutationobserverinit-attributes">dict-member for MutationObserverInit</a><span>, in §4.3.1</span>
     </ul>
    <li><a href="#dom-node-baseuri">baseURI</a><span>, in §4.4</span>
    <li><a href="#range-boundary-point-before">before</a><span>, in §5.2</span>
@@ -6920,29 +6923,29 @@ and false otherwise. </p>
    <li>
     bubbles
     <ul>
-     <li><a href="#dom-eventinit-bubbles">dict-member for EventInit</a><span>, in §3.2</span>
      <li><a href="#dom-event-bubbles">attribute for Event</a><span>, in §3.2</span>
+     <li><a href="#dom-eventinit-bubbles">dict-member for EventInit</a><span>, in §3.2</span>
     </ul>
    <li><a href="#dom-event-bubbling_phase">BUBBLING_PHASE</a><span>, in §3.2</span>
    <li>
     callback
     <ul>
-     <li><a href="#event-listener-callback">dfn for EventListener</a><span>, in §3.6</span>
      <li><a href="#concept-mo-callback">definition of</a><span>, in §4.3.1</span>
+     <li><a href="#event-listener-callback">dfn for EventListener</a><span>, in §3.6</span>
     </ul>
    <li>
     cancelable
     <ul>
-     <li><a href="#dom-eventinit-cancelable">dict-member for EventInit</a><span>, in §3.2</span>
      <li><a href="#dom-event-cancelable">attribute for Event</a><span>, in §3.2</span>
+     <li><a href="#dom-eventinit-cancelable">dict-member for EventInit</a><span>, in §3.2</span>
     </ul>
    <li><a href="#dom-event-cancelbubble">cancelBubble</a><span>, in §3.2</span>
    <li><a href="#canceled-flag">canceled flag</a><span>, in §3.2</span>
    <li>
     capture
     <ul>
-     <li><a href="#dom-eventlisteneroptions-capture">dict-member for EventListenerOptions</a><span>, in §3.6</span>
      <li><a href="#event-listener-capture">definition of</a><span>, in §3.6</span>
+     <li><a href="#dom-eventlisteneroptions-capture">dict-member for EventListenerOptions</a><span>, in §3.6</span>
     </ul>
    <li><a href="#dom-event-capturing_phase">CAPTURING_PHASE</a><span>, in §3.2</span>
    <li><a href="#case-sensitive">case-sensitive</a><span>, in §2.2</span>
@@ -6968,8 +6971,8 @@ and false otherwise. </p>
    <li>
     children
     <ul>
-     <li><a href="#tree-child">definition of</a><span>, in §2.1</span>
      <li><a href="#parentnode-children">attribute for ParentNode</a><span>, in §4.2.6</span>
+     <li><a href="#tree-child">definition of</a><span>, in §2.1</span>
     </ul>
    <li><a href="#concept-class">class</a><span>, in §4.9</span>
    <li><a href="#dom-element-classlist">classList</a><span>, in §4.9</span>
@@ -7007,8 +7010,8 @@ and false otherwise. </p>
    <li>
     composed
     <ul>
-     <li><a href="#dom-eventinit-composed">dict-member for EventInit</a><span>, in §3.2</span>
      <li><a href="#dom-event-composed">attribute for Event</a><span>, in §3.2</span>
+     <li><a href="#dom-eventinit-composed">dict-member for EventInit</a><span>, in §3.2</span>
     </ul>
    <li><a href="#composed-flag">composed flag</a><span>, in §3.2</span>
    <li><a href="#dom-event-composedpath">composedPath()</a><span>, in §3.2</span>
@@ -7070,8 +7073,8 @@ and false otherwise. </p>
    <li>
     data
     <ul>
-     <li><a href="#concept-cd-data">dfn for CharacterData</a><span>, in §4.10</span>
      <li><a href="#dom-characterdata-data">attribute for CharacterData</a><span>, in §4.10</span>
+     <li><a href="#concept-cd-data">dfn for CharacterData</a><span>, in §4.10</span>
     </ul>
    <li><a href="#dom-event-dom-event-defaultprevented">defaultPrevented</a><span>, in §3.2</span>
    <li><a href="#concept-element-defined">defined</a><span>, in §4.9</span>
@@ -7081,14 +7084,14 @@ and false otherwise. </p>
    <li>
     detach()
     <ul>
-     <li><a href="#range-detach-func">method for Range</a><span>, in §5.2</span>
      <li><a href="#traversal-detach-func">method for NodeIterator</a><span>, in §6.1</span>
+     <li><a href="#range-detach-func">method for Range</a><span>, in §5.2</span>
     </ul>
    <li>
     detail
     <ul>
-     <li><a href="#dom-customeventinit-detail">dict-member for CustomEventInit</a><span>, in §3.3</span>
      <li><a href="#dom-customevent-dom-event-customevent-detail">attribute for CustomEvent</a><span>, in §3.3</span>
+     <li><a href="#dom-customeventinit-detail">dict-member for CustomEventInit</a><span>, in §3.3</span>
     </ul>
    <li><a href="#dom-mutationobserver-disconnect">disconnect()</a><span>, in §4.3.1</span>
    <li><a href="#concept-event-dispatch">dispatch</a><span>, in §3.8</span>
@@ -7172,8 +7175,8 @@ and false otherwise. </p>
     element
     <ul>
      <li><a href="#concept-element">definition of</a><span>, in §4.9</span>
-     <li><a href="#concept-namednodemap-element">dfn for NamedNodeMap</a><span>, in §4.9.1</span>
      <li><a href="#concept-attribute-element">dfn for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#concept-namednodemap-element">dfn for NamedNodeMap</a><span>, in §4.9.1</span>
     </ul>
    <li><a href="#element">Element</a><span>, in §4.9</span>
    <li><a href="#dictdef-elementcreationoptions">ElementCreationOptions</a><span>, in §4.5</span>
@@ -7220,10 +7223,10 @@ and false otherwise. </p>
    <li>
     filter
     <ul>
-     <li><a href="#traversal-filter">dfn for traversal</a><span>, in §6</span>
-     <li><a href="#node-filter">dfn for node</a><span>, in §6</span>
      <li><a href="#iterator-filter">attribute for NodeIterator</a><span>, in §6.1</span>
      <li><a href="#treewalker-filter">attribute for TreeWalker</a><span>, in §6.2</span>
+     <li><a href="#node-filter">dfn for node</a><span>, in §6</span>
+     <li><a href="#traversal-filter">dfn for traversal</a><span>, in §6</span>
     </ul>
    <li>
     FILTER_ACCEPT
@@ -7298,8 +7301,8 @@ and false otherwise. </p>
    <li>
     host
     <ul>
-     <li><a href="#host">definition of</a><span>, in §4.6</span>
      <li><a href="#dom-shadowroot-host">attribute for ShadowRoot</a><span>, in §4.8</span>
+     <li><a href="#host">definition of</a><span>, in §4.6</span>
     </ul>
    <li><a href="#host-including-inclusive-ancestor">host-including inclusive ancestor</a><span>, in §4.6</span>
    <li><a href="#htmlcollection">HTMLCollection</a><span>, in §4.2.10.2</span>
@@ -7353,10 +7356,10 @@ and false otherwise. </p>
    <li>
     item(index)
     <ul>
-     <li><a href="#dom-nodelist-item">method for NodeList</a><span>, in §4.2.10.1</span>
+     <li><a href="#domtokenlist-item">method for DOMTokenList</a><span>, in §7.1</span>
      <li><a href="#htmlcollection-item-func">method for HTMLCollection</a><span>, in §4.2.10.2</span>
      <li><a href="#dom-namednodemap-item">method for NamedNodeMap</a><span>, in §4.9.1</span>
-     <li><a href="#domtokenlist-item">method for DOMTokenList</a><span>, in §7.1</span>
+     <li><a href="#dom-nodelist-item">method for NodeList</a><span>, in §4.2.10.1</span>
     </ul>
    <li><a href="#iterator-collection">iterator collection</a><span>, in §6.1</span>
    <li><a href="#concept-tree-last-child">last child</a><span>, in §2.1</span>
@@ -7368,12 +7371,12 @@ and false otherwise. </p>
    <li>
     length
     <ul>
-     <li><a href="#node-length">dfn for node</a><span>, in §4.2</span>
-     <li><a href="#nodelist-length">attribute for NodeList</a><span>, in §4.2.10.1</span>
-     <li><a href="#htmlcollection-length">attribute for HTMLCollection</a><span>, in §4.2.10.2</span>
-     <li><a href="#dom-namednodemap-length">attribute for NamedNodeMap</a><span>, in §4.9.1</span>
      <li><a href="#dom-characterdata-length">attribute for CharacterData</a><span>, in §4.10</span>
      <li><a href="#domtokenlist-length">attribute for DOMTokenList</a><span>, in §7.1</span>
+     <li><a href="#htmlcollection-length">attribute for HTMLCollection</a><span>, in §4.2.10.2</span>
+     <li><a href="#dom-namednodemap-length">attribute for NamedNodeMap</a><span>, in §4.9.1</span>
+     <li><a href="#nodelist-length">attribute for NodeList</a><span>, in §4.2.10.1</span>
+     <li><a href="#node-length">dfn for node</a><span>, in §4.2</span>
     </ul>
    <li><a href="#concept-light-tree">light tree</a><span>, in §4.2.2</span>
    <li><a href="#concept-document-limited-quirks">limited-quirks mode</a><span>, in §4.5</span>
@@ -7385,14 +7388,14 @@ and false otherwise. </p>
    <li>
     localName
     <ul>
-     <li><a href="#element-localname">attribute for Element</a><span>, in §4.9</span>
      <li><a href="#dom-attr-localname">attribute for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#element-localname">attribute for Element</a><span>, in §4.9</span>
     </ul>
    <li>
     local name
     <ul>
-     <li><a href="#concept-element-local-name">dfn for element</a><span>, in §4.9</span>
      <li><a href="#concept-attribute-local-name">dfn for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#concept-element-local-name">dfn for element</a><span>, in §4.9</span>
     </ul>
    <li><a href="#locate-a-namespace">locate a namespace</a><span>, in §4.4</span>
    <li><a href="#locate-a-namespace-prefix">locate a namespace prefix</a><span>, in §4.4</span>
@@ -7403,9 +7406,9 @@ and false otherwise. </p>
    <li>
     mode
     <ul>
+     <li><a href="#dom-shadowroot-mode">attribute for ShadowRoot</a><span>, in §4.8</span>
      <li><a href="#concept-document-mode">dfn for Document</a><span>, in §4.5</span>
      <li><a href="#shadowroot-mode">dfn for ShadowRoot</a><span>, in §4.8</span>
-     <li><a href="#dom-shadowroot-mode">attribute for ShadowRoot</a><span>, in §4.8</span>
      <li><a href="#dom-shadowrootinit-mode">dict-member for ShadowRootInit</a><span>, in §4.9</span>
     </ul>
    <li><a href="#callbackdef-mutationcallback">MutationCallback</a><span>, in §4.3.1</span>
@@ -7417,12 +7420,12 @@ and false otherwise. </p>
    <li>
     name
     <ul>
+     <li><a href="#dom-attr-name">attribute for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#dom-documenttype-name">attribute for DocumentType</a><span>, in §4.7</span>
+     <li><a href="#doctype-name">definition of</a><span>, in §4.7</span>
+     <li><a href="#attribute-name">dfn for attribute</a><span>, in §4.9.2</span>
      <li><a href="#slot-name">dfn for slot</a><span>, in §4.2.2.1</span>
      <li><a href="#slotable-name">dfn for slotable</a><span>, in §4.2.2.2</span>
-     <li><a href="#doctype-name">definition of</a><span>, in §4.7</span>
-     <li><a href="#dom-documenttype-name">attribute for DocumentType</a><span>, in §4.7</span>
-     <li><a href="#attribute-name">dfn for attribute</a><span>, in §4.9.2</span>
-     <li><a href="#dom-attr-name">attribute for Attr</a><span>, in §4.9.2</span>
     </ul>
    <li><a href="#dom-htmlcollection-nameditem-key">namedItem(key)</a><span>, in §4.2.10.2</span>
    <li><a href="#dom-htmlcollection-nameditem">namedItem(name)</a><span>, in §4.2.10.2</span>
@@ -7430,20 +7433,20 @@ and false otherwise. </p>
    <li>
     namespace
     <ul>
-     <li><a href="#concept-element-namespace">dfn for element</a><span>, in §4.9</span>
      <li><a href="#concept-attribute-namespace">dfn for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#concept-element-namespace">dfn for element</a><span>, in §4.9</span>
     </ul>
    <li>
     namespace prefix
     <ul>
-     <li><a href="#concept-element-namespace-prefix">dfn for element</a><span>, in §4.9</span>
      <li><a href="#concept-attribute-namespace-prefix">dfn for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#concept-element-namespace-prefix">dfn for element</a><span>, in §4.9</span>
     </ul>
    <li>
     namespaceURI
     <ul>
-     <li><a href="#element-namespaceuri">attribute for Element</a><span>, in §4.9</span>
      <li><a href="#dom-attr-namespaceuri">attribute for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#element-namespaceuri">attribute for Element</a><span>, in §4.9</span>
     </ul>
    <li>
     nextElementSibling
@@ -7475,8 +7478,8 @@ and false otherwise. </p>
    <li>
     nodeName
     <ul>
-     <li><a href="#dom-node-nodename">attribute for Node</a><span>, in §4.4</span>
      <li><a href="#attr-nodename">attribute for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#dom-node-nodename">attribute for Node</a><span>, in §4.4</span>
     </ul>
    <li><a href="#concept-node">nodes</a><span>, in §4.2</span>
    <li><a href="#node-tree">node tree</a><span>, in §4.2</span>
@@ -7496,8 +7499,8 @@ and false otherwise. </p>
    <li>
     once
     <ul>
-     <li><a href="#dom-addeventlisteneroptions-once">dict-member for AddEventListenerOptions</a><span>, in §3.6</span>
      <li><a href="#event-listener-once">definition of</a><span>, in §3.6</span>
+     <li><a href="#dom-addeventlisteneroptions-once">dict-member for AddEventListenerOptions</a><span>, in §3.6</span>
     </ul>
    <li><a href="#dom-shadowrootmode-open">"open"</a><span>, in §4.8</span>
    <li><a href="#dom-shadowrootmode-open">open</a><span>, in §4.8</span>
@@ -7507,8 +7510,8 @@ and false otherwise. </p>
    <li>
     origin
     <ul>
-     <li><a href="#concept-document-origin">dfn for Document</a><span>, in §4.5</span>
      <li><a href="#document-origin">attribute for Document</a><span>, in §4.5</span>
+     <li><a href="#concept-document-origin">dfn for Document</a><span>, in §4.5</span>
     </ul>
    <li><a href="#other-applicable-specifications">other applicable specifications</a><span>, in §1.2</span>
    <li><a href="#dom-node-ownerdocument">ownerDocument</a><span>, in §4.4</span>
@@ -7526,8 +7529,8 @@ and false otherwise. </p>
    <li>
     passive
     <ul>
-     <li><a href="#dom-addeventlisteneroptions-passive">dict-member for AddEventListenerOptions</a><span>, in §3.6</span>
      <li><a href="#event-listener-passive">definition of</a><span>, in §3.6</span>
+     <li><a href="#dom-addeventlisteneroptions-passive">dict-member for AddEventListenerOptions</a><span>, in §3.6</span>
     </ul>
    <li><a href="#event-path">path</a><span>, in §3.2</span>
    <li><a href="#dom-nodeiterator-pointerbeforereferencenode">pointerBeforeReferenceNode</a><span>, in §6.1</span>
@@ -7537,8 +7540,8 @@ and false otherwise. </p>
    <li>
     prefix
     <ul>
-     <li><a href="#element-prefix">attribute for Element</a><span>, in §4.9</span>
      <li><a href="#dom-attr-prefix">attribute for Attr</a><span>, in §4.9.2</span>
+     <li><a href="#element-prefix">attribute for Element</a><span>, in §4.9</span>
     </ul>
    <li><a href="#prefix-match">prefix match</a><span>, in §2.2</span>
    <li><a href="#pre-insert">pre-insert</a><span>, in §4.2.3</span>
@@ -7578,8 +7581,8 @@ and false otherwise. </p>
    <li>
     qualified name
     <ul>
-     <li><a href="#element-qualified-name">dfn for Element</a><span>, in §4.9</span>
      <li><a href="#attribute-qualified-name">definition of</a><span>, in §4.9.2</span>
+     <li><a href="#element-qualified-name">dfn for Element</a><span>, in §4.9</span>
     </ul>
    <li><a href="#dom-parentnode-queryselectorall">querySelectorAll(selectors)</a><span>, in §4.2.6</span>
    <li><a href="#dom-parentnode-queryselector">querySelector(selectors)</a><span>, in §4.2.6</span>
@@ -7610,8 +7613,8 @@ and false otherwise. </p>
    <li>
     remove
     <ul>
-     <li><a href="#node-remove">dfn for node</a><span>, in §4.2.3</span>
      <li><a href="#element-attributes-remove">dfn for element-attributes</a><span>, in §4.9</span>
+     <li><a href="#node-remove">dfn for node</a><span>, in §4.2.3</span>
     </ul>
    <li><a href="#concept-element-attributes-remove-by-name">remove an attribute by name</a><span>, in §4.9</span>
    <li><a href="#concept-element-attributes-remove-by-namespace">remove an attribute by namespace and local name</a><span>, in §4.9</span>
@@ -7630,8 +7633,8 @@ and false otherwise. </p>
    <li>
     replace
     <ul>
-     <li><a href="#ordered-set-replace">dfn for ordered set</a><span>, in §2.3</span>
      <li><a href="#node-replace">dfn for node</a><span>, in §4.2.3</span>
+     <li><a href="#ordered-set-replace">dfn for ordered set</a><span>, in §2.3</span>
     </ul>
    <li><a href="#concept-node-replace-all">replace all</a><span>, in §4.2.3</span>
    <li><a href="#concept-element-attributes-replace">replace an attribute</a><span>, in §4.9</span>
@@ -7647,10 +7650,10 @@ and false otherwise. </p>
    <li>
     root
     <ul>
-     <li><a href="#concept-tree-root">dfn for tree</a><span>, in §2.1</span>
-     <li><a href="#traversal-root">dfn for traversal</a><span>, in §6</span>
      <li><a href="#iterator-root">attribute for NodeIterator</a><span>, in §6.1</span>
      <li><a href="#treewalker-root">attribute for TreeWalker</a><span>, in §6.2</span>
+     <li><a href="#traversal-root">dfn for traversal</a><span>, in §6</span>
+     <li><a href="#concept-tree-root">dfn for tree</a><span>, in §2.1</span>
     </ul>
    <li><a href="#range-root">root of a range</a><span>, in §5.2</span>
    <li><a href="#scope-match-a-selectors-string">scope-match a selectors string</a><span>, in §2.4</span>
@@ -7765,8 +7768,8 @@ and false otherwise. </p>
    <li>
     slot
     <ul>
-     <li><a href="#concept-slot">definition of</a><span>, in §4.2.2.1</span>
      <li><a href="#dom-element-slot">attribute for Element</a><span>, in §4.9</span>
+     <li><a href="#concept-slot">definition of</a><span>, in §4.2.2.1</span>
     </ul>
    <li><a href="#concept-slotable">slotable</a><span>, in §4.2.2.2</span>
    <li><a href="#slotable">Slotable</a><span>, in §4.2.9</span>
@@ -7788,8 +7791,8 @@ and false otherwise. </p>
    <li>
     stringification behavior
     <ul>
-     <li><a href="#dom-range-stringifier">dfn for Range</a><span>, in §5.2</span>
      <li><a href="#DOMTokenList-stringification-behavior">dfn for DOMTokenList</a><span>, in §7.1</span>
+     <li><a href="#dom-range-stringifier">dfn for Range</a><span>, in §5.2</span>
     </ul>
    <li><a href="#substringing-data">substring data</a><span>, in §4.10</span>
    <li><a href="#dom-characterdata-substringdata">substringData(offset, count)</a><span>, in §4.10</span>
@@ -7808,8 +7811,8 @@ and false otherwise. </p>
     <ul>
      <li><a href="#dom-event-target">attribute for Event</a><span>, in §3.2</span>
      <li><a href="#mutationrecord-target">attribute for MutationRecord</a><span>, in §4.3.3</span>
-     <li><a href="#concept-pi-target">dfn for ProcessingInstruction</a><span>, in §4.13</span>
      <li><a href="#dom-processinginstruction-target">attribute for ProcessingInstruction</a><span>, in §4.13</span>
+     <li><a href="#concept-pi-target">dfn for ProcessingInstruction</a><span>, in §4.13</span>
     </ul>
    <li><a href="#text">Text</a><span>, in §4.11</span>
    <li><a href="#dom-node-textcontent">textContent</a><span>, in §4.4</span>
@@ -7841,16 +7844,16 @@ and false otherwise. </p>
     type
     <ul>
      <li><a href="#dom-event-type">attribute for Event</a><span>, in §3.2</span>
-     <li><a href="#event-listener-type">definition of</a><span>, in §3.6</span>
      <li><a href="#mutationrecord-type">attribute for MutationRecord</a><span>, in §4.3.3</span>
+     <li><a href="#event-listener-type">definition of</a><span>, in §3.6</span>
      <li><a href="#concept-document-type">dfn for Document</a><span>, in §4.5</span>
     </ul>
    <li><a href="#update-steps">update steps</a><span>, in §7.1</span>
    <li>
     URL
     <ul>
-     <li><a href="#concept-document-url">dfn for Document</a><span>, in §4.5</span>
      <li><a href="#document-url">attribute for Document</a><span>, in §4.5</span>
+     <li><a href="#concept-document-url">dfn for Document</a><span>, in §4.5</span>
     </ul>
    <li><a href="#validate">validate</a><span>, in §2.5</span>
    <li><a href="#validate-and-extract">validate and extract</a><span>, in §2.5</span>
@@ -7858,17 +7861,17 @@ and false otherwise. </p>
    <li>
     value
     <ul>
-     <li><a href="#concept-attribute-value">dfn for Attr</a><span>, in §4.9.2</span>
      <li><a href="#dom-attr-value">attribute for Attr</a><span>, in §4.9.2</span>
      <li><a href="#dom-domtokenlist-value">attribute for DOMTokenList</a><span>, in §7.1</span>
+     <li><a href="#concept-attribute-value">dfn for Attr</a><span>, in §4.9.2</span>
     </ul>
    <li><a href="#dom-element-webkitmatchesselector">webkitMatchesSelector(selectors)</a><span>, in §4.9</span>
    <li>
     whatToShow
     <ul>
-     <li><a href="#traversal-whattoshow">dfn for traversal</a><span>, in §6</span>
      <li><a href="#iterator-whattoshow">attribute for NodeIterator</a><span>, in §6.1</span>
      <li><a href="#dom-treewalker-whattoshow">attribute for TreeWalker</a><span>, in §6.2</span>
+     <li><a href="#traversal-whattoshow">dfn for traversal</a><span>, in §6</span>
     </ul>
    <li><a href="#dom-text-wholetext">wholeText</a><span>, in §4.11</span>
    <li><a href="#xmldocument">XMLDocument</a><span>, in §4.5</span>
