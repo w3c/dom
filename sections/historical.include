@@ -7,8 +7,11 @@
 <ul>
   <li><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a></li>
   <li><a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a><ul>
-  <li>added <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and </li>
-  <li>imported realm from ES standard to ensure security </li>
+  <li>add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and</li>
+  <li>import realm from ES standard to ensure security, and</li>
+  <li>add <code>legacyOutputDidListenersThrowFlag</code> for IDB, and</li>
+  <li>add <code>Event</code>'s <code>cancelBubble</code> attribute, and</li>
+  <li>add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events.</li>
   </ul>
   </li>
   <li><a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a><ul>
@@ -76,8 +79,8 @@
     </ul>
   </li>
   <li><a href="https://github.com/w3c/dom/commit/7d40f67406f66ff3616a8e53b37be1515d10aa1d">Add <code>[CEReactions]</code> annotations to mutating methods</a></li>
-  
-</ul>  
+
+</ul>
 
 <h3 id="historical-changes-wd2-fpwd">Changes between the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a> and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170321/">First Public Working Draft of DOM 4.1</a>.</h3>
 
@@ -93,7 +96,7 @@
    a document's content-type for createDocument based on namespace</a></li>
  <li><a href="https://github.com/w3c/dom/commit/08c82ac31169f149e2779ecc2a78b55c0f06eb9e">Add
    getters and setters</a></li>
- <li><a href="https://github.com/w3c/dom/commit/c9410eac91a48183e066ff94ededc537dbb68867">Add 
+ <li><a href="https://github.com/w3c/dom/commit/c9410eac91a48183e066ff94ededc537dbb68867">Add
    <code>NamedNodeMap</code></a></li>
  <li><a href="https://github.com/w3c/dom/commit/7f175df0dd5741446761aa9419711ebdedf5a6db">Queue
    a mutation record after all operations</a></li>
@@ -101,7 +104,7 @@
    node replacement specification</a>
    <ul><li>Do not record removal when a node is replaced by itself…</li></ul>
  </li>
- <li><a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine 
+ <li><a href="https://github.com/w3c/dom/commit/1ca4cf0cec4ff6f8564c88bed6642b179e3c1b4b">Refine
    adopting a node for a document.</a>
    <ul>
      <li>Only do it if <code>document</code> changes, and</li>
