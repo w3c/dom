@@ -7,17 +7,20 @@
 <ul>
   <li><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a></li>
   <li><a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a><ul>
-  <li>add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and</li>
-  <li>import realm from ES standard to ensure security, and</li>
-  <li>add <code>legacyOutputDidListenersThrowFlag</code> for IDB, and</li>
-  <li>add <code>Event</code>'s <code>cancelBubble</code> attribute, and</li>
-  <li>add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events.</li>
+  <li>Add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events</li>
+  <li>Import realm from ES standard to ensure security</li>
+  <li>Add <code>legacyOutputDidListenersThrowFlag</code> for IDB</li>
+  <li>Add <code>Event</code>'s <code>cancelBubble</code> attribute</li>
+  <li>Add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events</li>
   </ul>
   </li>
   <li><a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a><ul>
-  <li>define token set for <code>DOMTokenList</code>, and </li>
-  <li>define <code>supports()</code> for <code>DOMTokenList</code>, and </li>
-  <li>updated the <code>normalize()</code> method of <code>DOMTokenList</code> to avoid duplication </li>
+  <li>Define token set for <code>DOMTokenList</code></li>
+  <li>Make <code>DOMTokenList</code>'s <code>contains()</code> not throw</li>
+  <li>Merge <code>DOMSettableTokenList</code> into <code>DOMTokenList</code></li>
+  <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code></li>
+  <li>Define <code>replace()</code> for <code>DOMTokenList</code></li>
+  <li>Define <code>supports()</code> for <code>DOMTokenList</code></li>
   </ul>
   </li>
   <li><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a></li>
