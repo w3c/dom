@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 80294e12a0320826cbf4ded0dfff03de21c3a3d7" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="c0c29b1d0aafa5eb63d725ece11996913d29055b" name="document-revision">
+  <meta content="11014391e39ffb39c6b4179798933aa19426cf74" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-18">18 April 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-19">19 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -6625,18 +6625,21 @@ and false otherwise. </p>
      <li>
       <a href="https://github.com/w3c/dom/commit/271987a0246b7b3ff89067b28cb5405d7bdcaec2">Updates to Event</a>
       <ul>
-       <li>add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events, and
-       <li>import realm from ES standard to ensure security, and
-       <li>add <code>legacyOutputDidListenersThrowFlag</code> for IDB, and
-       <li>add <code>Event</code>’s <code>cancelBubble</code> attribute, and
-       <li>add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events.
+       <li>Add <code>EventListernerOptions</code>/<code>AddEventListenerOptions</code>, and make some changes to the steps of dispatching events
+       <li>Import realm from ES standard to ensure security
+       <li>Add <code>legacyOutputDidListenersThrowFlag</code> for IDB
+       <li>Add <code>Event</code>’s <code>cancelBubble</code> attribute
+       <li>Add the "activation behavior" algorithm for <code>EventTarget</code>, for synthetic click events
       </ul>
      <li>
       <a href="https://github.com/w3c/dom/commit/f21beacd2fe64f5070b4fa86446122d4fc45eafd">Changes to Sets</a>
       <ul>
-       <li>define token set for <code>DOMTokenList</code>, and 
-       <li>define <code>supports()</code> for <code>DOMTokenList</code>, and 
-       <li>updated the <code>normalize()</code> method of <code>DOMTokenList</code> to avoid duplication 
+       <li>Define token set for <code>DOMTokenList</code>
+       <li>Make <code>DOMTokenList</code>’s <code>contains()</code> not throw
+       <li>Merge <code>DOMSettableTokenList</code> into <code>DOMTokenList</code>
+       <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code>
+       <li>Define <code>replace()</code> for <code>DOMTokenList</code>
+       <li>Define <code>supports()</code> for <code>DOMTokenList</code>
       </ul>
      <li><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a>
      <li><a href="https://github.com/w3c/dom/commit/d00874005cb8ccd8c692ff4e0d743d3b507e9b3e">Throw an error if the event constructor isn’t exposed</a>
