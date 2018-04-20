@@ -2,7 +2,7 @@
 <h2 id="historical">Historical</h2>
 <p>This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>.
 
-<h3 id="historical-changes-wd3-wd2">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></h3>
+<h3 id="historical-changes-wd2">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></h3>
 
 <ul>
   <li><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a></li>
@@ -18,7 +18,7 @@
   <li>Define token set for <code>DOMTokenList</code></li>
   <li>Make <code>DOMTokenList</code>'s <code>contains()</code> not throw</li>
   <li>Merge <code>DOMSettableTokenList</code> into <code>DOMTokenList</code></li>
-  <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code></li>
+  <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code> (later reversed in <a href="https://github.com/w3c/dom/commit/77186b541f93c8eb7ead2ef25c7ad32273812c83"><code style="text-decoration: none; border-bottom: 1px dotted #c6cbd1;">77186b5</code></a>)</li>
   <li>Define <code>replace()</code> for <code>DOMTokenList</code></li>
   <li>Define <code>supports()</code> for <code>DOMTokenList</code></li>
   </ul>
