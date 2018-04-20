@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 80294e12a0320826cbf4ded0dfff03de21c3a3d7" name="generator">
   <link href="https://www.w3.org/TR/dom41/" rel="canonical">
-  <meta content="11014391e39ffb39c6b4179798933aa19426cf74" name="document-revision">
+  <meta content="2d86a172a037edfc1a09aded053e326e7adbc837" name="document-revision">
 <style>
 dl.switch { padding-left: 2em; }
 dl.switch > dt { text-indent: -1.5em; }
@@ -1444,7 +1444,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref allcaps" id="title">W3C DOM 4.1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-19">19 April 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-20">20 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1602,7 +1602,7 @@ The goals of this revision are to update the W3C’s DOM specification to cover 
     <li>
      <a href="#historical"><span class="secno">9</span> <span class="content">Historical</span></a>
      <ol class="toc">
-      <li><a href="#historical-changes-wd3-wd2"><span class="secno">9.1</span> <span class="content">Changes between this draft and the <span>2nd Working Draft of DOM 4.1</span></span></a>
+      <li><a href="#historical-changes-wd2"><span class="secno">9.1</span> <span class="content">Changes between this draft and the <span>2nd Working Draft of DOM 4.1</span></span></a>
       <li><a href="#historical-changes-wd2-fpwd"><span class="secno">9.2</span> <span class="content">Changes between the <span>2nd Working Draft of DOM 4.1</span> and the <span>First Public Working Draft of DOM 4.1</span>.</span></a>
       <li><a href="#historical-changes-fpwd-dom4"><span class="secno">9.3</span> <span class="content">Changes between the <span>First Public Working Draft of DOM 4.1</span> and the <span>DOM 4 Recommendation</span></span></a>
       <li><a href="#historical-DOM-spec-history"><span class="secno">9.4</span> <span class="content">DOM Specification History</span></a>
@@ -6619,7 +6619,7 @@ and false otherwise. </p>
    <section>
     <h2 class="heading settled" data-level="9" id="historical"><span class="secno">9. </span><span class="content">Historical</span><a class="self-link" href="#historical"></a></h2>
     <p>This section outlines *notable* changes between Working Drafts. A complete history of revisions for this version is available in the <a href="https://github.com/w3c/dom/commits/dom4.1">W3C DOM 4.1 repository</a>. </p>
-    <h3 class="heading settled" data-level="9.1" id="historical-changes-wd3-wd2"><span class="secno">9.1. </span><span class="content">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></span><a class="self-link" href="#historical-changes-wd3-wd2"></a></h3>
+    <h3 class="heading settled" data-level="9.1" id="historical-changes-wd2"><span class="secno">9.1. </span><span class="content">Changes between this draft and the <a href="https://www.w3.org/TR/2017/WD-dom41-20170420/">2nd Working Draft of DOM 4.1</a></span><a class="self-link" href="#historical-changes-wd2"></a></h3>
     <ul>
      <li><a href="https://github.com/w3c/dom/commit/64e26b88607b4b49e2c0b9d1207e88569e4a85a5">Use a single concept for attribute change steps of Element</a>
      <li>
@@ -6637,7 +6637,7 @@ and false otherwise. </p>
        <li>Define token set for <code>DOMTokenList</code>
        <li>Make <code>DOMTokenList</code>’s <code>contains()</code> not throw
        <li>Merge <code>DOMSettableTokenList</code> into <code>DOMTokenList</code>
-       <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code>
+       <li>Always update a <code>DOMTokenList</code> when invoking <code>toggle()</code> (later reversed in <a href="https://github.com/w3c/dom/commit/77186b541f93c8eb7ead2ef25c7ad32273812c83"><code style="text-decoration: none; border-bottom: 1px dotted #c6cbd1;">77186b5</code></a>)
        <li>Define <code>replace()</code> for <code>DOMTokenList</code>
        <li>Define <code>supports()</code> for <code>DOMTokenList</code>
       </ul>
