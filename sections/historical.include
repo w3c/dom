@@ -23,14 +23,14 @@
   <li>Define <code>supports()</code> for <code>DOMTokenList</code></li>
   </ul>
   </li>
-  <li><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add append()/prepend() to ParentNode</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/bba06789b41fd55b0f0ae016035beead2a5068d4">Add <code>append()</code>/<code>prepend()</code> to <code>ParentNode</code></a></li>
   <li><a href="https://github.com/w3c/dom/commit/d00874005cb8ccd8c692ff4e0d743d3b507e9b3e">Throw an error if the event constructor isn’t exposed</a></li>
   <li><a href="https://github.com/w3c/dom/commit/47f92af56e0891e075eab36c9d0b1839c8255a27">Throw an <code>HierarchyRequestError</code> if range’s start node is node</a></li>
   <li><a href="https://github.com/w3c/dom/commit/5fcf4553d0e551c4e0c7cdf83b24a4d4bdd44199">Add createAttribute()/createAttributeNS() to Document</a></li>
   <li><a href="https://github.com/w3c/dom/commit/9f2cb403e26e41a68829581298f81ae6d7a639a3">Apply pre-removing steps to mutation algorithms and NodeIterator</a></li>
   <li><a href="https://github.com/w3c/dom/commit/e96a1d9c34137e6c4bbb957724df6e46bb1f4df1">Define replaceWith(), after(), before() for ChildNode</a></li>
   <li><a href="https://github.com/w3c/dom/commit/bea38dada944be8c4ed47c263220ed445153d87c">Calculate the length of CharacterData in the Node level</a></li>
-  <li><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Use the declaration of web compability to prevent being exposed in NonElementParentNode and NonDocumentTypeChildNode</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Prevent <code>getElementById()</code>, <code>previousElementSibling</code>, and <code>nextElementSibling</code> from being exposed</a></li>
   <li><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for Element</a></li>
   <li><a href="https://github.com/w3c/dom/commit/87a356f2dacbdbdf3c39745f61f597a0415a8af8">Bring CDATASection to Node/Traversal</a></li>
   <li><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered set</a></li>
