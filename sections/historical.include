@@ -39,7 +39,6 @@
   <li><a href="https://github.com/w3c/dom/commit/f39a74823121ae7d310235e4ce1c9036cd898c5d">Clean up the unsupported events in the createEvent interface</a></li>
   <li><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a></li>
   <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a></li>
-  <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Update the HTMLCollection algorithm in node</a></li>
   <li><a href="https://github.com/w3c/dom/commit/65c0a42894bbb175f4a71959689bc73d3a35a29e">Introduce firing an event</a><ul>
     <li>Use the relevant realm of the event target when firing an event</li>
     <li>Also note the difference between firing and dispatching an event</li>
