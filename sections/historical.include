@@ -31,11 +31,11 @@
   <li><a href="https://github.com/w3c/dom/commit/e96a1d9c34137e6c4bbb957724df6e46bb1f4df1">Define replaceWith(), after(), before() for ChildNode</a></li>
   <li><a href="https://github.com/w3c/dom/commit/bea38dada944be8c4ed47c263220ed445153d87c">Calculate the length of CharacterData in the Node level</a></li>
   <li><a href="https://github.com/w3c/dom/commit/b4a0a8a9ecf223f17931a47bc22572f202437952">Prevent <code>getElementById()</code>, <code>previousElementSibling</code>, and <code>nextElementSibling</code> from being exposed</a></li>
-  <li><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for Element</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/59dd9014ef318cb5f8b9ab12bd8dad8997e43b80">Define <code>hasAttributes()</code> for <code>Element</code></a></li>
   <li><a href="https://github.com/w3c/dom/commit/87a356f2dacbdbdf3c39745f61f597a0415a8af8">Bring CDATASection to Node/Traversal</a></li>
-  <li><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered set</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/09b8ac958eb3fd360a83d20ad86faf2931c788d4">Clarify the replace operation of ordered sets</a></li>
   <li><a href="https://github.com/w3c/dom/commit/02cb08674b44660056575c07ed61c4fa09291088">Define get/setAttributeNode, get/setAttributeNodeNS, and removeAttributeNode for Element</a></li>
-  <li><a href="https://github.com/w3c/dom/commit/181d2a300490e7391164f28f6266f19241e3be3c">Define closest(), matches() and webkitMatchesSelector() for Element</a></li>
+  <li><a href="https://github.com/w3c/dom/commit/181d2a300490e7391164f28f6266f19241e3be3c">Define <code>closest()</code>, <code>matches()</code> and <code>webkitMatchesSelector()</code> for <code>Element</code></a></li>
   <li><a href="https://github.com/w3c/dom/commit/f39a74823121ae7d310235e4ce1c9036cd898c5d">Clean up the unsupported events in the createEvent interface</a></li>
   <li><a href="https://github.com/w3c/dom/commit/21948b572ca6767fe628893b123907d4b1779fdb">Improve the insertion/removing steps for descendants</a></li>
   <li><a href="https://github.com/w3c/dom/commit/f2dee6ec1adcad5c2a9bb1c49f95b1a7c96af5f3">Use previousSibling in the replacing a node algorithm</a></li>
